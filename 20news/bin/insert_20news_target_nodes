@@ -1,0 +1,52 @@
+#!/usr/bin/env groovy
+
+// this script inserts target nodes into vital block with 20 data
+import static groovy.io.FileType.FILES 
+
+def mainClass = 'ai.vital.vitalpredict._20newsexample.Insert20NewsTargetNodes'
+
+def scriptDir = new File(getClass().protectionDomain.codeSource.location.path).parentFile.parentFile.getAbsolutePath() + '/'
+
+def VITAL_HOME = System.getenv('VITAL_HOME')
+
+if(!VITAL_HOME) { 
+	System.err.println("VITAL_HOME environment variable not set.")
+	System.exit(-1);
+}
+
+def vitalsignsDir = VITAL_HOME + '/vitalsigns'
+
+def vitalDomainJar = VITAL_HOME + '/vital-domain/VitalDomain-groovy.jar'
+
+def DOMAIN_JAR = scriptDir + 'domain-jar/20news.1.jar'
+
+def DIST_JAR = scriptDir + 'dist/vitalpredict20newsexample.jar'
+
+List jars = [];
+new File(vitalsignsDir).eachFileRecurse(FILES) {
+	if(it.name.endsWith('.jar')) {
+		jars.add(it.absolutePath);
+	}
+}
+
+new File(scriptDir + 'lib').eachFileRecurse(FILES) {
+	if(it.name.endsWith('.jar')) {
+		jars.add(it.absolutePath);
+	}
+}
+
+jars.add(vitalDomainJar)
+jars.add(DOMAIN_JAR)
+jars.add(DIST_JAR)
+
+List cmd = ['java', '-cp', (String)jars.join(File.pathSeparator), mainClass];
+
+for(String a : args) {
+	cmd.add(a)
+}
+
+def process = new ProcessBuilder(cmd).redirectErrorStream(true).start()
+process.inputStream.eachLine {println it}
+
+
+

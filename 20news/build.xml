@@ -1,0 +1,52 @@
+<project name="VitalPredict20NewsExample" default="main">
+
+	<property environment="env" />
+	
+	<property name="VITAL_HOME" value="${env.VITAL_HOME}" />
+		
+	<property name="dist.jar" value="dist/vitalpredict20newsexample.jar" />
+
+	<property name="build.dir" value="build_20news_example" />
+	
+		
+	<path id="classpath">
+		<fileset dir="${VITAL_HOME}/vitalsigns">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${VITAL_HOME}/vital-domain">
+			<include name="VitalDomain-groovy.jar" />
+		</fileset>
+		<fileset dir="domain-jar">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<taskdef name="groovyc"
+		classname="org.codehaus.groovy.ant.Groovyc"
+		classpathref="classpath" />
+	
+	
+	<target name="main">
+		
+		<fail message="VITAL_HOME env not set!" unless="VITAL_HOME" />
+			
+		<delete file="${dist.jar}" />
+		
+		<delete dir="${build.dir}" />
+		<mkdir dir="${build.dir}" />
+	
+		<groovyc srcdir="src" destdir="${build.dir}">
+			<classpath>
+			    <path refid="classpath" />
+			  </classpath>
+		</groovyc>
+		
+		<jar destfile="${dist.jar}" basedir="${build.dir}" compress="true"></jar>
+		
+		<delete dir="${build.dir}" />
+		
+	</target>
+</project>
