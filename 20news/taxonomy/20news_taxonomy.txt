@@ -1,0 +1,24 @@
+# example 20news group taxonomy, 1 root and 20 children
+
++ http://vital.ai/20news/Category/Taxonomy
+
+++ http://vital.ai/20news/Category/alt.atheism
+++ http://vital.ai/20news/Category/comp.graphics
+++ http://vital.ai/20news/Category/comp.os.ms-windows.misc
+++ http://vital.ai/20news/Category/comp.sys.ibm.pc.hardware
+++ http://vital.ai/20news/Category/comp.sys.mac.hardware
+++ http://vital.ai/20news/Category/comp.windows.x
+++ http://vital.ai/20news/Category/misc.forsale
+++ http://vital.ai/20news/Category/rec.autos
+++ http://vital.ai/20news/Category/rec.motorcycles
+++ http://vital.ai/20news/Category/rec.sport.baseball
+++ http://vital.ai/20news/Category/rec.sport.hockey
+++ http://vital.ai/20news/Category/sci.crypt
+++ http://vital.ai/20news/Category/sci.electronics
+++ http://vital.ai/20news/Category/sci.med
+++ http://vital.ai/20news/Category/sci.space
+++ http://vital.ai/20news/Category/soc.religion.christian
+++ http://vital.ai/20news/Category/talk.politics.guns
+++ http://vital.ai/20news/Category/talk.politics.mideast
+++ http://vital.ai/20news/Category/talk.politics.misc
+++ http://vital.ai/20news/Category/talk.religion.misc

@@ -1,0 +1,231 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://vital.ai/ontology/vital-core.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:j.1="http://vital.ai/ontology/vital.owl#" > 
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/talk.politics.misc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">talk.politics.misc</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__sci.crypt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/sci.crypt"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/comp.windows.x">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">comp.windows.x</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__sci.med">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/sci.med"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/talk.politics.guns">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">talk.politics.guns</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__comp.sys.ibm.pc.hardware">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/comp.sys.ibm.pc.hardware"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/Taxonomy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Taxonomy</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/sci.space">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sci.space</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__rec.sport.baseball">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/rec.sport.baseball"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/rec.sport.baseball">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rec.sport.baseball</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/alt.atheism">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alt.atheism</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__talk.religion.misc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/talk.religion.misc"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/sci.med">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sci.med</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/soc.religion.christian">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">soc.religion.christian</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__comp.windows.x">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/comp.windows.x"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__rec.motorcycles">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/rec.motorcycles"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/sci.electronics">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sci.electronics</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/talk.religion.misc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">talk.religion.misc</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__rec.sport.hockey">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/rec.sport.hockey"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/rec.motorcycles">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rec.motorcycles</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__alt.atheism">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/alt.atheism"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__talk.politics.mideast">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/talk.politics.mideast"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__sci.space">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/sci.space"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__talk.politics.guns">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/talk.politics.guns"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__sci.electronics">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/sci.electronics"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__rec.autos">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/rec.autos"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/comp.sys.ibm.pc.hardware">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">comp.sys.ibm.pc.hardware</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__comp.sys.mac.hardware">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/comp.sys.mac.hardware"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__comp.os.ms-windows.misc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/comp.os.ms-windows.misc"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__talk.politics.misc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/talk.politics.misc"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/comp.graphics">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">comp.graphics</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/comp.os.ms-windows.misc">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">comp.os.ms-windows.misc</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/misc.forsale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">misc.forsale</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/comp.sys.mac.hardware">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">comp.sys.mac.hardware</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__comp.graphics">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/comp.graphics"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__misc.forsale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/misc.forsale"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/talk.politics.mideast">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">talk.politics.mideast</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uri.vital.ai/Edge_hasChildCategory/Taxonomy__soc.religion.christian">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.0:hasEdgeDestination rdf:resource="http://vital.ai/20news/Category/soc.religion.christian"/>
+    <j.0:hasEdgeSource rdf:resource="http://vital.ai/20news/Category/Taxonomy"/>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/rec.autos">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rec.autos</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/rec.sport.hockey">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rec.sport.hockey</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://vital.ai/20news/Category/sci.crypt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <j.1:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sci.crypt</j.1:hasName>
+    <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
+  </rdf:Description>
+</rdf:RDF>
