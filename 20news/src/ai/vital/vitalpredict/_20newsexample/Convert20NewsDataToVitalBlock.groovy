@@ -102,7 +102,7 @@ class Convert20NewsDataToVitalBlock {
 			doc.URI = "http://example.org/20news/${newsgroup}/${id}";
 			doc.title = subject
 			doc.body = body
-			doc.newsGroup = newsgroup
+			doc.newsGroup = "http://vital.ai/20news/Category/${newsgroup}";
 			
 			writer.startBlock();
 			writer.writeGraphObject(doc);
