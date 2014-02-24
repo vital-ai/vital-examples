@@ -103,14 +103,6 @@
     
 
 
-    <!-- http://vital.ai/ontology/vital.owl#Document -->
-
-    <rdf:Description rdf:about="&vital;Document">
-        <vital:hasAnnotationPredictClass rdf:resource="http://vital.ai/ontology/20news.owl#_20news_cbayes_model"/>
-    </rdf:Description>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
