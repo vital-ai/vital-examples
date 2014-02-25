@@ -29,13 +29,11 @@
 		classpathref="classpath" />
 	
 	
-	<target name="main">
+	<target name="main" depends="cleanup">
 		
 		<fail message="VITAL_HOME env not set!" unless="VITAL_HOME" />
 			
-		<delete file="${dist.jar}" />
-		
-		<delete dir="${build.dir}" />
+
 		<mkdir dir="${build.dir}" />
 	
 		<groovyc srcdir="src" destdir="${build.dir}">
@@ -48,5 +46,10 @@
 		
 		<delete dir="${build.dir}" />
 		
+	</target>
+	
+	<target name="cleanup">
+		<delete file="${dist.jar}" />
+		<delete dir="${build.dir}" />
 	</target>
 </project>
