@@ -18,8 +18,6 @@ def vitalsignsDir = VITAL_HOME + '/vitalsigns'
 
 def vitalDomainJar = VITAL_HOME + '/vital-domain/VitalDomain-groovy.jar'
 
-def DOMAIN_JAR = scriptDir + 'domain-jar/20news.1.0.0.jar'
-
 def DIST_JAR = scriptDir + 'dist/vitalpredict20newsexample.jar'
 
 List jars = [];
@@ -35,8 +33,14 @@ new File(scriptDir + 'lib').eachFileRecurse(FILES) {
 	}
 }
 
+new File(VITAL_HOME, "domain-jar").eachFile(FILES) {
+	if(it.name.endsWith(".jar")) {
+		println "using domain jar: ${it.absolutePath}"
+		jars.add(it.absolutePath)
+	}
+}
+
 jars.add(vitalDomainJar)
-jars.add(DOMAIN_JAR)
 jars.add(DIST_JAR)
 
 List cmd = ['java', '-cp', (String)jars.join(File.pathSeparator), mainClass];
