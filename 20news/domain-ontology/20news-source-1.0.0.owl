@@ -19,6 +19,7 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="http://vital.ai/ontology/20news.owl">
         <owl:imports rdf:resource="http://vital.ai/ontology/vital.owl"/>
+        <owl:versionInfo>1.0.0</owl:versionInfo>
     </owl:Ontology>
     
 

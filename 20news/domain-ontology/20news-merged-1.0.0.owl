@@ -24,6 +24,7 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:j.0="http://vital.ai/ontology/vital-core.owl#">
     <owl:Ontology rdf:about="http://vital.ai/ontology/20news.owl">
+        <owl:versionInfo>1.0.0</owl:versionInfo>
         <owl:imports rdf:resource="http://vital.ai/ontology/vital.owl"/>
     </owl:Ontology>
     
@@ -72,6 +73,15 @@
     
 
 
+    <!-- http://vital.ai/ontology/20news.owl#hasScore -->
+
+    <owl:DatatypeProperty rdf:about="http://vital.ai/ontology/20news.owl#hasScore">
+        <rdfs:domain rdf:resource="http://vital.ai/ontology/20news.owl#Edge_hasNewsCategory"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://vital.ai/ontology/20news.owl#hasTargetNewsGroup -->
 
     <owl:DatatypeProperty rdf:about="http://vital.ai/ontology/20news.owl#hasTargetNewsGroup">
@@ -91,6 +101,17 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://vital.ai/ontology/20news.owl#Edge_hasNewsCategory -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/20news.owl#Edge_hasNewsCategory">
+        <rdfs:subClassOf rdf:resource="&j.0;VITAL_TaxonomyEdge"/>
+        <j.0:hasEdgeSrcDomain rdf:resource="http://vital.ai/ontology/20news.owl#_20NewsDocument"/>
+        <vital:hasAnnotationPredictDirectEdge rdf:resource="http://vital.ai/ontology/20news.owl#_20news_cbayes_model"/>
+        <j.0:hasEdgeDestDomain rdf:resource="&vital;Category"/>
+    </owl:Class>
     
 
 
@@ -507,6 +528,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/20news.owl#_20news_cbayes_model">
         <rdf:type rdf:resource="&vital;CategorizationModel"/>
+        <vital:hasCategorizationTargetType rdf:datatype="&xsd;string">DirectEdge</vital:hasCategorizationTargetType>
         <vital:hasName rdf:datatype="&xsd;string">_20news_cbayes_model</vital:hasName>
         <vital:hasCategorizationAlgorithm rdf:datatype="&xsd;string">cbayes</vital:hasCategorizationAlgorithm>
     </owl:NamedIndividual>
