@@ -7,8 +7,6 @@ class _20newsClassificationApp {
 
 	static main(args) {
 	
-		// initialize VitalSigns
-		
 		
 		
 		// Input properties
@@ -21,7 +19,7 @@ class _20newsClassificationApp {
 		
 		def mydoc = new _20NewsDocument()
 		
-		mydoc.URI = "http://example.org/20news/20NewsDocument/123";
+		mydoc.URI = "http://example.org/20news/20NewsDocument/123"
 		mydoc.title = subject
 		mydoc.body = body
 		
