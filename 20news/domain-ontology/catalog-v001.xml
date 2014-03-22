@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="User Entered Import Resolution" name="http://vital.ai/ontology/vital-core.owl" uri="file:/D:/workspace_vital.ai_git/vital-install/vital-ontology/vital-core-0.1.0.owl"/>
-    <uri id="User Entered Import Resolution" name="http://vital.ai/ontology/vital.owl" uri="file:/D:/workspace_vital.ai_git/vital-install/vital-ontology/vital-0.1.0.owl"/>
-    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1395429690618" name="duplicate:http://vital.ai/ontology/20news.owl" uri="20news-merged-1.0.0.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1395429690618" name="duplicate:http://vital.ai/ontology/20news.owl" uri="20news-source-1.0.0.owl"/>
-    </group>
-</catalog>
