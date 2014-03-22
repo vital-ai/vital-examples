@@ -14,7 +14,7 @@
 			<include name="**/*.jar" />
 		</fileset>
 		<fileset dir="${VITAL_HOME}/vital-domain">
-			<include name="VitalDomain-groovy.jar" />
+			<include name="VitalDomain-groovy-0.1.0.jar" />
 		</fileset>
 		<fileset dir="domain-jar">
 			<include name="**/*.jar" />
