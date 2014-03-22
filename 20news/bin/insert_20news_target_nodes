@@ -16,7 +16,7 @@ if(!VITAL_HOME) {
 
 def vitalsignsDir = VITAL_HOME + '/vitalsigns'
 
-def vitalDomainJar = VITAL_HOME + '/vital-domain/VitalDomain-groovy.jar'
+def vitalDomainJar = VITAL_HOME + '/vital-domain/VitalDomain-groovy-0.1.0.jar'
 
 def DIST_JAR = scriptDir + 'dist/vitalpredict20newsexample.jar'
 
