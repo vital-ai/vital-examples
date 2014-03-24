@@ -29,6 +29,6 @@
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/groovy-2.2.2/groovy-all-2.2.2.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/config-1.2.0.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib-hadoop-1.0.3/hadoop-core-1.0.3.jar"/>
-	<classpathentry kind="var" path="VITAL_HOME/domain-jar/twentynews-1.0.1.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/domain-jar/twentynews-groovy-1.0.1.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
