@@ -24,6 +24,6 @@
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vital-domain/VitalDomain-groovy-0.1.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-compress-1.7/commons-compress-1.7.jar"/>
-	<classpathentry kind="lib" path="domain-jar/twentynews-1.0.1.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/domain-jar/twentynews-1.0.1.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>

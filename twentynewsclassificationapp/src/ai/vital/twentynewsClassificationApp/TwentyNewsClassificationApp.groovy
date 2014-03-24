@@ -2,6 +2,7 @@ package ai.vital.twentynewsClassificationApp
 
 import ai.vital.predict.PredictModel
 import ai.vital.vitalsigns.VitalSigns;
+import ai.vital.vitalsigns.model.VITAL_Edge
 
 import org.example.twentynews.*
 
@@ -46,8 +47,11 @@ class TwentyNewsClassificationApp {
 		// Display categories with scores in edges
 		List<Category> categories = mydoc.getNewsCategories()
 		
+		// no other edges expected 1:1 lists lengths
+		List<VITAL_Edge> edges = mydoc.getOutgoingEdges()
+		
 		for( int i = 0 ; i < categories.size(); i++ ) {
-			println categories[i].name
+			println "${categories[i].name} ${edges[i].score}"
 		}
 		
 		
