@@ -33,6 +33,12 @@ new File(scriptDir + 'lib').eachFileRecurse(FILES) {
 	}
 }
 
+new File(VITAL_HOME + '/vitalpredict').eachFileRecurse(FILES) {
+	if(it.name.endsWith('.jar')) {
+		jars.add(it.absolutePath);
+	}
+}
+
 new File(VITAL_HOME, "domain-jar").eachFile(FILES) {
 	if(it.name.endsWith(".jar")) {
 		println "using domain jar: ${it.absolutePath}"

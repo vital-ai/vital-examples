@@ -11,6 +11,11 @@ class TwentyNewsClassificationApp {
 
 	static main(args) {
 	
+		if(args.length != 1) {
+			System.err.println("Expected exactly 1 argument - model jar path")
+			return
+		}
+		
 		
 		// Input properties
 		
@@ -20,7 +25,10 @@ class TwentyNewsClassificationApp {
 		
 		// Model Jar Path
 		 
-		String modelJarPath = "..."
+		String modelJarPath = args[0]
+		
+		println "Model jar path: ${modelJarPath}"
+		
 		
 		
 		// Initialize Predict Model
