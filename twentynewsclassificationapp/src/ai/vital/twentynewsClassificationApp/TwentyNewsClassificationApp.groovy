@@ -1,9 +1,9 @@
-package ai.vital._20newsClassificationApp
+package ai.vital.twentynewsClassificationApp
 
-import org.example._20news.*
+import org.example.twentynews.*
 
 
-class _20newsClassificationApp {
+class TwentyNewsClassificationApp {
 
 	static main(args) {
 	
@@ -11,15 +11,15 @@ class _20newsClassificationApp {
 		
 		// Input properties
 		
-		String subject = "Let's play software in the park!"
+		String subject = "Let's play softball in the park!"
 		
 		String body = "Softball game tonight.  Bring your bats!"
 		
-		// Create instance of _20NewsDocument
+		// Create instance of TwentyNewsDocument
 		
-		def mydoc = new _20NewsDocument()
+		def mydoc = new TwentyNewsDocument()
 		
-		mydoc.URI = "http://example.org/20news/20NewsDocument/123"
+		mydoc.URI = "http://example.org/twentynews/TwentyNewsDocument/123"
 		mydoc.title = subject
 		mydoc.body = body
 		
