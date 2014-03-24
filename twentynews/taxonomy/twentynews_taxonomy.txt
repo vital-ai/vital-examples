@@ -1,6 +1,6 @@
 # example twentynews group taxonomy, 1 root and 20 children
 
-+ http://vital.ai/20news/Category/Taxonomy
++  http://vital.ai/twentynews/Category/Taxonomy
 
 ++ http://vital.ai/twentynews/Category/alt.atheism
 ++ http://vital.ai/twentynews/Category/comp.graphics

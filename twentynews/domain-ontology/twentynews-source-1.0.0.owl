@@ -6,21 +6,45 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY vital "http://vital.ai/ontology/vital.owl#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY vital-core "http://vital.ai/ontology/vital-core.owl#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
 
-<rdf:RDF xmlns="http://vital.ai/ontology/20news.owl#"
-     xml:base="http://vital.ai/ontology/20news.owl"
+<rdf:RDF xmlns="http://vital.ai/ontology/twentynews.owl#"
+     xml:base="http://vital.ai/ontology/twentynews.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:vital="http://vital.ai/ontology/vital.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:vital-core="http://vital.ai/ontology/vital-core.owl#">
     <owl:Ontology rdf:about="http://vital.ai/ontology/twentynews.owl">
         <owl:versionInfo>1.0.0</owl:versionInfo>
         <owl:imports rdf:resource="http://vital.ai/ontology/vital.owl"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
     
 
 
@@ -45,11 +69,20 @@
     
 
 
+    <!-- http://vital.ai/ontology/twentynews.owl#hasScore -->
+
+    <owl:DatatypeProperty rdf:about="http://vital.ai/ontology/twentynews.owl#hasScore">
+        <rdfs:domain rdf:resource="http://vital.ai/ontology/twentynews.owl#Edge_hasNewsCategory"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://vital.ai/ontology/twentynews.owl#hasTargetNewsGroup -->
 
     <owl:DatatypeProperty rdf:about="http://vital.ai/ontology/twentynews.owl#hasTargetNewsGroup">
         <vital:hasAnnotationTargetType rdf:datatype="&xsd;string">categorical</vital:hasAnnotationTargetType>
-        <vital:hasAnnotationTargetValue rdf:resource="http://vital.ai/ontology/twentynews.owl#_20news_cbayes_model"/>
+        <vital:hasAnnotationTargetValue rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
         <rdfs:domain rdf:resource="&vital;TargetNode"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -64,6 +97,17 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://vital.ai/ontology/twentynews.owl#Edge_hasNewsCategory -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/twentynews.owl#Edge_hasNewsCategory">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_TaxonomyEdge"/>
+        <vital-core:hasEdgeSrcDomain rdf:resource="http://vital.ai/ontology/twentynews.owl#TwentyNewsDocument"/>
+        <vital:hasAnnotationPredictDirectEdge rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
+        <vital-core:hasEdgeDestDomain rdf:resource="&vital;Category"/>
+    </owl:Class>
     
 
 
@@ -91,7 +135,9 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model">
         <rdf:type rdf:resource="&vital;CategorizationModel"/>
+        <vital:hasCategorizationTargetType rdf:datatype="&xsd;string">DirectEdge</vital:hasCategorizationTargetType>
         <vital:hasCategorizationAlgorithm rdf:datatype="&xsd;string">cbayes</vital:hasCategorizationAlgorithm>
+        <vital:hasCategorizationType rdf:datatype="&xsd;string">mahout</vital:hasCategorizationType>
         <vital:hasName rdf:datatype="&xsd;string">twentynews_cbayes_model</vital:hasName>
     </owl:NamedIndividual>
     
@@ -107,15 +153,15 @@
 
     <rdf:Description rdf:about="&vital;hasBody">
         <vital:hasAnnotationPredictType rdf:datatype="&xsd;string">textlike</vital:hasAnnotationPredictType>
-        <vital:hasAnnotationPredictModel rdf:resource="http://vital.ai/ontology/20news.owl#_20news_cbayes_model"/>
+        <vital:hasAnnotationPredictModel rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
     </rdf:Description>
     <rdf:Description rdf:about="&vital;hasTitle">
         <vital:hasAnnotationPredictType rdf:datatype="&xsd;string">textlike</vital:hasAnnotationPredictType>
-        <vital:hasAnnotationPredictModel rdf:resource="http://vital.ai/ontology/20news.owl#_20news_cbayes_model"/>
+        <vital:hasAnnotationPredictModel rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
     </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
 
