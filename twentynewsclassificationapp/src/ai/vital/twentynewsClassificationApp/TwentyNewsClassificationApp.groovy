@@ -51,7 +51,17 @@ class TwentyNewsClassificationApp {
 		List<VITAL_Edge> edges = mydoc.getOutgoingEdges()
 		
 		for( int i = 0 ; i < categories.size(); i++ ) {
-			println "${categories[i].name} ${edges[i].score}"
+			
+			float score = 0f
+			
+			for(VITAL_Edge edge : edges) {
+				if(Edge_hasNewsCategory.class == edge.class && edge.sourceURI == mydoc.URI && edge.destinationURI == categories[i].URI) {
+					score = edge.score
+					break
+				}
+			}
+			
+			println "${categories[i].name} ${score}"
 		}
 		
 		
