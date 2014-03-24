@@ -6,30 +6,30 @@
  * or via contact information found at the web address: http://vital.ai/contact.html
  ******************************************************************************/
 
-package ai.vital.vitalpredict._20newsexample
+package ai.vital.vitalpredict.twentynewsexample
 
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.example._20news._20NewsDocument;
+import org.example.twentynews.TwentyNewsDocument;
 
 import ai.vital.vitalsigns.utils.BlockCompactStringSerializer;
 
-class Convert20NewsDataToVitalBlock {
+class ConvertTwentyNewsDataToVitalBlock {
 
 	static main(args) {
 
 		if(args.length != 2) {
-			println 'usage: convert_20news_to_vitalblock <input_20news_tar_gz_file> <output_vital_block_file>'
+			println 'usage: convert_twentynews_to_vitalblock <input_twentynews_tar_gz_file> <output_vital_block_file>'
 			return
 		}
 		
 		File inputTarGZ = new File(args[0])
 		File blockFile = new File(args[1])
 		
-		println "Input 20 news tar.gz: ${inputTarGZ.absolutePath}"
+		println "Input twenty news tar.gz: ${inputTarGZ.absolutePath}"
 		println "Output block file: ${blockFile.absolutePath}"
 		
 		TarArchiveInputStream inputStream = new TarArchiveInputStream(new GZIPInputStream(new FileInputStream(inputTarGZ)))
@@ -98,11 +98,11 @@ class Convert20NewsDataToVitalBlock {
 			}
 			
 			//don't close reader
-			def doc = new _20NewsDocument()
-			doc.URI = "http://example.org/20news/${newsgroup}/${id}";
+			def doc = new TwentyNewsDocument()
+			doc.URI = "http://example.org/twentynews/${newsgroup}/${id}";
 			doc.title = subject
 			doc.body = body
-			doc.newsGroup = 'http://vital.ai/20news/Category/' + newsgroup;
+			doc.newsGroup = 'http://vital.ai/twentynews/Category/' + newsgroup;
 			
 			writer.startBlock();
 			writer.writeGraphObject(doc);

@@ -5,7 +5,7 @@
  * Vital AI, LLC may be contacted via: legal@vital.ai
  * or via contact information found at the web address: http://vital.ai/contact.html
  ******************************************************************************/
-package ai.vital.vitalpredict._20newsexample
+package ai.vital.vitalpredict.twentynewsexample
 
 import ai.vital.domain.CategorizationModel;
 import ai.vital.domain.Edge_hasTargetNode;
@@ -19,14 +19,14 @@ import ai.vital.vitalsigns.utils.BlockCompactStringSerializer.VitalBlock;
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
-import org.example._20news._20NewsDocument;
+import org.example.twentynews.TwentyNewsDocument;
 
-class Insert20NewsTargetNodes {
+class InsertTwentyNewsTargetNodes {
 
 	static main(args) {
 	
 		if(args.length != 3) {
-			println 'Usage: insert_20news_target_nodes <input_20news_block_file> <modelURI> <output_20news_block_file>'
+			println 'Usage: insert_twentynews_target_nodes <input_twentynews_block_file> <modelURI> <output_twentynews_block_file>'
 			return
 		}
 		
@@ -67,14 +67,14 @@ class Insert20NewsTargetNodes {
 			
 			GraphObject g = block.mainObject
 			
-			if( !( g instanceof _20NewsDocument) || block.dependentObjects.size() > 0 ) throw new RuntimeException("Expected a block with exactly one object of type: ${_20NewsDocument.class.canonicalName}" )
+			if( !( g instanceof TwentyNewsDocument) || block.dependentObjects.size() > 0 ) throw new RuntimeException("Expected a block with exactly one object of type: ${TwentyNewsDocument.class.canonicalName}" )
 			
-			String newsGroup = ((_20NewsDocument)g).newsGroup
+			String newsGroup = ((TwentyNewsDocument)g).newsGroup
 			if(!newsGroup) throw new RuntimeException("No newsgroup for document: " + g.URI)
 			
 			
 			TargetNode targetNode = new TargetNode()
-			targetNode.URI = "http://uri.vital.ai/${TargetNode.class.simpleName}/20news/" + counter
+			targetNode.URI = "http://uri.vital.ai/${TargetNode.class.simpleName}/twentynews/" + counter
 			targetNode.targetScore = 1d
 			targetNode.modelURI = new URIPropertyValue(modelURI);
 			targetNode.targetNewsGroup = newsGroup

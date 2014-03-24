@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
-// this script inserts target nodes into vital block with 20 data
+// this script inserts target nodes into vital block with twenty data
 import static groovy.io.FileType.FILES 
 
-def mainClass = 'ai.vital.vitalpredict._20newsexample.Insert20NewsTargetNodes'
+def mainClass = 'ai.vital.vitalpredict.twentynewsexample.InsertTwentyNewsTargetNodes'
 
 def scriptDir = new File(getClass().protectionDomain.codeSource.location.path).parentFile.parentFile.getAbsolutePath() + '/'
 

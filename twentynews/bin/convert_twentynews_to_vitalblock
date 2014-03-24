@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 
-// this script converts 20 news raw data into vital block format
+// this script converts twenty news raw data into vital block format
 import static groovy.io.FileType.FILES 
 
-def mainClass = 'ai.vital.vitalpredict._20newsexample.Convert20NewsDataToVitalBlock'
+def mainClass = 'ai.vital.vitalpredict.twentynewsexample.ConvertTwentyNewsDataToVitalBlock'
 
 def scriptDir = new File(getClass().protectionDomain.codeSource.location.path).parentFile.parentFile.getAbsolutePath() + '/'
 
@@ -18,7 +18,7 @@ def vitalsignsDir = VITAL_HOME + '/vitalsigns'
 
 def vitalDomainJar = VITAL_HOME + '/vital-domain/VitalDomain-groovy-0.1.0.jar'
 
-def DIST_JAR = scriptDir + 'dist/vitalpredict20newsexample.jar'
+def DIST_JAR = scriptDir + 'dist/vitalpredicttwentynewsexample.jar'
 
 List jars = [];
 new File(vitalsignsDir).eachFileRecurse(FILES) {

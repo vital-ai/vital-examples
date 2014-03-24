@@ -1,12 +1,12 @@
-<project name="VitalPredict20NewsExample" default="main">
+<project name="VitalPredictTwentyNewsExample" default="main">
 
 	<property environment="env" />
 	
 	<property name="VITAL_HOME" value="${env.VITAL_HOME}" />
 		
-	<property name="dist.jar" value="dist/vitalpredict20newsexample.jar" />
+	<property name="dist.jar" value="dist/vitalpredicttwentynewsexample.jar" />
 
-	<property name="build.dir" value="build_20news_example" />
+	<property name="build.dir" value="build_twentynews_example" />
 	
 		
 	<path id="classpath">
