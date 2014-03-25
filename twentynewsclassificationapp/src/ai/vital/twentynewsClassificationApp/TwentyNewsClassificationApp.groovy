@@ -48,26 +48,17 @@ class TwentyNewsClassificationApp {
 		mydoc.body = body
 
 		
-				
 		model.predict(mydoc)
 		
 		
 		// Display categories with scores in edges
 		List<Category> categories = mydoc.getNewsCategories()
 		
-		// no other edges expected 1:1 lists lengths
-		List<VITAL_Edge> edges = mydoc.getOutgoingEdges()
-		
 		for( int i = 0 ; i < categories.size(); i++ ) {
 			
-			float score = 0f
+			Edge_hasNewsCategory edge = mydoc.getNewsCategoryEdges(categories[i])[0]
 			
-			for(VITAL_Edge edge : edges) {
-				if(Edge_hasNewsCategory.class == edge.class && edge.sourceURI == mydoc.URI && edge.destinationURI == categories[i].URI) {
-					score = edge.score
-					break
-				}
-			}
+			float score = edge.score
 			
 			println "${categories[i].name} ${score}"
 		}
