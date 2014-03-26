@@ -43,10 +43,10 @@
     <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Edge_hasChildCategory"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model">
+    <vital:hasMachineLearningModelType rdf:resource="http://vital.ai/ontology/vital.owl#MLModelType_Mahout"/>
+    <vital:hasMachineLearningAlgorithm rdf:resource="http://vital.ai/ontology/vital.owl#MLAlgorithm_CBayes"/>
+    <vital:hasCategorizationTargetType rdf:resource="http://vital.ai/ontology/vital.owl#CategorizationTargetType_DirectEdge"/>
     <vital:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">twentynews_cbayes_model</vital:hasName>
-    <vital:hasCategorizationType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mahout</vital:hasCategorizationType>
-    <vital:hasCategorizationAlgorithm rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cbayes</vital:hasCategorizationAlgorithm>
-    <vital:hasCategorizationTargetType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectEdge</vital:hasCategorizationTargetType>
     <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#CategorizationModel"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </rdf:Description>
@@ -136,7 +136,7 @@
     <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://vital.ai/ontology/twentynews.owl">
-    <owl:versionInfo>1.0.1</owl:versionInfo>
+    <owl:versionInfo>1.0.0</owl:versionInfo>
     <owl:imports rdf:resource="http://vital.ai/ontology/vital.owl"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
   </rdf:Description>
@@ -173,8 +173,8 @@
     <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://vital.ai/ontology/vital.owl#hasBody">
+    <vital:hasAnnotationPredictType rdf:resource="http://vital.ai/ontology/vital.owl#PredictorType_textlike"/>
     <vital:hasAnnotationPredictModel rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
-    <vital:hasAnnotationPredictType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">textlike</vital:hasAnnotationPredictType>
   </rdf:Description>
   <rdf:Description rdf:about="http://vital.ai/ontology/twentynews.owl#hasScore">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
@@ -211,9 +211,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://vital.ai/ontology/twentynews.owl#hasTargetNewsGroup">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <vital:hasAnnotationTargetType rdf:resource="http://vital.ai/ontology/vital.owl#TargetType_categorical"/>
     <rdfs:domain rdf:resource="http://vital.ai/ontology/vital.owl#TargetNode"/>
     <vital:hasAnnotationTargetValue rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
-    <vital:hasAnnotationTargetType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">categorical</vital:hasAnnotationTargetType>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://vital.ai/twentynews/Category/talk.politics.mideast">
@@ -279,7 +279,7 @@
     <rdf:type rdf:resource="http://vital.ai/ontology/vital.owl#Category"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://vital.ai/ontology/vital.owl#hasTitle">
+    <vital:hasAnnotationPredictType rdf:resource="http://vital.ai/ontology/vital.owl#PredictorType_textlike"/>
     <vital:hasAnnotationPredictModel rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
-    <vital:hasAnnotationPredictType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">textlike</vital:hasAnnotationPredictType>
   </rdf:Description>
 </rdf:RDF>
