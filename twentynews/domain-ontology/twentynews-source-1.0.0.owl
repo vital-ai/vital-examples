@@ -81,9 +81,9 @@
     <!-- http://vital.ai/ontology/twentynews.owl#hasTargetNewsGroup -->
 
     <owl:DatatypeProperty rdf:about="http://vital.ai/ontology/twentynews.owl#hasTargetNewsGroup">
-        <vital:hasAnnotationTargetType rdf:datatype="&xsd;string">categorical</vital:hasAnnotationTargetType>
         <vital:hasAnnotationTargetValue rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
         <rdfs:domain rdf:resource="&vital;TargetNode"/>
+        <vital:hasAnnotationTargetType rdf:resource="&vital;TargetType_categorical"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -135,10 +135,10 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model">
         <rdf:type rdf:resource="&vital;CategorizationModel"/>
-        <vital:hasCategorizationTargetType rdf:datatype="&xsd;string">DirectEdge</vital:hasCategorizationTargetType>
-        <vital:hasCategorizationAlgorithm rdf:datatype="&xsd;string">cbayes</vital:hasCategorizationAlgorithm>
-        <vital:hasCategorizationType rdf:datatype="&xsd;string">mahout</vital:hasCategorizationType>
         <vital:hasName rdf:datatype="&xsd;string">twentynews_cbayes_model</vital:hasName>
+        <vital:hasCategorizationTargetType rdf:resource="&vital;CategorizationTargetType_DirectEdge"/>
+        <vital:hasMachineLearningAlgorithm rdf:resource="&vital;MLAlgorithm_CBayes"/>
+        <vital:hasMachineLearningModelType rdf:resource="&vital;MLModelType_Mahout"/>
     </owl:NamedIndividual>
     
 
@@ -152,12 +152,12 @@
      -->
 
     <rdf:Description rdf:about="&vital;hasBody">
-        <vital:hasAnnotationPredictType rdf:datatype="&xsd;string">textlike</vital:hasAnnotationPredictType>
         <vital:hasAnnotationPredictModel rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
+        <vital:hasAnnotationPredictType rdf:resource="&vital;PredictorType_textlike"/>
     </rdf:Description>
     <rdf:Description rdf:about="&vital;hasTitle">
-        <vital:hasAnnotationPredictType rdf:datatype="&xsd;string">textlike</vital:hasAnnotationPredictType>
         <vital:hasAnnotationPredictModel rdf:resource="http://vital.ai/ontology/twentynews.owl#twentynews_cbayes_model"/>
+        <vital:hasAnnotationPredictType rdf:resource="&vital;PredictorType_textlike"/>
     </rdf:Description>
 </rdf:RDF>
 
