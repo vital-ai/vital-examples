@@ -1,9 +1,7 @@
 package ai.vital.wordnet
 
-class VitalWordnet {
+class VitalWordnetGenerateBlock {
 
-	// import wordnet
-	
 	static main(args) {
 	
 	}
