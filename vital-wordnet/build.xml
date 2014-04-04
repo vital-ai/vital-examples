@@ -1,0 +1,64 @@
+<project name="vital-wordnet" default="main">
+
+	<property environment="env" />
+	
+	<property name="VITAL_HOME" value="${env.VITAL_HOME}" />
+		
+	<property name="dist.dir" value="${basedir}/dist" />
+	
+	<property name="dist.jar" value="${dist.dir}/vitalwordnetexample.jar" />
+
+	<property name="build.dir" value="build_vital_wordnet" />
+	
+		
+	<path id="classpath">
+		<fileset dir="${VITAL_HOME}/vitalsigns">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${VITAL_HOME}/vitalcommon">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${VITAL_HOME}/vital-domain">
+			<include name="VitalDomain-groovy-0.1.0.jar" />
+		</fileset>
+		<fileset dir="${VITAL_HOME}/vitalservice">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${VITAL_HOME}/vital-lucene">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<taskdef name="groovyc"
+		classname="org.codehaus.groovy.ant.Groovyc"
+		classpathref="classpath" />
+	
+	
+	<target name="main" depends="cleanup">
+		
+		<fail message="VITAL_HOME env not set!" unless="VITAL_HOME" />
+			
+		<mkdir dir="${build.dir}" />
+		
+		<mkdir dir="${dist.dir}" />
+	
+		<groovyc srcdir="src" destdir="${build.dir}">
+			<classpath>
+			    <path refid="classpath" />
+			  </classpath>
+		</groovyc>
+		
+		<jar destfile="${dist.jar}" basedir="${build.dir}" compress="true"></jar>
+		
+		<delete dir="${build.dir}" />
+		
+	</target>
+	
+	<target name="cleanup">
+		<delete file="${dist.jar}" />
+		<delete dir="${build.dir}" />
+	</target>
+</project>
