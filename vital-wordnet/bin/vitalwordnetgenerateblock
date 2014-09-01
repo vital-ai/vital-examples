@@ -30,12 +30,6 @@ new File(VITAL_HOME + '/vitalsigns').eachFileRecurse(FILES) {
 	}
 }
 
-//vitalcommon
-new File(VITAL_HOME + '/vitalcommon').eachFileRecurse(FILES) {
-	if(it.name.endsWith('.jar')) {
-		jars.add(it.absolutePath);
-	}
-}
 
 //vital-lucene
 new File(VITAL_HOME + '/vital-lucene').eachFileRecurse(FILES) {

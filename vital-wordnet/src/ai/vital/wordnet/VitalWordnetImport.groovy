@@ -2,7 +2,6 @@ package ai.vital.wordnet
 
 import ai.vital.domain.Edge_hasWordnetPointer;
 import ai.vital.domain.SynsetNode;
-import ai.vital.lucene.common.service.VitalServiceLuceneCommonImpl;
 import ai.vital.lucene.model.LuceneSegmentType;
 import ai.vital.service.lucene.model.LuceneVitalSegment
 import ai.vital.vitalservice.VitalService;
@@ -42,7 +41,7 @@ class VitalWordnetImport {
 		
 		BlockIterator iterator = null
 		
-		App defaultApp = VitalServiceLuceneCommonImpl.defaultApp
+		App defaultApp = new App(ID:'app')
 		boolean appexists = false
 		for(App app : service.listApps()) {
 			if(app.ID == defaultApp.ID) {

@@ -35,9 +35,8 @@ import ai.vital.domain.AdjectiveSynsetNode
 import ai.vital.domain.AdverbSynsetNode
 import ai.vital.domain.NounSynsetNode
 import ai.vital.domain.VerbSynsetNode
-
+import ai.vital.vitalservice.model.App;
 import ai.vital.vitalsigns.utils.BlockCompactStringSerializer;
-
 import edu.mit.jwi.Dictionary
 import edu.mit.jwi.item.IPointer
 import edu.mit.jwi.item.ISynset
@@ -45,6 +44,7 @@ import edu.mit.jwi.item.ISynsetID
 import edu.mit.jwi.item.IWord
 import edu.mit.jwi.item.POS
 import edu.mit.jwi.item.Pointer
+
 import java.util.Map.Entry
 
 /**
@@ -58,6 +58,14 @@ class VitalWordnetGenerateBlock {
 	
 	static int nodes = 0;
 	static int edges = 0;
+	
+	
+	static App app
+	
+	static {
+		app = new App(ID: 'vital', customerID: 'vital')
+	}
+
 	
 	public static void main(String[] args) {
 		
@@ -164,7 +172,7 @@ class VitalWordnetGenerateBlock {
 						if(destURI == null) throw new Exception("No URI for dest synset: " + id);
 						
 						Edge_hasWordnetPointer newEdge = cls.newInstance();
-						newEdge.setURI(URIGenerator.generateURI("wordnet", cls));
+						newEdge.setURI(URIGenerator.generateURI(app, cls));
 						newEdge.setSourceURI(uri);
 						newEdge.setDestinationURI(destURI);
 				
@@ -238,7 +246,7 @@ class VitalWordnetGenerateBlock {
 				String idPart = "${next.getPOS().getTag()}_${((ISynsetID)next.getID()).getOffset()}"
 				
 				SynsetNode sn = cls.newInstance();
-				sn.setURI(URIGenerator.generateURI("wordnet", cls));
+				sn.setURI(URIGenerator.generateURI(app, cls));
 				sn.setProperty("name", word_string);
 				sn.setProperty("gloss", gloss);
 				sn.setProperty("wordnetID", idPart);

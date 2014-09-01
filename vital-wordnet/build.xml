@@ -15,9 +15,6 @@
 		<fileset dir="${VITAL_HOME}/vitalsigns">
 			<include name="**/*.jar" />
 		</fileset>
-		<fileset dir="${VITAL_HOME}/vitalcommon">
-			<include name="**/*.jar" />
-		</fileset>
 		<fileset dir="${VITAL_HOME}/vital-domain">
 			<include name="VitalDomain-groovy-0.1.0.jar" />
 		</fileset>
