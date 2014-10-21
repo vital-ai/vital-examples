@@ -1,14 +1,17 @@
 package ai.vital.app.template
 
-import ai.vital.service.VitalService;
+import ai.vital.vitalservice.VitalService;
+
+import ai.vital.vitalservice.factory.Factory;
 
 class AppTemplate {
 
 	public static void main(String[] args) {
 		
-		VitalService.setEndpoint("http://127.0.0.1:9080", "", "")
+		VitalService service = Factory.getVitalService()
 		
-		VitalService.getInstance().ping();
+		
+		service.ping();
 		
 	}
 	
