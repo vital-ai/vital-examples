@@ -7,9 +7,11 @@
  ******************************************************************************/
 package ai.vital.vitalpredict.twentynewsexample
 
+import ai.vital.common.uri.URIGenerator;
 import ai.vital.domain.CategorizationModel;
 import ai.vital.domain.Edge_hasTargetNode;
 import ai.vital.domain.TargetNode;
+import ai.vital.vitalservice.model.App
 import ai.vital.vitalsigns.VitalSigns;
 import ai.vital.vitalsigns.model.GraphObject;
 import ai.vital.vitalsigns.model.URIPropertyValue
@@ -29,6 +31,10 @@ class InsertTwentyNewsTargetNodes {
 			println 'Usage: insert_twentynews_target_nodes <input_twentynews_block_file> <modelURI> <output_twentynews_block_file>'
 			return
 		}
+		
+		App app = new App()
+		app.customerID = 'customer'
+		app.ID = 'twentynews'
 		
 		File inputFile = new File(args[0])
 		println "Input file: ${inputFile.absolutePath}"
@@ -74,13 +80,13 @@ class InsertTwentyNewsTargetNodes {
 			
 			
 			TargetNode targetNode = new TargetNode()
-			targetNode.URI = "http://uri.vital.ai/${TargetNode.class.simpleName}/twentynews/" + counter
+			targetNode.URI = URIGenerator.generateURI(app, TargetNode.class)
 			targetNode.targetScore = 1d
 			targetNode.modelURI = new URIPropertyValue(modelURI);
 			targetNode.targetNewsGroup = newsGroup
 			
 			Edge_hasTargetNode edge = new Edge_hasTargetNode();
-			edge.URI = "http://uri.vital.ai/${Edge_hasTargetNode.class.simpleName}/20news/" + counter
+			edge.URI = URIGenerator.generateURI(app, Edge_hasTargetNode.class)
 			edge.sourceURI = g.URI
 			edge.destinationURI	= targetNode.URI
 			

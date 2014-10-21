@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
-	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/command/VitalSigns.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/command/VitalSigns-0.1.0.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/commons-cli-1.2.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/commons-codec-1.5.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/commons-collections-3.2.1.jar"/>
@@ -19,14 +19,13 @@
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-api-1.6.4.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-log4j12-1.6.4.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/xercesImpl-2.10.0.jar"/>
-	<classpathentry kind="var" path="VITAL_HOME/vitalcommon/vital-common.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vital-domain/VitalDomain-groovy-0.1.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-compress-1.7/commons-compress-1.7.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/mahout-0.9-SNAPSHOT/mahout-core-0.9-SNAPSHOT-job.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/mahout-0.9-SNAPSHOT/mahout-integration-0.9-SNAPSHOT.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/vitalpredict/vitalpredict.jar"/>
-	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/groovy-2.2.2/groovy-all-2.2.2.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/groovy-2.3.6/groovy-all-2.3.6.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/config-1.2.0.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib-hadoop-1.0.3/hadoop-core-1.0.3.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/domain-jar/twentynews-groovy-1.0.1.jar"/>

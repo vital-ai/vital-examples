@@ -15,6 +15,8 @@ import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.example.twentynews.TwentyNewsDocument;
 
+import ai.vital.common.uri.URIGenerator;
+import ai.vital.vitalservice.model.App
 import ai.vital.vitalsigns.utils.BlockCompactStringSerializer;
 
 class ConvertTwentyNewsDataToVitalBlock {
@@ -40,6 +42,10 @@ class ConvertTwentyNewsDataToVitalBlock {
 		BlockCompactStringSerializer writer = new BlockCompactStringSerializer(w)
 		
 		ArchiveEntry entry = null
+		
+		App app = new App()
+		app.customerID = 'customer'
+		app.ID = 'twentynews'
 		
 		while( ( entry = inputStream.getNextEntry() ) ) {
 			
@@ -99,7 +105,7 @@ class ConvertTwentyNewsDataToVitalBlock {
 			
 			//don't close reader
 			def doc = new TwentyNewsDocument()
-			doc.URI = "http://example.org/twentynews/${newsgroup}/${id}";
+			doc.URI = URIGenerator.generateURI(app, TwentyNewsDocument.class, "${newsgroup}__${id}");
 			doc.title = subject
 			doc.body = body
 			doc.newsGroup = 'http://vital.ai/twentynews/Category/' + newsgroup;
