@@ -250,7 +250,7 @@ class VitalWordnetGenerateBlock {
 				sn.setProperty("name", word_string);
 				sn.setProperty("gloss", gloss);
 				sn.setProperty("wordnetID", idPart);
-				
+						
 				writer.startBlock()
 				writer.writeGraphObject(sn)
 				writer.endBlock()
