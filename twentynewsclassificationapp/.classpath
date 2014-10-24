@@ -22,12 +22,14 @@
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vital-domain/VitalDomain-groovy-0.1.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-compress-1.7/commons-compress-1.7.jar"/>
-	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/mahout-0.9-SNAPSHOT/mahout-core-0.9-SNAPSHOT-job.jar"/>
-	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/mahout-0.9-SNAPSHOT/mahout-integration-0.9-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/mahout-0.9/mahout-core-0.9-job.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/mahout-0.9/mahout-integration-0.9.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/vitalpredict/vitalpredict.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/groovy-2.3.6/groovy-all-2.3.6.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib/config-1.2.0.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalpredict/lib-hadoop-1.0.3/hadoop-core-1.0.3.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/domain-jar/twentynews-groovy-1.0.1.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/lucene-analyzers-common-4.7.0.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/lucene-core-4.7.0.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
