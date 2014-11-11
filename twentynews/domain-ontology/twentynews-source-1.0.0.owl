@@ -4,9 +4,9 @@
 <!DOCTYPE rdf:RDF [
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY vital "http://vital.ai/ontology/vital.owl#" >
+    <!ENTITY vital "http://vital.ai/ontology/vital#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY vital-core "http://vital.ai/ontology/vital-core.owl#" >
+    <!ENTITY vital-core "http://vital.ai/ontology/vital-core#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
@@ -14,14 +14,14 @@
 <rdf:RDF xmlns="http://vital.ai/ontology/twentynews.owl#"
      xml:base="http://vital.ai/ontology/twentynews.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:vital="http://vital.ai/ontology/vital.owl#"
+     xmlns:vital="http://vital.ai/ontology/vital#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:vital-core="http://vital.ai/ontology/vital-core.owl#">
+     xmlns:vital-core="http://vital.ai/ontology/vital-core#">
     <owl:Ontology rdf:about="http://vital.ai/ontology/twentynews.owl">
         <owl:versionInfo>1.0.0</owl:versionInfo>
-        <owl:imports rdf:resource="http://vital.ai/ontology/vital.owl"/>
+        <owl:imports rdf:resource="http://vital.ai/ontology/vital"/>
     </owl:Ontology>
     
 
