@@ -1,0 +1,10 @@
+
+ai.vital.domain.Document.URI    = http://uri.vital.ai/test/{0}
+
+ai.vital.domain.Document.title  = 1
+
+ai.vital.domain.Document.body  = 2
+
+
+
+

@@ -1,0 +1,9 @@
+<http://uri.vital.ai/test/1> <http://vital.ai/ontology/vital#hasTitle> "title 1"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://uri.vital.ai/test/1> <http://vital.ai/ontology/vital#hasBody> "body 1"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://uri.vital.ai/test/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vital.ai/ontology/vital#Document> .
+<http://uri.vital.ai/test/2> <http://vital.ai/ontology/vital#hasTitle> "title 2"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://uri.vital.ai/test/2> <http://vital.ai/ontology/vital#hasBody> "body 2"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://uri.vital.ai/test/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vital.ai/ontology/vital#Document> .
+<http://uri.vital.ai/test/3> <http://vital.ai/ontology/vital#hasTitle> "title 3"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://uri.vital.ai/test/3> <http://vital.ai/ontology/vital#hasBody> "body 3"^^<http://www.w3.org/2001/XMLSchema#string> .
+<http://uri.vital.ai/test/3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://vital.ai/ontology/vital#Document> .
