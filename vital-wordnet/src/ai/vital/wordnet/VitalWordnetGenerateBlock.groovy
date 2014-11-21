@@ -246,10 +246,10 @@ class VitalWordnetGenerateBlock {
 				String idPart = "${next.getPOS().getTag()}_${((ISynsetID)next.getID()).getOffset()}"
 				
 				SynsetNode sn = cls.newInstance();
-				sn.setURI(URIGenerator.generateURI(app, cls));
-				sn.setProperty("name", word_string);
-				sn.setProperty("gloss", gloss);
-				sn.setProperty("wordnetID", idPart);
+				sn.URI = URIGenerator.generateURI(app, cls)
+				sn.name = word_string
+				sn.gloss = gloss
+				sn.wordnetID = idPart
 						
 				writer.startBlock()
 				writer.writeGraphObject(sn)
