@@ -171,10 +171,10 @@ class VitalWordnetGenerateBlock {
 						
 						if(destURI == null) throw new Exception("No URI for dest synset: " + id);
 						
-						Edge_hasWordnetPointer newEdge = cls.newInstance();
-						newEdge.setURI(URIGenerator.generateURI(app, cls));
-						newEdge.setSourceURI(uri);
-						newEdge.setDestinationURI(destURI);
+						Edge_hasWordnetPointer newEdge = cls.newInstance()
+						newEdge.URI = URIGenerator.generateURI(app, cls)
+						newEdge.sourceURI = uri
+						newEdge.sourceURI = destURI
 				
 						writer.startBlock()
 						writer.writeGraphObject(newEdge)
