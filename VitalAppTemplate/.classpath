@@ -17,8 +17,8 @@
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/jena-core-2.7.0-incubating.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/jena-iri-0.9.0-incubating.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/log4j-1.2.16.jar"/>
-	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-api-1.6.4.jar"/>
-	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-log4j12-1.6.4.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-log4j12-1.7.5.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/xercesImpl-2.10.0.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalservice/lib/avro-1.7.2/avro-1.7.2.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalservice/lib/avro-1.7.2/avro-ipc-1.7.2.jar"/>
