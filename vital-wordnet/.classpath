@@ -30,8 +30,8 @@
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/lucene-core-4.7.0.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/owl2vcs-vital.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/owlapi-3.4.2.jar"/>
-	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-api-1.6.4.jar"/>
-	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-log4j12-1.6.4.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/slf4j-log4j12-1.7.5.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/trove-3.0.3.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/xercesImpl-2.10.0.jar"/>
 	<classpathentry kind="var" path="VITAL_HOME/vitalsigns/lib/xml-apis-1.4.01.jar"/>
