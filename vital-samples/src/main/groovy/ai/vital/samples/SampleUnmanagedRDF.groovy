@@ -21,7 +21,7 @@ class SampleUnmanagedRDF {
 		
 		vs.setCurrentApp(app)
 		
-		vs.addExternalNamespace("myapp", "http://example.org/myapp/myapp.owl#")
+		vs.addExternalNamespace("myapp", "http://example.org/myapp/myapp")
 		
 		println "Hello World!"
 		
@@ -44,15 +44,13 @@ class SampleUnmanagedRDF {
 		
 		println "URI: " + node.URI
 		println "Name: " + node."myapp:name"
-		println "Birthday: " + node."myapp:birthday".rawValue()
+		println "Birthday: " + node."myapp:birthday"
 		println "Age: " + node."myapp:age"
 		println "Price: " + node."myapp:price"
 		println "Happy: " + node."myapp:happy"
 		println "Colors: " + node."myapp:colors"
 		println "Friends: " + node."myapp:friends"
 		println "Hashvalue: " + node."myapp:hashvalue"
-		
-		
 		
 		
 		println node.toRDF()
@@ -63,13 +61,12 @@ class SampleUnmanagedRDF {
 		
 		String myrdf = node.toRDF()
 		
-		
 		def objs = vs.fromRDFGraph(myrdf)
 		
 		objs.each {
 			
 			println it.toCompactString()
-			println it."myapp:birthday".rawValue()
+			println it."myapp:birthday"
 			
 			
 		}
