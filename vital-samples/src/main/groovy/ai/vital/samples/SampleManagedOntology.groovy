@@ -1,5 +1,6 @@
 package ai.vital.samples
 
+import ai.vital.property.URIProperty
 import ai.vital.vitalservice.model.App;
 
 import vitalai.samples.domain.*
@@ -64,24 +65,34 @@ class SampleManagedOntology {
 		
 		myobjs.addAll([john, paul, george, ringo, thebeatles])
 		
-		myobjs.add( new Edge_hasMember().generateURI().addSource(thebeatles).addDestination(john) )
-		myobjs.add( new Edge_hasMember().generateURI().addSource(thebeatles).addDestination(paul) )
-		myobjs.add( new Edge_hasMember().generateURI().addSource(thebeatles).addDestination(george) )
-		myobjs.add( new Edge_hasMember().generateURI().addSource(thebeatles).addDestination(ringo) )
+		myobjs.add( thebeatles.addEdge_hasMember(john) )
+		myobjs.add( thebeatles.addEdge_hasMember(paul) )
+		myobjs.add( thebeatles.addEdge_hasMember(george) )
+		myobjs.add( thebeatles.addEdge_hasMember(ringo) )
+		
+		//myobjs.add( new Edge_hasMember().generateURI().addSource(thebeatles).addDestination(john) )
+		//myobjs.add( new Edge_hasMember().generateURI().addSource(thebeatles).addDestination(paul) )
+		//myobjs.add( new Edge_hasMember().generateURI().addSource(thebeatles).addDestination(george) )
+		//myobjs.add( new Edge_hasMember().generateURI().addSource(thebeatles).addDestination(ringo) )
 		
 		
-		MusicInstrument guitar = new MusicInstrument().generateURI("guitar")
+		//MusicInstrument guitar = new MusicInstrument().generateURI("guitar")
 		
-		guitar.name = "Guitar"
+		//guitar.name = "Guitar"
 		
-		myobjs.add( guitar )
+		//myobjs.add( guitar )
 		
 		// get individual
-		def guitar_ind = vs.getIndividual(base_uri + "#" + "Guitar")
 		
-		println "Guitar Individual: " + guitar_ind
+		def g_uri = URIProperty.withString(base_uri + "#" + "Guitar")
 		
-		vs.listDomainIndividuals(MusicInstrument.class, null).each { println "Individual: " + it }
+		def guitar  = vs.getIndividual(g_uri.toString())
+		
+		myobjs.add(guitar)
+		
+		//println "Guitar Individual: " + guitar
+		
+		//vs.listDomainIndividuals(MusicInstrument.class, null).each { println "Individual: " + it }
 		
 		myobjs.add( new Edge_playsInstrument().generateURI().addSource(john).addDestination(guitar) )
 		
