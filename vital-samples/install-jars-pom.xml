@@ -120,6 +120,31 @@
                 </execution>
 
 
+			<execution>
+                  <id>vital-samples-groovy-0.1.0.jar</id>
+                  <phase>validate</phase>
+                  <goals>
+                    <goal>install-file</goal>
+                  </goals>
+                  <configuration>
+                    <groupId>vital-ai</groupId>
+					<artifactId>vital-samples-domain</artifactId>
+					<version>0.1.0</version>
+                    <packaging>jar</packaging>
+                    <file>${VITAL_HOME}/domain-groovy-jar/vital-samples-groovy-0.1.0.jar</file>
+                  </configuration>
+                </execution>
+
+
+
+
+
+
+
+
+
+
+
             </executions>
         </plugin>            
       

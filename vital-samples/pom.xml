@@ -134,12 +134,27 @@
   
   <dependencies>
   
+   <!-- groovy --> 
+  
+  
   <dependency>
 	<groupId>org.codehaus.groovy</groupId>
 	<artifactId>groovy-all</artifactId>
 	<version>2.4.0</version>
 	<scope>compile</scope>
 </dependency>
+  
+  
+   <!-- sample domain --> 
+  
+  <dependency>
+	<groupId>vital-ai</groupId>
+	<artifactId>vital-samples-domain</artifactId>
+	<version>0.1.0</version>
+	<scope>compile</scope>
+</dependency>
+  
+  
   
   
     <!-- vital libraries --> 
