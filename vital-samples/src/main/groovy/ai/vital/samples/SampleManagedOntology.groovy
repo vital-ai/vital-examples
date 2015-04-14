@@ -106,7 +106,7 @@ class SampleManagedOntology {
 		myobjs.add( john.addEdge_playsInstrument(guitar) )
 		myobjs.add( george.addEdge_playsInstrument(guitar) )
 		
-		// here's how comparisons can be mad...
+		// here's how comparisons can be made...
 		println "Is John's birthday before Paul's? : " + ( john.birthday < paul.birthday)
 		
 		
@@ -120,7 +120,7 @@ class SampleManagedOntology {
 		}
 		
 		// Let's put all those objects into the cache
-		// This will allow our helper methods to resolve links
+		// This will allow our helper methods to resolve edges
 		vs.addToCache(myobjs)
 		
 		// Follow the hasMember edges...
