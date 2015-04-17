@@ -11,7 +11,19 @@ if(!VITAL_HOME) {
 	System.exit(-1);
 }
 
+
+if (!System.getenv('GROOVY_DIST') ) {
+	System.err.println("No GROOVYHOME environment variable set!");
+	return
+}
+
+
 List jars = [scriptDir + 'target/vital-samples-0.0.1-SNAPSHOT.jar'];
+
+def GROOVY_DIST = System.getenv('GROOVY_DIST')
+
+jars.add(GROOVY_DIST + "embeddable/groovy-all-2.4.0.jar")
+
 
 //libs
 new File(scriptDir + 'lib').eachFileRecurse(FILES) {
