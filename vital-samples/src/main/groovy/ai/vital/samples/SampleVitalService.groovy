@@ -36,7 +36,7 @@ class SampleVitalService {
 		
 		println "App: " + service.getApp().ID
 		
-		service.listSegments().each{ println "Segment: " + it.id }
+		service.listSegments().each{ println "Segment: " + it.ID }
 		
 		println "Default Segment Name: " + service.getDefaultSegmentName()
 		
@@ -74,7 +74,6 @@ class SampleVitalService {
 		list.each { println i++ + ": " + it.URI + " : " + it.name }
 		
 		// Find the graph of all words with "happy" in its name and what it's connected to (one edge hop)
-		
 		
 		VitalGraphQuery q2 = builder.query {
 			

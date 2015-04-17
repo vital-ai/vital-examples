@@ -63,7 +63,7 @@ class SampleWordnetImport {
 		
 		VitalSegment existing = null
 		for(VitalSegment segment : service.listSegments(defaultApp)) {
-			if(segment.id == 'wordnet') {
+			if(segment.ID == 'wordnet') {
 				existing = segment
 				break
 			}
@@ -78,24 +78,24 @@ class SampleWordnetImport {
 		
 		if(service.endpointType == EndpointType.ALLEGROGRAPH) {
 			existing = new AllegrographSegment()
-			existing.appId = defaultApp.ID
-			existing.id = 'wordnet'
+			existing.appID = defaultApp.ID
+			existing.ID = 'wordnet'
 			existing.readOnly = false
 			
 		}
 		
 		if(service.endpointType == EndpointType.INDEXDB) {
 			existing = new IndexedDBVitalSegment()
-			existing.appId = defaultApp.ID
-			existing.id = 'wordnet'
+			existing.appID = defaultApp.ID
+			existing.ID = 'wordnet'
 			existing.readOnly = false
 			
 		}
 		
 		if(service.endpointType == EndpointType.LUCENEDISK) {
 			existing = new LuceneVitalSegment()
-			existing.appId = defaultApp.ID
-			existing.id = 'wordnet'
+			existing.appID = defaultApp.ID
+			existing.ID = 'wordnet'
 			existing.readOnly = false
 			existing.type = LuceneSegmentType.disk
 			existing.storeObjects = true
@@ -104,8 +104,8 @@ class SampleWordnetImport {
 		
 		if(service.endpointType == EndpointType.LUCENEMEMORY) {
 			existing = new LuceneVitalSegment()
-			existing.appId = defaultApp.ID
-			existing.id = 'wordnet'
+			existing.appID = defaultApp.ID
+			existing.ID = 'wordnet'
 			existing.readOnly = false
 			existing.storeObjects = true
 			existing.type = LuceneSegmentType.memory
