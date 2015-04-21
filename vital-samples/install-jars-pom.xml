@@ -32,45 +32,6 @@
             <artifactId>maven-install-plugin</artifactId>
             <executions>
             
-            
-				
-                
-                
-				
-                
-                <execution>
-                    <id>VitalDomain-groovy-0.2.0.jar</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>install-file</goal>
-                    </goals>
-                    <configuration>
-				      <groupId>vital-ai</groupId>
-				      <artifactId>vital-domain</artifactId>
-				      <version>0.2.0</version>
-				      <packaging>jar</packaging>
-					  <file>${VITAL_HOME}/vital-domain/VitalDomain-groovy-0.2.0.jar</file>
-                    </configuration>
-                    
-                </execution>
-
-
-                <execution>
-                  <id>VitalSigns-0.2.0.jar</id>
-                  <phase>validate</phase>
-                  <goals>
-                    <goal>install-file</goal>
-                  </goals>
-                  <configuration>
-                    <groupId>vital-ai</groupId>
-                    <artifactId>vitalsigns</artifactId>
-                    <version>0.2.0</version>
-                    <packaging>jar</packaging>
-                    <file>${VITAL_HOME}/vitalsigns/command/VitalSigns-0.2.0.jar</file>
-                  </configuration>
-                </execution>
-                
-                
                 <execution>
                   <id>vital-lucene-0.2.0.jar</id>
                   <phase>validate</phase>
@@ -134,16 +95,6 @@
                     <file>${VITAL_HOME}/domain-groovy-jar/vital-samples-groovy-0.1.0.jar</file>
                   </configuration>
                 </execution>
-
-
-
-
-
-
-
-
-
-
 
             </executions>
         </plugin>            
