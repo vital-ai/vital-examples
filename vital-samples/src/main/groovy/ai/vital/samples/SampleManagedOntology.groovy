@@ -13,11 +13,11 @@ import vitalai.samples.domain.ontology.Ontology
 class SampleManagedOntology {
 
 	
-	// This is the name of the App, and the name of the Organization
+	// This is the name of the App
 	// This is used to help generate URIs
 	static App app
 	static {
-		app = new App(ID: 'app', organizationID: 'organization')
+		app = new App(ID: 'app')
 	}
 	
 	static main(args) {
