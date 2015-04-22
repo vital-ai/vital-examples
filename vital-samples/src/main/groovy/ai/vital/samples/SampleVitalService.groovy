@@ -2,6 +2,7 @@ package ai.vital.samples
 
 import ai.vital.query.graphbuilder.GraphQueryBuilder
 import ai.vital.vitalservice.VitalService
+import ai.vital.vitalservice.VitalStatus
 import ai.vital.vitalservice.factory.Factory
 import ai.vital.vitalservice.model.App
 import ai.vital.vitalservice.query.ResultList
@@ -30,6 +31,10 @@ class SampleVitalService {
 		
 		println "Ping: " + service.ping()
 		
+		VitalStatus s = service.ping()
+		
+		println "PingTime: " + s.pingTimeMillis
+		
 		println "Endpoint: " + service.getEndpointType()
 		
 		println "Organization: " + service.getOrganization()
@@ -57,6 +62,7 @@ class SampleVitalService {
 				node_constraint { AdjectiveSynsetNode.class }
 				
 				node_constraint { AdjectiveSynsetNode.props().name.contains_i("happy") }
+			
 			}
 			
 		}.toQuery()
@@ -67,11 +73,13 @@ class SampleVitalService {
 		
 		println "Results:\n" + list.results.size()
 		
+		
 		// print out: URI : name
 		
 		def i = 1
 		
 		list.each { println i++ + ": " + it.URI + " : " + it.name }
+		
 		
 		// Find the graph of all words with "happy" in its name and what it's connected to (one edge hop)
 		
