@@ -7,7 +7,7 @@ def homeDir = new File(getClass().protectionDomain.codeSource.location.path).par
 
 
 if (System.getenv('VITAL_HOME') ) {
-	System.err.println("No VITAL_HOME environment set - cannot run pre-built samples!");
+	System.err.println("VITAL_HOME environment is set - please unset to run pre-built samples.");
 	return
 }
 
