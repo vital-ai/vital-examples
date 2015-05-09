@@ -83,11 +83,13 @@ class SampleManagedOntology {
 		myobjs.add( thebeatles.addEdge_hasMember(george) )
 		myobjs.add( thebeatles.addEdge_hasMember(ringo) )
 		
+		// or
+		// myobjs.add( thebeatles.addEdge(Edge_hasMember, ringo ))
 		
-		// We could create a new instance for an intrument
-		//MusicInstrument guitar = new MusicInstrument().generateURI("guitar")
-		//guitar.name = "Guitar"
-		//myobjs.add( guitar )
+		// We could create a new instance for an instrument
+		// MusicInstrument guitar = new MusicInstrument().generateURI("guitar")
+		// guitar.name = "Guitar"
+		// myobjs.add( guitar )
 		
 		// but let's get an individual defined in our domain ontology
 		// we happen to know its URI...

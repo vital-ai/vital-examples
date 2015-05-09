@@ -76,6 +76,6 @@ List cmd = ['java', '-cp', (String)jars.join(File.pathSeparator), mainClass]
 for(String a : args) {
 	cmd.add(a)
 }
-//println cmd
+println cmd
 def process=new ProcessBuilder(cmd).redirectErrorStream(true).start()
 process.inputStream.eachLine {println it}

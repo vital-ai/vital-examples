@@ -1,19 +1,19 @@
 package ai.vital.samples
 
-import ai.vital.query.graphbuilder.GraphQueryBuilder
+import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.vitalservice.VitalService
 import ai.vital.vitalservice.VitalStatus
-import ai.vital.vitalservice.factory.Factory
+import ai.vital.vitalservice.factory.VitalServiceFactory
 import ai.vital.vitalservice.model.App
 import ai.vital.vitalservice.query.ResultList
-import ai.vital.vitalservice.query.graph.VitalGraphQuery
-import ai.vital.vitalservice.query.graph.VitalSelectQuery
+import ai.vital.vitalservice.query.VitalGraphQuery
+import ai.vital.vitalservice.query.VitalSelectQuery
 import ai.vital.vitalsigns.VitalSigns
 import ai.vital.query.graph.*
 
 import ai.vital.vitalsigns.model.*
 import ai.vital.vitalsigns.model.properties.*
-import static ai.vital.query.graph.Utils.*
+import static ai.vital.query.Utils.*
 
 import ai.vital.domain.*
 import ai.vital.domain.properties.*
@@ -27,7 +27,7 @@ class SampleVitalService {
 	
 		VitalSigns vs = VitalSigns.get()
 		
-		VitalService service = Factory.getVitalService()
+		VitalService service = VitalServiceFactory.getVitalService()
 		
 		println "Ping: " + service.ping()
 		
@@ -47,7 +47,7 @@ class SampleVitalService {
 		
 		println "Validate: " + service.validate()
 		
-		def builder = new GraphQueryBuilder()
+		def builder = new VitalBuilder()
 		
 		// Select Adjectives with "happy" in the name (case indifferent)
 		

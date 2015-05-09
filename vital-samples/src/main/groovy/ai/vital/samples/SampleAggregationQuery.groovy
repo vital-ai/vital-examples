@@ -1,12 +1,12 @@
 package ai.vital.samples
 
 import ai.vital.property.URIProperty
-import ai.vital.query.graphbuilder.GraphQueryBuilder
+import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.vitalservice.VitalService
 import ai.vital.vitalservice.query.ResultList
-import ai.vital.vitalservice.query.graph.VitalSelectQuery
+import ai.vital.vitalservice.query.VitalSelectQuery
 import ai.vital.vitalsigns.VitalSigns
-import ai.vital.vitalservice.factory.Factory
+import ai.vital.vitalservice.factory.VitalServiceFactory
 
 import ai.vital.vitalservice.segment.VitalSegment
 import ai.vital.domain.*
@@ -24,7 +24,7 @@ class SampleAggregationQuery {
 		
 		VitalService service = Factory.getVitalService()
 		
-		def builder = new GraphQueryBuilder()
+		def builder = new VitalBuilder()
 		
 		VitalSelectQuery q = builder.query {
 			

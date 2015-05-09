@@ -17,7 +17,7 @@ import ai.vital.indexeddb.service.model.IndexedDBVitalSegment
 
 import ai.vital.lucene.model.LuceneSegmentType
 
-import ai.vital.vitalservice.factory.Factory
+import ai.vital.vitalservice.factory.VitalServiceFactory
 
 
 class SampleWordnetImport {

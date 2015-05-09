@@ -162,33 +162,33 @@
   <dependency>
   <groupId>vital-ai</groupId>
   <artifactId>vitalsigns</artifactId>
-  <version>0.2.250</version>
+  <version>0.2.251</version>
   </dependency>
   
    
   <dependency>
   <groupId>vital-ai</groupId>
   <artifactId>vital-domain</artifactId>
-  <version>0.2.250</version>
+  <version>0.2.251</version>
   </dependency>
   
   
   <dependency>
   <groupId>vital-ai</groupId>
   <artifactId>vital-lucene</artifactId>
-  <version>0.2.250</version>
+  <version>0.2.251</version>
   </dependency>
   
   <dependency>
   <groupId>vital-ai</groupId>
   <artifactId>vital-triplestore</artifactId>
-  <version>0.2.250</version>
+  <version>0.2.251</version>
   </dependency>
   
   <dependency>
   <groupId>vital-ai</groupId>
   <artifactId>vitalservice</artifactId>
-  <version>0.2.250</version>
+  <version>0.2.251</version>
   </dependency>
   
 	

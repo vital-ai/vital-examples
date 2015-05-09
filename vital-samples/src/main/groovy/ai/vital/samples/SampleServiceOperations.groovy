@@ -2,9 +2,9 @@ package ai.vital.samples
 
 
 
-import ai.vital.query.graph.Capture
-import ai.vital.query.graph.Delete
-import ai.vital.query.graphbuilder.GraphQueryBuilder
+import ai.vital.query.Capture
+import ai.vital.query.Delete
+import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.service.lucene.model.LuceneVitalSegment
 import ai.vital.vitalservice.ServiceDeleteOperation
 import ai.vital.vitalservice.ServiceOperation
@@ -12,15 +12,15 @@ import ai.vital.vitalservice.ServiceOperations
 import ai.vital.vitalservice.VitalService
 import ai.vital.vitalservice.model.App
 import ai.vital.vitalservice.query.ResultList
-import ai.vital.vitalservice.query.graph.VitalGraphQuery
-import ai.vital.vitalservice.query.graph.VitalSelectQuery
+import ai.vital.vitalservice.query.VitalGraphQuery
+import ai.vital.vitalservice.query.VitalSelectQuery
 import ai.vital.vitalservice.segment.VitalSegment
 import ai.vital.vitalsigns.VitalSigns
 import ai.vital.vitalsigns.model.GraphObject
 import ai.vital.lucene.model.LuceneSegmentType
 
 import ai.vital.vitalservice.admin.VitalServiceAdmin
-import ai.vital.vitalservice.factory.Factory
+import ai.vital.vitalservice.factory.VitalServiceFactory
 import ai.vital.vitalsigns.model.*
 
 import ai.vital.common.uri.URIGenerator
@@ -69,7 +69,7 @@ class SampleServiceOperations {
 		
 		// Insert
 		
-		def builder = new GraphQueryBuilder()
+		def builder = new VitalBuilder()
 		
 		ServiceOperations insertQ1 = builder.query {
 			
