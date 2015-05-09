@@ -1,0 +1,54 @@
+#!/usr/bin/env groovy
+
+import static groovy.io.FileType.FILES
+
+
+def homeDir = new File(getClass().protectionDomain.codeSource.location.path).parentFile.parentFile.getAbsolutePath() + '/';
+
+
+if (System.getenv('VITAL_HOME') ) {
+	System.err.println("VITAL_HOME environment is set - please unset to run pre-built samples.");
+	return
+}
+
+def vitalhome = new File(homeDir, 'vdk')
+
+
+List jars = [
+  homeDir + 'classpath'
+]
+
+
+//all vdk jars
+vitalhome.eachFileRecurse(FILES) {
+  if(it.name.endsWith(".jar")) {
+    jars.add(it.absolutePath)
+  }
+}
+
+
+//all libs
+new File(homeDir, 'lib').eachFileRecurse(FILES) {
+  if(it.name.endsWith(".jar")) {
+    jars.add(it.absolutePath)
+  }
+}
+
+//target jar(s)
+new File(homeDir, 'target').eachFileRecurse(FILES) {
+  if(it.name.endsWith(".jar")) {
+    jars.add(it.absolutePath)
+  }
+}
+
+
+
+def mainClass = 'ai.vital.samples.SampleManagedOntology'
+
+List cmd = ['java', '-cp', (String)jars.join(File.pathSeparator), mainClass]
+for(String a : args) {
+        cmd.add(a)
+}
+
+def process=new ProcessBuilder(cmd).redirectErrorStream(true).start()
+process.inputStream.eachLine {println it}
