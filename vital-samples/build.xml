@@ -10,7 +10,7 @@
 	
 	<target name="build.maven" unless="skip.maven">
 		<!-- build the maven project -->
-		<exec executable="mvn.bat" dir="${basedir}">
+		<exec executable="mvn" dir="${basedir}">
 			<arg value="package"/>
 		</exec>		
 	</target>
