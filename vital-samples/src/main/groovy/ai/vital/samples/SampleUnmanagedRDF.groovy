@@ -28,7 +28,7 @@ class SampleUnmanagedRDF {
 		VITAL_Node node = new VITAL_Node().generateURI()
 		
 		node."myapp:name" = "John"^xsd.xstring
-		node."myapp:birthday" = "January 1, 1970"^xsd.xdatetime("MMMM d, yyyy")
+		node."myapp:birthday" = "January 1, 1970 EST"^xsd.xdatetime("MMMM d, yyyy z")
 		
 		node."myapp:age" = "1"^xsd.xint
 		
