@@ -28,18 +28,24 @@ class SampleWordnetImport {
 	
 	static main(args) {
 	
-		if(args.length != 1) {
-			o("usage: runWordnetImport <input_block>")
+		if(args.length != 2) {
+			o("usage: runWordnetImport <service_profile> <input_block>")
 			o("       input block name must end with .vital or .vital.gz")
 			return
 		}
 		
-		File inputBlock = new File(args[0])
+		String profile = args[0]
+		println "Service profile: ${profile}"
+		
+		VitalServiceFactory.setServiceProfile(profile)
+
+		
+		File inputBlock = new File(args[1])
 		println "Input block file: ${inputBlock.absolutePath}"
 		
 		println "Getting service instance..."
 		
-		VitalServiceAdmin service = Factory.getVitalServiceAdmin()
+		VitalServiceAdmin service = VitalServiceFactory.getVitalServiceAdmin()
 		
 		println "Service instance: ${service}"
 		

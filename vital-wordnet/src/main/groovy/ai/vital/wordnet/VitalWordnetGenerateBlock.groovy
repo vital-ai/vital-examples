@@ -36,7 +36,7 @@ import ai.vital.domain.AdverbSynsetNode
 import ai.vital.domain.NounSynsetNode
 import ai.vital.domain.VerbSynsetNode
 import ai.vital.vitalservice.model.App;
-import ai.vital.vitalsigns.utils.BlockCompactStringSerializer;
+import ai.vital.vitalsigns.block.BlockCompactStringSerializer;
 import edu.mit.jwi.Dictionary
 import edu.mit.jwi.item.IPointer
 import edu.mit.jwi.item.ISynset
@@ -62,10 +62,6 @@ class VitalWordnetGenerateBlock {
 	
 	static App app
 	
-	static {
-		app = new App(ID: 'vital', customerID: 'vital')
-	}
-
 	
 	public static void main(String[] args) {
 		
@@ -88,7 +84,8 @@ class VitalWordnetGenerateBlock {
 			o("output file already exists! ${blockF.absolutePath}")
 			return
 		}
-				
+		
+		app = new App(ID: 'vital', customerID: 'vital')
 		
 		BlockCompactStringSerializer writer = new BlockCompactStringSerializer(blockF)
 		
@@ -174,7 +171,7 @@ class VitalWordnetGenerateBlock {
 						Edge_hasWordnetPointer newEdge = cls.newInstance()
 						newEdge.URI = URIGenerator.generateURI(app, cls)
 						newEdge.sourceURI = uri
-						newEdge.sourceURI = destURI
+						newEdge.destinationURI = destURI
 				
 						writer.startBlock()
 						writer.writeGraphObject(newEdge)

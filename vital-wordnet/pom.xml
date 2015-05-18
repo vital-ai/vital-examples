@@ -1,0 +1,187 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>vital-ai</groupId>
+  <artifactId>vital-wordnet</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  
+  <repositories>
+  
+ <repository>
+    <id>vital-public-mvn-repo-releases</id>
+    <name>Vital AI Public Maven Repo Releases</name>
+    <url>https://github.com/vital-ai/vital-public-mvn-repo/raw/releases/</url>
+</repository>
+
+<repository>
+    <id>vital-public-mvn-repo-snapshots</id>
+    <name>Vital AI Public Maven Repo Snapshots</name>
+    <url>https://github.com/vital-ai/vital-public-mvn-repo/raw/snapshots/</url>
+</repository>
+
+  </repositories>
+  
+  
+  <build>
+ 
+ <plugins>
+ 
+       <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <!-- 2.8.0-01 and later require maven-compiler-plugin 3.1 or higher -->
+       	<version>3.2</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+          <compilerId>groovy-eclipse-compiler</compilerId>
+          <!-- set verbose to be true if you want lots of uninteresting messages -->
+          <!-- <verbose>true</verbose> -->
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-eclipse-compiler</artifactId>
+            <version>2.9.1-01</version>
+          </dependency>
+          <!-- for 2.8.0-01 and later you must have an explicit dependency on groovy-eclipse-batch -->
+          <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-eclipse-batch</artifactId>
+            <version>2.3.7-01</version>
+            <!-- or choose a different compiler version -->
+            <!-- <version>1.8.6-01</version> -->
+            <!-- <version>1.7.10-06</version> -->
+        </dependency>
+        </dependencies>
+      </plugin>
+      
+      
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <!-- here the phase you need -->
+            <phase>compile</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/resources/</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${VITAL_HOME}</directory>
+                  <includes>
+                    <include>vital-config/vitalservice/*</include>
+                  	<include>vital-config/vitalsigns/*</include>
+                  	<include>vital-license/vital-license.lic</include>
+                  </includes>
+                </resource>
+                <resource>
+                	<directory>${basedir}/resources/</directory>
+                	<!-- include all -->
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>
+        </executions>
+      </plugin>
+ 
+ 
+ 
+ <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+            <shadedArtifactAttached>true</shadedArtifactAttached>
+              <shadedClassifierName>with-dependencies</shadedClassifierName> <!-- Any name that makes sense -->
+              <artifactSet>
+              	<includes>
+              		<include>edu.mit:jwi:*</include>
+              	</includes>
+              	<!-- 
+                <excludes>
+                  <exclude>*:groovy-all</exclude>
+                  <exclude>vital-ai:vitalai-demoapp-groovy</exclude>
+                  <exclude>vital-ai:vital-domain</exclude>
+                  <exclude>vital-ai:vitalsigns</exclude>
+                  <exclude>vital-ai:vital-lucene</exclude>
+                  <exclude>vital-ai:vital-triplestore</exclude>
+                  <exclude>vital-ai:vitalservice</exclude>
+                  <exclude>junit:*</exclude>
+                </excludes>
+                -->
+              </artifactSet>
+            
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin> 
+      
+      </plugins>
+      
+      
+       
+      
+      
+      </build>
+  
+  <dependencies>
+  
+    <!-- vital libraries --> 
+    
+  <dependency>
+  <groupId>vital-ai</groupId>
+  <artifactId>vitalsigns</artifactId>
+  <version>0.2.251</version>
+  </dependency>
+  
+   
+  <dependency>
+  <groupId>vital-ai</groupId>
+  <artifactId>vital-domain</artifactId>
+  <version>0.2.251</version>
+  </dependency>
+  
+  
+  <dependency>
+  <groupId>vital-ai</groupId>
+  <artifactId>vital-lucene</artifactId>
+  <version>0.2.251</version>
+  </dependency>
+  
+  <dependency>
+  <groupId>vital-ai</groupId>
+  <artifactId>vital-triplestore</artifactId>
+  <version>0.2.251</version>
+  </dependency>
+  
+  <dependency>
+  <groupId>vital-ai</groupId>
+  <artifactId>vitalservice</artifactId>
+  <version>0.2.251</version>
+  </dependency>
+  
+  
+    <!-- wordnet lib -->
+
+  <dependency>
+    <groupId>edu.mit</groupId>
+    <artifactId>jwi</artifactId>
+    <version>2.2.3</version>
+  </dependency>
+  
+  </dependencies>
+      
+</project>

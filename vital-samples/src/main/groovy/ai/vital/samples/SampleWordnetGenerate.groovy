@@ -25,11 +25,6 @@ class SampleWordnetGenerate {
 	
 	static App app
 	
-	static {
-		app = new App(ID: 'app', organizationID: 'organization')
-	}
-	
-	
 	static main(args) {
 	
 		o("Wordnet -> VitalBlock conversion script")
@@ -52,6 +47,7 @@ class SampleWordnetGenerate {
 			return
 		}
 				
+		app = new App(ID: 'app', organizationID: 'organization')
 		
 		BlockCompactStringSerializer writer = new BlockCompactStringSerializer(blockF)
 		

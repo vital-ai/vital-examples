@@ -22,7 +22,7 @@ class SampleAggregationQuery {
 	
 		VitalSigns vs = VitalSigns.get()
 		
-		VitalService service = Factory.getVitalService()
+		VitalService service = VitalServiceFactory.getVitalService()
 		
 		def builder = new VitalBuilder()
 		

@@ -45,7 +45,7 @@ class SampleServiceOperations {
 		VitalSigns vs = VitalSigns.get()
 		
 		
-		VitalServiceAdmin service = Factory.getVitalServiceAdmin()
+		VitalServiceAdmin service = VitalServiceFactory.getVitalServiceAdmin()
 		
 	
 		//service.addApp(app)

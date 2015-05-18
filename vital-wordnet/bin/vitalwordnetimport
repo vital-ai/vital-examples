@@ -12,15 +12,7 @@ if(!VITAL_HOME) {
 }
 
 
-List jars = [scriptDir + 'dist/vitalwordnetexample.jar'];
-
-
-//libs
-new File(scriptDir + 'lib').eachFileRecurse(FILES) {
-	if(it.name.endsWith('.jar')) {
-		jars.add(it.absolutePath);
-	}
-}
+List jars = [scriptDir + 'target/vital-wordnet-0.0.1-SNAPSHOT-with-dependencies.jar'];
 
 
 //vitalsigns

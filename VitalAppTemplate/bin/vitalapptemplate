@@ -12,7 +12,7 @@ if(!VITAL_HOME) {
 }
 
 
-List jars = [scriptDir + 'target/vital-wordnet-0.0.1-SNAPSHOT-with-dependencies.jar'];
+List jars = [scriptDir + 'target/vital-app-template-0.0.1-SNAPSHOT.jar'];
 
 
 //vitalsigns
@@ -44,7 +44,7 @@ new File(VITAL_HOME + '/vital-domain/').eachFile(FILES) {
 	}
 }
 
-def mainClass = 'ai.vital.wordnet.VitalWordnetGenerateBlock'
+def mainClass = 'ai.vital.app.template.AppTemplate'
 
 List cmd = ['java', '-cp', (String)jars.join(File.pathSeparator), mainClass]
 for(String a : args) {

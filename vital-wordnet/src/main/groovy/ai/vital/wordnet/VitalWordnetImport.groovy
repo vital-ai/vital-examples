@@ -6,13 +6,13 @@ import ai.vital.lucene.model.LuceneSegmentType;
 import ai.vital.service.lucene.model.LuceneVitalSegment
 import ai.vital.vitalservice.VitalService;
 import ai.vital.vitalservice.admin.VitalServiceAdmin;
-import ai.vital.vitalservice.factory.Factory;
+import ai.vital.vitalservice.factory.VitalServiceFactory;
 import ai.vital.vitalservice.model.App
 import ai.vital.vitalservice.segment.VitalSegment;
 import ai.vital.vitalsigns.model.GraphObject
-import ai.vital.vitalsigns.utils.BlockCompactStringSerializer;
-import ai.vital.vitalsigns.utils.BlockCompactStringSerializer.BlockIterator;
-import ai.vital.vitalsigns.utils.BlockCompactStringSerializer.VitalBlock;
+import ai.vital.vitalsigns.block.BlockCompactStringSerializer;
+import ai.vital.vitalsigns.block.BlockCompactStringSerializer.BlockIterator;
+import ai.vital.vitalsigns.block.BlockCompactStringSerializer.VitalBlock;
 
 class VitalWordnetImport {
 
@@ -25,17 +25,22 @@ class VitalWordnetImport {
 	
 	public static void main(String[] args) {
 		
-		if(args.length != 1) {
-			o("usage: vitalwordnetimport <input_block>")
+		if(args.length != 2) {
+			o("usage: vitalwordnetimport <service_profile> <input_block>")
 			o("       input block name must end with .vital or .vital.gz")
 			return
 		}
 		
-		File inputBlock = new File(args[0])
+		String profile = args[0]
+		println "Service profile: ${profile}"
+		
+		VitalServiceFactory.setServiceProfile(profile)
+		
+		File inputBlock = new File(args[1])
 		println "Input block file: ${inputBlock.absolutePath}"
 		
 		println "Getting service instance..."
-		VitalServiceAdmin service = Factory.getVitalServiceAdmin()
+		VitalServiceAdmin service = VitalServiceFactory.getVitalServiceAdmin()
 		
 		println "Service instance: ${service}"
 		
@@ -59,7 +64,7 @@ class VitalWordnetImport {
 		
 		VitalSegment existing = null
 		for(VitalSegment segment : service.listSegments(defaultApp)) {
-			if(segment.id == 'wordnet') {
+			if(segment.ID == 'wordnet') {
 				existing = segment
 				break
 			}
@@ -72,8 +77,8 @@ class VitalWordnetImport {
 		
 		println "Creating new wordnet segment..."
 		existing = new LuceneVitalSegment()
-		existing.appId = defaultApp.ID
-		existing.id = 'wordnet'
+		existing.appID = defaultApp.ID
+		existing.ID = 'wordnet'
 		existing.readOnly = false
 		existing.storeObjects = true
 		existing.type = LuceneSegmentType.disk
@@ -115,7 +120,7 @@ class VitalWordnetImport {
 				
 				if(batch.size() >= BATCH_SIZE) {
 					
-					service.save(defaultApp, existing, batch)
+					service.save(defaultApp, existing, batch, true)
 					
 					inserted += batch.size()
 					
@@ -129,7 +134,7 @@ class VitalWordnetImport {
 			
 			if(batch.size() > 0) {
 				
-				service.save(defaultApp, existing, batch)
+				service.save(defaultApp, existing, batch, true)
 				
 			}
 			
