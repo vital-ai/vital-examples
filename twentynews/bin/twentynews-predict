@@ -63,7 +63,7 @@ new File(VITAL_HOME + '/vital-domain/').eachFile(FILES) {
 
 
 
-def mainClass = 'ai.vital.twentynewsexample.ConvertTwentyNewsDataToVitalBlock'
+def mainClass = 'ai.vital.twentynewsexample.TwentyNewsPredictScript'
 
 List cmd = ['java', '-cp', (String)jars.join(File.pathSeparator), mainClass]
 for(String a : args) {

@@ -12,7 +12,7 @@ if(!VITAL_HOME) {
 }
 
 
-List jars = [scriptDir + 'target/twentynews-app-1.0.0.jar'];
+List jars = [scriptDir + 'target/movie-recommendations-app-1.0.0.jar'];
 
 
 //vitalsigns
@@ -63,7 +63,7 @@ new File(VITAL_HOME + '/vital-domain/').eachFile(FILES) {
 
 
 
-def mainClass = 'ai.vital.twentynewsexample.ConvertTwentyNewsDataToVitalBlock'
+def mainClass = 'ai.vital.movielensexample.MovieLensRecommendationsScript'
 
 List cmd = ['java', '-cp', (String)jars.join(File.pathSeparator), mainClass]
 for(String a : args) {
