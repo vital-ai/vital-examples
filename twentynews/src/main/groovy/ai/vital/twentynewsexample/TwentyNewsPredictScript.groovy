@@ -69,34 +69,41 @@ class TwentyNewsPredictScript {
 		def builder = new VitalBuilder()
 		
 		println "Parsing builder file..."
-		VitalBlock block = builder.queryString(builderFile.text).toBlock()
+		List<VitalBlock> blocks = builder.queryString(builderFile.text).toBlock()
 		
-		List<GraphObject> inputBlock = block.toList()
-		println "Parsed into ${inputBlock.size()} graph objects"
+		println "Parsed into ${blocks.size()} blocks"
 		
-		ResultList predictRL = service.callFunction("commons/scripts/Aspen_Predict", ['modelName': modelName, 'modelURI': modelURI, 'inputBlock': inputBlock] )
-
-		if(predictRL.status.status != VitalStatus.Status.ok) {
-			System.err.println "Error when calling predict datascript: ${predictRL.status.message}"
-			return
-		}
-		
-		
-		println "predictions:"
-		
-		int c = 0
-		
-		for(GraphObject g : predictRL) {
+		for(int i = 0 ; i < blocks.size(); i++) {
 			
-			if(g instanceof TargetNode) {
+			println "Processing block ${i+1} of ${blocks.size()}"
+			ResultList predictRL = service.callFunction("commons/scripts/Aspen_Predict", ['modelName': modelName, 'modelURI': modelURI, 'inputBlock': blocks.get(i).toList()] )
+			
+			if(predictRL.status.status != VitalStatus.Status.ok) {
+				System.err.println "Error when calling predict datascript: ${predictRL.status.message}"
+				continue
+			}
+			
+			println "predictions:"
+			
+			int c = 0
+			
+			for(GraphObject g : predictRL) {
 				
-				println "${++c}:  ${g.targetStringValue} , score: ${g.targetScore}"
+				if(g instanceof TargetNode) {
+					
+					println "${++c}:  ${g.targetStringValue} , score: ${g.targetScore}"
+					
+				}
 				
 			}
 			
+			if(c == 0) println "(none)"
+			
 		}
 		
-		if(c == 0) println "(none)"
+
+		
+		
 
 		
 	}

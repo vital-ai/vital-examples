@@ -64,8 +64,12 @@ MODEL {
 
 			value type: 'text'
 			
-			allowMissing: true
+			value allowedMissing: true
 			
+			value minDF: 10
+			
+			value maxDFP: 30
+
 		}
 
 		FEATURE {
@@ -76,7 +80,9 @@ MODEL {
 
 			value type: 'text'
 			
-			allowMissing: true
+			value minDF: 10
+			
+			value maxDFP: 30
 			
 		}
 		
@@ -125,17 +131,6 @@ MODEL {
 
 		}
 		
-		FUNCTION {
-			
-			value requires: 'body'
-			value provides: 'body-length'
-				
-			value function: {  VitalBlock block, Map features ->
-				return ((String)features.get('body')).length()
-			}
-			
-		}
-
 	}
 
 	// returns the value to use for training
