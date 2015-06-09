@@ -238,6 +238,7 @@ class EnronDataToVitalBlock {
 					}
 					
 					
+					/*
 					AddressList bcc = msg.getBcc()
 					if(bcc != null) {
 						for(Address a : bcc) {
@@ -251,6 +252,7 @@ class EnronDataToVitalBlock {
 							}
 						}
 					}
+					*/
 					
 					AddressList cc = msg.getCc()
 					if(cc != null) {
@@ -408,6 +410,7 @@ class EnronDataToVitalBlock {
 			
 		}
 		
+		messagesWriter.close()
 		
 		//write persons
 		for(EnronPerson sender : personsMap.values() ) {

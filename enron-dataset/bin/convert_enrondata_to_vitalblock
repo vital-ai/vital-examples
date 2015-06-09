@@ -15,6 +15,15 @@ if(!VITAL_HOME) {
 List jars = [scriptDir + 'target/enron-dataset-app-1.0.0.jar'];
 
 
+
+//libs
+new File(scriptDir, 'lib').eachFileRecurse(FILES) {
+        if(it.name.endsWith('.jar')) {
+                jars.add(it.absolutePath);
+        }
+}
+
+
 //vitalsigns
 new File(VITAL_HOME + '/vitalsigns').eachFileRecurse(FILES) {
 	if(it.name.endsWith('.jar')) {
