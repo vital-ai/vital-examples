@@ -147,6 +147,7 @@ class ConvertTwentyNewsDataToVitalBlock {
 			//don't close reader
 			def doc = new Message()
 			doc.generateURI("${newsgroup}__${id}");
+			doc.name = "twentynews-${id}"
 			doc.subject = subject
 			doc.body = body
 			
