@@ -149,7 +149,6 @@ class ConvertTwentyNewsDataToVitalBlock {
 			doc.generateURI("${newsgroup}__${id}");
 			doc.subject = subject
 			doc.body = body
-			doc.newsgroup = newsgroup
 			
 			String categoryURI = Ontology.NS + newsgroup
 			
