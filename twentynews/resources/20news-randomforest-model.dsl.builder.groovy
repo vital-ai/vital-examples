@@ -136,6 +136,35 @@ MODEL {
 	// returns the value to use for training
 	// this could be specified in the ontology via annotations
 
+    TRAIN_QUERIES {
+        
+        TRAIN_QUERY {
+            
+            value query : {
+                
+                GRAPH {
+                
+                    value segments: ['20news']
+                            
+                    ARC {
+                         
+                         ARC {
+                         
+                            edge_constraint { Edge_hasCategory.class }
+                            
+                         }
+                         
+                    }
+                            
+                
+                }
+            
+            }
+            
+        }
+        
+    }
+
 	TRAIN {
 
 		value function: { VitalBlock block, Map features ->
