@@ -12,7 +12,7 @@ import ai.vital.vitalsigns.block.BlockCompactStringSerializer.BlockIterator
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer.VitalBlock
 import ai.vital.vitalsigns.model.GraphObject
 
-import ai.vital.endpoint.EndpointType
+import ai.vital.vitalservice.EndpointType
 import ai.vital.indexeddb.service.model.IndexedDBVitalSegment
 
 import ai.vital.lucene.model.LuceneSegmentType

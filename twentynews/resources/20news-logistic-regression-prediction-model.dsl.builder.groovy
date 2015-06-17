@@ -36,13 +36,13 @@ import ai.vital.aspen.model.CategoryPrediction;
 
 MODEL {
 
-	value URI: 'urn:spark-randomforest-prediction-20news'
+	value URI: 'urn:spark-logistic-regression-prediction-20news'
 
-	value name: 'spark-randomforest-prediction-20news'
+	value name: 'spark-logistic-regression-prediction-20news'
 
-	value type: 'spark-randomforest-prediction'
+	value type: 'spark-logistic-regression-prediction'
 
-	value algorithm: 'randomforest'
+	value algorithm: 'logistic-regression'
 
 	ALGORITHM {
 		
@@ -50,8 +50,6 @@ MODEL {
 	
 	value preferredLocation: 'hdfs://somewhere'
 
-  
-  
 	  // there is an input block, which minimally contains the main object
 	  // it may contain other objects which could be used in the
 	  // feature functions

@@ -23,7 +23,7 @@ import ai.vital.vitalservice.admin.VitalServiceAdmin
 import ai.vital.vitalservice.factory.VitalServiceFactory
 import ai.vital.vitalsigns.model.*
 
-import ai.vital.common.uri.URIGenerator
+import ai.vital.vitalsigns.uri.URIGenerator
 
 import vitalai.samples.domain.*
 

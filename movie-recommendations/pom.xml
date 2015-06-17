@@ -147,34 +147,9 @@
     <dependency>
       <groupId>vital-ai</groupId>
       <artifactId>vitalservice</artifactId>
-      <version>0.2.251</version>
+      <version>0.2.252</version>
     </dependency>
     
-    
-        
-	<dependency>
-      <groupId>vital-ai</groupId>
-      <artifactId>vital-domain</artifactId>
-      <version>0.2.251</version>
-      <scope>compile</scope>
-    </dependency>
-  
-  
-    <dependency>
-      <groupId>vital-ai</groupId>
-      <artifactId>vitalsigns</artifactId>
-      <version>0.2.251</version>
-      <scope>compile</scope>
-    </dependency>
-  	
-    
-    <dependency>
-      <groupId>vital-ai</groupId>
-      <artifactId>vitalservice</artifactId>
-      <version>0.2.251</version>
-      <scope>compile</scope>
-    </dependency>
-     
   </dependencies>
       
 </project>

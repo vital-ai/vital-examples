@@ -4,6 +4,7 @@ import org.example.autompg.domain.AutoMpg;
 
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer.VitalBlock
 import ai.vital.vitalsigns.model.GraphObject;
+import ai.vital.vitalsigns.model.VITAL_Category;
 import ai.vital.aspen.groovy.featureextraction.CategoricalFeatureData;
 import ai.vital.aspen.groovy.modelmanager.AspenPrediction;
 import ai.vital.domain.Document;
@@ -39,20 +40,24 @@ import ai.vital.aspen.model.RegressionPrediction;
 
 MODEL {
 
-	value URI: 'spark-randomforest-regression'
+	value URI: 'urn:spark-randomforest-regression-autompg'
 
-	value name: 'spark-randomforest-regression'
+	value name: 'spark-randomforest-regression-autompg'
 
 	value type: 'spark-randomforest-regression'
 
 	value algorithm: 'randomforest-regression'
 
 	ALGORITHM {
-		
+
+    value numTrees: 20 // Use more in practice.
+    value featureSubsetStrategy: 'auto' // Let the algorithm choose.
+    value impurity: 'variance'
+    value maxDepth: 10
+    value maxBins: 32
+
 	}
 	
-	value preferredLocation: 'hdfs://somewhere'
-
 	  // there is an input block, which minimally contains the main object
 	  // it may contain other objects which could be used in the
 	  // feature functions
@@ -66,7 +71,7 @@ MODEL {
 
 			value name: 'cylinders'
 
-			value type: 'word'
+			value type: 'numerical'
 			
 		}
 
@@ -123,8 +128,8 @@ MODEL {
 				
 			value name: 'modelYear'
 					
-			value type: 'word'
-						
+			value type: 'numerical'
+			
 		}
 		
 		//8
@@ -134,7 +139,9 @@ MODEL {
 				
 			value name: 'origin'
 				
-			value type: 'word'
+			value type: 'categorical'
+			
+			value taxonomy: 'origin-taxonomy'
 						
 		}
 		
@@ -157,6 +164,7 @@ MODEL {
 
 	FUNCTIONS {
 
+		//1
 		FUNCTION {
 
 			value provides: 'cylinders'
@@ -168,6 +176,7 @@ MODEL {
 
 		}
 
+		//2
 		FUNCTION {
 
 			value provides: 'displacement'
@@ -179,6 +188,7 @@ MODEL {
 
 		}
 		
+		//3
 		FUNCTION {
 			
 			value provides: 'horsepower'
@@ -190,6 +200,8 @@ MODEL {
 			
 		}
 		
+		
+		//4
 		FUNCTION {
 			
 			value provides: 'weight'
@@ -201,6 +213,7 @@ MODEL {
 			
 		}
 		
+		//5
 		FUNCTION {
 			
 			value provides: 'acceleration'
@@ -212,6 +225,7 @@ MODEL {
 			
 		}
 		
+		//6
 		FUNCTION {
 			
 			value provides: 'modelYear'
@@ -223,13 +237,17 @@ MODEL {
 			
 		}
 		
+		//7
 		FUNCTION {
 			
 			value provides: 'origin'
 				
 				value function: { VitalBlock block, Map features ->
 				def auto = (AutoMpg) block.getMainObject()
-				return auto.origin.intValue()
+				def originCategory = new VITAL_Category()
+				originCategory.setURI('urn:origin-taxonomy' + auto.origin.intValue())
+				originCategory.name = 'Origin ' + auto.origin.intValue() 
+				return originCategory
 			}
 			
 		}
@@ -241,6 +259,8 @@ MODEL {
 
 	TRAIN {
 
+		value type: 'numerical'
+		
 		value function: { VitalBlock block, Map features ->
 			def auto = (AutoMpg) block.getMainObject()
 			return auto.mpg.doubleValue()
@@ -279,5 +299,12 @@ MODEL {
 
 	}
 	
+	TAXONOMY {
+		
+		value provides: 'origin-taxonomy'
+		
+		value introspect: true
+		
+	}
 // end of MODEL
 }

@@ -40,21 +40,19 @@ import ai.vital.aspen.model.RegressionPrediction;
 
 MODEL {
 
-	value URI: 'urn:spark-linear-regression-autompg'
+	value URI: 'urn:spark-gradient-boosted-trees-regression-autompg'
 
-	value name: 'spark-linear-regression-autompg'
+	value name: 'spark-gradient-boosted-trees-regression-autompg'
 
-	value type: 'spark-linear-regression'
+	value type: 'spark-gradient-boosted-trees-regression'
 
-  //3 algorithms available
-	value algorithm: 'linear-regression-with-sgd'
-	//value algorithm: 'ridge-regression-with-sgd'
-	//value algorithm: 'lasso-with-sgd'
+	value algorithm: 'gradient-boosted-trees'
 
 	ALGORITHM {
 
-		value numIterations: 10
-				
+    value maxDepth: 10
+    value numIterations: 3
+
 	}
 	
 	  // there is an input block, which minimally contains the main object

@@ -1,6 +1,6 @@
 package ai.vital.samples
 
-import ai.vital.property.URIProperty
+import ai.vital.vitalsigns.model.property.URIProperty
 import ai.vital.vitalservice.model.App;
 
 import vitalai.samples.domain.*

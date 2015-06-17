@@ -14,7 +14,7 @@ import ai.vital.vitalsigns.block.BlockCompactStringSerializer
 import edu.mit.jwi.item.Pointer
 import ai.vital.domain.*
 import java.util.Map.Entry
-import ai.vital.common.uri.URIGenerator
+import ai.vital.vitalsigns.uri.URIGenerator
 
 class SampleWordnetGenerate {
 	
@@ -29,8 +29,8 @@ class SampleWordnetGenerate {
 	
 		o("Wordnet -> VitalBlock conversion script")
 		
-		if(args.length != 2) {
-			o("usage: runWordnetGenerate <input_wordnet_database_location> <output_vital_block_file_path>")
+		if(args.length < 2 || args.length > 3) {
+			o("usage: runWordnetGenerate <input_wordnet_database_location> <output_vital_block_file_path> [optional_nodes_limit]")
 			o("     vital block file name must end with .vital[.gz]")
 			return
 		}
@@ -41,6 +41,12 @@ class SampleWordnetGenerate {
 		File blockF = new File(args[1])
 		o("Output vital block file: ${blockF.absolutePath}")
 		
+		Integer nodesLimit = 0
+		if(args.length > 2) {
+			nodesLimit = Integer.parseInt(args[2])
+		}
+		
+		println("nodes limit: " + nodesLimit)
 
 		if(blockF.exists()) {
 			o("output file already exists! ${blockF.absolutePath}")
@@ -61,7 +67,7 @@ class SampleWordnetGenerate {
 		}
 		
 		
-		Map<ISynsetID, String> synsetWords = createSynsetWords(dictionary, writer);
+		Map<ISynsetID, String> synsetWords = createSynsetWords(dictionary, writer, nodesLimit);
 		
 		linkWords(synsetWords, dictionary, writer);
 		
@@ -112,7 +118,7 @@ class SampleWordnetGenerate {
 						ISynset key = synsetIterator.next();
 						
 						String uri = synsetWords.get(key.getID());
-						if(uri == null) throw new Exception("No URI for synset: " + key.getID());
+						if(uri == null) continue//throw new Exception("No URI for synset: " + key.getID());
 						
 						for( Iterator<Entry<IPointer, List<ISynsetID>>> iterator2 = key.getRelatedMap().entrySet().iterator(); iterator2.hasNext(); ) {
 							
@@ -129,7 +135,7 @@ class SampleWordnetGenerate {
 								
 								String destURI = synsetWords.get(id);
 								
-								if(destURI == null) throw new Exception("No URI for dest synset: " + id);
+								if(destURI == null) continue//throw new Exception("No URI for dest synset: " + id);
 								
 								Edge_hasWordnetPointer newEdge = cls.newInstance()
 								
@@ -157,7 +163,7 @@ class SampleWordnetGenerate {
 	
 	
 	
-			static Map<ISynsetID, String> createSynsetWords(Dictionary _dict, BlockCompactStringSerializer writer) throws Exception {
+			static Map<ISynsetID, String> createSynsetWords(Dictionary _dict, BlockCompactStringSerializer writer, int nodesLimit) throws Exception {
 		
 				Map<ISynsetID, String> m = new LinkedHashMap<ISynsetID, String>();
 				
@@ -171,6 +177,8 @@ class SampleWordnetGenerate {
 					
 					Class<? extends SynsetNode> cls = pos2Class.get(p);
 					if(cls == null) throw new Exception("No Vital class for pos: " + p);
+					
+					boolean limitReached = false
 					
 					for( Iterator<ISynset> synsetIterator = _dict.getSynsetIterator(p); synsetIterator.hasNext(); ) {
 						
@@ -222,9 +230,18 @@ class SampleWordnetGenerate {
 						
 						nodes++
 						
+						
 						m.put(next.getID(), sn.getURI());
 						
+						if(nodesLimit > 0 && nodes >= nodesLimit) {
+							println("limit $nodesLimit reached")
+							limitReached = true
+							break;
+						}
+						
 					}
+					
+					if(limitReached) break;
 					
 				}
 				

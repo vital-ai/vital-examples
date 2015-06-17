@@ -36,9 +36,9 @@ import ai.vital.aspen.model.CategoryPrediction;
 
 MODEL {
 
-	value URI: 'spark-naive-bayes-prediction'
+	value URI: 'urn:spark-naive-bayes-prediction-20news'
 
-	value name: 'spark-naive-bayes-prediction'
+	value name: 'spark-naive-bayes-prediction-20news'
 
 	value type: 'spark-naive-bayes-prediction'
 
@@ -58,7 +58,7 @@ MODEL {
 
 		FEATURE {
 
-			value URI: 'my-uri'
+			value URI: 'urn:feature-title'
 
 			value name: 'title'
 
@@ -74,7 +74,7 @@ MODEL {
 
 		FEATURE {
 
-			value URI: 'my-uri'
+			value URI: 'urn:feature-body'
 
 			value name: 'body'
 
@@ -167,11 +167,15 @@ MODEL {
 
 	TRAIN {
 
+		value type: 'categorical' 
+		
+		value taxonomy: 'twentynews-taxonomy'
+		
 		value function: { VitalBlock block, Map features ->
 
 			Edge_hasCategory edge = block.toContainer(false).iterator(Edge_hasCategory.class).next()
-
-			return edge.getDestinationURI()
+			
+			return TAXONOMY['twentynews-taxonomy'].container.get( edge.getDestinationURI() )
 
 		}
 		
@@ -193,20 +197,13 @@ MODEL {
 
 			def categoryPrediction = (CategoryPrediction)result
 			
-			def category = categoryPrediction.category
+			def categoryURI = categoryPrediction.categoryURI
 			
-			//validatre category in taxonomy
-			
-			if( TAXONOMY['twentynews-taxonomy'].taxonomy.container.get(category) == null ) {
-				
-				throw new RuntimeException("20news category with URI $category not found")
-				
-			}
 			
 			def target = new TargetNode()
 			target.URI = URIGenerator.generateURI((App)null, TargetNode.class)
 
-			target.targetStringValue = category
+			target.targetStringValue = categoryURI
 			target.targetScore = 1D;
 
 			def edge = new Edge_hasTargetNode().addSource(doc).addDestination(target)
@@ -220,9 +217,9 @@ MODEL {
 	
 	TAXONOMY {
 	
-    value provides: 'twentynews-taxonomy'
+		value provides: 'twentynews-taxonomy'
 
-    value root: 'http://vital.ai/ontology/twentynews#Taxonomy'
+		value root: 'http://vital.ai/ontology/twentynews#Taxonomy'
 
 	}
 	

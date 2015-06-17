@@ -39,9 +39,9 @@ import ai.vital.aspen.model.RecommendationPrediction
 
 MODEL {
 
-	value URI: 'spark-collaborative-filtering-prediction'
+	value URI: 'urn:spark-collaborative-filtering-prediction-movielens'
 
-	value name: 'spark-collaborative-filtering-prediction'
+	value name: 'spark-collaborative-filtering-prediction-movielens'
 
 	value type: 'spark-collaborative-filtering-prediction'
 
@@ -54,8 +54,6 @@ MODEL {
 		value iterations: 20
   }	
   
-	value preferredLocation: 'hdfs://somewhere'
-
 	  // there is an input block, which minimally contains the main object
 	  // it may contain other objects which could be used in the
 	  // feature functions
@@ -64,8 +62,9 @@ MODEL {
 
 		FEATURE {
 
-			value URI: 'feature_user_uri'
+			value URI: 'urn:feature_user_uri'
 
+			//special value
 			value name: 'feature_user_uri'
 
 			value type: 'word'
@@ -74,25 +73,24 @@ MODEL {
 		
 		FEATURE {
 			
-			value URI: 'feature_product_uri'
+			value URI: 'urn:feature_product_uri'
 				
+			//special value
 			value name: 'feature_product_uri'
 						
 			value type: 'word'
 			
-			value allowedMissing: true
-						
 		}
 
 		FEATURE {
 			
-			value URI: 'feature_rating'
+			value URI: 'urn:feature_rating'
 				
+				//special value
 			value name: 'feature_rating'
 						
 			value type: 'numerical'
 						
-			value allowedMissing: true
 		}
 		
 	}
@@ -182,6 +180,8 @@ MODEL {
 
 	TRAIN {
 
+		value type: 'numerical'
+		
 		value function: { VitalBlock block, Map features ->
 			def edge = (Edge_hasMovieRating) block.getMainObject()
 			return edge.rating
