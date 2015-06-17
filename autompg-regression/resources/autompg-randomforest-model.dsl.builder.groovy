@@ -245,8 +245,8 @@ MODEL {
 				value function: { VitalBlock block, Map features ->
 				def auto = (AutoMpg) block.getMainObject()
 				def originCategory = new VITAL_Category()
-				originCategory.URI = 'urn:origin-taxonomy' + auto.origin.intValue()
-				originCategory.name = 'Origin ' + auto.origin.intValue() 
+				originCategory.URI = 'urn:origin-taxonomy' + auto.origin
+				originCategory.name = 'Origin ' + auto.origin 
 				return originCategory
 			}
 			

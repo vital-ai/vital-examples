@@ -80,6 +80,8 @@ MODEL {
 						
 			value type: 'word'
 			
+			value allowedMissing: true
+						
 		}
 
 		FEATURE {
@@ -91,6 +93,7 @@ MODEL {
 						
 			value type: 'numerical'
 						
+			value allowedMissing: true
 		}
 		
 	}
