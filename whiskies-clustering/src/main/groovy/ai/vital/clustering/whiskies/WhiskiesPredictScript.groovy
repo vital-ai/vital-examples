@@ -17,12 +17,12 @@ import ai.vital.vitalsigns.model.property.URIProperty;
 
 class WhiskiesPredictScript {
 
-	static String TP = "autompg-predict"
+	static String WP = "whiskies-predict"
 	
 	
 	def static main(args) {
 	
-		def cli = new CliBuilder(usage: "${TP} [options]")
+		def cli = new CliBuilder(usage: "${WP} [options]")
 		cli.with {
 			n longOpt: 'model-name', 'prediction model name, mutually exclusive with model-uri', args:1, required:false
 			u longOpt: 'model-uri', 'prediction model URI, mutually exclusive with model-name', args:1, required:false
@@ -91,7 +91,7 @@ class WhiskiesPredictScript {
 				
 				if(g instanceof TargetNode) {
 					
-					println "${++c}:  cluster ${g.targetStringValue} , score: ${g.targetScore}"
+					println "${++c}:  cluster ${g.targetDoubleValue.intValue()} , score: ${g.targetScore}"
 					
 				}
 				

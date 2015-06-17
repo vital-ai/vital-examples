@@ -169,7 +169,7 @@ MODEL {
 
 			value function: { VitalBlock block, Map features ->
 				def auto = (AutoMpg) block.getMainObject()
-				return auto.cylinders.intValue()
+				return auto.cylinders
 			}
 
 		}
@@ -181,7 +181,7 @@ MODEL {
 
 			value function: { VitalBlock block, Map features ->
 				def auto = (AutoMpg) block.getMainObject()
-				return auto.displacement.doubleValue()
+				return auto.displacement
 			}
 
 		}
@@ -193,7 +193,7 @@ MODEL {
 				
 				value function: { VitalBlock block, Map features ->
 				def auto = (AutoMpg) block.getMainObject()
-				return auto.horsepower.doubleValue()
+				return auto.horsepower
 			}
 			
 		}
@@ -206,7 +206,7 @@ MODEL {
 				
 				value function: { VitalBlock block, Map features ->
 				def auto = (AutoMpg) block.getMainObject()
-				return auto.weight.doubleValue()
+				return auto.weight
 			}
 			
 		}
@@ -218,7 +218,7 @@ MODEL {
 				
 				value function: { VitalBlock block, Map features ->
 				def auto = (AutoMpg) block.getMainObject()
-				return auto.acceleration.doubleValue()
+				return auto.acceleration
 			}
 			
 		}
@@ -230,7 +230,7 @@ MODEL {
 			
 			value function: { VitalBlock block, Map features ->
 				def auto = (AutoMpg) block.getMainObject()
-				return auto.modelYear.intValue()
+				return auto.modelYear
 			}
 			
 		}
@@ -243,7 +243,7 @@ MODEL {
 				value function: { VitalBlock block, Map features ->
 				def auto = (AutoMpg) block.getMainObject()
 				def originCategory = new VITAL_Category()
-				originCategory.setURI('urn:origin-taxonomy' + auto.origin.intValue())
+				originCategory.URI = 'urn:origin-taxonomy' + auto.origin.intValue()
 				originCategory.name = 'Origin ' + auto.origin.intValue() 
 				return originCategory
 			}

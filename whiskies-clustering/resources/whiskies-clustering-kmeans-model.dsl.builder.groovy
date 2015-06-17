@@ -204,7 +204,7 @@ MODEL {
 
 			value function: { VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.body.intValue()
+				return whisky.body
 			}
 
 		}
@@ -216,7 +216,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.sweetness.intValue()
+				return whisky.sweetness
 			}
 
 		}
@@ -228,7 +228,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.smoky.intValue()
+				return whisky.smoky
 			}
 			
 		}
@@ -240,7 +240,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.medicinal.intValue()
+				return whisky.medicinal
 			}
 			
 		}
@@ -252,7 +252,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.tobacco.intValue()
+				return whisky.tobacco
 			}
 			
 		}
@@ -264,7 +264,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.honey.intValue()
+				return whisky.honey
 			}
 			
 		}
@@ -276,7 +276,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.honey.intValue()
+				return whisky.honey
 			}
 			
 		}
@@ -288,7 +288,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.winey.intValue()
+				return whisky.winey
 			}
 			
 		}
@@ -300,7 +300,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.nutty.intValue()
+				return whisky.nutty
 			}
 			
 		}
@@ -312,7 +312,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.malty.intValue()
+				return whisky.malty
 			}
 			
 		}
@@ -324,7 +324,7 @@ MODEL {
 
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.fruity.intValue()
+				return whisky.fruity
 			}
 			
 		}
@@ -336,7 +336,7 @@ MODEL {
 				
 			value function: {  VitalBlock block, Map features ->
 				def whisky = (Whisky) block.getMainObject()
-				return whisky.floral.intValue()
+				return whisky.floral
 			}
 			
 		}
