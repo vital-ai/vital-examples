@@ -70,6 +70,12 @@ MODEL {
 
 			value type: 'numerical'
 			
+			value restrictionLevel: 'warning'
+			
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 1 }
+			}
+			
 		}
 
 		//3
@@ -81,6 +87,11 @@ MODEL {
 
 			value type: 'numerical'
 			
+			value restrictionLevel: 'warning'
+			
+			RESTRICTIONS {
+				RESTRICTION { value minValueExclusive: 0.0 }
+			}
 		
 		}
 		
@@ -92,7 +103,12 @@ MODEL {
 			value name: 'horsepower'
 						
 			value type: 'numerical'
-						
+					
+			value restrictionLevel: 'warning'
+			
+			RESTRICTIONS {
+				RESTRICTION { value minValueExclusive: 0.0 }
+			}
 						
 		}
 		
@@ -104,6 +120,12 @@ MODEL {
 			value name: 'weight'
 					
 			value type: 'numerical'
+			
+			value restrictionLevel: 'warning'
+			
+			RESTRICTIONS {
+				RESTRICTION { value minValueExclusive: 0.0 }
+			}
 						
 		}
 		
@@ -115,6 +137,12 @@ MODEL {
 			value name: 'acceleration'
 					
 			value type: 'numerical'
+			
+			value restrictionLevel: 'warning'
+			
+			RESTRICTIONS {
+				RESTRICTION { value minValueExclusive: 0.0 }
+			}
 						
 		}
 		
@@ -126,6 +154,12 @@ MODEL {
 			value name: 'modelYear'
 					
 			value type: 'numerical'
+			
+			value restrictionLevel: 'warning'
+			
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+			}
 			
 		}
 		

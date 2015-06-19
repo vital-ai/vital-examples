@@ -116,7 +116,7 @@ class MovieLensRecommendationsScript {
 		double resultsValueCount = max.doubleValue() + selfRatedMovies.size().doubleValue() 
 		
 		TargetNode resultsCount = new TargetNode()
-		resultsCount.setURI("urn:resultsCount")
+		resultsCount.URI = "urn:resultsCount"
 		resultsCount.targetScore = resultsValueCount
 		List inputBlock = [x, resultsCount]
 		

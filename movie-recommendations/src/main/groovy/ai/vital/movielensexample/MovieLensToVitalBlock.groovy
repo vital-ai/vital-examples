@@ -135,8 +135,8 @@ class MovieLensToVitalBlock {
 					def movieID = Integer.parseInt(record[0])
 					def title = record[1]
 					def movie = new Movie()
-					movie.setURI(MOVIE_NS + movieID)
-					movie.setProperty("name", title)
+					movie.URI = MOVIE_NS + movieID
+					movie.name = title
 					if(movieID2Movie.containsKey(movieID)) error("Duplicate movie: " + movieID)
 					movieID2Movie.put(movieID, movie)
 				}
@@ -216,8 +216,8 @@ class MovieLensToVitalBlock {
 						def user = userID2User.get(userID)
 						if(user == null) {
 							user = new User()
-							user.setURI(USER_NS + userID)
-							user.setProperty("name", "User " + userID)
+							user.URI = USER_NS + userID
+							user.name = "User " + userID
 							userID2User.put(userID, user)
 						}
 
@@ -234,10 +234,10 @@ class MovieLensToVitalBlock {
 
 
 							def directEdge = new Edge_hasMovieRating()
-							directEdge.setURI(EDGE_HAS_DIRECT_RATING_NS + userID + "_" + movieID)
+							directEdge.URI = EDGE_HAS_DIRECT_RATING_NS + userID + "_" + movieID
 							directEdge.addSource(user).addDestination(movie)
-							directEdge.setProperty("rating", rating);
-							directEdge.setProperty("timestamp", new java.lang.Long(timestampSeconds * 1000L).longValue());
+							directEdge.rating = rating
+							directEdge.timestamp = new java.lang.Long(timestampSeconds * 1000L).longValue();
 
 							blockWriter.startBlock()
 							blockWriter.writeGraphObject(directEdge)

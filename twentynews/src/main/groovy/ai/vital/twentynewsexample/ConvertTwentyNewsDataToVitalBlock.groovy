@@ -62,7 +62,7 @@ class ConvertTwentyNewsDataToVitalBlock {
 		  return
 		}
 		
-		def query = getTaxonomyPathQuery(root.getURI())
+		def query = getTaxonomyPathQuery(root.URI)
 		
 		def categoriesResults = VitalSigns.get().query(query)
 		

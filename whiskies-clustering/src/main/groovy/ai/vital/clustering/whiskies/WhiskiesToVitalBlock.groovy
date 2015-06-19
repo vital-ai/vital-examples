@@ -100,7 +100,7 @@ class WhiskiesToVitalBlock {
 			whisky.latitude = toInt(columns[15])
 			whisky.longitude = toInt(columns[16])
 
-			whisky.setURI(NS + rowID)
+			whisky.URI = NS + rowID
 
 			writer.startBlock()
 

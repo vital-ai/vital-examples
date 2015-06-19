@@ -63,6 +63,14 @@ MODEL {
 			value name: 'body'
 
 			value type: 'numerical'
+			
+			
+			value restrictionLevel: 'warning'
+			
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
 		}
 
 		//2
@@ -74,6 +82,14 @@ MODEL {
 			
 			value type: 'numerical'
 			
+			
+			value restrictionLevel: 'warning'
+			
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 		
 		//3
@@ -84,7 +100,15 @@ MODEL {
 			value name: 'smoky'
 			
 			value type: 'numerical'
-						
+			
+			
+			value restrictionLevel: 'warning'
+			
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+
 		}
 		
 		//4
@@ -95,7 +119,15 @@ MODEL {
 			value name: 'medicinal'
 			
 			value type: 'numerical'
+			
+			
+			value restrictionLevel: 'warning'
 						
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 		
 		//5
@@ -106,7 +138,15 @@ MODEL {
 			value name: 'tobacco'
 					
 			value type: 'numerical'
-							
+			
+			
+			value restrictionLevel: 'warning'
+
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 		
 		//6
@@ -117,7 +157,15 @@ MODEL {
 			value name: 'honey'
 					
 			value type: 'numerical'
-							
+			
+			
+			value restrictionLevel: 'warning'
+
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 
 		//7
@@ -128,7 +176,15 @@ MODEL {
 			value name: 'spicy'
 					
 			value type: 'numerical'
-							
+			
+			
+			value restrictionLevel: 'warning'
+
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 		
 		//8
@@ -139,7 +195,15 @@ MODEL {
 			value name: 'winey'
 					
 			value type: 'numerical'
-							
+			
+			
+			value restrictionLevel: 'warning'
+
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 		
 		//9
@@ -150,7 +214,15 @@ MODEL {
 			value name: 'nutty'
 					
 			value type: 'numerical'
-							
+			
+			
+			value restrictionLevel: 'warning'
+
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 		
 		
@@ -162,7 +234,15 @@ MODEL {
 			value name: 'malty'
 					
 			value type: 'numerical'
-							
+			
+			
+			value restrictionLevel: 'warning'
+
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 		
 		//11
@@ -173,7 +253,15 @@ MODEL {
 			value name: 'fruity'
 					
 			value type: 'numerical'
-							
+			
+			
+			value restrictionLevel: 'warning'
+
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 		
 		//12
@@ -184,7 +272,15 @@ MODEL {
 			value name: 'floral'
 					
 			value type: 'numerical'
-							
+			
+			
+			value restrictionLevel: 'warning'
+
+			RESTRICTIONS {
+				RESTRICTION { value minValueInclusive: 0 }
+				RESTRICTION { value maxValueInclusive: 4 }
+			}
+			
 		}
 	}
 	
@@ -387,40 +483,5 @@ MODEL {
 
 	}
 
-	/*	
-	TAXONOMY {
-		
-		//a simple inline taxonomy for taste values range 0-4
-		value provides: 'taste-taxonomy'
-		
-		def SCALE_NS = 'urn:taste-scale/'
-		
-		CATEGORY {
-			value name: 'Scale Root'
-			value uri: SCALE_NS + 'root'
-			CATEGORY {
-				value name: '0'
-				value uri: SCALE_NS + '0'
-			}
-			CATEGORY {
-				value name: '1'
-				value uri: SCALE_NS + '1'
-			}
-			CATEGORY {
-				value name: '2'
-				value uri: SCALE_NS + '2'
-			}
-			CATEGORY {
-				value name: '3'
-				value uri: SCALE_NS + '3'
-			}
-			CATEGORY {
-				value name: '4'
-				value uri: SCALE_NS + '4'
-			}
-		}	
-	}
-	*/
-	
 // end of MODEL
 }

@@ -91,7 +91,7 @@ class AutoMpgToVitalBlock {
           
 		c++
 		
-		auto.setURI(NS + c)
+		auto.URI = NS + c
           
         writer.startBlock()
           
