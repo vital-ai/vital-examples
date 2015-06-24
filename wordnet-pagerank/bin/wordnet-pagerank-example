@@ -1,0 +1,81 @@
+#!/usr/bin/env groovy
+
+import static groovy.io.FileType.FILES
+
+def scriptDir = new File(getClass().protectionDomain.codeSource.location.path).parentFile.parentFile.getAbsolutePath() + '/'
+
+String VITAL_HOME = System.getenv('VITAL_HOME')
+
+if(!VITAL_HOME) { 
+	System.err.println("VITAL_HOME environment variable not set.")
+	System.exit(-1);
+}
+
+
+List jars = [];
+
+//target jar
+new File(scriptDir + 'target').eachFile(FILES) {
+	if( it.name.matches('wordnet-pagerank-\\d+\\.\\d+\\.\\d+\\.jar') ) {
+		jars.add(it.absolutePath);
+	}
+}
+
+
+//vitalsigns
+new File(VITAL_HOME + '/vitalsigns').eachFileRecurse(FILES) {
+	if(it.name.endsWith('.jar')) {
+		jars.add(it.absolutePath);
+	}
+}
+
+//vitalsigns
+new File(VITAL_HOME + '/domain-groovy-jar').eachFile(FILES) {
+	if(it.name.endsWith('.jar')) {
+		jars.add(it.absolutePath);
+	}
+}
+
+//vital-lucene
+new File(VITAL_HOME + '/vital-lucene').eachFileRecurse(FILES) {
+	if(it.name.endsWith('.jar')) {
+		jars.add(it.absolutePath);
+	}
+}
+
+/*
+
+//vital-triplestore
+new File(VITAL_HOME + '/vital-triplestore').eachFileRecurse(FILES) {
+	if(it.name.endsWith('.jar')) {
+		jars.add(it.absolutePath);
+	}
+}
+*/
+
+//vitalservice
+new File(VITAL_HOME + '/vitalservice').eachFileRecurse(FILES) {
+	if(it.name.endsWith('.jar')) {
+		jars.add(it.absolutePath);
+	}
+}
+
+//vitaldomain
+new File(VITAL_HOME + '/vital-domain/').eachFile(FILES) {
+	if(it.name.startsWith('VitalDomain-groovy-')) {
+		jars.add(it.absolutePath);
+	}
+}
+
+
+
+
+def mainClass = 'ai.vital.pagerank.wordnet.WordnetPageRankExample'
+
+List cmd = ['java', '-cp', (String)jars.join(File.pathSeparator), mainClass]
+for(String a : args) {
+	cmd.add(a)
+}
+//println cmd
+def process=new ProcessBuilder(cmd).redirectErrorStream(true).start()
+process.inputStream.eachLine {println it}

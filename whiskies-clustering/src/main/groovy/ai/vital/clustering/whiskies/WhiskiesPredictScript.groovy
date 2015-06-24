@@ -1,5 +1,7 @@
 package ai.vital.clustering.whiskies
 
+import org.example.whiskies.domain.Whisky;
+
 import ai.vital.domain.Annotation;
 import ai.vital.domain.Document
 import ai.vital.domain.FlowPredictModel;
@@ -33,7 +35,14 @@ class WhiskiesPredictScript {
 			bl longOpt: 'block-file', 'input vital block filem, extension: ( .vital[.gz] ), mutually exclusive with --builder-file', args: 1, required: false
 		}
 			
+		if(args.length == 0) {
+			cli.usage()
+			return
+		}
+		
 		def options = cli.parse(args)
+		
+		
 		if(!options) {
 			return
 		}
@@ -123,13 +132,26 @@ class WhiskiesPredictScript {
 	def static processBlock(VitalService service, String modelName, String modelURI, VitalBlock block) {
 
 		ResultList predictRL = service.callFunction("commons/scripts/Aspen_Predict", ['modelName': modelName, 'modelURI': modelURI, 'inputBlock': block.toList()] )
+
+		Whisky whisky = null
+		for(GraphObject g : block.toList() ) {
+			if(g instanceof Whisky) {
+				whisky = g
+			}
+		}
 		
+		if(!whisky) {
+			System.err.println("No whisky node in a block - skipping")
+			return
+		}
+		
+				
 		if(predictRL.status.status != VitalStatus.Status.ok) {
 			System.err.println "Error when calling predict datascript: ${predictRL.status.message}"
 			return
 		}
 		
-		println "predictions:"
+		println "Whisky name ${whisky.name},  predictions:"
 		
 		int c = 0
 		
@@ -137,7 +159,7 @@ class WhiskiesPredictScript {
 			
 			if(g instanceof TargetNode) {
 				
-				println "${++c}:  cluster ${g.targetDoubleValue.intValue()} , score: ${g.targetScore}"
+				println "${++c}: cluster ${g.targetDoubleValue.intValue()}, score: ${g.targetScore}"
 				
 			}
 			

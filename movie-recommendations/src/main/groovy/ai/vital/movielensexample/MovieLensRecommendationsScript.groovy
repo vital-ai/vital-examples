@@ -51,7 +51,9 @@ class MovieLensRecommendationsScript {
 		}
 			
 		String userURI = options.uri
-			
+		
+		println "User URI: $userURI"	
+		
 		Integer max = 10
 			
 		if( options.max ) max = Integer.parseInt( options.max )
@@ -111,6 +113,8 @@ class MovieLensRecommendationsScript {
 		
 		User u = x
 		
+		
+		println "User name: ${u.name}"
 		println "self-rated movies list size: ${selfRatedMovies.size()}"
 		
 		double resultsValueCount = max.doubleValue() + selfRatedMovies.size().doubleValue() 

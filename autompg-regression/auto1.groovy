@@ -9,6 +9,7 @@ INSTANTIATE {
 
 	instance(AutoMpg.class) { AutoMpg a ->
 
+		a.name = 'X Car'
 
 		a.cylinders = 6
 		

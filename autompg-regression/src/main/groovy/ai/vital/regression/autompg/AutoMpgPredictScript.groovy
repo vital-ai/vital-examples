@@ -1,5 +1,7 @@
 package ai.vital.regression.autompg
 
+import org.example.autompg.domain.AutoMpg;
+
 import ai.vital.domain.Annotation;
 import ai.vital.domain.Document
 import ai.vital.domain.FlowPredictModel;
@@ -75,15 +77,31 @@ class AutoMpgPredictScript {
 		
 		for(int i = 0 ; i < blocks.size(); i++) {
 			
+			def block = blocks.get(i)
+			
 			println "Processing block ${i+1} of ${blocks.size()}"
-			ResultList predictRL = service.callFunction("commons/scripts/Aspen_Predict", ['modelName': modelName, 'modelURI': modelURI, 'inputBlock': blocks.get(i).toList()] )
+			
+			AutoMpg autoMpg = null
+			
+			for(GraphObject g : block.toList()) {
+				if(g instanceof AutoMpg) {
+					autoMpg = g
+				}
+			}
+			
+			if(!autoMpg) {
+				System.err.println("No AutoMpg instance in the block - skipping")
+				continue
+			}
+			
+			ResultList predictRL = service.callFunction("commons/scripts/Aspen_Predict", ['modelName': modelName, 'modelURI': modelURI, 'inputBlock': block.toList()] )
 			
 			if(predictRL.status.status != VitalStatus.Status.ok) {
 				System.err.println "Error when calling predict datascript: ${predictRL.status.message}"
 				continue
 			}
 			
-			println "predictions:"
+			println "AutoMpg name: ${autoMpg.name}, predictions:"
 			
 			int c = 0
 			

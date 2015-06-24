@@ -1,5 +1,7 @@
 package ai.vital.twentynewsexample
 
+import org.example.twentynews.domain.Message;
+
 import ai.vital.domain.Annotation;
 import ai.vital.domain.Document
 import ai.vital.domain.FlowPredictModel;
@@ -75,15 +77,32 @@ class TwentyNewsPredictScript {
 		
 		for(int i = 0 ; i < blocks.size(); i++) {
 			
+			def block = blocks.get(i)
+			
+			Message msg = null
+			
+			for(GraphObject g : block.toList()) {
+				
+				if(g instanceof Message) {
+					msg = g
+				}
+				
+			}
+			
+			if(msg == null) {
+				System.err.println("No 20news message in input block - skipping")
+				continue
+			}
+			
 			println "Processing block ${i+1} of ${blocks.size()}"
-			ResultList predictRL = service.callFunction("commons/scripts/Aspen_Predict", ['modelName': modelName, 'modelURI': modelURI, 'inputBlock': blocks.get(i).toList()] )
+			ResultList predictRL = service.callFunction("commons/scripts/Aspen_Predict", ['modelName': modelName, 'modelURI': modelURI, 'inputBlock': block.toList()] )
 			
 			if(predictRL.status.status != VitalStatus.Status.ok) {
 				System.err.println "Error when calling predict datascript: ${predictRL.status.message}"
 				continue
 			}
 			
-			println "predictions:"
+			println "Message subject: ${msg.subject}, predictions:"
 			
 			int c = 0
 			
