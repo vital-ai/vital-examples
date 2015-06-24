@@ -92,6 +92,8 @@ MODEL {
 			//block and features are null
 			PageRankPrediction pageRankPrediction = result
 
+			def results = []
+			
 			for( GraphObject g : block.toList() ) {
 				
 				if(g instanceof VITAL_Node) {
@@ -100,11 +102,12 @@ MODEL {
 					
 					((VITAL_Node)g).pageRank = rank
 					
+					results.add(g)
 				}
 				
 			}
 			
-			return []
+			return results
 
 		}
 
