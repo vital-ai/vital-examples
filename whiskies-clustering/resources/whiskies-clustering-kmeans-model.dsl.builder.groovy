@@ -472,7 +472,7 @@ MODEL {
 			target.URI = URIGenerator.generateURI((App)null, TargetNode.class)
 
 			target.targetDoubleValue = clusterPrediction.clusterID.doubleValue()
-			target.targetScore = 1D;
+			target.targetScore = clusterPrediction.squaredDistance
 
 			def edge = new Edge_hasTargetNode().addSource(doc).addDestination(target)
 			edge.URI = URIGenerator.generateURI((App)null, Edge_hasTargetNode.class)
