@@ -1,0 +1,30 @@
+"vital-ai~vitalservice-vertx-mod~0.2.252"  {
+
+  enabled: true
+  
+  instances: 1
+  
+  profile: vitaldevelopmentprime
+  
+  call_function_handlers: ["ai.vital.enron.js.app.EnronCallFunctionHandler"]
+
+}
+
+"io.vertx~mod-web-server~2.0.0-final" {
+
+	enabled: true
+
+	instances: 1
+
+    web_root: SET ME !
+    host: 0.0.0.0
+    port: 90
+    
+	static_files: true
+	
+	bridge: true
+	
+	inbound_permitted: [{address: "vitalservice"}],
+	outbound_permitted: [{}]
+    
+}

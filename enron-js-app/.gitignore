@@ -1,0 +1,4 @@
+/bin_classes
+/.settings/
+/mods/io.vertx~*
+/target/
