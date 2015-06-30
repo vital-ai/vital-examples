@@ -6,7 +6,15 @@
   
   profile: vitaldevelopmentprime
   
-  call_function_handlers: ["ai.vital.enron.js.app.EnronCallFunctionHandler"]
+}
+
+"vital-examples~enron-js-app~0.0.1" {
+
+  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.252"]
+
+  enabled: true
+  
+  instances: 1
 
 }
 

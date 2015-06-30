@@ -1,6 +1,8 @@
 package ai.vital.enron.js.app
 
-import ai.vital.enron.js.app.EnronCallFunctionHandler;
+import ai.vital.enron.js.app.handlers.EnronDoSearchHandler;
+import ai.vital.enron.js.app.handlers.EnronGetDetailsHandler;
+import ai.vital.enron.js.app.handlers.EnronGetMessagesHandler;
 import ai.vital.vitalservice.VitalService;
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.factory.VitalServiceFactory;
@@ -10,8 +12,6 @@ import junit.framework.TestCase
 
 class EnronCallFunctionHandlerTest extends TestCase {
 
-	static EnronCallFunctionHandler handler = null
-	
 	static VitalService service = null
 	
 	@Override
@@ -25,8 +25,6 @@ class EnronCallFunctionHandlerTest extends TestCase {
 			
 			service = VitalServiceFactory.getVitalService()
 			
-			handler = new EnronCallFunctionHandler()
-			
 		}
 		
 		
@@ -37,7 +35,9 @@ class EnronCallFunctionHandlerTest extends TestCase {
 	
 	public void testSearch() {
 		
-		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronCallFunctionHandler.do_search, ['query' : 'application', 'offset': 0, 'limit': 10] )
+		EnronDoSearchHandler handler = new EnronDoSearchHandler()
+		
+		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronDoSearchHandler.enron_do_search, ['query' : 'application', 'offset': 0, 'limit': 10] )
 		
 		assertEquals(rl.status.status, VitalStatus.Status.ok)
 		
@@ -51,8 +51,9 @@ class EnronCallFunctionHandlerTest extends TestCase {
 	
 	public void testMessageDetails() {
 		
-		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronCallFunctionHandler.get_details, ['URI': 'http://vital.ai/vital.ai/app/EnronEmail/jones-t__notes_inbox__5235.'])
+		EnronGetDetailsHandler handler = new EnronGetDetailsHandler()
 		
+		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronGetDetailsHandler.enron_get_details, ['URI': 'http://vital.ai/vital.ai/app/EnronEmail/jones-t__notes_inbox__5235.'])
 		
 		assertEquals(rl.status.status, VitalStatus.Status.ok)
 		
@@ -66,7 +67,9 @@ class EnronCallFunctionHandlerTest extends TestCase {
 	
 	public void testPersonDetails() {
 		
-		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronCallFunctionHandler.get_details, ['URI': 'http://vital.ai/vital.ai/app/EnronPerson/tana.jones%40enron.com'])
+		EnronGetDetailsHandler handler = new EnronGetDetailsHandler()
+		
+		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronGetDetailsHandler.enron_get_details, ['URI': 'http://vital.ai/vital.ai/app/EnronPerson/tana.jones%40enron.com'])
 				
 		assertEquals(rl.status.status, VitalStatus.Status.ok)
 		
@@ -80,7 +83,9 @@ class EnronCallFunctionHandlerTest extends TestCase {
 	
 	public void testGetInbox() {
 		
-		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronCallFunctionHandler.get_messages, ['URI': 'http://vital.ai/vital.ai/app/EnronPerson/tana.jones%40enron.com', 'mailbox': 'inbox', 'offset': 0, 'limit': 10])
+		EnronGetMessagesHandler handler = new EnronGetMessagesHandler()
+		
+		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronGetMessagesHandler.enron_get_messages, ['URI': 'http://vital.ai/vital.ai/app/EnronPerson/tana.jones%40enron.com', 'mailbox': 'inbox', 'offset': 0, 'limit': 10])
 		
 		assertEquals(rl.status.status, VitalStatus.Status.ok)
 		
@@ -94,7 +99,9 @@ class EnronCallFunctionHandlerTest extends TestCase {
 	
 	public void testGetOutbox() {
 		
-		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronCallFunctionHandler.get_messages, ['URI': 'http://vital.ai/vital.ai/app/EnronPerson/tana.jones%40enron.com', 'mailbox': 'outbox', 'offset': 0, 'limit': 10])
+		EnronGetMessagesHandler handler = new EnronGetMessagesHandler()
+		
+		ResultList rl = handler.callFunction(service.getOrganization(), service.getApp(), EnronGetMessagesHandler.enron_get_messages, ['URI': 'http://vital.ai/vital.ai/app/EnronPerson/tana.jones%40enron.com', 'mailbox': 'outbox', 'offset': 0, 'limit': 10])
 				
 		assertEquals(rl.status.status, VitalStatus.Status.ok)
 				

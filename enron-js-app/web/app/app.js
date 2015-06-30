@@ -114,7 +114,7 @@ function doSearch() {
 	
 	inputEls.prop('disabled', true);
 	
-	vitalservice.callFunction('do-search', {query: searchValue, offset: offset, limit: limit}, function(results){
+	vitalservice.callFunction('enron-do-search', {query: searchValue, offset: offset, limit: limit}, function(results){
 		
 		inputEls.prop('disabled', false);
 		
@@ -143,7 +143,7 @@ function doGetMessages() {
 	
 	searchResults.text("Getting messages ...");
 	
-	vitalservice.callFunction('get-messages', {URI: detailsURI, mailbox: messagesType, offset: offset, limit: limit}, function(results){
+	vitalservice.callFunction('enron-get-messages', {URI: detailsURI, mailbox: messagesType, offset: offset, limit: limit}, function(results){
 		
 		handleSearchResults(results);
 		
@@ -219,13 +219,15 @@ function handleSearchResults(resultsList) {
 		row.append($('<td>').text(body))
 		
 		
-		var detailsLink = $('<a>', {href: '#'}).text('details');
+		var detailsLink = $('<a>', {href: '#', 'data-uri': res.URI}).text('details');
 		
 		detailsLink.click(function(){
 			
-			detailsURI = res.URI;
+			var link = $(this);
 			
-			doDetails()
+			detailsURI = link.attr('data-uri');
+			
+			doDetails();
 			
 			return false;
 			
@@ -317,7 +319,7 @@ function doDetails() {
 	
 	searchResults.show();
 
-	vitalservice.callFunction('get-details', {URI: detailsURI}, function(results){
+	vitalservice.callFunction('enron-get-details', {URI: detailsURI}, function(results){
 		
 		handleDetails(results);
 		
