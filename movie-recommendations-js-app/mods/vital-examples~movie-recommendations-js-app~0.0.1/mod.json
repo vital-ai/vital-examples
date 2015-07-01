@@ -1,0 +1,9 @@
+{
+  "main": "groovy:ai.vital.movielensexample.js.app.MovieLensAppVerticle",
+  "worker": false,
+  "description": "MovieLens JavaScript/VertX Example App",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Dariusz Kobylarz",
+  "keywords": ["MovieLens", "JavaScript/VertX", "Vital AI"],
+  "homepage": "http://vital.ai"
+}

@@ -124,6 +124,8 @@ function doSearch() {
 		
 		inputEls.prop('disabled', false);
 		
+		searchResults.empty();
+		
 		alert("error: " + errorResponse);
 		
 	});
@@ -148,6 +150,8 @@ function doGetMessages() {
 		handleSearchResults(results);
 		
 	}, function(errorResponse){
+		
+		searchResults.empty();
 		
 		alert("error: " + errorResponse);
 		
@@ -325,6 +329,8 @@ function doDetails() {
 		
 	}, function(errorResponse){
 
+		searchResults.empty();
+		
 		alert("error: " + errorResponse);
 		
 	});

@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Enron JavaScript/VertX Example App</title>
+	<title>MovieLens JavaScript/VertX Example App</title>
 	
 	<meta charset="UTF-8" />
-	<meta name="description" content="Enron JavaScript/VertX Example App" />
-	<meta name="keywords" content="Enron, Vital AI, Vital, Vertx, Javascript, VitalService" />
+	<meta name="description" content="MovieLens JavaScript/VertX Example App" />
+	<meta name="keywords" content="MovieLens, Vital AI, Vital, Vertx, Javascript, VitalService" />
 	<meta name="author" content="Vital AI" /> 
 	
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	
-	<script type="text/javascript" src="vitalservice/vitalservice-0.2.252.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/sockjs-client/0.3.4/sockjs.min.js"></script>
-	<script type="text/javascript" src="vitalservice/vertxbus-2.1.js"></script>
-	<script type="text/javascript" src="vitalservice/vitalservice-impl-0.2.252.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/vertx/2.0.0/vertxbus.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="vitalservice/vitalservice-0.2.252.js"></script>
+    <script type="text/javascript" src="vitalservice/vitalservice-impl-0.2.252.js"></script>
+    
 	<script type="text/javascript" src="vitalservice/tv4.min.js"></script>
 	<script type="text/javascript" src="vitalservice/vitalservice-json-0.2.252.js"></script>
 	<script type="text/javascript" src="vitalservice/vital-core-0.2.252.js"></script>
 	<script type="text/javascript" src="vitalservice/vital-0.2.252.js"></script>
-	<script type="text/javascript" src="vitalservice/enron-dataset-1.0.0.js"></script>
+	<script type="text/javascript" src="vitalservice/movielens-1.0.0.js"></script>
 	
 	
 	<script src="app/app.js"></script>
@@ -28,11 +28,11 @@
 	
 </head>
 <body>
-	<h3>Enron JavaScript/VertX Example App</h3>
+	<h3>MovieLens JavaScript/VertX Example App</h3>
 	
 	<div id="search-panel">
-		search: 
-		<input id="search-input" type="text" value="" autocomplete="on" class="search-active" /> 
+		User ID: 
+		<input id="search-input" type="number" name="quantity" min="1" max="999999" class="search-active" /> 
 		<button id="search-button" class="search-active">Search</button>
 	</div>
 	

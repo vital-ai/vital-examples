@@ -1,0 +1,120 @@
+package ai.vital.movielensexample.js.app.handlers
+
+import java.util.Map
+
+import org.movielens.domain.Edge_hasMovieRating;
+import org.movielens.domain.Edge_hasMovieRating_PropertiesHelper
+import org.movielens.domain.Movie;
+import org.movielens.domain.properties.Property_hasRating;
+
+import ai.vital.query.querybuilder.VitalBuilder;
+import ai.vital.service.vertx.handler.CallFunctionHandler;
+import ai.vital.vitalservice.VitalService;
+import ai.vital.vitalservice.VitalStatus;
+import ai.vital.vitalservice.exception.VitalServiceException;
+import ai.vital.vitalservice.exception.VitalServiceUnimplementedException;
+import ai.vital.vitalservice.factory.VitalServiceFactory;
+import ai.vital.vitalservice.model.App;
+import ai.vital.vitalservice.model.Organization;
+import ai.vital.vitalservice.query.ResultElement;
+import ai.vital.vitalservice.query.ResultList;
+import ai.vital.vitalservice.query.VitalSelectQuery
+import ai.vital.vitalservice.query.VitalSortProperty
+import ai.vital.vitalsigns.VitalSigns;
+import ai.vital.vitalsigns.meta.GraphContext;
+import ai.vital.vitalsigns.model.property.URIProperty;
+
+
+
+class MovieLensGetRatedMoviesHandler implements CallFunctionHandler {
+
+	static String movielens_get_rated_movies = 'movielens-get-rated-movies'
+
+	static VitalBuilder vitalBuilder = new VitalBuilder()
+		
+	@Override
+	public ResultList callFunction(Organization organization, App app,
+			String function, Map<String, Object> params)
+			throws VitalServiceUnimplementedException, VitalServiceException {
+
+		def userURI = params.get('userURI')
+		if(userURI == null) throw new RuntimeException("No 'userURI' param")
+		if(!(userURI instanceof String)) throw new RuntimeException("'userURI' param must be a string")
+		
+		def limit = params.get('limit')
+		if(limit == null) throw new RuntimeException("No 'limit' param")
+		if(limit instanceof Integer) {
+		} else if(limit instanceof Long) {
+			limit = limit.intValue()
+		} else throw new RuntimeException("'limit' param must be an integer/long")
+		
+		VitalSelectQuery selectQuery = vitalBuilder.query {
+					
+			SELECT {
+				
+				value offset: 0
+				value limit: 10000
+				
+				value segments: ['movielens']
+				
+//				value sortProperties: [new VitalSortProperty( VitalSigns.get().getPropertyByTrait(Property_hasRating.class), null, true)]
+					
+				edge_constraint { Edge_hasMovieRating.class }
+				edge_constraint { new Edge_hasMovieRating_PropertiesHelper().edgeSource.equalTo(URIProperty.withString(userURI)) }
+				
+				
+			}
+							
+		}.toQuery()
+				
+		VitalService service = VitalServiceFactory.getVitalService()
+			
+		ResultList queryRL = service.query(selectQuery)
+		
+		if(queryRL.status.status != VitalStatus.Status.ok) {
+			return queryRL;
+		}
+		
+		
+		List<Edge_hasMovieRating> edges = []
+		for(Edge_hasMovieRating e : queryRL) {
+			edges.add(e)
+		}
+		
+		edges.sort { Edge_hasMovieRating e1, Edge_hasMovieRating e2 ->
+			return new Double(e2.rating.doubleValue()).compareTo(e1.rating.doubleValue())
+		}
+		
+		if(edges.size() > limit) edges = edges.subList(0, limit)
+		
+
+		List<URIProperty> moviesURIs = []
+		Map<String, Double> movie2Rating = [:]
+		for(Edge_hasMovieRating edge : edges) {
+			moviesURIs.add(URIProperty.withString(edge.destinationURI))
+			movie2Rating.put(edge.destinationURI, edge.rating?.doubleValue())
+		}
+		
+		ResultList moviesRL = service.get(GraphContext.ServiceWide, moviesURIs)
+
+		if(moviesRL.status.status != VitalStatus.Status.ok) {
+			return moviesRL
+		}
+		
+		for(ResultElement re : moviesRL.results) {
+			Double rating = movie2Rating.get( re.graphObject.URI)
+			if(rating == null) rating = 0d
+			re.score = rating
+		}
+		
+		//sort to be sure
+		
+		moviesRL.results.sort { ResultElement re1, ResultElement re2 ->
+			return new Double(re2.score).compareTo(re1.score)
+		}
+				
+		return moviesRL
+		
+	}
+
+}

@@ -8,7 +8,7 @@
   
 }
 
-"vital-examples~enron-js-app~0.0.1" {
+"vital-examples~movie-recommendations-js-app~0.0.1" {
 
   dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.252"]
 
@@ -20,8 +20,10 @@
 
 "io.vertx~mod-web-server~2.0.0-final" {
 
+
 	#do not let the webserver/websocket start before vitalservice is ready 
 	dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.252"]
+
 
 	enabled: true
 

@@ -52,13 +52,13 @@ class EnronGetDetailsHandler implements CallFunctionHandler {
 			throw new RuntimeException("Graph object with URI $uri not found")
 		}
 		
-		List<VitalGraphQuery> vgqs = [];
+		VitalGraphQuery vgq = null
 		
 		if(g instanceof EnronEmail) {
 			
 			//expand email sender / recipient
 
-			VitalGraphQuery vgq = builder.query {
+			vgq = builder.query {
 				
 				GRAPH {
 					
@@ -95,8 +95,6 @@ class EnronGetDetailsHandler implements CallFunctionHandler {
 				}
 			}.toQuery()
 			
-			vgqs.add(vgq)
-						
 		} else if(g instanceof EnronPerson ){
 		
 		} else {
@@ -105,7 +103,7 @@ class EnronGetDetailsHandler implements CallFunctionHandler {
 		
 		Map<String, GraphObject> results = new LinkedHashMap<String, GraphObject>()
 		
-		for(VitalGraphQuery vgq : vgqs) {
+		if( vgq  != null) {
 			
 			ResultList graphResults = vitalService.query(vgq)
 					
