@@ -152,19 +152,24 @@ class RequestHandler implements Handler<HttpServerRequest> {
 			
 			Map slotsMap = intent.slots
 			
-			for( Entry<String, Object> e : slotsMap.entrySet() ) {
+			if(slotsMap != null) {
 				
-				Map sm = e.value
-				
-				EchoSlot slot = new EchoSlot()
-				slot.URI = URIGenerator.generateURI((App) null, EchoSlot.class)
-				slot.name = e.key
-				slot.value = sm.value
-				//slot type ?
-				
-				slots.add(slot)
+				for( Entry<String, Object> e : slotsMap.entrySet() ) {
+					
+					Map sm = e.value
+							
+							EchoSlot slot = new EchoSlot()
+					slot.URI = URIGenerator.generateURI((App) null, EchoSlot.class)
+					slot.name = e.key
+					slot.value = sm.value
+					//slot type ?
+					
+					slots.add(slot)
+					
+				}
 				
 			}
+			
 			
 		} else if(type == "SessionEndedRequest") {
 		
