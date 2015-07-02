@@ -1,0 +1,9 @@
+{
+  "main": "groovy:ai.vital.amazon.echo.humor.app.webservice.FunnybotWebserviceAppVerticle",
+  "worker": false,
+  "description": "amazon-echo-humor-app VertX Example App",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Dariusz Kobylarz",
+  "keywords": ["funnybot", "amazon-echo-humor-app", "webservice", "VertX", "Vital AI"],
+  "homepage": "http://vital.ai"
+}

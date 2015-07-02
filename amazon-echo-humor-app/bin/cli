@@ -1,0 +1,72 @@
+#!/usr/bin/env groovy
+
+def homeDir = new File(getClass().protectionDomain.codeSource.location.path).parentFile.parentFile;
+
+if(args.length == 0) {
+	System.err.println("usage: <input_json>")
+	return
+}
+
+
+java.text.SimpleDateFormat ISO8601DATEFORMAT = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+ISO8601DATEFORMAT.setTimeZone(TimeZone.getTimeZone('UTC'))
+
+String requestData = new File(args[0]).text
+
+requestData = requestData.replace("__TIMESTAMP__", ISO8601DATEFORMAT.format(new Date()))
+
+File tempFile = File.createTempFile("request", "json")
+tempFile << requestData
+tempFile.deleteOnExit()
+
+//println "input: $requestData"
+	
+List cmd = ['curl', /*'-k', /*'-v',*/
+	'-H', 'Content-Type:application/json;charset=UTF-8',
+	 'http://localhost:90/funnybot-webservice', '--data-binary', '@' + tempFile.absolutePath]
+
+
+StringBuilder buffer = null
+
+boolean exitOnError = true
+
+Process process = new ProcessBuilder(cmd).directory(homeDir).redirectErrorStream(false).start()
+
+InputStream is = process.getInputStream();
+InputStreamReader isr = new InputStreamReader(is);
+BufferedReader br = new BufferedReader(isr);
+
+String line;
+int exit = -1;
+
+while ((line = br.readLine()) != null) {
+	// Outputs your process execution
+	println line
+	if(buffer != null) {
+		buffer.append(line).append((String)"\n")
+	}
+}
+
+br.close()
+
+Integer v = null
+
+try {
+	v = process.exitValue();
+	//println "Process returned immediatey, code: ${v}"
+} catch (IllegalThreadStateException t) {
+}
+
+if(v == null) {
+	//println "Still waiting for the process..."
+	v = process.waitFor()
+	//println "finally returned code: ${v}"
+}
+		
+if(v != null && v.intValue() != 0 && exitOnError) {
+	System.err.println "Process return code: ${v} - exiting..."
+	return
+}
+
+tempFile.delete()
+
