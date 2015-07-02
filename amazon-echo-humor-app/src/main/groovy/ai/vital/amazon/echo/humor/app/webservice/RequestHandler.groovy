@@ -110,6 +110,8 @@ class RequestHandler implements Handler<HttpServerRequest> {
 		
 		boolean shouldEndSession = false;
 		
+		Random r = new Random()
+		
 		if(type == "LaunchRequest") {
 		
 //			the funnybot app to ask "would you like to hear another joke?" after telling a joke. "yes" would tell another joke. "no" would end the session. anything else would do "i didn't understand that. would you like to hear another joke?" (this is to test keeping the session going and ending it upon a "no"). Dariusz Kobylarz
@@ -132,9 +134,27 @@ class RequestHandler implements Handler<HttpServerRequest> {
 			
 			if(name == 'TellAJoke') {
 				
-				Random r = new Random()
-				outputSpeechText = jokesDB.get(r.nextInt(jokesDB.size()))
-				shouldEndSession = true
+				outputSpeechText = jokesDB.get(r.nextInt(jokesDB.size())) + '. Do you want to hear another joke?'
+				
+			} else if( name == 'WantAJoke' ) {
+			
+				def Answer = intent.slots.Answer
+				
+				if(!Answer) throw new RuntimeException("No 'Answer' slot")
+				
+				String answerVal = Answer.value
+				
+				if(answerVal.equalsIgnoreCase('no')) {
+					
+					outputSpeechText = "Have a nice day!"
+					
+					shouldEndSession = true;
+					
+				} else {
+				
+					outputSpeechText = jokesDB.get(r.nextInt(jokesDB.size())) + '. Do you want to hear another joke?'
+				
+				}
 				
 			} else {
 				throw new RuntimeException('Unknown intent: ${name}');
