@@ -48,8 +48,9 @@ class RequestHandler implements Handler<HttpServerRequest> {
 		}
 		
 		if(!contentType.equalsIgnoreCase(APPLICATION_JSON_CHARSET_UTF_8)) {
-			badRequest(res, "expected ${APPLICATION_JSON_CHARSET_UTF_8}")
-			return
+			println "WARN: content-type: ${contentType}"
+//			badRequest(res, "expected ${APPLICATION_JSON_CHARSET_UTF_8}")
+//			return
 		}
 		
 		req.bodyHandler(new Handler<Buffer>(){
