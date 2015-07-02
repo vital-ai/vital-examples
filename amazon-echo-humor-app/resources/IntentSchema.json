@@ -1,0 +1,17 @@
+{
+  "intents": [
+    {
+      "intent": "TellAJoke",
+      "slots": []
+    },
+    {
+      "intent": "WantAJoke",
+      "slots": [
+        {
+          "name": "Answer",
+          "type": "LITERAL"
+        }
+      ]
+    }
+  ]
+}

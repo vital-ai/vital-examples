@@ -115,7 +115,14 @@
 			<version>1.0.0</version>
 			<optional>true</optional>
 		</dependency>
-		
+
+
+		<!-- domain from local repo -->		
+		<dependency>
+			<groupId>vital-ai</groupId>
+			<artifactId>humor-app</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 		
 
 		<!-- tests -->
