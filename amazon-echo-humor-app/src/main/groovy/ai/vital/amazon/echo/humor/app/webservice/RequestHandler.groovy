@@ -164,8 +164,6 @@ class RequestHandler implements Handler<HttpServerRequest> {
 			
 			repromptSpeechText = "I didn't understand that. Would you like to hear another joke?"
 			
-			shouldEndSession = true
-			
 		} else if(type == "SessionEndedRequest") {
 		
 			repromptSpeechText = "Bye!"
