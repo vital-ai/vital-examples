@@ -220,7 +220,8 @@ function handleSearchResults(resultsList) {
 		var body = res.body
 		if(body == null) body = '(no body)';
 		if(body.length > 200) body = body.substring(0, 200) + '...';
-		row.append($('<td>').text(body))
+		row.append($('<td>').text( body ));
+//		row.append($('<td>').append( $('<pre>').text( body )) );
 		
 		
 		var detailsLink = $('<a>', {href: '#', 'data-uri': res.URI}).text('details');
@@ -455,7 +456,11 @@ function handleDetails(detailsReponse) {
 		
 		searchResults.append($('<p>').text('Subject: ' + mainObject.emailSubject));
 		
-		searchResults.append($('<p>').text('Body: ' + mainObject.body));
+		searchResults.append($('<p>').text('Body:'));
+		
+//		searchResults.append($('<p>').text( mainObject.body ));
+		
+		searchResults.append($('<p>').append( $('<pre>').text( mainObject.body )) );
 		
 	} else if(mainObject.type == 'http://vital.ai/ontology/enron-dataset#EnronPerson') {
 		
@@ -509,4 +514,8 @@ function handleDetails(detailsReponse) {
 	});
 	
 	
+}
+
+function formatText(input) {
+	return input.replace("\n", "<br/>");
 }
