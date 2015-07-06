@@ -214,6 +214,10 @@ MODEL {
 				String productURI = recommendationPrediction.productURIs.get(i)
 				Double rating = recommendationPrediction.productRatings.get(i)
 				
+				if(rating.doubleValue() > 5d) {
+					rating = 5d
+				}
+				
 				def target = new TargetNode()
 				target.URI = URIGenerator.generateURI((App)null, TargetNode.class)
 				target.targetStringValue = productURI
