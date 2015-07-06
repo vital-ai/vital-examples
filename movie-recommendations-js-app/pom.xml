@@ -106,7 +106,7 @@
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vitalservice-vertx-mod</artifactId>
-			<version>0.2.252</version>
+			<version>0.2.253</version>
 		</dependency>
 		
 		<dependency>

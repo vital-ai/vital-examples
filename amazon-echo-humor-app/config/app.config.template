@@ -1,4 +1,4 @@
-"vital-ai~vitalservice-vertx-mod~0.2.252"  {
+"vital-ai~vitalservice-vertx-mod~0.2.253"  {
 
   enabled: true
   
@@ -10,7 +10,7 @@
 
 "vital-examples~amazon-echo-humor-app~0.0.1" {
 
-  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.252"]
+  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.253"]
 
   enabled: true
   
@@ -22,7 +22,7 @@
 
 
 	#do not let the webserver/websocket start before vitalservice is ready 
-	dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.252"]
+	dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.253"]
 
 
 	enabled: true
