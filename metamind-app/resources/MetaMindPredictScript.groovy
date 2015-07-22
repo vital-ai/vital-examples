@@ -21,7 +21,7 @@ import ai.vital.vitalsigns.model.VITAL_Category
 
 class MetaMindPredictScript implements VitalPrimeGroovyScriptV2 {
 
-	static String apiKey = "RHJW8lmfwFnZl6kIhgubsGmHzfwVG2fcPcE56MKnJ00JPSZeIg";
+	static String apiKey = //SET ME
 	
 	static int MAX_USAGE = 1000
 	
