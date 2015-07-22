@@ -1,0 +1,43 @@
+"vital-ai~vitalservice-vertx-mod~0.2.253"  {
+
+  enabled: true
+  
+  instances: 1
+  
+  profile: vitaldevelopmentprime
+  
+}
+
+"vital-examples~metamind-app~0.0.1" {
+
+  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.253"]
+
+  enabled: true
+  
+  instances: 1
+
+}
+
+"io.vertx~mod-web-server~2.0.0-final" {
+
+
+	#do not let the webserver/websocket start before vitalservice is ready 
+	dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.253"]
+
+
+	enabled: true
+
+	instances: 1
+
+    web_root: SET ME !
+    host: 0.0.0.0
+    port: 90
+    
+	static_files: true
+	
+	bridge: true
+	
+	inbound_permitted: [{address: "vitalservice"}],
+	outbound_permitted: [{}]
+    
+}
