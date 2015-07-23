@@ -1,0 +1,2006 @@
+
+# metamind flat taxonomy
+
++ http://vital.ai/vital/metamind-app/ROOT  "MetaMind Taxonomy Root"
+
+ 
+
+++ http://vital.ai/vital/metamind-app/0 "kit fox, Vulpes macrotis"
+
+++ http://vital.ai/vital/metamind-app/1 "English setter"
+
+++ http://vital.ai/vital/metamind-app/2 "Siberian husky"
+
+++ http://vital.ai/vital/metamind-app/3 "Australian terrier"
+
+++ http://vital.ai/vital/metamind-app/4 "English springer, English springer spaniel"
+
+++ http://vital.ai/vital/metamind-app/5 "grey whale, gray whale, devilfish, Eschrichtius gibbosus, Eschrichtius robustus"
+
+++ http://vital.ai/vital/metamind-app/6 "lesser panda, red panda, panda, bear cat, cat bear, Ailurus fulgens"
+
+++ http://vital.ai/vital/metamind-app/7 "Egyptian cat"
+
+++ http://vital.ai/vital/metamind-app/8 "ibex, Capra ibex"
+
+++ http://vital.ai/vital/metamind-app/9 "Persian cat"
+
+++ http://vital.ai/vital/metamind-app/10 "cougar, puma, catamount, mountain lion, painter, panther, Felis concolor"
+
+++ http://vital.ai/vital/metamind-app/11 "gazelle"
+
+++ http://vital.ai/vital/metamind-app/12 "porcupine, hedgehog"
+
+++ http://vital.ai/vital/metamind-app/13 "sea lion"
+
+++ http://vital.ai/vital/metamind-app/14 "malamute, malemute, Alaskan malamute"
+
+++ http://vital.ai/vital/metamind-app/15 "badger"
+
+++ http://vital.ai/vital/metamind-app/16 "Great Dane"
+
+++ http://vital.ai/vital/metamind-app/17 "Walker hound, Walker foxhound"
+
+++ http://vital.ai/vital/metamind-app/18 "Welsh springer spaniel"
+
+++ http://vital.ai/vital/metamind-app/19 "whippet"
+
+++ http://vital.ai/vital/metamind-app/20 "Scottish deerhound, deerhound"
+
+++ http://vital.ai/vital/metamind-app/21 "killer whale, killer, orca, grampus, sea wolf, Orcinus orca"
+
+++ http://vital.ai/vital/metamind-app/22 "mink"
+
+++ http://vital.ai/vital/metamind-app/23 "African elephant, Loxodonta africana"
+
+++ http://vital.ai/vital/metamind-app/24 "Weimaraner"
+
+++ http://vital.ai/vital/metamind-app/25 "soft-coated wheaten terrier"
+
+++ http://vital.ai/vital/metamind-app/26 "Dandie Dinmont, Dandie Dinmont terrier"
+
+++ http://vital.ai/vital/metamind-app/27 "red wolf, maned wolf, Canis rufus, Canis niger"
+
+++ http://vital.ai/vital/metamind-app/28 "Old English sheepdog, bobtail"
+
+++ http://vital.ai/vital/metamind-app/29 "jaguar, panther, Panthera onca, Felis onca"
+
+++ http://vital.ai/vital/metamind-app/30 "otterhound, otter hound"
+
+++ http://vital.ai/vital/metamind-app/31 "bloodhound, sleuthhound"
+
+++ http://vital.ai/vital/metamind-app/32 "Airedale, Airedale terrier"
+
+++ http://vital.ai/vital/metamind-app/33 "hyena, hyaena"
+
+++ http://vital.ai/vital/metamind-app/34 "meerkat, mierkat"
+
+++ http://vital.ai/vital/metamind-app/35 "giant schnauzer"
+
+++ http://vital.ai/vital/metamind-app/36 "titi, titi monkey"
+
+++ http://vital.ai/vital/metamind-app/37 "three-toed sloth, ai, Bradypus tridactylus"
+
+++ http://vital.ai/vital/metamind-app/38 "sorrel"
+
+++ http://vital.ai/vital/metamind-app/39 "black-footed ferret, ferret, Mustela nigripes"
+
+++ http://vital.ai/vital/metamind-app/40 "dalmatian, coach dog, carriage dog"
+
+++ http://vital.ai/vital/metamind-app/41 "black-and-tan coonhound"
+
+++ http://vital.ai/vital/metamind-app/42 "papillon"
+
+++ http://vital.ai/vital/metamind-app/43 "skunk, polecat, wood pussy"
+
+++ http://vital.ai/vital/metamind-app/44 "Staffordshire bullterrier, Staffordshire bull terrier"
+
+++ http://vital.ai/vital/metamind-app/45 "Mexican hairless"
+
+++ http://vital.ai/vital/metamind-app/46 "Bouvier des Flandres, Bouviers des Flandres"
+
+++ http://vital.ai/vital/metamind-app/47 "weasel"
+
+++ http://vital.ai/vital/metamind-app/48 "miniature poodle"
+
+++ http://vital.ai/vital/metamind-app/49 "Cardigan, Cardigan Welsh corgi"
+
+++ http://vital.ai/vital/metamind-app/50 "malinois"
+
+++ http://vital.ai/vital/metamind-app/51 "bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis"
+
+++ http://vital.ai/vital/metamind-app/52 "fox squirrel, eastern fox squirrel, Sciurus niger"
+
+++ http://vital.ai/vital/metamind-app/53 "colobus, colobus monkey"
+
+++ http://vital.ai/vital/metamind-app/54 "tiger cat"
+
+++ http://vital.ai/vital/metamind-app/55 "Lhasa, Lhasa apso"
+
+++ http://vital.ai/vital/metamind-app/56 "impala, Aepyceros melampus"
+
+++ http://vital.ai/vital/metamind-app/57 "coyote, prairie wolf, brush wolf, Canis latrans"
+
+++ http://vital.ai/vital/metamind-app/58 "Yorkshire terrier"
+
+++ http://vital.ai/vital/metamind-app/59 "Newfoundland, Newfoundland dog"
+
+++ http://vital.ai/vital/metamind-app/60 "brown bear, bruin, Ursus arctos"
+
+++ http://vital.ai/vital/metamind-app/61 "red fox, Vulpes vulpes"
+
+++ http://vital.ai/vital/metamind-app/62 "Norwegian elkhound, elkhound"
+
+++ http://vital.ai/vital/metamind-app/63 "Rottweiler"
+
+++ http://vital.ai/vital/metamind-app/64 "hartebeest"
+
+++ http://vital.ai/vital/metamind-app/65 "Saluki, gazelle hound"
+
+++ http://vital.ai/vital/metamind-app/66 "grey fox, gray fox, Urocyon cinereoargenteus"
+
+++ http://vital.ai/vital/metamind-app/67 "schipperke"
+
+++ http://vital.ai/vital/metamind-app/68 "Pekinese, Pekingese, Peke"
+
+++ http://vital.ai/vital/metamind-app/69 "Brabancon griffon"
+
+++ http://vital.ai/vital/metamind-app/70 "West Highland white terrier"
+
+++ http://vital.ai/vital/metamind-app/71 "Sealyham terrier, Sealyham"
+
+++ http://vital.ai/vital/metamind-app/72 "guenon, guenon monkey"
+
+++ http://vital.ai/vital/metamind-app/73 "mongoose"
+
+++ http://vital.ai/vital/metamind-app/74 "indri, indris, Indri indri, Indri brevicaudatus"
+
+++ http://vital.ai/vital/metamind-app/75 "tiger, Panthera tigris"
+
+++ http://vital.ai/vital/metamind-app/76 "Irish wolfhound"
+
+++ http://vital.ai/vital/metamind-app/77 "wild boar, boar, Sus scrofa"
+
+++ http://vital.ai/vital/metamind-app/78 "EntleBucher"
+
+++ http://vital.ai/vital/metamind-app/79 "zebra"
+
+++ http://vital.ai/vital/metamind-app/80 "ram, tup"
+
+++ http://vital.ai/vital/metamind-app/81 "French bulldog"
+
+++ http://vital.ai/vital/metamind-app/82 "orangutan, orang, orangutang, Pongo pygmaeus"
+
+++ http://vital.ai/vital/metamind-app/83 "basenji"
+
+++ http://vital.ai/vital/metamind-app/84 "leopard, Panthera pardus"
+
+++ http://vital.ai/vital/metamind-app/85 "Bernese mountain dog"
+
+++ http://vital.ai/vital/metamind-app/86 "Maltese dog, Maltese terrier, Maltese"
+
+++ http://vital.ai/vital/metamind-app/87 "Norfolk terrier"
+
+++ http://vital.ai/vital/metamind-app/88 "toy terrier"
+
+++ http://vital.ai/vital/metamind-app/89 "vizsla, Hungarian pointer"
+
+++ http://vital.ai/vital/metamind-app/90 "cairn, cairn terrier"
+
+++ http://vital.ai/vital/metamind-app/91 "squirrel monkey, Saimiri sciureus"
+
+++ http://vital.ai/vital/metamind-app/92 "groenendael"
+
+++ http://vital.ai/vital/metamind-app/93 "clumber, clumber spaniel"
+
+++ http://vital.ai/vital/metamind-app/94 "Siamese cat, Siamese"
+
+++ http://vital.ai/vital/metamind-app/95 "chimpanzee, chimp, Pan troglodytes"
+
+++ http://vital.ai/vital/metamind-app/96 "komondor"
+
+++ http://vital.ai/vital/metamind-app/97 "Afghan hound, Afghan"
+
+++ http://vital.ai/vital/metamind-app/98 "Japanese spaniel"
+
+++ http://vital.ai/vital/metamind-app/99 "proboscis monkey, Nasalis larvatus"
+
+++ http://vital.ai/vital/metamind-app/100 "guinea pig, Cavia cobaya"
+
+++ http://vital.ai/vital/metamind-app/101 "white wolf, Arctic wolf, Canis lupus tundrarum"
+
+++ http://vital.ai/vital/metamind-app/102 "ice bear, polar bear, Ursus Maritimus, Thalarctos maritimus"
+
+++ http://vital.ai/vital/metamind-app/103 "gorilla, Gorilla gorilla"
+
+++ http://vital.ai/vital/metamind-app/104 "borzoi, Russian wolfhound"
+
+++ http://vital.ai/vital/metamind-app/105 "toy poodle"
+
+++ http://vital.ai/vital/metamind-app/106 "Kerry blue terrier"
+
+++ http://vital.ai/vital/metamind-app/107 "ox"
+
+++ http://vital.ai/vital/metamind-app/108 "Scotch terrier, Scottish terrier, Scottie"
+
+++ http://vital.ai/vital/metamind-app/109 "Tibetan mastiff"
+
+++ http://vital.ai/vital/metamind-app/110 "spider monkey, Ateles geoffroyi"
+
+++ http://vital.ai/vital/metamind-app/111 "Doberman, Doberman pinscher"
+
+++ http://vital.ai/vital/metamind-app/112 "Boston bull, Boston terrier"
+
+++ http://vital.ai/vital/metamind-app/113 "Greater Swiss Mountain dog"
+
+++ http://vital.ai/vital/metamind-app/114 "Appenzeller"
+
+++ http://vital.ai/vital/metamind-app/115 "Shih-Tzu"
+
+++ http://vital.ai/vital/metamind-app/116 "Irish water spaniel"
+
+++ http://vital.ai/vital/metamind-app/117 "Pomeranian"
+
+++ http://vital.ai/vital/metamind-app/118 "Bedlington terrier"
+
+++ http://vital.ai/vital/metamind-app/119 "warthog"
+
+++ http://vital.ai/vital/metamind-app/120 "Arabian camel, dromedary, Camelus dromedarius"
+
+++ http://vital.ai/vital/metamind-app/121 "siamang, Hylobates syndactylus, Symphalangus syndactylus"
+
+++ http://vital.ai/vital/metamind-app/122 "miniature schnauzer"
+
+++ http://vital.ai/vital/metamind-app/123 "collie"
+
+++ http://vital.ai/vital/metamind-app/124 "golden retriever"
+
+++ http://vital.ai/vital/metamind-app/125 "Irish terrier"
+
+++ http://vital.ai/vital/metamind-app/126 "affenpinscher, monkey pinscher, monkey dog"
+
+++ http://vital.ai/vital/metamind-app/127 "Border collie"
+
+++ http://vital.ai/vital/metamind-app/128 "hare"
+
+++ http://vital.ai/vital/metamind-app/129 "boxer"
+
+++ http://vital.ai/vital/metamind-app/130 "silky terrier, Sydney silky"
+
+++ http://vital.ai/vital/metamind-app/131 "beagle"
+
+++ http://vital.ai/vital/metamind-app/132 "Leonberg"
+
+++ http://vital.ai/vital/metamind-app/133 "German short-haired pointer"
+
+++ http://vital.ai/vital/metamind-app/134 "patas, hussar monkey, Erythrocebus patas"
+
+++ http://vital.ai/vital/metamind-app/135 "dhole, Cuon alpinus"
+
+++ http://vital.ai/vital/metamind-app/136 "baboon"
+
+++ http://vital.ai/vital/metamind-app/137 "macaque"
+
+++ http://vital.ai/vital/metamind-app/138 "Chesapeake Bay retriever"
+
+++ http://vital.ai/vital/metamind-app/139 "bull mastiff"
+
+++ http://vital.ai/vital/metamind-app/140 "kuvasz"
+
+++ http://vital.ai/vital/metamind-app/141 "capuchin, ringtail, Cebus capucinus"
+
+++ http://vital.ai/vital/metamind-app/142 "pug, pug-dog"
+
+++ http://vital.ai/vital/metamind-app/143 "curly-coated retriever"
+
+++ http://vital.ai/vital/metamind-app/144 "Norwich terrier"
+
+++ http://vital.ai/vital/metamind-app/145 "flat-coated retriever"
+
+++ http://vital.ai/vital/metamind-app/146 "hog, pig, grunter, squealer, Sus scrofa"
+
+++ http://vital.ai/vital/metamind-app/147 "keeshond"
+
+++ http://vital.ai/vital/metamind-app/148 "Eskimo dog, husky"
+
+++ http://vital.ai/vital/metamind-app/149 "Brittany spaniel"
+
+++ http://vital.ai/vital/metamind-app/150 "standard poodle"
+
+++ http://vital.ai/vital/metamind-app/151 "Lakeland terrier"
+
+++ http://vital.ai/vital/metamind-app/152 "snow leopard, ounce, Panthera uncia"
+
+++ http://vital.ai/vital/metamind-app/153 "Gordon setter"
+
+++ http://vital.ai/vital/metamind-app/154 "dingo, warrigal, warragal, Canis dingo"
+
+++ http://vital.ai/vital/metamind-app/155 "standard schnauzer"
+
+++ http://vital.ai/vital/metamind-app/156 "hamster"
+
+++ http://vital.ai/vital/metamind-app/157 "Tibetan terrier, chrysanthemum dog"
+
+++ http://vital.ai/vital/metamind-app/158 "Arctic fox, white fox, Alopex lagopus"
+
+++ http://vital.ai/vital/metamind-app/159 "wire-haired fox terrier"
+
+++ http://vital.ai/vital/metamind-app/160 "basset, basset hound"
+
+++ http://vital.ai/vital/metamind-app/161 "water buffalo, water ox, Asiatic buffalo, Bubalus bubalis"
+
+++ http://vital.ai/vital/metamind-app/162 "American black bear, black bear, Ursus americanus, Euarctos americanus"
+
+++ http://vital.ai/vital/metamind-app/163 "Angora, Angora rabbit"
+
+++ http://vital.ai/vital/metamind-app/164 "bison"
+
+++ http://vital.ai/vital/metamind-app/165 "howler monkey, howler"
+
+++ http://vital.ai/vital/metamind-app/166 "hippopotamus, hippo, river horse, Hippopotamus amphibius"
+
+++ http://vital.ai/vital/metamind-app/167 "chow, chow chow"
+
+++ http://vital.ai/vital/metamind-app/168 "giant panda, panda, panda bear, coon bear, Ailuropoda melanoleuca"
+
+++ http://vital.ai/vital/metamind-app/169 "American Staffordshire terrier, Staffordshire terrier, American pit bull terrier, pit bull terrier"
+
+++ http://vital.ai/vital/metamind-app/170 "Shetland sheepdog, Shetland sheep dog, Shetland"
+
+++ http://vital.ai/vital/metamind-app/171 "Great Pyrenees"
+
+++ http://vital.ai/vital/metamind-app/172 "Chihuahua"
+
+++ http://vital.ai/vital/metamind-app/173 "tabby, tabby cat"
+
+++ http://vital.ai/vital/metamind-app/174 "marmoset"
+
+++ http://vital.ai/vital/metamind-app/175 "Labrador retriever"
+
+++ http://vital.ai/vital/metamind-app/176 "Saint Bernard, St Bernard"
+
+++ http://vital.ai/vital/metamind-app/177 "armadillo"
+
+++ http://vital.ai/vital/metamind-app/178 "Samoyed, Samoyede"
+
+++ http://vital.ai/vital/metamind-app/179 "bluetick"
+
+++ http://vital.ai/vital/metamind-app/180 "redbone"
+
+++ http://vital.ai/vital/metamind-app/181 "polecat, fitch, foulmart, foumart, Mustela putorius"
+
+++ http://vital.ai/vital/metamind-app/182 "marmot"
+
+++ http://vital.ai/vital/metamind-app/183 "kelpie"
+
+++ http://vital.ai/vital/metamind-app/184 "gibbon, Hylobates lar"
+
+++ http://vital.ai/vital/metamind-app/185 "llama"
+
+++ http://vital.ai/vital/metamind-app/186 "miniature pinscher"
+
+++ http://vital.ai/vital/metamind-app/187 "wood rabbit, cottontail, cottontail rabbit"
+
+++ http://vital.ai/vital/metamind-app/188 "Italian greyhound"
+
+++ http://vital.ai/vital/metamind-app/189 "lion, king of beasts, Panthera leo"
+
+++ http://vital.ai/vital/metamind-app/190 "cocker spaniel, English cocker spaniel, cocker"
+
+++ http://vital.ai/vital/metamind-app/191 "Irish setter, red setter"
+
+++ http://vital.ai/vital/metamind-app/192 "dugong, Dugong dugon"
+
+++ http://vital.ai/vital/metamind-app/193 "Indian elephant, Elephas maximus"
+
+++ http://vital.ai/vital/metamind-app/194 "beaver"
+
+++ http://vital.ai/vital/metamind-app/195 "Sussex spaniel"
+
+++ http://vital.ai/vital/metamind-app/196 "Pembroke, Pembroke Welsh corgi"
+
+++ http://vital.ai/vital/metamind-app/197 "Blenheim spaniel"
+
+++ http://vital.ai/vital/metamind-app/198 "Madagascar cat, ring-tailed lemur, Lemur catta"
+
+++ http://vital.ai/vital/metamind-app/199 "Rhodesian ridgeback"
+
+++ http://vital.ai/vital/metamind-app/200 "lynx, catamount"
+
+++ http://vital.ai/vital/metamind-app/201 "African hunting dog, hyena dog, Cape hunting dog, Lycaon pictus"
+
+++ http://vital.ai/vital/metamind-app/202 "langur"
+
+++ http://vital.ai/vital/metamind-app/203 "Ibizan hound, Ibizan Podenco"
+
+++ http://vital.ai/vital/metamind-app/204 "timber wolf, grey wolf, gray wolf, Canis lupus"
+
+++ http://vital.ai/vital/metamind-app/205 "cheetah, chetah, Acinonyx jubatus"
+
+++ http://vital.ai/vital/metamind-app/206 "English foxhound"
+
+++ http://vital.ai/vital/metamind-app/207 "briard"
+
+++ http://vital.ai/vital/metamind-app/208 "sloth bear, Melursus ursinus, Ursus ursinus"
+
+++ http://vital.ai/vital/metamind-app/209 "Border terrier"
+
+++ http://vital.ai/vital/metamind-app/210 "German shepherd, German shepherd dog, German police dog, alsatian"
+
+++ http://vital.ai/vital/metamind-app/211 "otter"
+
+++ http://vital.ai/vital/metamind-app/212 "koala, koala bear, kangaroo bear, native bear, Phascolarctos cinereus"
+
+++ http://vital.ai/vital/metamind-app/213 "tusker"
+
+++ http://vital.ai/vital/metamind-app/214 "echidna, spiny anteater, anteater"
+
+++ http://vital.ai/vital/metamind-app/215 "wallaby, brush kangaroo"
+
+++ http://vital.ai/vital/metamind-app/216 "platypus, duckbill, duckbilled platypus, duck-billed platypus, Ornithorhynchus anatinus"
+
+++ http://vital.ai/vital/metamind-app/217 "wombat"
+
+++ http://vital.ai/vital/metamind-app/218 "revolver, six-gun, six-shooter"
+
+++ http://vital.ai/vital/metamind-app/219 "umbrella"
+
+++ http://vital.ai/vital/metamind-app/220 "schooner"
+
+++ http://vital.ai/vital/metamind-app/221 "soccer ball"
+
+++ http://vital.ai/vital/metamind-app/222 "accordion, piano accordion, squeeze box"
+
+++ http://vital.ai/vital/metamind-app/223 "ant, emmet, pismire"
+
+++ http://vital.ai/vital/metamind-app/224 "starfish, sea star"
+
+++ http://vital.ai/vital/metamind-app/225 "chambered nautilus, pearly nautilus, nautilus"
+
+++ http://vital.ai/vital/metamind-app/226 "grand piano, grand"
+
+++ http://vital.ai/vital/metamind-app/227 "laptop, laptop computer"
+
+++ http://vital.ai/vital/metamind-app/228 "strawberry"
+
+++ http://vital.ai/vital/metamind-app/229 "airliner"
+
+++ http://vital.ai/vital/metamind-app/230 "warplane, military plane"
+
+++ http://vital.ai/vital/metamind-app/231 "airship, dirigible"
+
+++ http://vital.ai/vital/metamind-app/232 "balloon"
+
+++ http://vital.ai/vital/metamind-app/233 "space shuttle"
+
+++ http://vital.ai/vital/metamind-app/234 "fireboat"
+
+++ http://vital.ai/vital/metamind-app/235 "gondola"
+
+++ http://vital.ai/vital/metamind-app/236 "speedboat"
+
+++ http://vital.ai/vital/metamind-app/237 "lifeboat"
+
+++ http://vital.ai/vital/metamind-app/238 "canoe"
+
+++ http://vital.ai/vital/metamind-app/239 "yawl"
+
+++ http://vital.ai/vital/metamind-app/240 "catamaran"
+
+++ http://vital.ai/vital/metamind-app/241 "trimaran"
+
+++ http://vital.ai/vital/metamind-app/242 "container ship, containership, container vessel"
+
+++ http://vital.ai/vital/metamind-app/243 "liner, ocean liner"
+
+++ http://vital.ai/vital/metamind-app/244 "pirate, pirate ship"
+
+++ http://vital.ai/vital/metamind-app/245 "aircraft carrier, carrier, flattop, attack aircraft carrier"
+
+++ http://vital.ai/vital/metamind-app/246 "submarine, pigboat, sub, U-boat"
+
+++ http://vital.ai/vital/metamind-app/247 "wreck"
+
+++ http://vital.ai/vital/metamind-app/248 "half track"
+
+++ http://vital.ai/vital/metamind-app/249 "tank, army tank, armored combat vehicle, armoured combat vehicle"
+
+++ http://vital.ai/vital/metamind-app/250 "missile"
+
+++ http://vital.ai/vital/metamind-app/251 "bobsled, bobsleigh, bob"
+
+++ http://vital.ai/vital/metamind-app/252 "dogsled, dog sled, dog sleigh"
+
+++ http://vital.ai/vital/metamind-app/253 "bicycle-built-for-two, tandem bicycle, tandem"
+
+++ http://vital.ai/vital/metamind-app/254 "mountain bike, all-terrain bike, off-roader"
+
+++ http://vital.ai/vital/metamind-app/255 "freight car"
+
+++ http://vital.ai/vital/metamind-app/256 "passenger car, coach, carriage"
+
+++ http://vital.ai/vital/metamind-app/257 "barrow, garden cart, lawn cart, wheelbarrow"
+
+++ http://vital.ai/vital/metamind-app/258 "shopping cart"
+
+++ http://vital.ai/vital/metamind-app/259 "motor scooter, scooter"
+
+++ http://vital.ai/vital/metamind-app/260 "forklift"
+
+++ http://vital.ai/vital/metamind-app/261 "electric locomotive"
+
+++ http://vital.ai/vital/metamind-app/262 "steam locomotive"
+
+++ http://vital.ai/vital/metamind-app/263 "amphibian, amphibious vehicle"
+
+++ http://vital.ai/vital/metamind-app/264 "ambulance"
+
+++ http://vital.ai/vital/metamind-app/265 "beach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon"
+
+++ http://vital.ai/vital/metamind-app/266 "cab, hack, taxi, taxicab"
+
+++ http://vital.ai/vital/metamind-app/267 "convertible"
+
+++ http://vital.ai/vital/metamind-app/268 "jeep, landrover"
+
+++ http://vital.ai/vital/metamind-app/269 "limousine, limo"
+
+++ http://vital.ai/vital/metamind-app/270 "minivan"
+
+++ http://vital.ai/vital/metamind-app/271 "Model T"
+
+++ http://vital.ai/vital/metamind-app/272 "racer, race car, racing car"
+
+++ http://vital.ai/vital/metamind-app/273 "sports car, sport car"
+
+++ http://vital.ai/vital/metamind-app/274 "go-kart"
+
+++ http://vital.ai/vital/metamind-app/275 "golfcart, golf cart"
+
+++ http://vital.ai/vital/metamind-app/276 "moped"
+
+++ http://vital.ai/vital/metamind-app/277 "snowplow, snowplough"
+
+++ http://vital.ai/vital/metamind-app/278 "fire engine, fire truck"
+
+++ http://vital.ai/vital/metamind-app/279 "garbage truck, dustcart"
+
+++ http://vital.ai/vital/metamind-app/280 "pickup, pickup truck"
+
+++ http://vital.ai/vital/metamind-app/281 "tow truck, tow car, wrecker"
+
+++ http://vital.ai/vital/metamind-app/282 "trailer truck, tractor trailer, trucking rig, rig, articulated lorry, semi"
+
+++ http://vital.ai/vital/metamind-app/283 "moving van"
+
+++ http://vital.ai/vital/metamind-app/284 "police van, police wagon, paddy wagon, patrol wagon, wagon, black Maria"
+
+++ http://vital.ai/vital/metamind-app/285 "recreational vehicle, RV, R.V."
+
+++ http://vital.ai/vital/metamind-app/286 "streetcar, tram, tramcar, trolley, trolley car"
+
+++ http://vital.ai/vital/metamind-app/287 "snowmobile"
+
+++ http://vital.ai/vital/metamind-app/288 "tractor"
+
+++ http://vital.ai/vital/metamind-app/289 "mobile home, manufactured home"
+
+++ http://vital.ai/vital/metamind-app/290 "tricycle, trike, velocipede"
+
+++ http://vital.ai/vital/metamind-app/291 "unicycle, monocycle"
+
+++ http://vital.ai/vital/metamind-app/292 "horse cart, horse-cart"
+
+++ http://vital.ai/vital/metamind-app/293 "jinrikisha, ricksha, rickshaw"
+
+++ http://vital.ai/vital/metamind-app/294 "oxcart"
+
+++ http://vital.ai/vital/metamind-app/295 "bassinet"
+
+++ http://vital.ai/vital/metamind-app/296 "cradle"
+
+++ http://vital.ai/vital/metamind-app/297 "crib, cot"
+
+++ http://vital.ai/vital/metamind-app/298 "four-poster"
+
+++ http://vital.ai/vital/metamind-app/299 "bookcase"
+
+++ http://vital.ai/vital/metamind-app/300 "china cabinet, china closet"
+
+++ http://vital.ai/vital/metamind-app/301 "medicine chest, medicine cabinet"
+
+++ http://vital.ai/vital/metamind-app/302 "chiffonier, commode"
+
+++ http://vital.ai/vital/metamind-app/303 "table lamp"
+
+++ http://vital.ai/vital/metamind-app/304 "file, file cabinet, filing cabinet"
+
+++ http://vital.ai/vital/metamind-app/305 "park bench"
+
+++ http://vital.ai/vital/metamind-app/306 "barber chair"
+
+++ http://vital.ai/vital/metamind-app/307 "throne"
+
+++ http://vital.ai/vital/metamind-app/308 "folding chair"
+
+++ http://vital.ai/vital/metamind-app/309 "rocking chair, rocker"
+
+++ http://vital.ai/vital/metamind-app/310 "studio couch, day bed"
+
+++ http://vital.ai/vital/metamind-app/311 "toilet seat"
+
+++ http://vital.ai/vital/metamind-app/312 "desk"
+
+++ http://vital.ai/vital/metamind-app/313 "pool table, billiard table, snooker table"
+
+++ http://vital.ai/vital/metamind-app/314 "dining table, board"
+
+++ http://vital.ai/vital/metamind-app/315 "entertainment center"
+
+++ http://vital.ai/vital/metamind-app/316 "wardrobe, closet, press"
+
+++ http://vital.ai/vital/metamind-app/317 "Granny Smith"
+
+++ http://vital.ai/vital/metamind-app/318 "orange"
+
+++ http://vital.ai/vital/metamind-app/319 "lemon"
+
+++ http://vital.ai/vital/metamind-app/320 "fig"
+
+++ http://vital.ai/vital/metamind-app/321 "pineapple, ananas"
+
+++ http://vital.ai/vital/metamind-app/322 "banana"
+
+++ http://vital.ai/vital/metamind-app/323 "jackfruit, jak, jack"
+
+++ http://vital.ai/vital/metamind-app/324 "custard apple"
+
+++ http://vital.ai/vital/metamind-app/325 "pomegranate"
+
+++ http://vital.ai/vital/metamind-app/326 "acorn"
+
+++ http://vital.ai/vital/metamind-app/327 "hip, rose hip, rosehip"
+
+++ http://vital.ai/vital/metamind-app/328 "ear, spike, capitulum"
+
+++ http://vital.ai/vital/metamind-app/329 "rapeseed"
+
+++ http://vital.ai/vital/metamind-app/330 "corn"
+
+++ http://vital.ai/vital/metamind-app/331 "buckeye, horse chestnut, conker"
+
+++ http://vital.ai/vital/metamind-app/332 "organ, pipe organ"
+
+++ http://vital.ai/vital/metamind-app/333 "upright, upright piano"
+
+++ http://vital.ai/vital/metamind-app/334 "chime, bell, gong"
+
+++ http://vital.ai/vital/metamind-app/335 "drum, membranophone, tympan"
+
+++ http://vital.ai/vital/metamind-app/336 "gong, tam-tam"
+
+++ http://vital.ai/vital/metamind-app/337 "maraca"
+
+++ http://vital.ai/vital/metamind-app/338 "marimba, xylophone"
+
+++ http://vital.ai/vital/metamind-app/339 "steel drum"
+
+++ http://vital.ai/vital/metamind-app/340 "banjo"
+
+++ http://vital.ai/vital/metamind-app/341 "cello, violoncello"
+
+++ http://vital.ai/vital/metamind-app/342 "violin, fiddle"
+
+++ http://vital.ai/vital/metamind-app/343 "harp"
+
+++ http://vital.ai/vital/metamind-app/344 "acoustic guitar"
+
+++ http://vital.ai/vital/metamind-app/345 "electric guitar"
+
+++ http://vital.ai/vital/metamind-app/346 "cornet, horn, trumpet, trump"
+
+++ http://vital.ai/vital/metamind-app/347 "French horn, horn"
+
+++ http://vital.ai/vital/metamind-app/348 "trombone"
+
+++ http://vital.ai/vital/metamind-app/349 "harmonica, mouth organ, harp, mouth harp"
+
+++ http://vital.ai/vital/metamind-app/350 "ocarina, sweet potato"
+
+++ http://vital.ai/vital/metamind-app/351 "panpipe, pandean pipe, syrinx"
+
+++ http://vital.ai/vital/metamind-app/352 "bassoon"
+
+++ http://vital.ai/vital/metamind-app/353 "oboe, hautboy, hautbois"
+
+++ http://vital.ai/vital/metamind-app/354 "sax, saxophone"
+
+++ http://vital.ai/vital/metamind-app/355 "flute, transverse flute"
+
+++ http://vital.ai/vital/metamind-app/356 "daisy"
+
+++ http://vital.ai/vital/metamind-app/357 "yellow lady's slipper, yellow lady-slipper, Cypripedium calceolus, Cypripedium parviflorum"
+
+++ http://vital.ai/vital/metamind-app/358 "cliff, drop, drop-off"
+
+++ http://vital.ai/vital/metamind-app/359 "valley, vale"
+
+++ http://vital.ai/vital/metamind-app/360 "alp"
+
+++ http://vital.ai/vital/metamind-app/361 "volcano"
+
+++ http://vital.ai/vital/metamind-app/362 "promontory, headland, head, foreland"
+
+++ http://vital.ai/vital/metamind-app/363 "sandbar, sand bar"
+
+++ http://vital.ai/vital/metamind-app/364 "coral reef"
+
+++ http://vital.ai/vital/metamind-app/365 "lakeside, lakeshore"
+
+++ http://vital.ai/vital/metamind-app/366 "seashore, coast, seacoast, sea-coast"
+
+++ http://vital.ai/vital/metamind-app/367 "geyser"
+
+++ http://vital.ai/vital/metamind-app/368 "hatchet"
+
+++ http://vital.ai/vital/metamind-app/369 "cleaver, meat cleaver, chopper"
+
+++ http://vital.ai/vital/metamind-app/370 "letter opener, paper knife, paperknife"
+
+++ http://vital.ai/vital/metamind-app/371 "plane, carpenter's plane, woodworking plane"
+
+++ http://vital.ai/vital/metamind-app/372 "power drill"
+
+++ http://vital.ai/vital/metamind-app/373 "lawn mower, mower"
+
+++ http://vital.ai/vital/metamind-app/374 "hammer"
+
+++ http://vital.ai/vital/metamind-app/375 "corkscrew, bottle screw"
+
+++ http://vital.ai/vital/metamind-app/376 "can opener, tin opener"
+
+++ http://vital.ai/vital/metamind-app/377 "plunger, plumber's helper"
+
+++ http://vital.ai/vital/metamind-app/378 "screwdriver"
+
+++ http://vital.ai/vital/metamind-app/379 "shovel"
+
+++ http://vital.ai/vital/metamind-app/380 "plow, plough"
+
+++ http://vital.ai/vital/metamind-app/381 "chain saw, chainsaw"
+
+++ http://vital.ai/vital/metamind-app/382 "cock"
+
+++ http://vital.ai/vital/metamind-app/383 "hen"
+
+++ http://vital.ai/vital/metamind-app/384 "ostrich, Struthio camelus"
+
+++ http://vital.ai/vital/metamind-app/385 "brambling, Fringilla montifringilla"
+
+++ http://vital.ai/vital/metamind-app/386 "goldfinch, Carduelis carduelis"
+
+++ http://vital.ai/vital/metamind-app/387 "house finch, linnet, Carpodacus mexicanus"
+
+++ http://vital.ai/vital/metamind-app/388 "junco, snowbird"
+
+++ http://vital.ai/vital/metamind-app/389 "indigo bunting, indigo finch, indigo bird, Passerina cyanea"
+
+++ http://vital.ai/vital/metamind-app/390 "robin, American robin, Turdus migratorius"
+
+++ http://vital.ai/vital/metamind-app/391 "bulbul"
+
+++ http://vital.ai/vital/metamind-app/392 "jay"
+
+++ http://vital.ai/vital/metamind-app/393 "magpie"
+
+++ http://vital.ai/vital/metamind-app/394 "chickadee"
+
+++ http://vital.ai/vital/metamind-app/395 "water ouzel, dipper"
+
+++ http://vital.ai/vital/metamind-app/396 "kite"
+
+++ http://vital.ai/vital/metamind-app/397 "bald eagle, American eagle, Haliaeetus leucocephalus"
+
+++ http://vital.ai/vital/metamind-app/398 "vulture"
+
+++ http://vital.ai/vital/metamind-app/399 "great grey owl, great gray owl, Strix nebulosa"
+
+++ http://vital.ai/vital/metamind-app/400 "black grouse"
+
+++ http://vital.ai/vital/metamind-app/401 "ptarmigan"
+
+++ http://vital.ai/vital/metamind-app/402 "ruffed grouse, partridge, Bonasa umbellus"
+
+++ http://vital.ai/vital/metamind-app/403 "prairie chicken, prairie grouse, prairie fowl"
+
+++ http://vital.ai/vital/metamind-app/404 "peacock"
+
+++ http://vital.ai/vital/metamind-app/405 "quail"
+
+++ http://vital.ai/vital/metamind-app/406 "partridge"
+
+++ http://vital.ai/vital/metamind-app/407 "African grey, African gray, Psittacus erithacus"
+
+++ http://vital.ai/vital/metamind-app/408 "macaw"
+
+++ http://vital.ai/vital/metamind-app/409 "sulphur-crested cockatoo, Kakatoe galerita, Cacatua galerita"
+
+++ http://vital.ai/vital/metamind-app/410 "lorikeet"
+
+++ http://vital.ai/vital/metamind-app/411 "coucal"
+
+++ http://vital.ai/vital/metamind-app/412 "bee eater"
+
+++ http://vital.ai/vital/metamind-app/413 "hornbill"
+
+++ http://vital.ai/vital/metamind-app/414 "hummingbird"
+
+++ http://vital.ai/vital/metamind-app/415 "jacamar"
+
+++ http://vital.ai/vital/metamind-app/416 "toucan"
+
+++ http://vital.ai/vital/metamind-app/417 "drake"
+
+++ http://vital.ai/vital/metamind-app/418 "red-breasted merganser, Mergus serrator"
+
+++ http://vital.ai/vital/metamind-app/419 "goose"
+
+++ http://vital.ai/vital/metamind-app/420 "black swan, Cygnus atratus"
+
+++ http://vital.ai/vital/metamind-app/421 "white stork, Ciconia ciconia"
+
+++ http://vital.ai/vital/metamind-app/422 "black stork, Ciconia nigra"
+
+++ http://vital.ai/vital/metamind-app/423 "spoonbill"
+
+++ http://vital.ai/vital/metamind-app/424 "flamingo"
+
+++ http://vital.ai/vital/metamind-app/425 "American egret, great white heron, Egretta albus"
+
+++ http://vital.ai/vital/metamind-app/426 "little blue heron, Egretta caerulea"
+
+++ http://vital.ai/vital/metamind-app/427 "bittern"
+
+++ http://vital.ai/vital/metamind-app/428 "crane"
+
+++ http://vital.ai/vital/metamind-app/429 "limpkin, Aramus pictus"
+
+++ http://vital.ai/vital/metamind-app/430 "American coot, marsh hen, mud hen, water hen, Fulica americana"
+
+++ http://vital.ai/vital/metamind-app/431 "bustard"
+
+++ http://vital.ai/vital/metamind-app/432 "ruddy turnstone, Arenaria interpres"
+
+++ http://vital.ai/vital/metamind-app/433 "red-backed sandpiper, dunlin, Erolia alpina"
+
+++ http://vital.ai/vital/metamind-app/434 "redshank, Tringa totanus"
+
+++ http://vital.ai/vital/metamind-app/435 "dowitcher"
+
+++ http://vital.ai/vital/metamind-app/436 "oystercatcher, oyster catcher"
+
+++ http://vital.ai/vital/metamind-app/437 "European gallinule, Porphyrio porphyrio"
+
+++ http://vital.ai/vital/metamind-app/438 "pelican"
+
+++ http://vital.ai/vital/metamind-app/439 "king penguin, Aptenodytes patagonica"
+
+++ http://vital.ai/vital/metamind-app/440 "albatross, mollymawk"
+
+++ http://vital.ai/vital/metamind-app/441 "great white shark, white shark, man-eater, man-eating shark, Carcharodon carcharias"
+
+++ http://vital.ai/vital/metamind-app/442 "tiger shark, Galeocerdo cuvieri"
+
+++ http://vital.ai/vital/metamind-app/443 "hammerhead, hammerhead shark"
+
+++ http://vital.ai/vital/metamind-app/444 "electric ray, crampfish, numbfish, torpedo"
+
+++ http://vital.ai/vital/metamind-app/445 "stingray"
+
+++ http://vital.ai/vital/metamind-app/446 "barracouta, snoek"
+
+++ http://vital.ai/vital/metamind-app/447 "coho, cohoe, coho salmon, blue jack, silver salmon, Oncorhynchus kisutch"
+
+++ http://vital.ai/vital/metamind-app/448 "tench, Tinca tinca"
+
+++ http://vital.ai/vital/metamind-app/449 "goldfish, Carassius auratus"
+
+++ http://vital.ai/vital/metamind-app/450 "eel"
+
+++ http://vital.ai/vital/metamind-app/451 "rock beauty, Holocanthus tricolor"
+
+++ http://vital.ai/vital/metamind-app/452 "anemone fish"
+
+++ http://vital.ai/vital/metamind-app/453 "lionfish"
+
+++ http://vital.ai/vital/metamind-app/454 "puffer, pufferfish, blowfish, globefish"
+
+++ http://vital.ai/vital/metamind-app/455 "sturgeon"
+
+++ http://vital.ai/vital/metamind-app/456 "gar, garfish, garpike, billfish, Lepisosteus osseus"
+
+++ http://vital.ai/vital/metamind-app/457 "loggerhead, loggerhead turtle, Caretta caretta"
+
+++ http://vital.ai/vital/metamind-app/458 "leatherback turtle, leatherback, leathery turtle, Dermochelys coriacea"
+
+++ http://vital.ai/vital/metamind-app/459 "mud turtle"
+
+++ http://vital.ai/vital/metamind-app/460 "terrapin"
+
+++ http://vital.ai/vital/metamind-app/461 "box turtle, box tortoise"
+
+++ http://vital.ai/vital/metamind-app/462 "banded gecko"
+
+++ http://vital.ai/vital/metamind-app/463 "common iguana, iguana, Iguana iguana"
+
+++ http://vital.ai/vital/metamind-app/464 "American chameleon, anole, Anolis carolinensis"
+
+++ http://vital.ai/vital/metamind-app/465 "whiptail, whiptail lizard"
+
+++ http://vital.ai/vital/metamind-app/466 "agama"
+
+++ http://vital.ai/vital/metamind-app/467 "frilled lizard, Chlamydosaurus kingi"
+
+++ http://vital.ai/vital/metamind-app/468 "alligator lizard"
+
+++ http://vital.ai/vital/metamind-app/469 "Gila monster, Heloderma suspectum"
+
+++ http://vital.ai/vital/metamind-app/470 "green lizard, Lacerta viridis"
+
+++ http://vital.ai/vital/metamind-app/471 "African chameleon, Chamaeleo chamaeleon"
+
+++ http://vital.ai/vital/metamind-app/472 "Komodo dragon, Komodo lizard, dragon lizard, giant lizard, Varanus komodoensis"
+
+++ http://vital.ai/vital/metamind-app/473 "triceratops"
+
+++ http://vital.ai/vital/metamind-app/474 "African crocodile, Nile crocodile, Crocodylus niloticus"
+
+++ http://vital.ai/vital/metamind-app/475 "American alligator, Alligator mississipiensis"
+
+++ http://vital.ai/vital/metamind-app/476 "thunder snake, worm snake, Carphophis amoenus"
+
+++ http://vital.ai/vital/metamind-app/477 "ringneck snake, ring-necked snake, ring snake"
+
+++ http://vital.ai/vital/metamind-app/478 "hognose snake, puff adder, sand viper"
+
+++ http://vital.ai/vital/metamind-app/479 "green snake, grass snake"
+
+++ http://vital.ai/vital/metamind-app/480 "king snake, kingsnake"
+
+++ http://vital.ai/vital/metamind-app/481 "garter snake, grass snake"
+
+++ http://vital.ai/vital/metamind-app/482 "water snake"
+
+++ http://vital.ai/vital/metamind-app/483 "vine snake"
+
+++ http://vital.ai/vital/metamind-app/484 "night snake, Hypsiglena torquata"
+
+++ http://vital.ai/vital/metamind-app/485 "boa constrictor, Constrictor constrictor"
+
+++ http://vital.ai/vital/metamind-app/486 "rock python, rock snake, Python sebae"
+
+++ http://vital.ai/vital/metamind-app/487 "Indian cobra, Naja naja"
+
+++ http://vital.ai/vital/metamind-app/488 "green mamba"
+
+++ http://vital.ai/vital/metamind-app/489 "sea snake"
+
+++ http://vital.ai/vital/metamind-app/490 "horned viper, cerastes, sand viper, horned asp, Cerastes cornutus"
+
+++ http://vital.ai/vital/metamind-app/491 "diamondback, diamondback rattlesnake, Crotalus adamanteus"
+
+++ http://vital.ai/vital/metamind-app/492 "sidewinder, horned rattlesnake, Crotalus cerastes"
+
+++ http://vital.ai/vital/metamind-app/493 "European fire salamander, Salamandra salamandra"
+
+++ http://vital.ai/vital/metamind-app/494 "common newt, Triturus vulgaris"
+
+++ http://vital.ai/vital/metamind-app/495 "eft"
+
+++ http://vital.ai/vital/metamind-app/496 "spotted salamander, Ambystoma maculatum"
+
+++ http://vital.ai/vital/metamind-app/497 "axolotl, mud puppy, Ambystoma mexicanum"
+
+++ http://vital.ai/vital/metamind-app/498 "bullfrog, Rana catesbeiana"
+
+++ http://vital.ai/vital/metamind-app/499 "tree frog, tree-frog"
+
+++ http://vital.ai/vital/metamind-app/500 "tailed frog, bell toad, ribbed toad, tailed toad, Ascaphus trui"
+
+++ http://vital.ai/vital/metamind-app/501 "whistle"
+
+++ http://vital.ai/vital/metamind-app/502 "wing"
+
+++ http://vital.ai/vital/metamind-app/503 "paintbrush"
+
+++ http://vital.ai/vital/metamind-app/504 "hand blower, blow dryer, blow drier, hair dryer, hair drier"
+
+++ http://vital.ai/vital/metamind-app/505 "oxygen mask"
+
+++ http://vital.ai/vital/metamind-app/506 "snorkel"
+
+++ http://vital.ai/vital/metamind-app/507 "loudspeaker, speaker, speaker unit, loudspeaker system, speaker system"
+
+++ http://vital.ai/vital/metamind-app/508 "microphone, mike"
+
+++ http://vital.ai/vital/metamind-app/509 "screen, CRT screen"
+
+++ http://vital.ai/vital/metamind-app/510 "mouse, computer mouse"
+
+++ http://vital.ai/vital/metamind-app/511 "electric fan, blower"
+
+++ http://vital.ai/vital/metamind-app/512 "oil filter"
+
+++ http://vital.ai/vital/metamind-app/513 "strainer"
+
+++ http://vital.ai/vital/metamind-app/514 "space heater"
+
+++ http://vital.ai/vital/metamind-app/515 "stove"
+
+++ http://vital.ai/vital/metamind-app/516 "guillotine"
+
+++ http://vital.ai/vital/metamind-app/517 "barometer"
+
+++ http://vital.ai/vital/metamind-app/518 "rule, ruler"
+
+++ http://vital.ai/vital/metamind-app/519 "odometer, hodometer, mileometer, milometer"
+
+++ http://vital.ai/vital/metamind-app/520 "scale, weighing machine"
+
+++ http://vital.ai/vital/metamind-app/521 "analog clock"
+
+++ http://vital.ai/vital/metamind-app/522 "digital clock"
+
+++ http://vital.ai/vital/metamind-app/523 "wall clock"
+
+++ http://vital.ai/vital/metamind-app/524 "hourglass"
+
+++ http://vital.ai/vital/metamind-app/525 "sundial"
+
+++ http://vital.ai/vital/metamind-app/526 "parking meter"
+
+++ http://vital.ai/vital/metamind-app/527 "stopwatch, stop watch"
+
+++ http://vital.ai/vital/metamind-app/528 "digital watch"
+
+++ http://vital.ai/vital/metamind-app/529 "stethoscope"
+
+++ http://vital.ai/vital/metamind-app/530 "syringe"
+
+++ http://vital.ai/vital/metamind-app/531 "magnetic compass"
+
+++ http://vital.ai/vital/metamind-app/532 "binoculars, field glasses, opera glasses"
+
+++ http://vital.ai/vital/metamind-app/533 "projector"
+
+++ http://vital.ai/vital/metamind-app/534 "sunglasses, dark glasses, shades"
+
+++ http://vital.ai/vital/metamind-app/535 "loupe, jeweler's loupe"
+
+++ http://vital.ai/vital/metamind-app/536 "radio telescope, radio reflector"
+
+++ http://vital.ai/vital/metamind-app/537 "bow"
+
+++ http://vital.ai/vital/metamind-app/538 "cannon"
+
+++ http://vital.ai/vital/metamind-app/539 "assault rifle, assault gun"
+
+++ http://vital.ai/vital/metamind-app/540 "rifle"
+
+++ http://vital.ai/vital/metamind-app/541 "projectile, missile"
+
+++ http://vital.ai/vital/metamind-app/542 "computer keyboard, keypad"
+
+++ http://vital.ai/vital/metamind-app/543 "typewriter keyboard"
+
+++ http://vital.ai/vital/metamind-app/544 "crane"
+
+++ http://vital.ai/vital/metamind-app/545 "lighter, light, igniter, ignitor"
+
+++ http://vital.ai/vital/metamind-app/546 "abacus"
+
+++ http://vital.ai/vital/metamind-app/547 "cash machine, cash dispenser, automated teller machine, automatic teller machine, automated teller, automatic teller, ATM"
+
+++ http://vital.ai/vital/metamind-app/548 "slide rule, slipstick"
+
+++ http://vital.ai/vital/metamind-app/549 "desktop computer"
+
+++ http://vital.ai/vital/metamind-app/550 "hand-held computer, hand-held microcomputer"
+
+++ http://vital.ai/vital/metamind-app/551 "notebook, notebook computer"
+
+++ http://vital.ai/vital/metamind-app/552 "web site, website, internet site, site"
+
+++ http://vital.ai/vital/metamind-app/553 "harvester, reaper"
+
+++ http://vital.ai/vital/metamind-app/554 "thresher, thrasher, threshing machine"
+
+++ http://vital.ai/vital/metamind-app/555 "printer"
+
+++ http://vital.ai/vital/metamind-app/556 "slot, one-armed bandit"
+
+++ http://vital.ai/vital/metamind-app/557 "vending machine"
+
+++ http://vital.ai/vital/metamind-app/558 "sewing machine"
+
+++ http://vital.ai/vital/metamind-app/559 "joystick"
+
+++ http://vital.ai/vital/metamind-app/560 "switch, electric switch, electrical switch"
+
+++ http://vital.ai/vital/metamind-app/561 "hook, claw"
+
+++ http://vital.ai/vital/metamind-app/562 "car wheel"
+
+++ http://vital.ai/vital/metamind-app/563 "paddlewheel, paddle wheel"
+
+++ http://vital.ai/vital/metamind-app/564 "pinwheel"
+
+++ http://vital.ai/vital/metamind-app/565 "potter's wheel"
+
+++ http://vital.ai/vital/metamind-app/566 "gas pump, gasoline pump, petrol pump, island dispenser"
+
+++ http://vital.ai/vital/metamind-app/567 "carousel, carrousel, merry-go-round, roundabout, whirligig"
+
+++ http://vital.ai/vital/metamind-app/568 "swing"
+
+++ http://vital.ai/vital/metamind-app/569 "reel"
+
+++ http://vital.ai/vital/metamind-app/570 "radiator"
+
+++ http://vital.ai/vital/metamind-app/571 "puck, hockey puck"
+
+++ http://vital.ai/vital/metamind-app/572 "hard disc, hard disk, fixed disk"
+
+++ http://vital.ai/vital/metamind-app/573 "sunglass"
+
+++ http://vital.ai/vital/metamind-app/574 "pick, plectrum, plectron"
+
+++ http://vital.ai/vital/metamind-app/575 "car mirror"
+
+++ http://vital.ai/vital/metamind-app/576 "solar dish, solar collector, solar furnace"
+
+++ http://vital.ai/vital/metamind-app/577 "remote control, remote"
+
+++ http://vital.ai/vital/metamind-app/578 "disk brake, disc brake"
+
+++ http://vital.ai/vital/metamind-app/579 "buckle"
+
+++ http://vital.ai/vital/metamind-app/580 "hair slide"
+
+++ http://vital.ai/vital/metamind-app/581 "knot"
+
+++ http://vital.ai/vital/metamind-app/582 "combination lock"
+
+++ http://vital.ai/vital/metamind-app/583 "padlock"
+
+++ http://vital.ai/vital/metamind-app/584 "nail"
+
+++ http://vital.ai/vital/metamind-app/585 "safety pin"
+
+++ http://vital.ai/vital/metamind-app/586 "screw"
+
+++ http://vital.ai/vital/metamind-app/587 "muzzle"
+
+++ http://vital.ai/vital/metamind-app/588 "seat belt, seatbelt"
+
+++ http://vital.ai/vital/metamind-app/589 "ski"
+
+++ http://vital.ai/vital/metamind-app/590 "candle, taper, wax light"
+
+++ http://vital.ai/vital/metamind-app/591 "jack-o'-lantern"
+
+++ http://vital.ai/vital/metamind-app/592 "spotlight, spot"
+
+++ http://vital.ai/vital/metamind-app/593 "torch"
+
+++ http://vital.ai/vital/metamind-app/594 "neck brace"
+
+++ http://vital.ai/vital/metamind-app/595 "pier"
+
+++ http://vital.ai/vital/metamind-app/596 "tripod"
+
+++ http://vital.ai/vital/metamind-app/597 "maypole"
+
+++ http://vital.ai/vital/metamind-app/598 "mousetrap"
+
+++ http://vital.ai/vital/metamind-app/599 "spider web, spider's web"
+
+++ http://vital.ai/vital/metamind-app/600 "trilobite"
+
+++ http://vital.ai/vital/metamind-app/601 "harvestman, daddy longlegs, Phalangium opilio"
+
+++ http://vital.ai/vital/metamind-app/602 "scorpion"
+
+++ http://vital.ai/vital/metamind-app/603 "black and gold garden spider, Argiope aurantia"
+
+++ http://vital.ai/vital/metamind-app/604 "barn spider, Araneus cavaticus"
+
+++ http://vital.ai/vital/metamind-app/605 "garden spider, Aranea diademata"
+
+++ http://vital.ai/vital/metamind-app/606 "black widow, Latrodectus mactans"
+
+++ http://vital.ai/vital/metamind-app/607 "tarantula"
+
+++ http://vital.ai/vital/metamind-app/608 "wolf spider, hunting spider"
+
+++ http://vital.ai/vital/metamind-app/609 "tick"
+
+++ http://vital.ai/vital/metamind-app/610 "centipede"
+
+++ http://vital.ai/vital/metamind-app/611 "isopod"
+
+++ http://vital.ai/vital/metamind-app/612 "Dungeness crab, Cancer magister"
+
+++ http://vital.ai/vital/metamind-app/613 "rock crab, Cancer irroratus"
+
+++ http://vital.ai/vital/metamind-app/614 "fiddler crab"
+
+++ http://vital.ai/vital/metamind-app/615 "king crab, Alaska crab, Alaskan king crab, Alaska king crab, Paralithodes camtschatica"
+
+++ http://vital.ai/vital/metamind-app/616 "American lobster, Northern lobster, Maine lobster, Homarus americanus"
+
+++ http://vital.ai/vital/metamind-app/617 "spiny lobster, langouste, rock lobster, crawfish, crayfish, sea crawfish"
+
+++ http://vital.ai/vital/metamind-app/618 "crayfish, crawfish, crawdad, crawdaddy"
+
+++ http://vital.ai/vital/metamind-app/619 "hermit crab"
+
+++ http://vital.ai/vital/metamind-app/620 "tiger beetle"
+
+++ http://vital.ai/vital/metamind-app/621 "ladybug, ladybeetle, lady beetle, ladybird, ladybird beetle"
+
+++ http://vital.ai/vital/metamind-app/622 "ground beetle, carabid beetle"
+
+++ http://vital.ai/vital/metamind-app/623 "long-horned beetle, longicorn, longicorn beetle"
+
+++ http://vital.ai/vital/metamind-app/624 "leaf beetle, chrysomelid"
+
+++ http://vital.ai/vital/metamind-app/625 "dung beetle"
+
+++ http://vital.ai/vital/metamind-app/626 "rhinoceros beetle"
+
+++ http://vital.ai/vital/metamind-app/627 "weevil"
+
+++ http://vital.ai/vital/metamind-app/628 "fly"
+
+++ http://vital.ai/vital/metamind-app/629 "bee"
+
+++ http://vital.ai/vital/metamind-app/630 "grasshopper, hopper"
+
+++ http://vital.ai/vital/metamind-app/631 "cricket"
+
+++ http://vital.ai/vital/metamind-app/632 "walking stick, walkingstick, stick insect"
+
+++ http://vital.ai/vital/metamind-app/633 "cockroach, roach"
+
+++ http://vital.ai/vital/metamind-app/634 "mantis, mantid"
+
+++ http://vital.ai/vital/metamind-app/635 "cicada, cicala"
+
+++ http://vital.ai/vital/metamind-app/636 "leafhopper"
+
+++ http://vital.ai/vital/metamind-app/637 "lacewing, lacewing fly"
+
+++ http://vital.ai/vital/metamind-app/638 "dragonfly, darning needle, devil's darning needle, sewing needle, snake feeder, snake doctor, mosquito hawk, skeeter hawk"
+
+++ http://vital.ai/vital/metamind-app/639 "damselfly"
+
+++ http://vital.ai/vital/metamind-app/640 "admiral"
+
+++ http://vital.ai/vital/metamind-app/641 "ringlet, ringlet butterfly"
+
+++ http://vital.ai/vital/metamind-app/642 "monarch, monarch butterfly, milkweed butterfly, Danaus plexippus"
+
+++ http://vital.ai/vital/metamind-app/643 "cabbage butterfly"
+
+++ http://vital.ai/vital/metamind-app/644 "sulphur butterfly, sulfur butterfly"
+
+++ http://vital.ai/vital/metamind-app/645 "lycaenid, lycaenid butterfly"
+
+++ http://vital.ai/vital/metamind-app/646 "jellyfish"
+
+++ http://vital.ai/vital/metamind-app/647 "sea anemone, anemone"
+
+++ http://vital.ai/vital/metamind-app/648 "brain coral"
+
+++ http://vital.ai/vital/metamind-app/649 "flatworm, platyhelminth"
+
+++ http://vital.ai/vital/metamind-app/650 "nematode, nematode worm, roundworm"
+
+++ http://vital.ai/vital/metamind-app/651 "conch"
+
+++ http://vital.ai/vital/metamind-app/652 "snail"
+
+++ http://vital.ai/vital/metamind-app/653 "slug"
+
+++ http://vital.ai/vital/metamind-app/654 "sea slug, nudibranch"
+
+++ http://vital.ai/vital/metamind-app/655 "chiton, coat-of-mail shell, sea cradle, polyplacophore"
+
+++ http://vital.ai/vital/metamind-app/656 "sea urchin"
+
+++ http://vital.ai/vital/metamind-app/657 "sea cucumber, holothurian"
+
+++ http://vital.ai/vital/metamind-app/658 "iron, smoothing iron"
+
+++ http://vital.ai/vital/metamind-app/659 "espresso maker"
+
+++ http://vital.ai/vital/metamind-app/660 "microwave, microwave oven"
+
+++ http://vital.ai/vital/metamind-app/661 "Dutch oven"
+
+++ http://vital.ai/vital/metamind-app/662 "rotisserie"
+
+++ http://vital.ai/vital/metamind-app/663 "toaster"
+
+++ http://vital.ai/vital/metamind-app/664 "waffle iron"
+
+++ http://vital.ai/vital/metamind-app/665 "vacuum, vacuum cleaner"
+
+++ http://vital.ai/vital/metamind-app/666 "dishwasher, dish washer, dishwashing machine"
+
+++ http://vital.ai/vital/metamind-app/667 "refrigerator, icebox"
+
+++ http://vital.ai/vital/metamind-app/668 "washer, automatic washer, washing machine"
+
+++ http://vital.ai/vital/metamind-app/669 "Crock Pot"
+
+++ http://vital.ai/vital/metamind-app/670 "frying pan, frypan, skillet"
+
+++ http://vital.ai/vital/metamind-app/671 "wok"
+
+++ http://vital.ai/vital/metamind-app/672 "caldron, cauldron"
+
+++ http://vital.ai/vital/metamind-app/673 "coffeepot"
+
+++ http://vital.ai/vital/metamind-app/674 "teapot"
+
+++ http://vital.ai/vital/metamind-app/675 "spatula"
+
+++ http://vital.ai/vital/metamind-app/676 "altar"
+
+++ http://vital.ai/vital/metamind-app/677 "triumphal arch"
+
+++ http://vital.ai/vital/metamind-app/678 "patio, terrace"
+
+++ http://vital.ai/vital/metamind-app/679 "steel arch bridge"
+
+++ http://vital.ai/vital/metamind-app/680 "suspension bridge"
+
+++ http://vital.ai/vital/metamind-app/681 "viaduct"
+
+++ http://vital.ai/vital/metamind-app/682 "barn"
+
+++ http://vital.ai/vital/metamind-app/683 "greenhouse, nursery, glasshouse"
+
+++ http://vital.ai/vital/metamind-app/684 "palace"
+
+++ http://vital.ai/vital/metamind-app/685 "monastery"
+
+++ http://vital.ai/vital/metamind-app/686 "library"
+
+++ http://vital.ai/vital/metamind-app/687 "apiary, bee house"
+
+++ http://vital.ai/vital/metamind-app/688 "boathouse"
+
+++ http://vital.ai/vital/metamind-app/689 "church, church building"
+
+++ http://vital.ai/vital/metamind-app/690 "mosque"
+
+++ http://vital.ai/vital/metamind-app/691 "stupa, tope"
+
+++ http://vital.ai/vital/metamind-app/692 "planetarium"
+
+++ http://vital.ai/vital/metamind-app/693 "restaurant, eating house, eating place, eatery"
+
+++ http://vital.ai/vital/metamind-app/694 "cinema, movie theater, movie theatre, movie house, picture palace"
+
+++ http://vital.ai/vital/metamind-app/695 "home theater, home theatre"
+
+++ http://vital.ai/vital/metamind-app/696 "lumbermill, sawmill"
+
+++ http://vital.ai/vital/metamind-app/697 "coil, spiral, volute, whorl, helix"
+
+++ http://vital.ai/vital/metamind-app/698 "obelisk"
+
+++ http://vital.ai/vital/metamind-app/699 "totem pole"
+
+++ http://vital.ai/vital/metamind-app/700 "castle"
+
+++ http://vital.ai/vital/metamind-app/701 "prison, prison house"
+
+++ http://vital.ai/vital/metamind-app/702 "grocery store, grocery, food market, market"
+
+++ http://vital.ai/vital/metamind-app/703 "bakery, bakeshop, bakehouse"
+
+++ http://vital.ai/vital/metamind-app/704 "barbershop"
+
+++ http://vital.ai/vital/metamind-app/705 "bookshop, bookstore, bookstall"
+
+++ http://vital.ai/vital/metamind-app/706 "butcher shop, meat market"
+
+++ http://vital.ai/vital/metamind-app/707 "confectionery, confectionary, candy store"
+
+++ http://vital.ai/vital/metamind-app/708 "shoe shop, shoe-shop, shoe store"
+
+++ http://vital.ai/vital/metamind-app/709 "tobacco shop, tobacconist shop, tobacconist"
+
+++ http://vital.ai/vital/metamind-app/710 "toyshop"
+
+++ http://vital.ai/vital/metamind-app/711 "fountain"
+
+++ http://vital.ai/vital/metamind-app/712 "cliff dwelling"
+
+++ http://vital.ai/vital/metamind-app/713 "yurt"
+
+++ http://vital.ai/vital/metamind-app/714 "dock, dockage, docking facility"
+
+++ http://vital.ai/vital/metamind-app/715 "brass, memorial tablet, plaque"
+
+++ http://vital.ai/vital/metamind-app/716 "megalith, megalithic structure"
+
+++ http://vital.ai/vital/metamind-app/717 "bannister, banister, balustrade, balusters, handrail"
+
+++ http://vital.ai/vital/metamind-app/718 "breakwater, groin, groyne, mole, bulwark, seawall, jetty"
+
+++ http://vital.ai/vital/metamind-app/719 "dam, dike, dyke"
+
+++ http://vital.ai/vital/metamind-app/720 "chainlink fence"
+
+++ http://vital.ai/vital/metamind-app/721 "picket fence, paling"
+
+++ http://vital.ai/vital/metamind-app/722 "worm fence, snake fence, snake-rail fence, Virginia fence"
+
+++ http://vital.ai/vital/metamind-app/723 "stone wall"
+
+++ http://vital.ai/vital/metamind-app/724 "grille, radiator grille"
+
+++ http://vital.ai/vital/metamind-app/725 "sliding door"
+
+++ http://vital.ai/vital/metamind-app/726 "turnstile"
+
+++ http://vital.ai/vital/metamind-app/727 "mountain tent"
+
+++ http://vital.ai/vital/metamind-app/728 "scoreboard"
+
+++ http://vital.ai/vital/metamind-app/729 "honeycomb"
+
+++ http://vital.ai/vital/metamind-app/730 "plate rack"
+
+++ http://vital.ai/vital/metamind-app/731 "pedestal, plinth, footstall"
+
+++ http://vital.ai/vital/metamind-app/732 "beacon, lighthouse, beacon light, pharos"
+
+++ http://vital.ai/vital/metamind-app/733 "mashed potato"
+
+++ http://vital.ai/vital/metamind-app/734 "bell pepper"
+
+++ http://vital.ai/vital/metamind-app/735 "head cabbage"
+
+++ http://vital.ai/vital/metamind-app/736 "broccoli"
+
+++ http://vital.ai/vital/metamind-app/737 "cauliflower"
+
+++ http://vital.ai/vital/metamind-app/738 "zucchini, courgette"
+
+++ http://vital.ai/vital/metamind-app/739 "spaghetti squash"
+
+++ http://vital.ai/vital/metamind-app/740 "acorn squash"
+
+++ http://vital.ai/vital/metamind-app/741 "butternut squash"
+
+++ http://vital.ai/vital/metamind-app/742 "cucumber, cuke"
+
+++ http://vital.ai/vital/metamind-app/743 "artichoke, globe artichoke"
+
+++ http://vital.ai/vital/metamind-app/744 "cardoon"
+
+++ http://vital.ai/vital/metamind-app/745 "mushroom"
+
+++ http://vital.ai/vital/metamind-app/746 "shower curtain"
+
+++ http://vital.ai/vital/metamind-app/747 "jean, blue jean, denim"
+
+++ http://vital.ai/vital/metamind-app/748 "carton"
+
+++ http://vital.ai/vital/metamind-app/749 "handkerchief, hankie, hanky, hankey"
+
+++ http://vital.ai/vital/metamind-app/750 "sandal"
+
+++ http://vital.ai/vital/metamind-app/751 "ashcan, trash can, garbage can, wastebin, ash bin, ash-bin, ashbin, dustbin, trash barrel, trash bin"
+
+++ http://vital.ai/vital/metamind-app/752 "safe"
+
+++ http://vital.ai/vital/metamind-app/753 "plate"
+
+++ http://vital.ai/vital/metamind-app/754 "necklace"
+
+++ http://vital.ai/vital/metamind-app/755 "croquet ball"
+
+++ http://vital.ai/vital/metamind-app/756 "fur coat"
+
+++ http://vital.ai/vital/metamind-app/757 "thimble"
+
+++ http://vital.ai/vital/metamind-app/758 "pajama, pyjama, pj's, jammies"
+
+++ http://vital.ai/vital/metamind-app/759 "running shoe"
+
+++ http://vital.ai/vital/metamind-app/760 "cocktail shaker"
+
+++ http://vital.ai/vital/metamind-app/761 "chest"
+
+++ http://vital.ai/vital/metamind-app/762 "manhole cover"
+
+++ http://vital.ai/vital/metamind-app/763 "modem"
+
+++ http://vital.ai/vital/metamind-app/764 "tub, vat"
+
+++ http://vital.ai/vital/metamind-app/765 "tray"
+
+++ http://vital.ai/vital/metamind-app/766 "balance beam, beam"
+
+++ http://vital.ai/vital/metamind-app/767 "bagel, beigel"
+
+++ http://vital.ai/vital/metamind-app/768 "prayer rug, prayer mat"
+
+++ http://vital.ai/vital/metamind-app/769 "kimono"
+
+++ http://vital.ai/vital/metamind-app/770 "hot pot, hotpot"
+
+++ http://vital.ai/vital/metamind-app/771 "whiskey jug"
+
+++ http://vital.ai/vital/metamind-app/772 "knee pad"
+
+++ http://vital.ai/vital/metamind-app/773 "book jacket, dust cover, dust jacket, dust wrapper"
+
+++ http://vital.ai/vital/metamind-app/774 "spindle"
+
+++ http://vital.ai/vital/metamind-app/775 "ski mask"
+
+++ http://vital.ai/vital/metamind-app/776 "beer bottle"
+
+++ http://vital.ai/vital/metamind-app/777 "crash helmet"
+
+++ http://vital.ai/vital/metamind-app/778 "bottlecap"
+
+++ http://vital.ai/vital/metamind-app/779 "tile roof"
+
+++ http://vital.ai/vital/metamind-app/780 "mask"
+
+++ http://vital.ai/vital/metamind-app/781 "maillot"
+
+++ http://vital.ai/vital/metamind-app/782 "Petri dish"
+
+++ http://vital.ai/vital/metamind-app/783 "football helmet"
+
+++ http://vital.ai/vital/metamind-app/784 "bathing cap, swimming cap"
+
+++ http://vital.ai/vital/metamind-app/785 "teddy, teddy bear"
+
+++ http://vital.ai/vital/metamind-app/786 "holster"
+
+++ http://vital.ai/vital/metamind-app/787 "pop bottle, soda bottle"
+
+++ http://vital.ai/vital/metamind-app/788 "photocopier"
+
+++ http://vital.ai/vital/metamind-app/789 "vestment"
+
+++ http://vital.ai/vital/metamind-app/790 "crossword puzzle, crossword"
+
+++ http://vital.ai/vital/metamind-app/791 "golf ball"
+
+++ http://vital.ai/vital/metamind-app/792 "trifle"
+
+++ http://vital.ai/vital/metamind-app/793 "suit, suit of clothes"
+
+++ http://vital.ai/vital/metamind-app/794 "water tower"
+
+++ http://vital.ai/vital/metamind-app/795 "feather boa, boa"
+
+++ http://vital.ai/vital/metamind-app/796 "cloak"
+
+++ http://vital.ai/vital/metamind-app/797 "red wine"
+
+++ http://vital.ai/vital/metamind-app/798 "drumstick"
+
+++ http://vital.ai/vital/metamind-app/799 "shield, buckler"
+
+++ http://vital.ai/vital/metamind-app/800 "Christmas stocking"
+
+++ http://vital.ai/vital/metamind-app/801 "hoopskirt, crinoline"
+
+++ http://vital.ai/vital/metamind-app/802 "menu"
+
+++ http://vital.ai/vital/metamind-app/803 "stage"
+
+++ http://vital.ai/vital/metamind-app/804 "bonnet, poke bonnet"
+
+++ http://vital.ai/vital/metamind-app/805 "meat loaf, meatloaf"
+
+++ http://vital.ai/vital/metamind-app/806 "baseball"
+
+++ http://vital.ai/vital/metamind-app/807 "face powder"
+
+++ http://vital.ai/vital/metamind-app/808 "scabbard"
+
+++ http://vital.ai/vital/metamind-app/809 "sunscreen, sunblock, sun blocker"
+
+++ http://vital.ai/vital/metamind-app/810 "beer glass"
+
+++ http://vital.ai/vital/metamind-app/811 "hen-of-the-woods, hen of the woods, Polyporus frondosus, Grifola frondosa"
+
+++ http://vital.ai/vital/metamind-app/812 "guacamole"
+
+++ http://vital.ai/vital/metamind-app/813 "lampshade, lamp shade"
+
+++ http://vital.ai/vital/metamind-app/814 "wool, woolen, woollen"
+
+++ http://vital.ai/vital/metamind-app/815 "hay"
+
+++ http://vital.ai/vital/metamind-app/816 "bow tie, bow-tie, bowtie"
+
+++ http://vital.ai/vital/metamind-app/817 "mailbag, postbag"
+
+++ http://vital.ai/vital/metamind-app/818 "water jug"
+
+++ http://vital.ai/vital/metamind-app/819 "bucket, pail"
+
+++ http://vital.ai/vital/metamind-app/820 "dishrag, dishcloth"
+
+++ http://vital.ai/vital/metamind-app/821 "soup bowl"
+
+++ http://vital.ai/vital/metamind-app/822 "eggnog"
+
+++ http://vital.ai/vital/metamind-app/823 "mortar"
+
+++ http://vital.ai/vital/metamind-app/824 "trench coat"
+
+++ http://vital.ai/vital/metamind-app/825 "paddle, boat paddle"
+
+++ http://vital.ai/vital/metamind-app/826 "chain"
+
+++ http://vital.ai/vital/metamind-app/827 "swab, swob, mop"
+
+++ http://vital.ai/vital/metamind-app/828 "mixing bowl"
+
+++ http://vital.ai/vital/metamind-app/829 "potpie"
+
+++ http://vital.ai/vital/metamind-app/830 "wine bottle"
+
+++ http://vital.ai/vital/metamind-app/831 "shoji"
+
+++ http://vital.ai/vital/metamind-app/832 "bulletproof vest"
+
+++ http://vital.ai/vital/metamind-app/833 "drilling platform, offshore rig"
+
+++ http://vital.ai/vital/metamind-app/834 "binder, ring-binder"
+
+++ http://vital.ai/vital/metamind-app/835 "cardigan"
+
+++ http://vital.ai/vital/metamind-app/836 "sweatshirt"
+
+++ http://vital.ai/vital/metamind-app/837 "pot, flowerpot"
+
+++ http://vital.ai/vital/metamind-app/838 "birdhouse"
+
+++ http://vital.ai/vital/metamind-app/839 "hamper"
+
+++ http://vital.ai/vital/metamind-app/840 "ping-pong ball"
+
+++ http://vital.ai/vital/metamind-app/841 "pencil box, pencil case"
+
+++ http://vital.ai/vital/metamind-app/842 "pay-phone, pay-station"
+
+++ http://vital.ai/vital/metamind-app/843 "consomme"
+
+++ http://vital.ai/vital/metamind-app/844 "apron"
+
+++ http://vital.ai/vital/metamind-app/845 "punching bag, punch bag, punching ball, punchball"
+
+++ http://vital.ai/vital/metamind-app/846 "backpack, back pack, knapsack, packsack, rucksack, haversack"
+
+++ http://vital.ai/vital/metamind-app/847 "groom, bridegroom"
+
+++ http://vital.ai/vital/metamind-app/848 "bearskin, busby, shako"
+
+++ http://vital.ai/vital/metamind-app/849 "pencil sharpener"
+
+++ http://vital.ai/vital/metamind-app/850 "broom"
+
+++ http://vital.ai/vital/metamind-app/851 "mosquito net"
+
+++ http://vital.ai/vital/metamind-app/852 "abaya"
+
+++ http://vital.ai/vital/metamind-app/853 "mortarboard"
+
+++ http://vital.ai/vital/metamind-app/854 "poncho"
+
+++ http://vital.ai/vital/metamind-app/855 "crutch"
+
+++ http://vital.ai/vital/metamind-app/856 "Polaroid camera, Polaroid Land camera"
+
+++ http://vital.ai/vital/metamind-app/857 "space bar"
+
+++ http://vital.ai/vital/metamind-app/858 "cup"
+
+++ http://vital.ai/vital/metamind-app/859 "racket, racquet"
+
+++ http://vital.ai/vital/metamind-app/860 "traffic light, traffic signal, stoplight"
+
+++ http://vital.ai/vital/metamind-app/861 "quill, quill pen"
+
+++ http://vital.ai/vital/metamind-app/862 "radio, wireless"
+
+++ http://vital.ai/vital/metamind-app/863 "dough"
+
+++ http://vital.ai/vital/metamind-app/864 "cuirass"
+
+++ http://vital.ai/vital/metamind-app/865 "military uniform"
+
+++ http://vital.ai/vital/metamind-app/866 "lipstick, lip rouge"
+
+++ http://vital.ai/vital/metamind-app/867 "shower cap"
+
+++ http://vital.ai/vital/metamind-app/868 "monitor"
+
+++ http://vital.ai/vital/metamind-app/869 "oscilloscope, scope, cathode-ray oscilloscope, CRO"
+
+++ http://vital.ai/vital/metamind-app/870 "mitten"
+
+++ http://vital.ai/vital/metamind-app/871 "brassiere, bra, bandeau"
+
+++ http://vital.ai/vital/metamind-app/872 "French loaf"
+
+++ http://vital.ai/vital/metamind-app/873 "vase"
+
+++ http://vital.ai/vital/metamind-app/874 "milk can"
+
+++ http://vital.ai/vital/metamind-app/875 "rugby ball"
+
+++ http://vital.ai/vital/metamind-app/876 "paper towel"
+
+++ http://vital.ai/vital/metamind-app/877 "earthstar"
+
+++ http://vital.ai/vital/metamind-app/878 "envelope"
+
+++ http://vital.ai/vital/metamind-app/879 "miniskirt, mini"
+
+++ http://vital.ai/vital/metamind-app/880 "cowboy hat, ten-gallon hat"
+
+++ http://vital.ai/vital/metamind-app/881 "trolleybus, trolley coach, trackless trolley"
+
+++ http://vital.ai/vital/metamind-app/882 "perfume, essence"
+
+++ http://vital.ai/vital/metamind-app/883 "bathtub, bathing tub, bath, tub"
+
+++ http://vital.ai/vital/metamind-app/884 "hotdog, hot dog, red hot"
+
+++ http://vital.ai/vital/metamind-app/885 "coral fungus"
+
+++ http://vital.ai/vital/metamind-app/886 "bullet train, bullet"
+
+++ http://vital.ai/vital/metamind-app/887 "pillow"
+
+++ http://vital.ai/vital/metamind-app/888 "toilet tissue, toilet paper, bathroom tissue"
+
+++ http://vital.ai/vital/metamind-app/889 "cassette"
+
+++ http://vital.ai/vital/metamind-app/890 "carpenter's kit, tool kit"
+
+++ http://vital.ai/vital/metamind-app/891 "ladle"
+
+++ http://vital.ai/vital/metamind-app/892 "stinkhorn, carrion fungus"
+
+++ http://vital.ai/vital/metamind-app/893 "lotion"
+
+++ http://vital.ai/vital/metamind-app/894 "hair spray"
+
+++ http://vital.ai/vital/metamind-app/895 "academic gown, academic robe, judge's robe"
+
+++ http://vital.ai/vital/metamind-app/896 "dome"
+
+++ http://vital.ai/vital/metamind-app/897 "crate"
+
+++ http://vital.ai/vital/metamind-app/898 "wig"
+
+++ http://vital.ai/vital/metamind-app/899 "burrito"
+
+++ http://vital.ai/vital/metamind-app/900 "pill bottle"
+
+++ http://vital.ai/vital/metamind-app/901 "chain mail, ring mail, mail, chain armor, chain armour, ring armor, ring armour"
+
+++ http://vital.ai/vital/metamind-app/902 "theater curtain, theatre curtain"
+
+++ http://vital.ai/vital/metamind-app/903 "window shade"
+
+++ http://vital.ai/vital/metamind-app/904 "barrel, cask"
+
+++ http://vital.ai/vital/metamind-app/905 "washbasin, handbasin, washbowl, lavabo, wash-hand basin"
+
+++ http://vital.ai/vital/metamind-app/906 "ballpoint, ballpoint pen, ballpen, Biro"
+
+++ http://vital.ai/vital/metamind-app/907 "basketball"
+
+++ http://vital.ai/vital/metamind-app/908 "bath towel"
+
+++ http://vital.ai/vital/metamind-app/909 "cowboy boot"
+
+++ http://vital.ai/vital/metamind-app/910 "gown"
+
+++ http://vital.ai/vital/metamind-app/911 "window screen"
+
+++ http://vital.ai/vital/metamind-app/912 "agaric"
+
+++ http://vital.ai/vital/metamind-app/913 "cellular telephone, cellular phone, cellphone, cell, mobile phone"
+
+++ http://vital.ai/vital/metamind-app/914 "nipple"
+
+++ http://vital.ai/vital/metamind-app/915 "barbell"
+
+++ http://vital.ai/vital/metamind-app/916 "mailbox, letter box"
+
+++ http://vital.ai/vital/metamind-app/917 "lab coat, laboratory coat"
+
+++ http://vital.ai/vital/metamind-app/918 "fire screen, fireguard"
+
+++ http://vital.ai/vital/metamind-app/919 "minibus"
+
+++ http://vital.ai/vital/metamind-app/920 "packet"
+
+++ http://vital.ai/vital/metamind-app/921 "maze, labyrinth"
+
+++ http://vital.ai/vital/metamind-app/922 "pole"
+
+++ http://vital.ai/vital/metamind-app/923 "horizontal bar, high bar"
+
+++ http://vital.ai/vital/metamind-app/924 "sombrero"
+
+++ http://vital.ai/vital/metamind-app/925 "pickelhaube"
+
+++ http://vital.ai/vital/metamind-app/926 "rain barrel"
+
+++ http://vital.ai/vital/metamind-app/927 "wallet, billfold, notecase, pocketbook"
+
+++ http://vital.ai/vital/metamind-app/928 "cassette player"
+
+++ http://vital.ai/vital/metamind-app/929 "comic book"
+
+++ http://vital.ai/vital/metamind-app/930 "piggy bank, penny bank"
+
+++ http://vital.ai/vital/metamind-app/931 "street sign"
+
+++ http://vital.ai/vital/metamind-app/932 "bell cote, bell cot"
+
+++ http://vital.ai/vital/metamind-app/933 "fountain pen"
+
+++ http://vital.ai/vital/metamind-app/934 "Windsor tie"
+
+++ http://vital.ai/vital/metamind-app/935 "volleyball"
+
+++ http://vital.ai/vital/metamind-app/936 "overskirt"
+
+++ http://vital.ai/vital/metamind-app/937 "sarong"
+
+++ http://vital.ai/vital/metamind-app/938 "purse"
+
+++ http://vital.ai/vital/metamind-app/939 "bolo tie, bolo, bola tie, bola"
+
+++ http://vital.ai/vital/metamind-app/940 "bib"
+
+++ http://vital.ai/vital/metamind-app/941 "parachute, chute"
+
+++ http://vital.ai/vital/metamind-app/942 "sleeping bag"
+
+++ http://vital.ai/vital/metamind-app/943 "television, television system"
+
+++ http://vital.ai/vital/metamind-app/944 "swimming trunks, bathing trunks"
+
+++ http://vital.ai/vital/metamind-app/945 "measuring cup"
+
+++ http://vital.ai/vital/metamind-app/946 "espresso"
+
+++ http://vital.ai/vital/metamind-app/947 "pizza, pizza pie"
+
+++ http://vital.ai/vital/metamind-app/948 "breastplate, aegis, egis"
+
+++ http://vital.ai/vital/metamind-app/949 "shopping basket"
+
+++ http://vital.ai/vital/metamind-app/950 "wooden spoon"
+
+++ http://vital.ai/vital/metamind-app/951 "saltshaker, salt shaker"
+
+++ http://vital.ai/vital/metamind-app/952 "chocolate sauce, chocolate syrup"
+
+++ http://vital.ai/vital/metamind-app/953 "ballplayer, baseball player"
+
+++ http://vital.ai/vital/metamind-app/954 "goblet"
+
+++ http://vital.ai/vital/metamind-app/955 "gyromitra"
+
+++ http://vital.ai/vital/metamind-app/956 "stretcher"
+
+++ http://vital.ai/vital/metamind-app/957 "water bottle"
+
+++ http://vital.ai/vital/metamind-app/958 "dial telephone, dial phone"
+
+++ http://vital.ai/vital/metamind-app/959 "soap dispenser"
+
+++ http://vital.ai/vital/metamind-app/960 "jersey, T-shirt, tee shirt"
+
+++ http://vital.ai/vital/metamind-app/961 "school bus"
+
+++ http://vital.ai/vital/metamind-app/962 "jigsaw puzzle"
+
+++ http://vital.ai/vital/metamind-app/963 "plastic bag"
+
+++ http://vital.ai/vital/metamind-app/964 "reflex camera"
+
+++ http://vital.ai/vital/metamind-app/965 "diaper, nappy, napkin"
+
+++ http://vital.ai/vital/metamind-app/966 "Band Aid"
+
+++ http://vital.ai/vital/metamind-app/967 "ice lolly, lolly, lollipop, popsicle"
+
+++ http://vital.ai/vital/metamind-app/968 "velvet"
+
+++ http://vital.ai/vital/metamind-app/969 "tennis ball"
+
+++ http://vital.ai/vital/metamind-app/970 "gasmask, respirator, gas helmet"
+
+++ http://vital.ai/vital/metamind-app/971 "doormat, welcome mat"
+
+++ http://vital.ai/vital/metamind-app/972 "Loafer"
+
+++ http://vital.ai/vital/metamind-app/973 "ice cream, icecream"
+
+++ http://vital.ai/vital/metamind-app/974 "pretzel"
+
+++ http://vital.ai/vital/metamind-app/975 "quilt, comforter, comfort, puff"
+
+++ http://vital.ai/vital/metamind-app/976 "maillot, tank suit"
+
+++ http://vital.ai/vital/metamind-app/977 "tape player"
+
+++ http://vital.ai/vital/metamind-app/978 "clog, geta, patten, sabot"
+
+++ http://vital.ai/vital/metamind-app/979 "iPod"
+
+++ http://vital.ai/vital/metamind-app/980 "bolete"
+
+++ http://vital.ai/vital/metamind-app/981 "scuba diver"
+
+++ http://vital.ai/vital/metamind-app/982 "pitcher, ewer"
+
+++ http://vital.ai/vital/metamind-app/983 "matchstick"
+
+++ http://vital.ai/vital/metamind-app/984 "bikini, two-piece"
+
+++ http://vital.ai/vital/metamind-app/985 "sock"
+
+++ http://vital.ai/vital/metamind-app/986 "CD player"
+
+++ http://vital.ai/vital/metamind-app/987 "lens cap, lens cover"
+
+++ http://vital.ai/vital/metamind-app/988 "thatch, thatched roof"
+
+++ http://vital.ai/vital/metamind-app/989 "vault"
+
+++ http://vital.ai/vital/metamind-app/990 "beaker"
+
+++ http://vital.ai/vital/metamind-app/991 "bubble"
+
+++ http://vital.ai/vital/metamind-app/992 "cheeseburger"
+
+++ http://vital.ai/vital/metamind-app/993 "parallel bars, bars"
+
+++ http://vital.ai/vital/metamind-app/994 "flagpole, flagstaff"
+
+++ http://vital.ai/vital/metamind-app/995 "coffee mug"
+
+++ http://vital.ai/vital/metamind-app/996 "rubber eraser, rubber, pencil eraser"
+
+++ http://vital.ai/vital/metamind-app/997 "stole"
+
+++ http://vital.ai/vital/metamind-app/998 "carbonara"
+
+++ http://vital.ai/vital/metamind-app/999 "dumbbell"
