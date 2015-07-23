@@ -5,6 +5,7 @@ import java.util.Map
 import org.apache.commons.collections.map.LRUMap;
 import org.vertx.groovy.core.sockjs.SockJSServer;
 
+import ai.vital.domain.ImageReference;
 import ai.vital.service.vertx.handler.AbstractVitalServiceHandler;
 import ai.vital.service.vertx.handler.CallFunctionHandler;
 import ai.vital.service.vertx.handler.functions.VertxHandler;
@@ -17,6 +18,9 @@ import ai.vital.vitalservice.model.Organization;
 import ai.vital.vitalservice.query.ResultElement
 import ai.vital.vitalservice.query.ResultList;
 import ai.vital.vitalsigns.model.VITAL_Category;
+import ai.vital.vitalsigns.model.VITAL_Edge;
+import ai.vital.vitalsigns.model.property.URIProperty;
+import ai.vital.vitalsigns.uri.URIGenerator;
 
 class MetaMind_ProcessImageHandler extends VertxHandler {
 
@@ -66,11 +70,23 @@ class MetaMind_ProcessImageHandler extends VertxHandler {
 				
 				map.remove(id)
 				
+				ResultList qrl = VitalServiceFactory.getVitalService().callFunction('commons/scripts/Aspen_Usage',
+					[action: 'incrementUsage', key:'metamind', increment: 1, limit: 1000])
+				
+				if(qrl.status.status != VitalStatus.Status.ok) {
+					throw new Exception("Error when incrementing usage counter: ${qrl.status.message}")
+				}
+				
+				
 				//call datascript
 				
-				rl = VitalServiceFactory.getVitalService().callFunction('commons/scripts/MetaMindPredictScript', 
-					['action': 'predict', content: sb.toString()])
-						
+				ImageReference imgRef = new ImageReference()
+				imgRef.URI = URIGenerator.generateURI((App) null, ImageReference.class)
+				imgRef.imageURL = URIProperty.withString(sb.toString()) 
+				
+				rl = VitalServiceFactory.getVitalService().callFunction('commons/scripts/Aspen_Predict', 
+					['inputBlock': [imgRef], 'modelName': 'metamind-image-categorization'])
+				
 			}
 			
 			

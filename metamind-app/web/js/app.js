@@ -53,11 +53,6 @@ function onServiceReady() {
 	
 	inputEl.removeAttr('disabled');
 	 
-	if ( ! window.FileReader ) {
-		alert("HTML5 FileReader API unavailable - app non-functional");
-		return;
-	}
-	
 	refreshQuota();
 	
 	statusEl = $('#status');
@@ -212,12 +207,18 @@ function handleResults(res) {
 	
 	for( var i = 0 ; i < res.results.length; i++ ) {
 
-		var li = $('<li>');
-		
 		var catRE = res.results[i];
 		var cat = catRE.graphObject;
 		
-		li.text(cat.URI + ' ' + cat.name + ' ' + catRE.score);
+		var catURI = cat.targetStringValue
+		
+		if(catURI == null) continue;
+		
+		var score = cat.targetScore;
+		
+		var li = $('<li>');
+		
+		li.text(catURI + ' ' + cat.name + ' ' + score);
 		
 		ul.append(li);
 		
@@ -283,9 +284,11 @@ function uploadNextPart(res) {
 
 function refreshQuota() {
 	
-	vitalservice.callFunction('commons/scripts/MetaMindPredictScript', {action: 'getQuota'}, function(res){
+	vitalservice.callFunction('commons/scripts/Aspen_Usage', {action: 'getUsage',  key: 'metamind'}, function(res){
 		
-		quota.text(res.limit);
+		var v = 1000 - res.limit;
+		if(v < 0) v = 0;
+		quota.text(v);
 		
 	}, function(error){
 		
