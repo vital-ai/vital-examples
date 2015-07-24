@@ -8,7 +8,6 @@ import ai.vital.aspen.groovy.modelmanager.AspenPrediction;
 import ai.vital.aspen.model.CategoriesListPrediction
 import ai.vital.domain.Document;
 import ai.vital.domain.Edge_hasCategory;
-import ai.vital.domain.Image;
 import ai.vital.domain.TargetNode;
 import ai.vital.predictmodel.Prediction
 import ai.vital.vitalservice.model.App
@@ -39,18 +38,15 @@ import ai.vital.aspen.model.CategoryPrediction;
 
 MODEL {
 
-	value URI: 'urn:metamind-image-categorization'
+	value URI: 'urn:alchemy-api-categorization'
 
-	value name: 'metamind-image-categorization'
+	value name: 'alchemy-api-categorization'
 
-	value type: 'metamind-image-categorization'
+	value type: 'alchemy-api-categorization'
 
-	value algorithm: 'metamind'
+	value algorithm: 'alchemy-api'
 
 	ALGORITHM {
-		
-		value classifierID: 'imagenet-1k-net'
-		//value classifierID: 'food-net'
 		
 		value apiKey: 'API_KEY'
 		
@@ -66,11 +62,11 @@ MODEL {
 
 		FEATURE {
 
-			value URI: 'urn:feature-image'
+			value URI: 'urn:feature-text'
 
-			value name: 'image'
+			value name: 'text'
 
-			value type: 'image'
+			value type: 'text'
 			
 			value allowedMissing: false
 			
@@ -97,13 +93,13 @@ MODEL {
 
 		FUNCTION {
 
-			value provides: 'image'
+			value provides: 'text'
 
 			value function: { VitalBlock block, Map features ->
 				
-				def img = block.toContainer(false).iterator(Image.class, false).next()
+				Document doc = block.getMainObject()
 				
-				return img
+				return doc.body?.toString()
 				
 			}
 
@@ -116,13 +112,13 @@ MODEL {
 
 		value type: 'categorical' 
 		
-		value taxonomy: 'metamind-taxonomy'
+		value taxonomy: 'alchemyapi-taxonomy'
 		
 		value function: { VitalBlock block, Map features ->
 
 			Edge_hasCategory edge = block.toContainer(false).iterator(Edge_hasCategory.class).next()
 			
-			return TAXONOMY['metamind-taxonomy'].container.get( edge.getDestinationURI() )
+			return TAXONOMY['alchemyapi-taxonomy'].container.get( edge.getDestinationURI() )
 
 		}
 		
@@ -140,17 +136,22 @@ MODEL {
 
 		value function: { VitalBlock block, Map features, Prediction result ->
 
-			def imRef = block.getMainObject()
+			def doc = block.getMainObject()
 
-			def metamindPrediction = (CategoriesListPrediction)result
+			def alchemyapiPrediction = (CategoriesListPrediction)result
 			
 			List res = []
 			
-			for(CategoryPrediction categoryPrediction : metamindPrediction.predictions) {
+			for(CategoryPrediction categoryPrediction : alchemyapiPrediction.predictions) {
 				
-				def categoryURI = 'http://vital.ai/vital.ai/app/VITAL_Category/metamind_' + categoryPrediction.categoryID.intValue()
+				String label = categoryPrediction.categoryLabel
 				
-				VITAL_Category category = TAXONOMY['metamind-taxonomy'].container.get( categoryURI )
+				//slugify label to 
+				label = label.replace("/", "___").replace(" ", "_")
+				
+				def categoryURI = 'http://vital.ai/vital.ai/app/VITAL_Category/alchemyapi_' + label
+				
+				VITAL_Category category = TAXONOMY['alchemyapi-taxonomy'].container.get( categoryURI )
 				
 				if(category == null) throw new RuntimeException("Category not found ${categoryURI}")
 				
@@ -161,7 +162,7 @@ MODEL {
 				target.targetScore = categoryPrediction.score;
 				target.name = category?.name
 						
-				def edge = new Edge_hasTargetNode().addSource(imRef).addDestination(target)
+				def edge = new Edge_hasTargetNode().addSource(doc).addDestination(target)
 				edge.URI = URIGenerator.generateURI((App)null, Edge_hasTargetNode.class)
 				
 				res.addAll([target, edge])
@@ -177,9 +178,9 @@ MODEL {
 
   TAXONOMY {
     
-    value provides: 'metamind-taxonomy'
+    value provides: 'alchemyapi-taxonomy'
     
-	value taxonomyPath: 'file:/d:/data/metamind/imagenet-1k-net_taxonomy.txt'
+	value taxonomyPath: 'alchemyapi_taxonomy.txt'
 	 
   }
 

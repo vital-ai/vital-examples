@@ -5,6 +5,7 @@ import java.util.Map
 import org.apache.commons.collections.map.LRUMap;
 import org.vertx.groovy.core.sockjs.SockJSServer;
 
+import ai.vital.domain.Image
 import ai.vital.domain.ImageReference;
 import ai.vital.service.vertx.handler.AbstractVitalServiceHandler;
 import ai.vital.service.vertx.handler.CallFunctionHandler;
@@ -80,12 +81,12 @@ class MetaMind_ProcessImageHandler extends VertxHandler {
 				
 				//call datascript
 				
-				ImageReference imgRef = new ImageReference()
-				imgRef.URI = URIGenerator.generateURI((App) null, ImageReference.class)
-				imgRef.imageURL = URIProperty.withString(sb.toString()) 
+				Image img = new Image()
+				img.URI = URIGenerator.generateURI((App) null, Image.class)
+				img.imageData = sb.toString() 
 				
 				rl = VitalServiceFactory.getVitalService().callFunction('commons/scripts/Aspen_Predict', 
-					['inputBlock': [imgRef], 'modelName': 'metamind-image-categorization'])
+					['inputBlock': [img], 'modelName': 'metamind-image-categorization'])
 				
 			}
 			
