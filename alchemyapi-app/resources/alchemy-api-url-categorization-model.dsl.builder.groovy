@@ -3,6 +3,7 @@ import java.util.Arrays;
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer.VitalBlock
 import ai.vital.vitalsigns.model.GraphObject;
 import ai.vital.vitalsigns.model.VITAL_Category;
+import ai.vital.vitalsigns.model.property.URIProperty;
 import ai.vital.aspen.groovy.featureextraction.CategoricalFeatureData;
 import ai.vital.aspen.groovy.modelmanager.AspenPrediction;
 import ai.vital.aspen.model.CategoriesListPrediction
@@ -38,9 +39,9 @@ import ai.vital.aspen.model.CategoryPrediction;
 
 MODEL {
 
-	value URI: 'urn:alchemy-api-categorization'
+	value URI: 'urn:alchemy-api-url-categorization'
 
-	value name: 'alchemy-api-categorization'
+	value name: 'alchemy-api-url-categorization'
 
 	value type: 'alchemy-api-categorization'
 
@@ -62,11 +63,11 @@ MODEL {
 
 		FEATURE {
 
-			value URI: 'urn:feature-text'
+			value URI: 'urn:feature-url'
 
-			value name: 'text'
+			value name: 'url'
 
-			value type: 'text'
+			value type: 'uri'
 			
 			value allowedMissing: false
 			
@@ -93,13 +94,13 @@ MODEL {
 
 		FUNCTION {
 
-			value provides: 'text'
+			value provides: 'url'
 
 			value function: { VitalBlock block, Map features ->
 				
 				Document doc = block.getMainObject()
 				
-				return doc.body?.toString()
+				return URIProperty.withString( doc.url?.toString() )
 				
 			}
 
@@ -180,7 +181,7 @@ MODEL {
     
     value provides: 'alchemyapi-taxonomy'
     
-	value taxonomyPath: 'alchemyapi_taxonomy.txt'
+    value taxonomyPath: 'alchemyapi_taxonomy.txt'
 	 
   }
 

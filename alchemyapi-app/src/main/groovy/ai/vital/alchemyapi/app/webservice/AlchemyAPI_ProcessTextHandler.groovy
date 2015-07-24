@@ -39,11 +39,27 @@ class AlchemyAPI_ProcessTextHandler extends VertxHandler {
 			
 			Document doc = new Document()
 			doc.URI = URIGenerator.generateURI((App) null, Document.class)
-			doc.body = text
+			
+			String modelName = null
+			
+			if(text.trim().matches('^https?://\\S+$')) {
+				
+				modelName = 'alchemy-api-url-categorization'
+				
+				doc.url = text.trim()
+						
+			} else {
+			
+				modelName = 'alchemy-api-text-categorization'
+				
+				doc.body = text
+				
+			}
+			
 			
 			//call datascript
 			rl = VitalServiceFactory.getVitalService().callFunction('commons/scripts/Aspen_Predict', 
-					['inputBlock': [doc], 'modelName': 'alchemy-api-categorization'])
+					['inputBlock': [doc], 'modelName': modelName])
 				
 		} catch(Exception e) {
 			e.printStackTrace();

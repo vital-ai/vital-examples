@@ -2,6 +2,8 @@ var inputEl = null;
 
 var processButton = null;
 
+var clearButton = null;
+
 var vitalservice = null;
 
 var statusEl = null;
@@ -30,6 +32,17 @@ $(function(){
 	
 });
 
+function checkInput() {
+	var text = inputEl.val();
+	
+	if(text == null || $.trim(text).length == 0) {
+		processButton.attr('disabled', 'disabled');
+		return;
+	}
+	
+	processButton.removeAttr('disabled');
+}
+
 function onServiceReady() {
 	
 	inputEl.removeAttr('disabled');
@@ -46,19 +59,17 @@ function onServiceReady() {
 		doProcess();
 	});
 	
+	
+	clearButton = new $('#clear-button');
+	clearButton.click(function(event){
+		inputEl.val('');
+		checkInput();
+	});
+	
 	quota = $('#quota');	
 
 	inputEl.on('input propertychange', function(event){
-		
-		var text = inputEl.val();
-		
-		if(text == null || $.trim(text).length == 0) {
-			processButton.attr('disabled', 'disabled');
-			return;
-		}
-		
-		processButton.removeAttr('disabled');
-		
+		checkInput();
 	});
 	
 }
