@@ -16,6 +16,9 @@ var recommendedPanel = null;
 
 $(function(){
 	
+	inputEls = $('.search-active');
+	
+	inputEls.prop('disabled', true);
 	
 	console.log("instantiating service...");
 	
@@ -23,12 +26,79 @@ $(function(){
 		
 		console.log('connected to endpoint');
 		
+		//in statically loaded domain mode the steps below are not needed
+//		onVitalServiceReady();
+//		return;
+		
+		//get json schemas list
+		console.log('getting available domains list')
+		vitalservice.getSchemaList(function(schemasList){
+			
+			console.log("schemas list obtained", schemasList);
+			
+			for(var i = 0 ; i < schemasList.length; i++) {
+				
+				var schema = schemasList[i];
+				
+				if(schema.name == 'movielens-1.0.0.js') {
+					
+					onSchemaObtained(schema);
+					return;
+					
+				}
+				
+			}
+			
+			alert("Schema not found: " + 'movielens-1.0.0.js');
+			
+		}, function(err){
+			alert("Error when getting domains list: " + err);
+		});
+		
+		
 	}, function(err){
 		alert('couln\'t connect to endpoint -' + err);
 	});
 	
+});
+
+function onSchemaObtained(schema) {
+
+	vitalservice.getDependenciesOfSchema(schema.name, true, function(dependenciesList){
+		
+		console.log("movielens dependencies", dependenciesList);
+		
+		var schemaNamesArray = [];
+		
+		//push schema and load it that order
+		for(var i = 0 ; i < dependenciesList.length; i++) {
+			schemaNamesArray.push(dependenciesList[i]);
+		}
+		
+		schemaNamesArray.push(schema.name);
+		
+		vitalservice.getSchemas(schemaNamesArray, function(schemaObjectsArray){
+			
+			console.log("schema objects ready", schemaObjectsArray);
+			
+			vitalservice.loadSchemas(schemaObjectsArray, function(){
+				console.log("schemas loaded");
+				onVitalServiceReady();
+			}, function(err){
+				alert('error when loading json schemas - ' + err);
+			});
+			
+		}, function(err){
+			alert('error getting json objects - ' + err);
+		});
+		
+	}, function(err){
+		alert('error when checking domain dependencies -' + err);
+	});
 	
-	inputEls = $('.search-active');
+}
+
+function onVitalServiceReady() {
 	
 	inputEls.prop('disabled', false);
 	
@@ -72,7 +142,7 @@ $(function(){
 	})
 
 	
-});
+}
 
 function showSearchPanel() {
 	

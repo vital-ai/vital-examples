@@ -47,12 +47,17 @@ MODEL {
 
 	value algorithm: 'als'
 
+	value domainJars: [
+		'<url_of_movielens-groovy-1.0.0.jar>'
+	]
+	
+	
 	ALGORITHM {
 		
 		value rank: 10
 		value lambda: 0.01d
 		value iterations: 20
-  }	
+  }
   
 	  // there is an input block, which minimally contains the main object
 	  // it may contain other objects which could be used in the
