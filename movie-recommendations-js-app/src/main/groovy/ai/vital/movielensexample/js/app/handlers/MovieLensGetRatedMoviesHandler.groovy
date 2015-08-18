@@ -3,7 +3,6 @@ package ai.vital.movielensexample.js.app.handlers
 import java.util.Map
 
 import org.movielens.domain.Edge_hasMovieRating;
-import org.movielens.domain.Edge_hasMovieRating_PropertiesHelper
 import org.movielens.domain.Movie;
 import org.movielens.domain.properties.Property_hasRating;
 
@@ -60,7 +59,7 @@ class MovieLensGetRatedMoviesHandler implements CallFunctionHandler {
 //				value sortProperties: [new VitalSortProperty( VitalSigns.get().getPropertyByTrait(Property_hasRating.class), null, true)]
 					
 				edge_constraint { Edge_hasMovieRating.class }
-				edge_constraint { new Edge_hasMovieRating_PropertiesHelper().edgeSource.equalTo(URIProperty.withString(userURI)) }
+				edge_constraint { Edge_hasMovieRating.props().edgeSource.equalTo(URIProperty.withString(userURI)) }
 				
 				
 			}

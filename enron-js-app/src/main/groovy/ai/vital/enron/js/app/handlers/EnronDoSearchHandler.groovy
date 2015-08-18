@@ -1,7 +1,6 @@
 package ai.vital.enron.js.app.handlers
 
 import org.example.enrondata.domain.EnronEmail
-import org.example.enrondata.domain.EnronEmail_PropertiesHelper
 
 import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.service.vertx.handler.CallFunctionHandler
@@ -69,9 +68,9 @@ class EnronDoSearchHandler implements CallFunctionHandler {
 				
 				OR {
 					
-					node_constraint { ((EnronEmail_PropertiesHelper)EnronEmail.props()).emailSubject.contains_i(query) }
+					node_constraint { EnronEmail.props().emailSubject.contains_i(query) }
 					
-					node_constraint { ((EnronEmail_PropertiesHelper)EnronEmail.props()).body.contains_i(query) }
+					node_constraint { EnronEmail.props().body.contains_i(query) }
 					
 				}
 			}

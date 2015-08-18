@@ -50,7 +50,7 @@ class AppTemplate {
 				value limit: 10 
 						
 				node_constraint { NounSynsetNode.class }
-				node_constraint { new NounSynsetNode_PropertiesHelper().name.equalTo_i( 'apple' ) }
+				node_constraint { NounSynsetNode.props().name.equalTo_i( 'apple' ) }
 				
 			}
 			
