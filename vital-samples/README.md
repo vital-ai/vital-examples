@@ -40,4 +40,12 @@ Complete segment-to-segment migration samples are available in groovy source fil
   
 * src/main/groovy/ai/vital/samples/SampleDowngradeOperation.groovy
 * src/main/groovy/ai/vital/samples/SampleUpgradeOperation.groovy
+
+
+#### inline data migration example
+
+The examples of data migration implemented with vitalsigns mini-scripting feature
+
+* src/main/groovy/ai/vital/samples/SampleDowngradeInlineScript.groovy
+* src/main/groovy/ai/vital/samples/SampleUpgradeInlineScript.groovy
  

@@ -188,14 +188,32 @@
   <groupId>vital-ai</groupId>
   <artifactId>vitalservice</artifactId>
   <version>0.2.254</version>
+  	<exclusions>
+  		<exclusion>
+  			<groupId>org.codehaus.groovy</groupId>
+  			<artifactId>groovy-all</artifactId>
+  		</exclusion>
+  	</exclusions>
   </dependency>
   
+  <dependency>
+  	<groupId>org.codehaus.groovy</groupId>
+  	<artifactId>groovy-all</artifactId>
+  	<version>2.5.0-SNAPSHOT</version>
+  </dependency>
+  <dependency>
+	<groupId>com.thoughtworks.xstream</groupId>
+	<artifactId>xstream</artifactId>
+	<version>1.4.8</version>
+  </dependency>
 	
   <dependency>
 	<groupId>edu.mit</groupId>
 	<artifactId>jwi</artifactId>
 	<version>2.2.3</version>
 </dependency>
+
+	
   
        </dependencies>
       
