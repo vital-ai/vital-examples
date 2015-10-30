@@ -126,7 +126,8 @@ function doSearch() {
 		
 		searchResults.empty();
 		
-		alert("error: " + errorResponse);
+		//alert("error: " + errorResponse);
+		searchResults.append('<h4 style="color:red;">' + "error: " + errorResponse + '</h4>');
 		
 	});
 	
@@ -153,7 +154,9 @@ function doGetMessages() {
 		
 		searchResults.empty();
 		
-		alert("error: " + errorResponse);
+		//alert("error: " + errorResponse);
+		
+		searchResults.append('<h4 style="color:red;">' + "error: " + errorResponse + '</h4>');
 		
 	});
 }
@@ -332,7 +335,8 @@ function doDetails() {
 
 		searchResults.empty();
 		
-		alert("error: " + errorResponse);
+		//alert("error: " + errorResponse);
+		searchResults.append('<h4 style="color:red;">' + "error: " + errorResponse + '</h4>');
 		
 	});
 	
