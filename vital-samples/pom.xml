@@ -4,6 +4,9 @@
   <artifactId>vital-samples</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
+  <properties>
+  	<vital.version>0.2.300</vital.version>
+  </properties>
   
   <repositories>
   
@@ -167,27 +170,31 @@
   </dependency>
   
   
-  
-  
+  <!-- vital-wordnet ontology installed locally -->
+  <dependency>
+    <groupId>vitalai-com</groupId>
+	<artifactId>vital-wordnet</artifactId>
+	<version>${vital.version}</version>
+  </dependency>
   
     <!-- vital libraries --> 
     
   <dependency>
-  <groupId>vital-ai</groupId>
-  <artifactId>vital-lucene</artifactId>
-  <version>0.2.254</version>
+    <groupId>vital-ai</groupId>
+    <artifactId>vital-lucene</artifactId>
+    <version>${vital.version}</version>
   </dependency>
   
   <dependency>
-  <groupId>vital-ai</groupId>
-  <artifactId>vital-triplestore</artifactId>
-  <version>0.2.254</version>
+    <groupId>vital-ai</groupId>
+    <artifactId>vital-triplestore</artifactId>
+    <version>${vital.version}</version>
   </dependency>
   
   <dependency>
-  <groupId>vital-ai</groupId>
-  <artifactId>vitalservice</artifactId>
-  <version>0.2.254</version>
+    <groupId>vital-ai</groupId>
+    <artifactId>vitalservice</artifactId>
+    <version>${vital.version}</version>
   	<exclusions>
   		<exclusion>
   			<groupId>org.codehaus.groovy</groupId>

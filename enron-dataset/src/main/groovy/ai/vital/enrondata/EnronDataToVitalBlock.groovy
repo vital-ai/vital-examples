@@ -6,9 +6,9 @@ import java.io.Reader;
 
 import org.apache.james.mime4j.dom.TextBody;
 
-import ai.vital.vitalsigns.uri.URIGenerator;
-import ai.vital.vitalservice.model.App
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer;
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.uri.URIGenerator;
 
 import java.nio.file.Path
 import java.text.DecimalFormat;
@@ -37,7 +37,7 @@ class EnronDataToVitalBlock {
 
 	static void err(String e) { System.err.println(e); System.exit(1) }
 	
-	static App app = null
+	static VitalApp app = null
 	
 	static Pattern forwarded_startPattern = Pattern.compile("-{7,} Forwarded ");
 	static Pattern forwarded_endPattern = Pattern.compile("-[\n-]{6,}");
@@ -134,7 +134,7 @@ class EnronDataToVitalBlock {
 		println "Mailbox directories count: ${index.size()}"
 				
 		
-		app = new App(ID: 'app', customerID: 'customer')
+		app = VitalApp.withId('app')
 		
 
 		MimeConfig config = MimeConfig.copy(MimeConfig.DEFAULT)

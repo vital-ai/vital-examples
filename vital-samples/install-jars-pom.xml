@@ -6,6 +6,10 @@
   <name>Install Vital AI Jars into Local Repo</name>
   
   
+  <properties>
+  	<vital.version>0.2.300</vital.version>
+  </properties>
+  
   <repositories>
   
     <repository>
@@ -21,38 +25,53 @@
     </repository>
 
   </repositories>
-  
 
 
-  <build>
-    <plugins>
 
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-install-plugin</artifactId>
-            <executions>
-            
+	<build>
+		<plugins>
 
-			<execution>
-                  <id>vital-samples-groovy-0.1.0.jar</id>
-                  <phase>validate</phase>
-                  <goals>
-                    <goal>install-file</goal>
-                  </goals>
-                  <configuration>
-                    <groupId>vital-ai</groupId>
-					<artifactId>vital-samples-domain</artifactId>
-					<version>0.1.0</version>
-                    <packaging>jar</packaging>
-                    <file>${VITAL_HOME}/domain-groovy-jar/vital-samples-groovy-0.1.0.jar</file>
-                  </configuration>
-                </execution>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<executions>
 
-            </executions>
-        </plugin>            
-      
-    </plugins>
-  </build>
+
+					<execution>
+						<id>vital-samples-groovy-0.1.0.jar</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<configuration>
+							<groupId>vital-ai</groupId>
+							<artifactId>vital-samples-domain</artifactId>
+							<version>0.1.0</version>
+							<packaging>jar</packaging>
+							<file>${VITAL_HOME}/domain-groovy-jar/vital-samples-groovy-0.1.0.jar</file>
+						</configuration>
+					</execution>
+					
+					<execution>
+						<id>vital-wordnet-${vital.version}.jar</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<configuration>
+							<groupId>vitalai-com</groupId>
+							<artifactId>vital-wordnet</artifactId>
+							<version>${vital.version}</version>
+							<packaging>jar</packaging>
+							<file>${VITAL_HOME}/domain-groovy-jar/vital-wordnet-groovy-${vital.version}.jar</file>
+						</configuration>
+					</execution>
+
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
   
 
 </project>

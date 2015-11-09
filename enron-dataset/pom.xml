@@ -4,6 +4,10 @@
   <artifactId>enron-dataset-app</artifactId>
   <version>1.0.0</version>
   
+  <properties>
+  	<vital.version>0.2.300</vital.version>
+  </properties>
+  
   <repositories>
   
     <repository>
@@ -131,8 +135,16 @@
     <dependency>
 	  <groupId>vital-ai</groupId>
 	  <artifactId>enron-dataset</artifactId>
-	  <version>1.0.0</version>
+	  <version>1.0.1</version>
     </dependency>
+    
+    
+    <dependency>
+	  <groupId>com-vitalai</groupId>
+	  <artifactId>vital-nlp</artifactId>
+	  <version>${vital.version}</version>
+    </dependency>
+    
   
     <!-- project dependencies installed locally -->
     <dependency>
@@ -153,7 +165,7 @@
     <dependency>
       <groupId>vital-ai</groupId>
       <artifactId>vitalservice</artifactId>
-      <version>0.2.254</version>
+      <version>${vital.version}</version>
       <scope>compile</scope>
     </dependency>
      
