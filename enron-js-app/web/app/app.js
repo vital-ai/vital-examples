@@ -27,7 +27,9 @@ $(function(){
 	
 	console.log("instantiating service...");
 	
-	vitalservice = new VitalService(function(){
+	var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/enron-js-app/eventbus';
+	
+	vitalservice = new VitalService('endpoint.enron', EVENTBUS_URL, function(){
 		
 		console.log('connected to endpoint');
 		

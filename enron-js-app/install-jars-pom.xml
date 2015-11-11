@@ -33,7 +33,7 @@
         <executions>
                 
           <execution>
-            <id>enron-dataset-groovy-1.0.0.jar</id>
+            <id>enron-dataset-groovy-1.0.1.jar</id>
             <phase>validate</phase>
             <goals>
               <goal>install-file</goal>
@@ -41,9 +41,25 @@
             <configuration>
               <groupId>vital-ai</groupId>
               <artifactId>enron-dataset</artifactId>
-              <version>1.0.0</version>
+              <version>1.0.1</version>
               <packaging>jar</packaging>
-              <file>${VITAL_HOME}/domain-groovy-jar/enron-dataset-groovy-1.0.0.jar</file>
+              <file>${VITAL_HOME}/domain-groovy-jar/enron-dataset-groovy-1.0.1.jar</file>
+            </configuration>
+          </execution>
+          
+          
+          <execution>
+            <id>vital-nlp-0.2.300.jar</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+            <configuration>
+              <groupId>vitalai-com</groupId>
+              <artifactId>vital-nlp</artifactId>
+              <version>0.2.300</version>
+              <packaging>jar</packaging>
+              <file>${VITAL_HOME}/domain-groovy-jar/vital-nlp-groovy-0.2.300.jar</file>
             </configuration>
           </execution>
           

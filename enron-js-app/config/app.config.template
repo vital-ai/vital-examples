@@ -16,6 +16,8 @@
   
   instances: 1
 
+  app: enron
+
 }
 
 "io.vertx~mod-web-server~2.0.0-final" {
@@ -35,7 +37,7 @@
 	
 	bridge: true
 	
-	inbound_permitted: [{address: "vitalservice"}],
+	inbound_permitted: [{address: "endpoint.enron"}],
 	outbound_permitted: [{}]
     
 }

@@ -6,14 +6,22 @@ import org.vertx.java.core.Future;
 
 
 
+
+
+
+
 import ai.vital.enron.js.app.handlers.EnronDoSearchHandler;
 import ai.vital.enron.js.app.handlers.EnronGetMessagesHandler;
 import ai.vital.enron.js.app.handlers.EnronGetDetailsHandler;
+import ai.vital.service.vertx.VitalServiceMod;
 import ai.vital.service.vertx.async.VitalServiceAsyncClient;
 import ai.vital.service.vertx.binary.ResponseMessage;
 import ai.vital.service.vertx.handler.CallFunctionHandler;
+import ai.vital.vitalservice.VitalService;
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.query.ResultList;
+import ai.vital.vitalsigns.model.VitalApp;
+import ai.vital.vitalsigns.model.VitalSegment;
 
 import org.vertx.java.core.Future
 
@@ -21,21 +29,53 @@ class EnronAppVerticle extends Verticle {
 	
 	public static boolean initialized = false
 	
+	public static VitalService serviceInstance = null
+	
+	public static VitalSegment enronSegment = null
+	
 	//async start with notification
 	@Override
 	public Object start(Future<Void> startedResult) {
 	
 		if(initialized) {
 			startedResult.setResult(true)
-			return
+			return startedResult
 		}
 		
 		synchronized (EnronAppVerticle.class) {
 			
 			if(initialized) return
 			
+			String appID = container.getConfig().get('app')
 			
-			VitalServiceAsyncClient client = new VitalServiceAsyncClient(vertx)
+			if(!appID) {
+				startedResult.setFailure(new Exception("No 'app' config parameter"))
+				return startedResult
+			}
+			
+			VitalServiceAsyncClient client = null
+			
+			try {
+				client = new VitalServiceAsyncClient(vertx, VitalApp.withId(appID))
+			} catch(Exception e) {
+				startedResult.setFailure(e)
+				return startedResult
+			}
+			
+			serviceInstance = VitalServiceMod.registeredServices.get(appID)
+			
+			if(serviceInstance == null) {
+				startedResult.setFailure(new Exception("No registered service instance found for app: ${appID}"))
+				return startedResult
+			}
+			
+			enronSegment = serviceInstance.getSegment('enron')
+			
+			if(enronSegment == null) {
+				startedResult.setFailure(new Exception("Segment not found: 'enron'"))
+				return startedResult;
+			}
+			
 			
 			client.callFunction(CallFunctionHandler.VERTX_REGISTER_HANDLER, [functionName: EnronDoSearchHandler.enron_do_search, handlerClass: EnronDoSearchHandler.class.canonicalName]) { ResponseMessage m1 ->
 

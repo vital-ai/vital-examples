@@ -1,4 +1,7 @@
 /bin_classes
 /.settings/
+/config/app.config
 /mods/io.vertx~*
+/mods/vital-ai~*
 /target/
+/web/vitalservice/

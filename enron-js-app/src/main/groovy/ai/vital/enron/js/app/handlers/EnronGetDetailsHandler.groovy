@@ -5,20 +5,21 @@ import org.example.enrondata.domain.Edge_hasSender
 import org.example.enrondata.domain.EnronEmail
 import org.example.enrondata.domain.EnronPerson
 
+import ai.vital.enron.js.app.EnronAppVerticle;
 import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.service.vertx.handler.CallFunctionHandler
 import ai.vital.vitalservice.VitalStatus
 import ai.vital.vitalservice.exception.VitalServiceException
 import ai.vital.vitalservice.exception.VitalServiceUnimplementedException
 import ai.vital.vitalservice.factory.VitalServiceFactory
-import ai.vital.vitalservice.model.App
-import ai.vital.vitalservice.model.Organization
 import ai.vital.vitalservice.query.ResultElement
 import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalservice.query.VitalGraphQuery
 import ai.vital.vitalsigns.meta.GraphContext
 import ai.vital.vitalsigns.model.GraphMatch
 import ai.vital.vitalsigns.model.GraphObject
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalOrganization
 import ai.vital.vitalsigns.model.property.IProperty
 import ai.vital.vitalsigns.model.property.URIProperty
 
@@ -30,15 +31,15 @@ class EnronGetDetailsHandler implements CallFunctionHandler {
 	
 	
 	@Override
-	public ResultList callFunction(Organization organization, App app,
-			String function, Map<String, Object> params)
+	public ResultList callFunction(VitalOrganization organization, VitalApp app,
+			String function, Map<String, Object> params, Map<String, Object> sessionParams)
 			throws VitalServiceUnimplementedException, VitalServiceException {
 
 		String uri = params.get('URI')
 		
 		if(!uri) throw new RuntimeException("No 'URI' parameter")
 		
-		def vitalService = VitalServiceFactory.getVitalService()
+		def vitalService = EnronAppVerticle.serviceInstance
 		
 		ResultList rl = vitalService.get(GraphContext.ServiceWide, URIProperty.withString(uri));
 		
@@ -63,7 +64,7 @@ class EnronGetDetailsHandler implements CallFunctionHandler {
 				GRAPH {
 					
 					value inlineObjects: true
-					value segments: ['enron']
+					value segments: [EnronAppVerticle.enronSegment]
 					
 					value limit: 100
 					

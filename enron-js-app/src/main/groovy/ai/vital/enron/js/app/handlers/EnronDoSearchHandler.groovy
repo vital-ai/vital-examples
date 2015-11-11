@@ -1,16 +1,20 @@
 package ai.vital.enron.js.app.handlers
 
+import java.util.Map;
+
 import org.example.enrondata.domain.EnronEmail
 
+import ai.vital.enron.js.app.EnronAppVerticle;
 import ai.vital.query.querybuilder.VitalBuilder
+import ai.vital.service.vertx.VitalServiceMod;
 import ai.vital.service.vertx.handler.CallFunctionHandler
 import ai.vital.vitalservice.exception.VitalServiceException
 import ai.vital.vitalservice.exception.VitalServiceUnimplementedException
 import ai.vital.vitalservice.factory.VitalServiceFactory
-import ai.vital.vitalservice.model.App
-import ai.vital.vitalservice.model.Organization
 import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalservice.query.VitalQuery
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalOrganization
 
 class EnronDoSearchHandler implements CallFunctionHandler {
 
@@ -19,11 +23,10 @@ class EnronDoSearchHandler implements CallFunctionHandler {
 	static String enron_do_search = 'enron-do-search'
 	
 	@Override
-	public ResultList callFunction(Organization organization, App app,
-			String function, Map<String, Object> params)
+	public ResultList callFunction(VitalOrganization organization, VitalApp app,
+			String function, Map<String, Object> params, Map<String, Object> sessionParams)
 			throws VitalServiceUnimplementedException, VitalServiceException {
 
-				
 		//validate params
 		def query = params.get('query')
 		
@@ -62,7 +65,7 @@ class EnronDoSearchHandler implements CallFunctionHandler {
 				value offset: offset
 				value limit: limit
 				
-				value segments: ['enron']
+				value segments: [EnronAppVerticle.enronSegment]
 				
 				node_constraint { EnronEmail.class }
 				
@@ -77,8 +80,7 @@ class EnronDoSearchHandler implements CallFunctionHandler {
 			
 		}.toQuery()
 		
-		
-		return VitalServiceFactory.getVitalService().query(queryObj)
+		return EnronAppVerticle.serviceInstance.query(queryObj)
 		
 	}
 
