@@ -2,16 +2,16 @@ package ai.vital.samples
 
 import org.apache.commons.io.FileUtils;
 
-import ai.vital.prime.service.model.PrimeVitalSegment
+//import ai.vital.prime.service.model.PrimeVitalSegment
 import ai.vital.vitalservice.ServiceOperations;
 import ai.vital.vitalservice.DowngradeOptions;
 import ai.vital.vitalservice.VitalStatus
 import ai.vital.vitalservice.admin.VitalServiceAdmin;
 import ai.vital.vitalservice.factory.VitalServiceFactory;
 import ai.vital.vitalservice.impl.UpgradeDowngradeProcedure;
-import ai.vital.vitalservice.model.App
+import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalservice.query.ResultList
-import ai.vital.vitalservice.segment.VitalSegment
+import ai.vital.vitalsigns.model.VitalSegment
 
 
 /**
@@ -27,7 +27,7 @@ class SampleDowngradeOperation {
 		
 		String serviceProfile = "default"
 		
-		App app = new App()
+		VitalApp app = new VitalApp()
 		app.setID('app')
 		
 		String oldJarName = 'movielens-groovy-1.0.0.jar'
@@ -54,14 +54,14 @@ class SampleDowngradeOperation {
 		try {
 			serviceAdmin.removeSegment(app, sourceSegment, true)
 		} catch(Exception e) {System.err.println(e.localizedMessage)}
-		PrimeVitalSegment lvs1 = segmentDef(app, sourceSegment)
-		serviceAdmin.addSegment(app, lvs1, true)
+//		PrimeVitalSegment lvs1 = segmentDef(app, sourceSegment)
+//		serviceAdmin.addSegment(app, lvs1, true)
 
 		try {
 			serviceAdmin.removeSegment(app, destinationSegment, true)
 		} catch(Exception e) {System.err.println(e.localizedMessage)}
-		PrimeVitalSegment lvs2 = segmentDef(app, destinationSegment)
-		serviceAdmin.addSegment(app, lvs2, true)
+//		PrimeVitalSegment lvs2 = segmentDef(app, destinationSegment)
+//		serviceAdmin.addSegment(app, lvs2, true)
 		
 		
 		//remove all current domains
@@ -128,7 +128,8 @@ class SampleDowngradeOperation {
 	 * @param s
 	 * @return
 	 */
-	static VitalSegment segmentDef(App app, VitalSegment s) {
+/*
+		static VitalSegment segmentDef(App app, VitalSegment s) {
 		
 		PrimeVitalSegment lvs = new PrimeVitalSegment()
 		lvs.setAppID(app.getID())
@@ -137,6 +138,7 @@ class SampleDowngradeOperation {
 		return lvs
 		
 	}
+	*/
 	
 	/**
 	 * Unloads and undeploys the domain jar
@@ -144,7 +146,7 @@ class SampleDowngradeOperation {
 	 * @param app
 	 * @param jarName
 	 */
-	static void unloadDomainJar(VitalServiceAdmin serviceAdmin, App app, String jarName) {
+	static void unloadDomainJar(VitalServiceAdmin serviceAdmin, VitalApp app, String jarName) {
 		
 		ResultList rl = serviceAdmin.callFunction(app, "commons/scripts/DomainsManagerScript", [action: 'unloadDomainJar', jarName: jarName])
 		println("unload status: " + rl.status.status + ' - ' + trim(rl.status.message))
@@ -164,7 +166,7 @@ class SampleDowngradeOperation {
 	 * @param app
 	 * @param jarName
 	 */
-	static void loadDomainJar(VitalServiceAdmin serviceAdmin, App app, File resourcesDir, String jarName) {
+	static void loadDomainJar(VitalServiceAdmin serviceAdmin, VitalApp app, File resourcesDir, String jarName) {
 		
 		byte[] contents = FileUtils.readFileToByteArray(new File(resourcesDir, jarName))
 		

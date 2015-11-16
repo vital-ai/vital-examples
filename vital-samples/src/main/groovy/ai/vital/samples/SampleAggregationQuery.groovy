@@ -8,7 +8,7 @@ import ai.vital.vitalservice.query.VitalSelectQuery
 import ai.vital.vitalsigns.VitalSigns
 import ai.vital.vitalservice.factory.VitalServiceFactory
 
-import ai.vital.vitalservice.segment.VitalSegment
+import ai.vital.vitalsigns.model.VitalSegment
 import ai.vital.domain.*
 import ai.vital.domain.properties.*
 import ai.vital.query.graph.*

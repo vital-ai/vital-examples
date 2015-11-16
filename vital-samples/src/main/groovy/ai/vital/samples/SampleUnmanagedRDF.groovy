@@ -1,6 +1,6 @@
 package ai.vital.samples
 
-import ai.vital.vitalservice.model.App;
+import ai.vital.vitalsigns.model.VitalApp;
 import ai.vital.vitalsigns.VitalSigns
 import ai.vital.vitalsigns.model.VITAL_Node
 import ai.vital.vitalsigns.model.*
@@ -9,10 +9,10 @@ import ai.vital.vitalsigns.rdf.RDFFormat
 
 class SampleUnmanagedRDF {
 
-	static App app
+	static VitalApp app
 	
 	static {
-		app = new App(ID: 'app', organizationID: 'organization')
+		app = new VitalApp(name: 'app')
 	}
 	
 	static main(args) {

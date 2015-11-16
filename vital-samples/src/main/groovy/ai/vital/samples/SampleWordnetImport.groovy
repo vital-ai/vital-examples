@@ -1,19 +1,19 @@
 package ai.vital.samples
 
-import ai.vital.domain.Edge_hasWordnetPointer
-import ai.vital.domain.SynsetNode
-import ai.vital.service.allegrograph.model.AllegrographSegment
-import ai.vital.service.lucene.model.LuceneVitalSegment
+import com.vitalai.domain.wordnet.Edge_hasWordnetPointer
+import com.vitalai.domain.wordnet.SynsetNode
+//import ai.vital.service.allegrograph.model.AllegrographSegment
+//import ai.vital.service.lucene.model.LuceneVitalSegment
 import ai.vital.vitalservice.admin.VitalServiceAdmin
-import ai.vital.vitalservice.model.App
-import ai.vital.vitalservice.segment.VitalSegment
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalSegment
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer.BlockIterator
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer.VitalBlock
 import ai.vital.vitalsigns.model.GraphObject
 
 import ai.vital.vitalservice.EndpointType
-import ai.vital.indexeddb.service.model.IndexedDBVitalSegment
+//import ai.vital.indexeddb.service.model.IndexedDBVitalSegment
 
 import ai.vital.lucene.model.LuceneSegmentType
 
@@ -51,10 +51,10 @@ class SampleWordnetImport {
 		
 		BlockIterator iterator = null
 		
-		App defaultApp = new App(ID:'app')
+		VitalApp defaultApp = new VitalApp(name:'app')
 		boolean appexists = false
-		for(App app : service.listApps()) {
-			if(app.ID == defaultApp.ID) {
+		for(VitalApp app : service.listApps()) {
+			if(app.name == defaultApp.name) {
 				appexists = true
 				break
 			}
@@ -69,7 +69,7 @@ class SampleWordnetImport {
 		
 		VitalSegment existing = null
 		for(VitalSegment segment : service.listSegments(defaultApp)) {
-			if(segment.ID == 'wordnet') {
+			if(segment.name == 'wordnet') {
 				existing = segment
 				break
 			}
@@ -82,6 +82,7 @@ class SampleWordnetImport {
 		
 		println "Creating new wordnet segment..."
 		
+		/*
 		if(service.endpointType == EndpointType.ALLEGROGRAPH) {
 			existing = new AllegrographSegment()
 			existing.appID = defaultApp.ID
@@ -89,7 +90,8 @@ class SampleWordnetImport {
 			existing.readOnly = false
 			
 		}
-		
+		*/
+		/*
 		if(service.endpointType == EndpointType.INDEXDB) {
 			existing = new IndexedDBVitalSegment()
 			existing.appID = defaultApp.ID
@@ -97,7 +99,9 @@ class SampleWordnetImport {
 			existing.readOnly = false
 			
 		}
+		*/
 		
+		/*
 		if(service.endpointType == EndpointType.LUCENEDISK) {
 			existing = new LuceneVitalSegment()
 			existing.appID = defaultApp.ID
@@ -107,6 +111,9 @@ class SampleWordnetImport {
 			existing.storeObjects = true
 			
 		}
+		*/
+		
+		/*
 		
 		if(service.endpointType == EndpointType.LUCENEMEMORY) {
 			existing = new LuceneVitalSegment()
@@ -117,6 +124,8 @@ class SampleWordnetImport {
 			existing.type = LuceneSegmentType.memory
 			
 		}
+		
+		*/
 		
 		service.addSegment(defaultApp, existing, true)
 		

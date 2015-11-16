@@ -5,16 +5,16 @@ package ai.vital.samples
 import ai.vital.query.Capture
 import ai.vital.query.Delete
 import ai.vital.query.querybuilder.VitalBuilder
-import ai.vital.service.lucene.model.LuceneVitalSegment
+//import ai.vital.service.lucene.model.LuceneVitalSegment
 import ai.vital.vitalservice.ServiceDeleteOperation
 import ai.vital.vitalservice.ServiceOperation
 import ai.vital.vitalservice.ServiceOperations
 import ai.vital.vitalservice.VitalService
-import ai.vital.vitalservice.model.App
+import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalservice.query.VitalGraphQuery
 import ai.vital.vitalservice.query.VitalSelectQuery
-import ai.vital.vitalservice.segment.VitalSegment
+import ai.vital.vitalsigns.model.VitalSegment
 import ai.vital.vitalsigns.VitalSigns
 import ai.vital.vitalsigns.model.GraphObject
 import ai.vital.lucene.model.LuceneSegmentType
@@ -27,15 +27,14 @@ import ai.vital.vitalsigns.uri.URIGenerator
 
 import vitalai.samples.domain.*
 
-
 class SampleServiceOperations {
 
 	
 	// Service Operations
 	
-	static App app
+	static VitalApp app
 	static {
-		app = new App(ID: 'app', organizationID: 'organization')
+		app = new VitalApp(name: 'app')
 	}
 	
 	
@@ -53,7 +52,7 @@ class SampleServiceOperations {
 		vs.setCurrentApp(app)
 		
 		
-		VitalSegment segment = new LuceneVitalSegment()
+		VitalSegment segment = new VitalSegment()
 			segment.appId = app.ID
 			segment.id = 'testing'
 			segment.readOnly = false

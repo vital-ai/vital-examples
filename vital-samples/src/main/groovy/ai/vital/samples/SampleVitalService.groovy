@@ -4,11 +4,13 @@ import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.vitalservice.VitalService
 import ai.vital.vitalservice.VitalStatus
 import ai.vital.vitalservice.factory.VitalServiceFactory
-import ai.vital.vitalservice.model.App
+import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalservice.query.VitalGraphQuery
 import ai.vital.vitalservice.query.VitalSelectQuery
+
 import ai.vital.vitalsigns.VitalSigns
+
 import ai.vital.query.graph.*
 
 import ai.vital.vitalsigns.model.*
@@ -18,8 +20,12 @@ import static ai.vital.query.Utils.*
 import ai.vital.domain.*
 import ai.vital.domain.properties.*
 
-import ai.vital.vitalservice.segment.VitalSegment
+import ai.vital.vitalsigns.model.VitalSegment
 
+import ai.vital.vitalsigns.model.VitalServiceKey
+
+
+import com.vitalai.domain.wordnet.*
 
 class SampleVitalService {
 	
@@ -27,7 +33,11 @@ class SampleVitalService {
 	
 		VitalSigns vs = VitalSigns.get()
 		
-		VitalService service = VitalServiceFactory.getVitalService()
+		
+		VitalServiceKey serviceKey = new VitalServiceKey().generateURI((VitalApp)null)
+		serviceKey.key = "aaaa-aaaa-aaaa"
+		
+		VitalService service = VitalServiceFactory.openService(serviceKey)
 		
 		println "Ping: " + service.ping()
 		
@@ -39,13 +49,16 @@ class SampleVitalService {
 		
 		println "Organization: " + service.getOrganization()
 		
-		println "App: " + service.getApp().ID
+		println "App: " + service.getApp().URI
 		
-		service.listSegments().each{ println "Segment: " + it.ID }
+		service.listSegments().each{ println "Segment: " + it.URI + " " + it.name }
 		
 		println "Default Segment Name: " + service.getDefaultSegmentName()
 		
 		println "Validate: " + service.validate()
+		
+		VitalSegment wordnet = service.getSegment('wordnet')
+		
 		
 		def builder = new VitalBuilder()
 		
@@ -55,11 +68,11 @@ class SampleVitalService {
 			
 			SELECT {
 				
-				value segments: [VitalSegment.withId('wordnet')]
+				value segments: [wordnet]
 				
 				value limit: 100
 				
-				node_constraint { AdjectiveSynsetNode.class }
+				//node_constraint { AdjectiveSynsetNode.class }
 				
 				node_constraint { AdjectiveSynsetNode.props().name.contains_i("happy") }
 			
@@ -67,7 +80,7 @@ class SampleVitalService {
 			
 		}.toQuery()
 		
-		println "Sparql:\n" + q.toSparql()
+		//println "Sparql:\n" + q.toSparql()
 		
 		ResultList list = service.query( q )
 		
@@ -87,7 +100,7 @@ class SampleVitalService {
 			
 			GRAPH {
 				
-				value segments: [VitalSegment.withId('wordnet')]
+				value segments: [wordnet]
 				
 				value inlineObjects: true
 				
@@ -114,7 +127,7 @@ class SampleVitalService {
 	
 		}.toQuery()
 			
-		println "Sparql:\n" + q2.toSparql()
+		//println "Sparql:\n" + q2.toSparql()
 		
 		ResultList list2 = service.query( q2 )
 		

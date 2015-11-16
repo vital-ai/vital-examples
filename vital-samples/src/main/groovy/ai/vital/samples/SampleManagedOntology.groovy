@@ -1,7 +1,7 @@
 package ai.vital.samples
 
 import ai.vital.vitalsigns.model.property.URIProperty
-import ai.vital.vitalservice.model.App;
+import ai.vital.vitalsigns.model.VitalApp;
 
 import vitalai.samples.domain.*
 
@@ -15,9 +15,9 @@ class SampleManagedOntology {
 	
 	// This is the name of the App
 	// This is used to help generate URIs
-	static App app
+	static VitalApp app
 	static {
-		app = new App(ID: 'app')
+		app = new VitalApp(name: 'app')
 	}
 	
 	static main(args) {
