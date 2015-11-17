@@ -16,13 +16,30 @@ import ai.vital.vitalsigns.model.*
 import ai.vital.vitalsigns.model.properties.*
 import ai.vital.vitalsigns.meta.GraphContext
 
+import com.vitalai.domain.wordnet.*
+
+
 class SampleAggregationQuery {
 
 	static main(args) {
 	
 		VitalSigns vs = VitalSigns.get()
 		
-		VitalService service = VitalServiceFactory.getVitalService()
+		
+		VitalApp app = new VitalApp()
+	
+		app.URI = "http://vital.ai/ontology/app/123"
+		app.appID = "app"
+		
+		VitalServiceKey serviceKey = new VitalServiceKey().generateURI(app)
+		serviceKey.key = "aaaa-aaaa-aaaa"
+		
+		VitalService service = VitalServiceFactory.openService(serviceKey)
+		println "Ping: " + service.ping()
+		
+		
+		def wordnet = service.getSegment('wordnet')
+		
 		
 		def builder = new VitalBuilder()
 		
@@ -30,16 +47,26 @@ class SampleAggregationQuery {
 			
 			SELECT {
 				
-				value segments: [VitalSegment.withId('wordnet')]
+				value segments: [wordnet]
 								
 				value  limit: 20
 							
 				node_constraint { SynsetNode.expandSubclasses(true) }
 					
-				DISTINCT( SynsetNode.props().name, order: Order.DESCENDING ) 
+				//DISTINCT( SynsetNode.props().name ) 
+				
+				 DISTINCT( SynsetNode.props().name, order: Order.DESCENDING ) 
+				
+				 /*
+				  * ERROR
+				  * Exception in thread "main" groovy.lang.MissingPropertyException: No such property: Order for class: ai.vital.samples.SampleAggregationQuery
+
+				  */
+				 
+				 
 							
 				//COUNT_DISTINCT ( AdjectiveSynsetNode.props().name )
-				// COUNT  ( AdjectiveSynsetNode.props().name )
+				 //COUNT  ( AdjectiveSynsetNode.props().name )
 			}
 			
 		}.toQuery()

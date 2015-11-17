@@ -34,7 +34,12 @@ class SampleVitalService {
 		VitalSigns vs = VitalSigns.get()
 		
 		
-		VitalServiceKey serviceKey = new VitalServiceKey().generateURI((VitalApp)null)
+		VitalApp app = new VitalApp()
+	
+		app.URI = "http://vital.ai/ontology/app/123"
+		app.appID = "app"
+		
+		VitalServiceKey serviceKey = new VitalServiceKey().generateURI(app)
 		serviceKey.key = "aaaa-aaaa-aaaa"
 		
 		VitalService service = VitalServiceFactory.openService(serviceKey)
@@ -57,7 +62,7 @@ class SampleVitalService {
 		
 		println "Validate: " + service.validate()
 		
-		VitalSegment wordnet = service.getSegment('wordnet')
+		//VitalSegment wordnet = service.getSegment('wordnet')
 		
 		
 		def builder = new VitalBuilder()
@@ -68,7 +73,7 @@ class SampleVitalService {
 			
 			SELECT {
 				
-				value segments: [wordnet]
+				value segments: ["wordnet"]
 				
 				value limit: 100
 				
@@ -100,7 +105,7 @@ class SampleVitalService {
 			
 			GRAPH {
 				
-				value segments: [wordnet]
+				value segments: ["wordnet"]
 				
 				value inlineObjects: true
 				
