@@ -16,10 +16,10 @@ import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.example.twentynews.domain.Message;
 import org.example.twentynews.domain.ontology.Ontology;
 
-import ai.vital.domain.Edge_hasCategory
+import com.vitalai.domain.nlp.Edge_hasCategory
 import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.vitalservice.VitalStatus;
-import ai.vital.vitalservice.model.App
+import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalservice.query.VitalPathQuery
 import ai.vital.vitalsigns.VitalSigns;
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer;
@@ -34,13 +34,15 @@ class ConvertTwentyNewsDataToVitalBlock {
 
 	static main(args) {
 
-		if(args.length != 2) {
-			println 'usage: convert_twentynews_to_vitalblock <input_twentynews_tar_gz_file> <output_vital_block_file>'
+		if(args.length < 2 || args.length > 3) {
+			println 'usage: convert_twentynews_to_vitalblock <input_twentynews_tar_gz_file> <output_vital_block_file> [max_docs_per_category]'
 			return
 		}
 		
 		File inputTarGZ = new File(args[0])
 		File blockFile = new File(args[1])
+		
+		Integer maxDocs = args.length > 2 ? Integer.parseInt(args[2]) : null
 		
 		println "Input twenty news tar.gz: ${inputTarGZ.absolutePath}"
 		println "Output block file: ${blockFile.absolutePath}"
@@ -83,15 +85,23 @@ class ConvertTwentyNewsDataToVitalBlock {
 		ArchiveEntry entry = null
 		
 		//for uri generator
-		VitalSigns.get().setCurrentApp(new App(ID:'twentynews'))				
+		VitalSigns.get().setCurrentApp(new VitalApp(appID:'twentynews'))				
 
 		
+		int i = 0
+		
 		int c = 0
+		
+		Map<String, Integer> histogram = [:]
+		
+		int noBodies = 0
 		
 		while( ( entry = inputStream.getNextEntry() ) ) {
 			
 			if(entry.isDirectory()) continue
-		
+
+			i++
+					
 			String name = entry.getName()
 			
 			String[] chunks = name.split("/")
@@ -103,8 +113,6 @@ class ConvertTwentyNewsDataToVitalBlock {
 			String id = chunks[2]
 			
 			if( ! ( mainDir == '20news-bydate-test' || mainDir == '20news-bydate-train') ) throw new RuntimeException("Expected the main directory name to be one of: '20news-bydate-test', '20news-bydate-train': ${name}")
-			
-//			println name
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 			
@@ -144,6 +152,25 @@ class ConvertTwentyNewsDataToVitalBlock {
 				
 			}
 			
+			if(body.isEmpty()) {
+				noBodies++
+				continue
+			}
+			
+			
+			Integer v = histogram.get(newsgroup)
+			if(maxDocs != null && v != null && v >= maxDocs) {
+				//skip
+				continue
+			}
+			
+			if(v == null) {
+				v = 1
+			} else {
+				v = v + 1
+			}
+			histogram.put(newsgroup, v)
+			
 			//don't close reader
 			def doc = new Message()
 			doc.generateURI("${newsgroup}__${id}");
@@ -179,7 +206,7 @@ class ConvertTwentyNewsDataToVitalBlock {
 		
 		inputStream.close()
 		
-		println "DONE, iterated $c messages"
+		println "DONE, output $c messages, no bodies: ${noBodies}, files iterated: ${i}"
 			
 	}
 

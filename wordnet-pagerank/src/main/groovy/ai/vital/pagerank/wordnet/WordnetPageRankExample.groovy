@@ -1,6 +1,6 @@
 package ai.vital.pagerank.wordnet
 
-import ai.vital.domain.SynsetNode;
+import com.vitalai.domain.wordnet.SynsetNode;
 import ai.vital.query.Utils;
 import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.vitalservice.VitalStatus;
@@ -9,6 +9,8 @@ import ai.vital.vitalservice.query.VitalSortProperty;
 import ai.vital.vitalsigns.VitalSigns;
 import ai.vital.vitalsigns.model.GraphObject;
 import ai.vital.vitalsigns.model.VITAL_Node;
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalServiceKey
 
 class WordnetPageRankExample {
 
@@ -20,6 +22,7 @@ class WordnetPageRankExample {
 		cli.with {
 			s longOpt: 'segment', 'segment containing page-ranked data', args: 1, required: true
 			prof longOpt: 'profile', 'vitalservice profile, default: default', args: 1, required: false
+			sk longOpt: 'service-key', 'service key, xxxx-xxxx-xxxx format', args: 1, required: true
 		}
 			
 		def options = cli.parse(args)
@@ -33,11 +36,16 @@ class WordnetPageRankExample {
 		println "segment: $segment"
 		
 		if(profile) {
-			println "Seting vital service profile: $profile"
-			VitalServiceFactory.setServiceProfile(profile)
+			println "vital service: $profile"
+		} else {
+			println "using default vitalservice profile: ${VitalServiceFactory.DEFAULT_PROFILE}"
+			profile = VitalServiceFactory.DEFAULT_PROFILE
 		}
 		
-		def vitalService = VitalServiceFactory.getVitalService()
+		VitalServiceKey serviceKey = new VitalServiceKey().generateURI((VitalApp) null)
+		serviceKey.key = options.sk
+		
+		def vitalService = VitalServiceFactory.openService(serviceKey, profile)
 		
 		//query for most recent
 		

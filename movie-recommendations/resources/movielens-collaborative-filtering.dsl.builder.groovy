@@ -7,12 +7,10 @@ import ai.vital.vitalsigns.model.GraphObject;
 import ai.vital.aspen.groovy.featureextraction.CategoricalFeatureData;
 import ai.vital.aspen.groovy.modelmanager.AspenPrediction;
 import ai.vital.aspen.model.CategoryPrediction;
-import ai.vital.domain.Content;
-import ai.vital.domain.Document;
-import ai.vital.domain.TargetNode;
+import com.vitalai.domain.nlp.TargetNode;
 import ai.vital.predictmodel.Prediction
-import ai.vital.vitalservice.model.App
-import ai.vital.domain.Edge_hasTargetNode
+import ai.vital.vitalsigns.model.VitalApp
+import com.vitalai.domain.nlp.Edge_hasTargetNode
 import ai.vital.vitalsigns.uri.URIGenerator
 import ai.vital.aspen.model.RecommendationPrediction
 
@@ -224,12 +222,12 @@ MODEL {
 				}
 				
 				def target = new TargetNode()
-				target.URI = URIGenerator.generateURI((App)null, TargetNode.class)
+				target.URI = URIGenerator.generateURI((VitalApp)null, TargetNode.class)
 				target.targetStringValue = productURI
 				target.targetScore = rating;
 				
 				def edge = new Edge_hasTargetNode().addSource(doc).addDestination(target)
-				edge.URI = URIGenerator.generateURI((App)null, Edge_hasTargetNode.class)
+				edge.URI = URIGenerator.generateURI((VitalApp)null, Edge_hasTargetNode.class)
 				
 				res.add(target)
 				res.add(edge)

@@ -4,10 +4,10 @@ import org.movielens.domain.Edge_hasMovieRating;
 import org.movielens.domain.Movie;
 import org.movielens.domain.User;
 
-import ai.vital.domain.Annotation;
-import ai.vital.domain.Document
-import ai.vital.domain.FlowPredictModel;
-import ai.vital.domain.TargetNode;
+import com.vitalai.domain.nlp.Annotation;
+import com.vitalai.domain.nlp.Document
+import com.vitalai.domain.nlp.FlowPredictModel;
+import com.vitalai.domain.nlp.TargetNode;
 import ai.vital.query.Utils;
 import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.vitalservice.VitalService;
@@ -18,6 +18,8 @@ import ai.vital.vitalservice.query.VitalGraphQuery;
 import ai.vital.vitalservice.query.VitalSelectQuery;
 import ai.vital.vitalsigns.meta.GraphContext;
 import ai.vital.vitalsigns.model.GraphObject;
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalServiceKey;
 import ai.vital.vitalsigns.model.property.IProperty;
 import ai.vital.vitalsigns.model.property.URIProperty;
 
@@ -32,6 +34,7 @@ class MovieLensRecommendationsScript {
 			prof longOpt: 'profile', 'vitalservice profile, default: default', args: 1, required: false
 			uri longOpt: 'user-uri', 'user uri', args: 1, required: true
 			max  longOpt: 'max-results', 'max results count, default 10', args: 1, required: false
+			sk longOpt: 'service-key', 'service key, xxxx-xxxx-xxxx format', args: 1, required: true
 		}
 		
 		
@@ -40,6 +43,9 @@ class MovieLensRecommendationsScript {
 			return
 		}
 		
+		
+		VitalServiceKey serviceKey = new VitalServiceKey().generateURI((VitalApp) null)
+		serviceKey.key = options.sk
 		
 		String modelName = options.n ? options.n : null
 		String modelURI = options.u ? options.u : null
@@ -64,13 +70,13 @@ class MovieLensRecommendationsScript {
 		
 		String profile = options.prof ? options.prof : null
 		if(profile != null) {
-			println "Setting vitalservice profile to: ${profile}"
-			VitalServiceFactory.setServiceProfile(profile)
+			println "vitalservice profile : ${profile}"
 		} else {
-			println "using default vitalservice profile: ${VitalServiceFactory.getServiceProfile()}"
+			println "using default vitalservice profile: ${VitalServiceFactory.DEFAULT_PROFILE}"
+			profile = VitalServiceFactory.DEFAULT_PROFILE
 		}
 		
-		def service = VitalServiceFactory.getVitalService();			
+		def service = VitalServiceFactory.openService(serviceKey, profile)			
 	
 		GraphObject x = service.get(GraphContext.ServiceWide, URIProperty.withString(userURI)).first()
 		if(x == null) {

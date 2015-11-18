@@ -2,10 +2,10 @@ package ai.vital.twentynewsexample
 
 import org.example.twentynews.domain.Message;
 
-import ai.vital.domain.Annotation;
-import ai.vital.domain.Document
-import ai.vital.domain.FlowPredictModel;
-import ai.vital.domain.TargetNode;
+import com.vitalai.domain.nlp.Annotation;
+import com.vitalai.domain.nlp.Document
+import com.vitalai.domain.nlp.FlowPredictModel;
+import com.vitalai.domain.nlp.TargetNode;
 import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.vitalservice.VitalService;
 import ai.vital.vitalservice.VitalStatus;
@@ -14,6 +14,8 @@ import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer.VitalBlock;
 import ai.vital.vitalsigns.meta.GraphContext;
 import ai.vital.vitalsigns.model.GraphObject;
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalServiceKey
 import ai.vital.vitalsigns.model.property.IProperty;
 import ai.vital.vitalsigns.model.property.URIProperty;
 
@@ -30,6 +32,7 @@ class TwentyNewsPredictScript {
 			u longOpt: 'model-uri', 'prediction model URI, mutually exclusive with model-name', args:1, required:false
 			prof longOpt: 'profile', 'vitalservice profile, default: default', args: 1, required: false
 			bf longOpt: 'builder-file', 'vital builder file path with INSTANTIATE', args:1, required: true
+			sk longOpt: 'service-key', 'service key, xxxx-xxxx-xxxx format', args: 1, required: true
 		}
 			
 		def options = cli.parse(args)
@@ -59,13 +62,16 @@ class TwentyNewsPredictScript {
 		
 		String profile = options.prof ? options.prof : null
 		if(profile != null) {
-			println "Setting vitalservice profile to: ${profile}"
-			VitalServiceFactory.setServiceProfile(profile)
+			println "vitalservice profile: ${profile}"
 		} else {
-			println "using default vitalservice profile: ${VitalServiceFactory.getServiceProfile()}"
+			println "using default vitalservice profile: ${VitalServiceFactory.DEFAULT_PROFILE}"
+			profile = VitalServiceFactory.DEFAULT_PROFILE
 		}
 		
-		def service = VitalServiceFactory.getVitalService()
+		VitalServiceKey serviceKey = new VitalServiceKey().generateURI((VitalApp) null)
+		serviceKey.key = options.sk
+		
+		def service = VitalServiceFactory.openService(serviceKey, profile)
 		
 
 		def builder = new VitalBuilder()

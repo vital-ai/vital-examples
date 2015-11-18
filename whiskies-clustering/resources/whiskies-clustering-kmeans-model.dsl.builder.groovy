@@ -5,10 +5,10 @@ import ai.vital.vitalsigns.model.GraphObject;
 import org.example.whiskies.domain.Whisky
 import ai.vital.aspen.groovy.modelmanager.AspenPrediction;
 import ai.vital.aspen.model.ClusterPrediction;
-import ai.vital.domain.TargetNode;
+import com.vitalai.domain.nlp.TargetNode;
 import ai.vital.predictmodel.Prediction
-import ai.vital.vitalservice.model.App
-import ai.vital.domain.Edge_hasTargetNode
+import ai.vital.vitalsigns.model.VitalApp
+import com.vitalai.domain.nlp.Edge_hasTargetNode
 import ai.vital.vitalsigns.uri.URIGenerator
 
 // the input is a block with all data needed for feature generation
@@ -44,7 +44,7 @@ MODEL {
 
 	ALGORITHM {
 		value clustersCount: 4
-    value numIterations: 20
+		value numIterations: 20
 	}
 	
 	value preferredLocation: 'hdfs://somewhere'
@@ -469,13 +469,13 @@ MODEL {
 			def clusterPrediction = (ClusterPrediction)result 
 			
 			def target = new TargetNode()
-			target.URI = URIGenerator.generateURI((App)null, TargetNode.class)
+			target.URI = URIGenerator.generateURI((VitalApp)null, TargetNode.class)
 
 			target.targetDoubleValue = clusterPrediction.clusterID.doubleValue()
 			target.targetScore = clusterPrediction.squaredDistance
 
 			def edge = new Edge_hasTargetNode().addSource(doc).addDestination(target)
-			edge.URI = URIGenerator.generateURI((App)null, Edge_hasTargetNode.class)
+			edge.URI = URIGenerator.generateURI((VitalApp)null, Edge_hasTargetNode.class)
 
 			return [target, edge]
 

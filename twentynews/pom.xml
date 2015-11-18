@@ -131,7 +131,7 @@
     <dependency>
 	  <groupId>vital-ai</groupId>
 	  <artifactId>twentynews</artifactId>
-	  <version>1.0.0</version>
+	  <version>1.0.1</version>
     </dependency>
   
   <!-- local project dependencies -->
@@ -147,7 +147,14 @@
     <dependency>
       <groupId>vital-ai</groupId>
       <artifactId>vitalservice</artifactId>
-      <version>0.2.254</version>
+      <version>0.2.300</version>
+    </dependency>
+    
+    
+    <dependency>
+      <groupId>vitalai-com</groupId>
+      <artifactId>vital-nlp</artifactId>
+      <version>0.2.300</version>
     </dependency>
     
   </dependencies>

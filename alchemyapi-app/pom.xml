@@ -106,7 +106,7 @@
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vitalservice-vertx-mod</artifactId>
-			<version>0.2.254</version>
+			<version>0.2.300</version>
 		</dependency>
 		
 		<dependency>
@@ -116,6 +116,11 @@
 			<optional>true</optional>
 		</dependency>
 
+		<dependency>
+			<groupId>vitalai-com</groupId>
+			<artifactId>vital-nlp</artifactId>
+			<version>0.2.300</version>
+		</dependency>
 
 		<!-- domain from local repo -->		
 

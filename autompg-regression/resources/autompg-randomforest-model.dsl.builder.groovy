@@ -7,12 +7,12 @@ import ai.vital.vitalsigns.model.GraphObject;
 import ai.vital.vitalsigns.model.VITAL_Category;
 import ai.vital.aspen.groovy.featureextraction.CategoricalFeatureData;
 import ai.vital.aspen.groovy.modelmanager.AspenPrediction;
-import ai.vital.domain.Document;
-import ai.vital.domain.Edge_hasCategory;
-import ai.vital.domain.TargetNode;
+import com.vitalai.domain.nlp.Document;
+import com.vitalai.domain.nlp.Edge_hasCategory;
+import com.vitalai.domain.nlp.TargetNode;
 import ai.vital.predictmodel.Prediction
-import ai.vital.vitalservice.model.App
-import ai.vital.domain.Edge_hasTargetNode
+import ai.vital.vitalsigns.model.VitalApp
+import com.vitalai.domain.nlp.Edge_hasTargetNode
 import ai.vital.vitalsigns.uri.URIGenerator
 import ai.vital.aspen.model.CategoryPrediction;
 import ai.vital.aspen.model.RegressionPrediction;
@@ -319,13 +319,13 @@ MODEL {
 			def regressionPrediction = (RegressionPrediction)result
 			
 			def target = new TargetNode()
-			target.URI = URIGenerator.generateURI((App)null, TargetNode.class)
+			target.URI = URIGenerator.generateURI((VitalApp)null, TargetNode.class)
 
 			target.targetDoubleValue = regressionPrediction.value
 			target.targetScore = 1D;
 
 			def edge = new Edge_hasTargetNode().addSource(doc).addDestination(target)
-			edge.URI = URIGenerator.generateURI((App)null, Edge_hasTargetNode.class)
+			edge.URI = URIGenerator.generateURI((VitalApp)null, Edge_hasTargetNode.class)
 
 			return [target, edge]
 
