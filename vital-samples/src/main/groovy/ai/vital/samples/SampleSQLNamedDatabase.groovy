@@ -8,7 +8,8 @@ import ai.vital.vitalservice.query.VitalExternalSqlQuery;
 import ai.vital.vitalsigns.model.DatabaseConnection
 import ai.vital.vitalsigns.model.GraphObject
 import ai.vital.vitalsigns.model.SqlDatabaseConnection
-import ai.vital.vitalsigns.model.SqlResultRow;
+import ai.vital.vitalsigns.model.SqlResultRow
+import ai.vital.vitalsigns.model.SqlUpdateResponse;
 import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalsigns.model.VitalServiceAdminKey
 import ai.vital.vitalsigns.model.property.IProperty;
@@ -17,7 +18,7 @@ import java.util.Map.Entry
 /**
  * Sample named SQL Database query example
  * Requirements:
- * - a mysql database instance with data loaded from https://github.com/datacharmer/test_db
+ * - a mysql database instance with data loaded from https://github.com/vital-ai/vital-datasets/tree/master/test_db
  * - a 'default' profile configured as LuceneMemory endpoint
  * - updated sqlDBConnection object properties (below)
  * 
@@ -60,11 +61,11 @@ class SampleSQLNamedDatabase {
 			
 			SQL {
 				
-				value database: sqlDBConnection.name.toString()
+				value database: databaseName
 				
 				value sql: """\
 
- select * from employees limit 10
+ SELECT * FROM employees LIMIT 10
 
 """ 
 				
@@ -75,13 +76,42 @@ class SampleSQLNamedDatabase {
 		
 			
 		ResultList rl = adminService.query(app, query)
-		println "Query status: ${rl.status}"
+		println "SELECT Query status: ${rl.status}"
 		
 		for(GraphObject g : rl) {
 			
 			SqlResultRow row = g
 
 			println row			
+			
+		}
+		
+		VitalExternalSqlQuery updateQuery = new VitalBuilder().query {
+			
+			SQL {
+				
+				value database: databaseName
+				
+				value sql: """\
+
+ UPDATE employees SET first_name="Georgi" WHERE first_name="Georgi"
+
+""" 
+				
+				
+			}
+			
+		}.toQuery()
+
+		ResultList updateRl = adminService.query(app, updateQuery)
+		
+		println "UPDATE Query status: ${rl.status}"
+		
+		for(GraphObject g : updateRl) {
+			
+			SqlUpdateResponse sur = g
+			
+			println "Updated records: ${sur.updatedRowsCount}"
 			
 		}
 		
