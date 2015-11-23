@@ -5,9 +5,9 @@ import ai.vital.aspen.nlp.LanguageDetectorFactory;
 import ai.vital.aspen.model.BuilderFunctionPrediction;
 import ai.vital.aspen.model.CategoryPrediction;
 import ai.vital.aspen.groovy.nlp.steps.LanguageDetectorStep;
-
+import com.vitalai.domain.nlp.Document
 import com.vitalai.domain.nlp.Annotation
-
+import ai.vital.vitalsigns.model.VitalApp
 
 MODEL {
 
@@ -27,6 +27,16 @@ MODEL {
 
 	FEATURES {
 
+		FEATURE {
+
+			value URI: 'urn:feature-body'
+
+			value name: 'body'
+
+			value type: 'string'
+			
+		}
+
 	}
 	
 	
@@ -35,6 +45,18 @@ MODEL {
 	}
 
 	FUNCTIONS {
+
+		FUNCTION {
+
+			value provides: 'body'
+
+			value function: {  VitalBlock block, Map features ->
+				
+				def doc = (Document) block.getMainObject()
+				return doc.body?.toString()
+			}
+
+		}
 
 	}
 
@@ -53,9 +75,11 @@ MODEL {
 	
 	PREDICT {
 		
-		value function: { VitalBlock block,  Map features, Map modelConfig ->
+		value function: { Map features, Map modelConfig ->
 			
-			def doc = block.getMainObject()
+			//create some input document
+			def doc = new Document().generateURI((VitalApp)null)
+			doc.body = features.body
 			
 			LanguageDetectorStep languageDetector = LanguageDetectorFactory.getInstance()
 			
