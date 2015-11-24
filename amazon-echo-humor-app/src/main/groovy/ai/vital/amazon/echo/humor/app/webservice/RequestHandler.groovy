@@ -19,7 +19,7 @@ import org.vertx.java.core.http.HttpServerResponse
 import ai.vital.service.vertx.async.VitalServiceAsyncClient
 import ai.vital.service.vertx.binary.ResponseMessage
 import ai.vital.vitalservice.VitalStatus
-import ai.vital.vitalservice.model.App
+import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalsigns.model.GraphObject
 import ai.vital.vitalsigns.uri.URIGenerator
@@ -159,7 +159,7 @@ class RequestHandler implements Handler<HttpServerRequest> {
 					Map sm = e.value
 							
 							EchoSlot slot = new EchoSlot()
-					slot.URI = URIGenerator.generateURI((App) null, EchoSlot.class)
+					slot.URI = URIGenerator.generateURI((VitalApp) null, EchoSlot.class)
 					slot.name = e.key
 					slot.value = sm.value
 					//slot type ?
@@ -182,7 +182,7 @@ class RequestHandler implements Handler<HttpServerRequest> {
 			
 		}
 		
-		echoRequest.URI = URIGenerator.generateURI((App) null, echoRequest.getClass())
+		echoRequest.URI = URIGenerator.generateURI((VitalApp) null, echoRequest.getClass())
 		echoRequest.sessionNew = requestObj.session['new']
 		echoRequest.sessionId = requestObj.session.sessionId
 		

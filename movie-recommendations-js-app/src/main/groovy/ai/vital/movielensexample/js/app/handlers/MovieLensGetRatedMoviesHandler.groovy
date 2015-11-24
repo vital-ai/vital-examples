@@ -6,15 +6,16 @@ import org.movielens.domain.Edge_hasMovieRating;
 import org.movielens.domain.Movie;
 import org.movielens.domain.properties.Property_hasRating;
 
-import ai.vital.query.querybuilder.VitalBuilder;
+import ai.vital.query.querybuilder.VitalBuilder
+import ai.vital.service.vertx.VitalServiceMod;
 import ai.vital.service.vertx.handler.CallFunctionHandler;
 import ai.vital.vitalservice.VitalService;
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.exception.VitalServiceException;
 import ai.vital.vitalservice.exception.VitalServiceUnimplementedException;
 import ai.vital.vitalservice.factory.VitalServiceFactory;
-import ai.vital.vitalservice.model.App;
-import ai.vital.vitalservice.model.Organization;
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalOrganization
 import ai.vital.vitalservice.query.ResultElement;
 import ai.vital.vitalservice.query.ResultList;
 import ai.vital.vitalservice.query.VitalSelectQuery
@@ -32,8 +33,8 @@ class MovieLensGetRatedMoviesHandler implements CallFunctionHandler {
 	static VitalBuilder vitalBuilder = new VitalBuilder()
 		
 	@Override
-	public ResultList callFunction(Organization organization, App app,
-			String function, Map<String, Object> params)
+	public ResultList callFunction(VitalOrganization organization, VitalApp app,
+			String function, Map<String, Object> params, Map<String, Object> sessionParams)
 			throws VitalServiceUnimplementedException, VitalServiceException {
 
 		def userURI = params.get('userURI')
@@ -66,7 +67,7 @@ class MovieLensGetRatedMoviesHandler implements CallFunctionHandler {
 							
 		}.toQuery()
 				
-		VitalService service = VitalServiceFactory.getVitalService()
+		def service = VitalServiceMod.registeredServices.get(app.appID.toString())
 			
 		ResultList queryRL = service.query(selectQuery)
 		

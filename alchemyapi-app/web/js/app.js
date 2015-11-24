@@ -1,3 +1,5 @@
+var APP_ID = 'app';
+
 var inputEl = null;
 
 var processButton = null;
@@ -20,7 +22,7 @@ $(function(){
 	
 	inputEl.attr('disabled', 'disabled');
 	
-	vitalservice = new VitalService(function(){
+	vitalservice = new VitalService('vitalservice.' + APP_ID, null, function(){
 		
 		console.log('connected to endpoint');
 		

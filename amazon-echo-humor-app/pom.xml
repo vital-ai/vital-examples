@@ -5,6 +5,10 @@
 	<artifactId>amazon-echo-humor-app</artifactId>
 	<version>0.0.1</version>
 
+	<properties>
+		<vital.version>0.2.300</vital.version>
+	</properties>
+
 	<repositories>
 
 		<repository>
@@ -106,7 +110,7 @@
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vitalservice-vertx-mod</artifactId>
-			<version>0.2.254</version>
+			<version>${vital.version}</version>
 		</dependency>
 		
 		<dependency>
@@ -117,11 +121,18 @@
 		</dependency>
 
 
-		<!-- domain from local repo -->		
+		<!-- domain from local repo -->
+		
+		<dependency>
+			<groupId>vitalai-com</groupId>
+			<artifactId>vital-nlp</artifactId>
+			<version>${vital.version}</version>
+		</dependency>
+				
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>humor-app</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 		
 

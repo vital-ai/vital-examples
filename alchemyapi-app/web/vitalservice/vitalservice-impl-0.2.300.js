@@ -6,14 +6,58 @@
  * @param errorCB
  * @returns
  */
-VitalServiceWebsocketImpl = function(address, eventBusURL, successCB, errorCB) {
+VitalServiceWebsocketImpl = function(address, type, eventBusURL, successCB, errorCB) {
+	
+	this.admin = false;
+	this.superadmin = false;
+	
+	if(type == 'service') {
+		
+	} else if(type == 'admin') {
+		this.admin = true;
+	} else if(type == 'superadmin') {
+		this.superadmin = true;
+	} else {
+		alert("Unhnown type: " + type);
+		return
+	}
+	
+	
+	this.loginTypes = [
+	  'http://vital.ai/ontology/vital#Login',
+	  'http://vital.ai/ontology/vital#AdminLogin',
+	  'http://vital.ai/ontology/vital#SuperAdminLogin'
+	];
 	
 	//there's always a new session generated, it could be cached in localstorage/cookie etc
 	this.sessionID = UUIDGenerator.generate();
 	
+	//obtained via authentication, appended to every request
+	this.appSessionID  = null;
+	
+	this.login = null;
+	
 	console.log('sessionID: ' + this.sessionID);
 
 	this.address = address;
+	
+	//
+	this.authAppID = null; 
+	
+	if(this.address.indexOf('endpoint.') == 0) {
+		
+		this.authAppID = this.address.substring('endpoint.'.length);
+		
+		this.COOKIE_SESSION_ID = 'sessionID.' + this.authAppID;
+		
+		this.appSessionID = $.cookie(this.COOKIE_SESSION_ID);
+		
+	} else {
+		
+		//no authentication enabled
+		this.COOKIE_SESSION_ID = null;
+	}
+	
 	
 	this.vsJson = null;
 	
@@ -70,6 +114,12 @@ VitalServiceWebsocketImpl = function(address, eventBusURL, successCB, errorCB) {
 }
 
 VitalServiceWebsocketImpl.DomainsManagerScript = 'commons/scripts/DomainsManagerScript';
+
+VitalServiceWebsocketImpl.vitalauth_login = 'vitalauth.login';
+
+VitalServiceWebsocketImpl.vitalauth_logout = 'vitalauth.logout';
+
+VitalServiceWebsocketImpl.vitalauth_authorise = 'vitalauth.authorise';
 
 VitalServiceWebsocketImpl.prototype.newConn = function() {
     	
@@ -153,11 +203,18 @@ VitalServiceWebsocketImpl.prototype.newConn = function() {
     	console.log('sockjstransport, transport ready');
     		
     	if(_this.sH != null) {
-    		_this.sH();
-    		_this.sH = null;
+    		
+    		if(_this.appSessionID != null) {
+    			
+    			_this.initialSessionCheck();
+    			
+    		} else {
+    			_this.sH();
+    			_this.sH = null;
+    			_this.eH = null;
+    		}
     	}
     	
-    	_this.eH = null;
     		
     		
     };
@@ -191,6 +248,52 @@ VitalServiceWebsocketImpl.prototype.newConn = function() {
     	
 }
 
+VitalServiceWebsocketImpl.prototype.initialSessionCheck = function() {
+	
+	var _this = this;
+	
+	var args = [];
+	
+	
+	if(this.admin) {
+		args.push(null);
+	}
+	
+	args.push(VitalServiceWebsocketImpl.vitalauth_authorise);
+	
+	args.push({sessionID: this.appSessionID});
+	
+	this.callMethod('callFunction', args, function(authResults){
+		
+		for(var i = 0 ; i < authResults.results.length; i++) {
+			
+			var g = authResults.results[i].graphObject;
+			
+			if(_this.loginTypes.indexOf(g.type) >= 0) {
+				_this.login = g;
+			}
+			
+		}
+		
+		_this.sH();
+		_this.eH = null;
+		_this.sH = null;		
+		
+	}, function(errorMsg){
+		
+		console.warn(errorMsg);
+		
+		$.removeCookie(_this.COOKIE_SESSION_ID);
+		_this.appSessionID = null;
+		
+		_this.sH();
+		_this.eH = null;
+		_this.sH = null;
+		
+		
+	});
+	
+}
 
 VitalServiceWebsocketImpl.prototype.loadDynamicOntologies = function(successCB, errorCB) {
 	
@@ -228,14 +331,45 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 	
 	var data = {
 		method: method,
-		args: args
+		args: args,
+		sessionID: this.appSessionID
 	};
 	
 	var _this = this;
 	
+	
+	var functionName = null;
+	
+	if(method == 'callFunction') {
+		
+		//determine the functionName based on params count
+		if(args.length >= 2) {
+			functionName = args[args.length - 2];
+			
+			//set the sessionID param
+			if(functionName == VitalServiceWebsocketImpl.vitalauth_logout) {
+				var params = args[args.length - 1];
+				params.sessionID = this.appSessionID;
+			}
+			
+		} else {
+			alert("method : " + method + " requires at least two arguments");
+			return
+		}
+		
+		
+	}
+	
+	
 	this.eb.send(this.address, data, function(result) {
 		
+		
+		if(result == null) {
+			result = { status: 'error', message: 'request timed out' };
+		}
+		
 		console.log(method + ' result: ', result);
+		
 		
 		//check the status, then object
 		
@@ -264,11 +398,44 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 					
 				}
 				
+				
+				//sessionID filter - get the session from positive authentication
+				if(functionName == VitalServiceWebsocketImpl.vitalauth_login && _this.COOKIE_SESSION_ID != null) {
+					for(var i = 0 ; i < response.results.length; i++) {
+						var g = response.results[i].graphObject;
+						if(g.type == 'http://vital.ai/ontology/vital#UserSession') {
+							_this.appSessionID = g.session
+							console.log('new auth session: ', g.sessionID);
+							//store it in cookie
+							$.cookie(_this.COOKIE_SESSION_ID, g.sessionID, { expires: 7 });
+						} else if(_this.loginTypes.indexOf(g.type) >= 0) {
+							_this.login = g;
+						}
+					}
+					
+				}
+				
+				if(functionName == VitalServiceWebsocketImpl.vitalauth_logout && _this.COOKIE_SESSION_ID != null) {
+					
+					_this.appSessionID = null
+					
+					$.removeCookie(_this.COOKIE_SESSION_ID);
+					console.log("session cookie removed")
+					
+				}
+				
 			}
 			
 			successCB(result.response);
 			
 		} else {
+			
+			
+			if(functionName == VitalServiceWebsocketImpl.vitalauth_logout && _this.COOKIE_SESSION_ID != null) {
+				//no matter what, always remove the cookie and notify callback
+				$.removeCookie(_this.COOKIE_SESSION_ID);
+				_this.appSessionID = null;
+			}
 			
 			errorCB(result.message)
 			

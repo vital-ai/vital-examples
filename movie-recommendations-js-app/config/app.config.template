@@ -1,28 +1,36 @@
-"vital-ai~vitalservice-vertx-mod~0.2.254"  {
+"vital-ai~vitalservice-vertx-mod~0.2.300"  {
 
   enabled: true
   
   instances: 1
   
-  profile: vitaldevelopmentprime
+  services: [
+    {
+      profile: primelocal
+  
+      key: serv-serv-serv
+    }
+  ]
   
 }
 
 "vital-examples~movie-recommendations-js-app~0.0.1" {
 
-  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.254"]
+  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.300"]
 
   enabled: true
   
   instances: 1
+  
+  app: app
 
 }
 
 "io.vertx~mod-web-server~2.0.0-final" {
 
+  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.300"]
 
-	#do not let the webserver/websocket start before vitalservice is ready 
-	dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.254"]
+	enabled: true
 
 
 	enabled: true
@@ -37,7 +45,7 @@
 	
 	bridge: true
 	
-	inbound_permitted: [{address: "vitalservice"}],
-	outbound_permitted: [{}]
+	inbound_permitted: [{address_re: "vitalservice\\..+"}],
+	outbound_permitted: [{address_re: "stream\\..+"}]
     
 }

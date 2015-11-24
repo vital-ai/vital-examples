@@ -7,6 +7,8 @@ class FunnybotWebserviceAppVerticle extends Verticle {
 	
 	public static boolean initialized = false
 	
+	public static String appID = null
+	
 	//async start with notification
 	@Override
 	public Object start(Future<Void> startedResult) {
@@ -15,6 +17,15 @@ class FunnybotWebserviceAppVerticle extends Verticle {
 			startedResult.setResult(true)
 			return
 		}
+		
+		String app = container.getConfig().get("app")
+		if(!app) {
+			startedResult.setFailure(new Exception("No 'app' param"))
+			return
+		}
+		
+		container.logger.info "AppID: ${app}"
+		appID = app
 		
 		synchronized (FunnybotWebserviceAppVerticle.class) {
 			

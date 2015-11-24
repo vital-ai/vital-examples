@@ -1,3 +1,5 @@
+var APP_ID = 'app';
+
 var vitalservice = null;
 
 var searchResults = null;
@@ -22,14 +24,15 @@ $(function(){
 	
 	console.log("instantiating service...");
 	
-	vitalservice = new VitalService(function(){
+	vitalservice = new VitalService('vitalservice.' + APP_ID, null, function(){
 		
 		console.log('connected to endpoint');
 		
 		//in statically loaded domain mode the steps below are not needed
-//		onVitalServiceReady();
-//		return;
+		onVitalServiceReady();
+		return;
 		
+		/*
 		//get json schemas list
 		console.log('getting available domains list')
 		vitalservice.getSchemaList(function(schemasList){
@@ -55,6 +58,7 @@ $(function(){
 			alert("Error when getting domains list: " + err);
 		});
 		
+		*/
 		
 	}, function(err){
 		alert('couln\'t connect to endpoint -' + err);

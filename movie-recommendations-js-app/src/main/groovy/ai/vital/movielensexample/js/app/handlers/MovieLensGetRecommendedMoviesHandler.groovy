@@ -5,16 +5,17 @@ import java.util.Map;
 import org.movielens.domain.Edge_hasMovieRating
 import org.movielens.domain.User
 
-import ai.vital.domain.TargetNode
-import ai.vital.query.querybuilder.VitalBuilder;
+import com.vitalai.domain.nlp.TargetNode
+import ai.vital.query.querybuilder.VitalBuilder
+import ai.vital.service.vertx.VitalServiceMod;
 import ai.vital.service.vertx.handler.CallFunctionHandler;
 import ai.vital.vitalservice.VitalService
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.exception.VitalServiceException;
 import ai.vital.vitalservice.exception.VitalServiceUnimplementedException;
 import ai.vital.vitalservice.factory.VitalServiceFactory;
-import ai.vital.vitalservice.model.App;
-import ai.vital.vitalservice.model.Organization;
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalOrganization
 import ai.vital.vitalservice.query.ResultElement;
 import ai.vital.vitalservice.query.ResultList;
 import ai.vital.vitalservice.query.VitalSelectQuery
@@ -34,8 +35,8 @@ class MovieLensGetRecommendedMoviesHandler implements CallFunctionHandler {
 	static VitalBuilder vitalBuilder = new VitalBuilder()
 	
 	@Override
-	public ResultList callFunction(Organization organization, App app,
-			String function, Map<String, Object> params)
+	public ResultList callFunction(VitalOrganization organization, VitalApp app,
+			String function, Map<String, Object> params, Map<String, Object> sessionParams)
 			throws VitalServiceUnimplementedException, VitalServiceException {
 				
 		def userURI = params.get('userURI')
@@ -50,7 +51,7 @@ class MovieLensGetRecommendedMoviesHandler implements CallFunctionHandler {
 		} else throw new RuntimeException("'limit' param must be an integer/long")
 		
 		
-		VitalService service = VitalServiceFactory.getVitalService()
+		def service = VitalServiceMod.registeredServices.get(app.appID.toString())
 		
 		ResultList getRL = service.get(GraphContext.ServiceWide, URIProperty.withString(userURI))
 		if(getRL.status.status != VitalStatus.Status.ok) {

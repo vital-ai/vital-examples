@@ -1,6 +1,6 @@
 package ai.vital.amazon.echo.humor.app.scripts
 
-import ai.vital.vitalservice.model.App
+import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalsigns.block.BlockCompactStringSerializer
 import ai.vital.vitalsigns.uri.URIGenerator;
 
@@ -62,8 +62,7 @@ class ConvertJokesToVitalBlockScript {
 
 			if(line.isEmpty()) continue
 
-			Joke joke = new Joke()
-			joke.URI = URIGenerator.generateURI((App) null, Joke.class)
+			Joke joke = new Joke().generateURI((VitalApp) null)
 			joke.body = line 
 			
 			writer.startBlock()

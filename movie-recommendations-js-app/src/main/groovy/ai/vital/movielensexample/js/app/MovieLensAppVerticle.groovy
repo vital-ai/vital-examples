@@ -12,7 +12,8 @@ import ai.vital.service.vertx.async.VitalServiceAsyncClient;
 import ai.vital.service.vertx.binary.ResponseMessage;
 import ai.vital.service.vertx.handler.CallFunctionHandler;
 import ai.vital.vitalservice.VitalStatus;
-import ai.vital.vitalservice.query.ResultList;
+import ai.vital.vitalservice.query.ResultList
+import ai.vital.vitalsigns.model.VitalApp;
 
 import org.vertx.java.core.Future
 
@@ -33,8 +34,11 @@ class MovieLensAppVerticle extends Verticle {
 			
 			if(initialized) return
 			
+			String app = container.config.get('app')
 			
-			VitalServiceAsyncClient client = new VitalServiceAsyncClient(vertx)
+			if(!app) throw new RuntimeException("No app config param")
+			
+			VitalServiceAsyncClient client = new VitalServiceAsyncClient(vertx, VitalApp.withId(app))
 			
 			client.callFunction(CallFunctionHandler.VERTX_REGISTER_HANDLER, [functionName: MovieLensGetUserHandler.movielens_get_user, handlerClass: MovieLensGetUserHandler.class.canonicalName]) { ResponseMessage m1 ->
 

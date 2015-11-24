@@ -5,8 +5,10 @@ import java.util.Map
 import org.apache.commons.collections.map.LRUMap;
 import org.vertx.groovy.core.sockjs.SockJSServer;
 
-import ai.vital.domain.Image
-import ai.vital.domain.ImageReference;
+import com.vitalai.domain.nlp.Image
+import com.vitalai.domain.nlp.ImageReference
+
+import ai.vital.service.vertx.VitalServiceMod;
 import ai.vital.service.vertx.handler.AbstractVitalServiceHandler;
 import ai.vital.service.vertx.handler.CallFunctionHandler;
 import ai.vital.service.vertx.handler.functions.VertxHandler;
@@ -14,8 +16,8 @@ import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.exception.VitalServiceException;
 import ai.vital.vitalservice.exception.VitalServiceUnimplementedException;
 import ai.vital.vitalservice.factory.VitalServiceFactory;
-import ai.vital.vitalservice.model.App;
-import ai.vital.vitalservice.model.Organization;
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalOrganization
 import ai.vital.vitalservice.query.ResultElement
 import ai.vital.vitalservice.query.ResultList;
 import ai.vital.vitalsigns.model.VITAL_Category;
@@ -33,8 +35,8 @@ class MetaMind_ProcessImageHandler extends VertxHandler {
 	Map map = Collections.synchronizedMap(new LRUMap(10))
 	
 	@Override
-	public ResultList callFunction(Organization organization, App app,
-			String function, Map<String, Object> params)
+	public ResultList callFunction(VitalOrganization organization, VitalApp app,
+			String function, Map<String, Object> params, Map<String, Object> sessionParams)
 			throws VitalServiceUnimplementedException, VitalServiceException {
 
 				
@@ -71,7 +73,9 @@ class MetaMind_ProcessImageHandler extends VertxHandler {
 				
 				map.remove(id)
 				
-				ResultList qrl = VitalServiceFactory.getVitalService().callFunction('commons/scripts/Aspen_Usage',
+				def vitalService = VitalServiceMod.registeredServices.get(app.appID.toString())
+				
+				ResultList qrl = vitalService.callFunction('commons/scripts/Aspen_Usage',
 					[action: 'incrementUsage', key:'metamind', increment: 1, limit: 1000])
 				
 				if(qrl.status.status != VitalStatus.Status.ok) {
@@ -82,10 +86,10 @@ class MetaMind_ProcessImageHandler extends VertxHandler {
 				//call datascript
 				
 				Image img = new Image()
-				img.URI = URIGenerator.generateURI((App) null, Image.class)
+				img.URI = URIGenerator.generateURI((VitalApp) null, Image.class)
 				img.imageData = sb.toString() 
 				
-				rl = VitalServiceFactory.getVitalService().callFunction('commons/scripts/Aspen_Predict', 
+				rl = vitalService.callFunction('commons/scripts/Aspen_Predict', 
 					['inputBlock': [img], 'modelName': 'metamind-image-categorization'])
 				
 			}

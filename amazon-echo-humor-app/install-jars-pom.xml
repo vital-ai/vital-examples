@@ -33,7 +33,7 @@
             <executions>
                 
 				<execution>
-                    <id>humor-app-groovy-1.0.0.jar</id>
+                    <id>humor-app-groovy-1.0.1.jar</id>
                     <phase>validate</phase>
                     <goals>
                         <goal>install-file</goal>
@@ -41,9 +41,9 @@
                     <configuration>
 				      <groupId>vital-ai</groupId>
 				      <artifactId>humor-app</artifactId>
-				      <version>1.0.0</version>
+				      <version>1.0.1</version>
 				      <packaging>jar</packaging>
-					  <file>${VITAL_HOME}/domain-groovy-jar/humor-app-groovy-1.0.0.jar</file>
+					  <file>${VITAL_HOME}/domain-groovy-jar/humor-app-groovy-1.0.1.jar</file>
                     </configuration>
                     
                 </execution>

@@ -10,27 +10,33 @@ import ai.vital.vitalservice.query.ResultElement
 import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalservice.query.VitalGraphQueryPropertyCriterion
 import ai.vital.vitalservice.query.VitalSelectQuery
-import ai.vital.vitalservice.segment.VitalSegment
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.VitalSegment
+import ai.vital.vitalsigns.model.VitalServiceKey;
 import ai.vital.vitalservice.query.VitalGraphQuery
 import ai.vital.domain.*
+import com.vitalai.domain.wordnet.*
 
 
 class AppTemplate {
 
 	public static void main(String[] args) {
 		
-		if(args.length != 1) {
-			System.err.println "usage: <service_profile>"
+		if(args.length != 2) {
+			System.err.println "usage: <service_profile> <service_key>"
 			return
 		}
 		
 		String profile = args[0]
+		String keyString = args[1]
+
+		VitalServiceKey key = new VitalServiceKey().generateURI((VitalApp) null)
+		key.key = keyString
 		
+		println "Service key: $keyString"		
 		println "Service profile: $profile"
 		
-		VitalServiceFactory.setServiceProfile(profile)
-		
-		VitalService service = VitalServiceFactory.getVitalService()
+		VitalService service = VitalServiceFactory.openService(key, profile)
 		
 		service.ping()
 		
@@ -59,6 +65,7 @@ class AppTemplate {
 		
 		ResultList rl = service.query(sq)
 		
+		println "select query status: ${rl.status}"
 		println "select query results:"
 		
 		for(ResultElement r : rl.results) {
@@ -105,6 +112,7 @@ class AppTemplate {
 		
 		rl = service.query(gq)
 		
+		println "graph query status: ${rl.status}"
 		println "graph query results:"
 		
 		for(ResultElement r : rl.results) {

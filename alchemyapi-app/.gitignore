@@ -1,4 +1,5 @@
 /bin_classes
 /.settings/
+/config/app.config
 /mods/io.vertx~*
 /target/
