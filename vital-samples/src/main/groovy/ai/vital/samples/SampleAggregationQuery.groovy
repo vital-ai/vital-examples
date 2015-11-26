@@ -11,6 +11,7 @@ import ai.vital.vitalservice.factory.VitalServiceFactory
 import ai.vital.vitalsigns.model.VitalSegment
 import ai.vital.domain.*
 import ai.vital.domain.properties.*
+import ai.vital.query.Order;
 import ai.vital.query.graph.*
 import ai.vital.vitalsigns.model.*
 import ai.vital.vitalsigns.model.properties.*
@@ -34,7 +35,7 @@ class SampleAggregationQuery {
 		VitalServiceKey serviceKey = new VitalServiceKey().generateURI(app)
 		serviceKey.key = "aaaa-aaaa-aaaa"
 		
-		VitalService service = VitalServiceFactory.openService(serviceKey)
+		VitalService service = VitalServiceFactory.openService(serviceKey, 'lucenedisk')
 		println "Ping: " + service.ping()
 		
 		
@@ -57,16 +58,8 @@ class SampleAggregationQuery {
 				
 				 DISTINCT( SynsetNode.props().name, order: Order.DESCENDING ) 
 				
-				 /*
-				  * ERROR
-				  * Exception in thread "main" groovy.lang.MissingPropertyException: No such property: Order for class: ai.vital.samples.SampleAggregationQuery
-
-				  */
-				 
-				 
-							
-				//COUNT_DISTINCT ( AdjectiveSynsetNode.props().name )
-				 //COUNT  ( AdjectiveSynsetNode.props().name )
+//				COUNT_DISTINCT ( AdjectiveSynsetNode.props().name )
+//				COUNT  ( AdjectiveSynsetNode.props().name )
 			}
 			
 		}.toQuery()
