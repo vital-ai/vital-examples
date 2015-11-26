@@ -82,9 +82,28 @@ VitalServiceWebsocketImpl = function(address, type, eventBusURL, successCB, erro
 	this.eb = null;
 	
 	if(typeof( VitalServiceJson ) != 'undefined') {
-		console.log("loading optional json validation module...");
 		
-		this.vsJson = new VitalServiceJson();
+		console.log("loading json validation module...");
+		
+		if(VitalServiceJson.SINGLETON != null) {
+			
+			console.log("json singleton already set - reusing");
+			
+		} else {
+		
+			console.log("Initializing new json singleton");
+			
+			VitalServiceJson.SINGLETON = new VitalServiceJson();
+			
+		}
+		
+		this.vsJson = VitalServiceJson.SINGLETON;
+		
+		if(type == 'service') {
+			
+			vitaljs.vitalservice = this;
+			
+		}
 		
 	} else {
 		
@@ -779,10 +798,9 @@ VitalServiceWebsocketImpl.prototype.getNextSchema = function(schemaNamesArray, i
 		for(var i = 0; i < output.length; i++) {
 			var c = output[i];
 			var schemaArray = JSON.parse(c);
-			var name = schemaNamesArray[i];
-			var uri = this.vsJson.getSchemaURI(schemaArray);
-			
-			parsedOutput.push({name: name, URI: uri, schema: schemaArray });
+//			var name = schemaNamesArray[i];
+//			var uri = this.vsJson.getSchemaURI(schemaArray);
+			parsedOutput.push(schemaArray);
 			
 		}
 		successCB(parsedOutput);
@@ -800,7 +818,7 @@ VitalServiceWebsocketImpl.prototype.getNextSchemaPart = function(schemaNamesArra
 	
 	this.callMethod('callFunction', [VitalServiceWebsocketImpl.DomainsManagerScript, {action: 'getJsonSchema', schemaName: schemaNamesArray[index], part: part, size: 6000}], function(partRL){
 		
-		var content = partRL.results[0].graphObject.name;
+		var content = partRL.results[0].graphObject.get('name');
 		
 		if(part == 1) {
 			output.push(content);
@@ -883,3 +901,5 @@ UUIDGenerator.generate = function() {
 	});
 	
 }
+
+

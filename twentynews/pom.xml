@@ -147,14 +147,14 @@
     <dependency>
       <groupId>vital-ai</groupId>
       <artifactId>vitalservice</artifactId>
-      <version>0.2.300</version>
+      <version>0.2.301</version>
     </dependency>
     
     
     <dependency>
       <groupId>vitalai-com</groupId>
       <artifactId>vital-nlp</artifactId>
-      <version>0.2.300</version>
+      <version>0.2.301</version>
     </dependency>
     
   </dependencies>

@@ -212,15 +212,19 @@ function handleResults(res) {
 		var catRE = res.results[i];
 		var cat = catRE.graphObject;
 		
-		var catURI = cat.targetStringValue
+		var catURI = null;
+		
+		try {
+			catURI = cat.get('targetStringValue');
+		} catch(e) {}
 		
 		if(catURI == null) continue;
 		
-		var score = cat.targetScore;
+		var score = cat.get('targetScore');
 		
 		var li = $('<li>');
 		
-		li.text(catURI + ' ' + cat.name + ' ' + score);
+		li.text(catURI + ' ' + cat.get('name') + ' ' + score);
 		
 		ul.append(li);
 		

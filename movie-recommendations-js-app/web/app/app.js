@@ -200,7 +200,7 @@ function handleSearchResults(resultsList) {
 	//just get the user
 	var user = resultsList.results[0].graphObject;
 	
-	searchResults.append($('<h4>').text(user.name));
+	searchResults.append($('<h4>').text(user.get('name')));
 	
 	searchResults.append($('<p>').text('URI: ' + user.URI));
 	
@@ -288,7 +288,7 @@ function renderMoviesTable(resultsList, ratingNotScore) {
 		
 		var tr = $('<tr>', {'data-uri': movie.URI})
 			.append($('<td>').text( '' + (i+1) + '.' ))
-			.append($('<td>').text( movie.name ))
+			.append($('<td>').text( movie.get('name') ))
 			.append($('<td>').text( '' + score ));
 		
 		t.append(tr);

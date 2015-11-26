@@ -1,3 +1,5 @@
+var APP_ID = 'app';
+
 var vitalservice = null;
 
 var searchResults = null;
@@ -27,9 +29,12 @@ $(function(){
 	
 	console.log("instantiating service...");
 	
-	var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/enron-js-app/eventbus';
+	//var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/enron-js-app/eventbus';
 	
-	vitalservice = new VitalService('endpoint.enron', EVENTBUS_URL, function(){
+	//default
+	var EVENTBUS_URL = null;
+	
+	vitalservice = new VitalService('vitalservice.' + APP_ID, EVENTBUS_URL, function(){
 		
 		console.log('connected to endpoint');
 		
@@ -218,11 +223,11 @@ function handleSearchResults(resultsList) {
 		
 		index++;
 		
-		row.append($('<td>').text(format_date(new Date(res.publicationDate))));
+		row.append($('<td>').text( format_date( new Date( res.get('publicationDate') ) ) ) );
 		
-		row.append($('<td>').text(res.emailSubject))
+		row.append($('<td>').text(res.get('emailSubject')));
 		
-		var body = res.body
+		var body = res.get('body');
 		if(body == null) body = '(no body)';
 		if(body.length > 200) body = body.substring(0, 200) + '...';
 		row.append($('<td>').text( body ));
@@ -387,7 +392,7 @@ function handleDetails(detailsReponse) {
 		
 		searchResults.append($('<p>').text('Type: E-mail'));
 		
-		searchResults.append($('<p>').text('Message ID: ' + mainObject.name));
+		searchResults.append($('<p>').text('Message ID: ' + mainObject.get('name')));
 		
 		var senders = [];
 		
@@ -399,7 +404,7 @@ function handleDetails(detailsReponse) {
 			
 			if(g.type == 'http://vital.ai/ontology/enron-dataset#Edge_hasSender') {
 				
-				var senderURI = g.edgeDestination;
+				var senderURI = g.get('edgeDestination');
 				
 				var sender = objectsMap[senderURI];
 				
@@ -407,7 +412,7 @@ function handleDetails(detailsReponse) {
 				
 			} else if(g.type == 'http://vital.ai/ontology/enron-dataset#Edge_hasDirectRecipient') {
 				
-				var recipientURI = g.edgeDestination;
+				var recipientURI = g.get('edgeDestination');
 				
 				var recipient = objectsMap[recipientURI];
 				
@@ -428,7 +433,7 @@ function handleDetails(detailsReponse) {
 				
 				senderP.append($('<span>').text(' '));
 				
-				senderP.append($('<a>', {href: '#', 'class': 'details-link', 'data-uri': sender.URI}).text(sender.emailAddress));
+				senderP.append($('<a>', {href: '#', 'class': 'details-link', 'data-uri': sender.URI}).text(sender.get('emailAddress')));
 				
 			}
 			
@@ -445,7 +450,7 @@ function handleDetails(detailsReponse) {
 				
 				recipientP.append($('<span>').text(' '));
 				
-				recipientP.append($('<a>', {href: '#', 'class': 'details-link', 'data-uri': recipient.URI}).text(recipient.emailAddress));
+				recipientP.append($('<a>', {href: '#', 'class': 'details-link', 'data-uri': recipient.URI}).text(recipient.get('emailAddress')));
 				
 			}
 			
@@ -456,23 +461,23 @@ function handleDetails(detailsReponse) {
 		
 		
 		
-		var dateString = format_date( new Date(mainObject.publicationDate) );
+		var dateString = format_date( new Date(mainObject.get('publicationDate')) );
 		
 		searchResults.append($('<p>').text('Date: ' + dateString));
 		
-		searchResults.append($('<p>').text('Subject: ' + mainObject.emailSubject));
+		searchResults.append($('<p>').text('Subject: ' + mainObject.get('emailSubject')));
 		
 		searchResults.append($('<p>').text('Body:'));
 		
 //		searchResults.append($('<p>').text( mainObject.body ));
 		
-		searchResults.append($('<p>').append( $('<pre>').text( mainObject.body )) );
+		searchResults.append($('<p>').append( $('<pre>').text( mainObject.get('body') )) );
 		
 	} else if(mainObject.type == 'http://vital.ai/ontology/enron-dataset#EnronPerson') {
 		
 		searchResults.append($('<p>').text('Type: Person'));
 		
-		searchResults.append($('<p>').text('E-mail: ' + mainObject.emailAddress));
+		searchResults.append($('<p>').text('E-mail: ' + mainObject.get('emailAddress')));
 		
 		
 		var inboxLink = $('<a>', {href: '#', 'class': 'messages-link', 'data-uri': mainObject.URI, 'data-type': 'inbox'}).text('Inbox');
@@ -481,7 +486,7 @@ function handleDetails(detailsReponse) {
 		
 		searchResults.append($('<p>').append(inboxLink).append($('<span>').html(' &nbsp; &nbsp; &nbsp; ')).append(outboxLink));
 		
-		detailsName = mainObject.name;
+		detailsName = mainObject.get('name');
 		
 		searchResults.find('.messages-link').click(function(){
 			
