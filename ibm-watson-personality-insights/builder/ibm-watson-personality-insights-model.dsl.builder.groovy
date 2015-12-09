@@ -161,7 +161,7 @@ MODEL {
 
 			def personalityPredictions = ((BuilderFunctionPrediction)result).value
 			
-			List res = []
+			List res = block.toList()
 			
 			for(PersonalityInsight personalityInsight : personalityPredictions) {
 				
