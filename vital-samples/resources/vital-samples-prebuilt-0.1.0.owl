@@ -13,15 +13,16 @@
 
 <rdf:RDF xmlns="http://vital.ai/ontology/vital-samples-prebuilt#"
      xml:base="http://vital.ai/ontology/vital-samples-prebuilt"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:vital="http://vital.ai/ontology/vital#"
+     xmlns:vital-core="http://vital.ai/ontology/vital-core#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:vital-core="http://vital.ai/ontology/vital-core#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vital="http://vital.ai/ontology/vital#">
     <owl:Ontology rdf:about="http://vital.ai/ontology/vital-samples-prebuilt">
         <vital-core:hasDefaultPackage rdf:datatype="&xsd;string">vitalai.samples.domain</vital-core:hasDefaultPackage>
         <owl:versionInfo>0.1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en">vital-samples pre-built domain</rdfs:comment>
         <owl:imports rdf:resource="http://vital.ai/ontology/vital"/>
     </owl:Ontology>
     
@@ -179,7 +180,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#BassGuitar">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Bass Guitar</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Bass Guitar</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -188,7 +189,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Drums">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Drums</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Drums</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -197,7 +198,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Flute">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Flute</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Flute</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -206,7 +207,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Guitar">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Guitar</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Guitar</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -215,7 +216,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Keyboard">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Keyboard</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Keyboard</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -224,7 +225,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Piano">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Piano</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Piano</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -233,7 +234,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Saxophone">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Saxophone</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Saxophone</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -242,7 +243,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Theremin">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Theremin</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Theremin</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -251,7 +252,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Trumpet">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Trumpet</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Trumpet</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -260,7 +261,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Violin">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Violin</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Violin</vital-core:hasName>
     </owl:NamedIndividual>
     
 
@@ -269,7 +270,7 @@
 
     <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples-prebuilt#Vocals">
         <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples-prebuilt#MusicInstrument"/>
-        <vital:hasName rdf:datatype="&xsd;string">Vocals</vital:hasName>
+        <vital-core:hasName rdf:datatype="&xsd;string">Vocals</vital-core:hasName>
     </owl:NamedIndividual>
 </rdf:RDF>
 
