@@ -5,19 +5,21 @@ import ai.vital.vitalsigns.VitalSigns
 import ai.vital.vitalsigns.model.VITAL_Node
 import ai.vital.vitalsigns.model.*
 import ai.vital.vitalsigns.rdf.RDFFormat
+import ai.vital.vitalsigns.model.xsd
+
 
 
 class SampleUnmanagedRDF {
 
-	static VitalApp app
 	
-	static {
-		app = new VitalApp(name: 'app')
-	}
 	
 	static main(args) {
 	
+		
 		VitalSigns vs = VitalSigns.get()
+		
+		VitalApp app = new VitalApp(name: 'app', appID: 'app')
+		
 		
 		vs.setCurrentApp(app)
 		
@@ -40,7 +42,8 @@ class SampleUnmanagedRDF {
 		
 		node."myapp:friends" = ["fred", "mary", "bob"]
 		
-		node."myapp:hashvalue" = "1010101"^"myapp:hash"
+		// fix in 0.2.303
+		//node."myapp:hashvalue" = "1010101"^"myapp:hash"
 		
 		println "URI: " + node.URI
 		println "Name: " + node."myapp:name"
