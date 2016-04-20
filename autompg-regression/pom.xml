@@ -118,12 +118,8 @@
        -->
        
       </plugins>
-      
-      
-       
-      
-      
-      </build>
+
+  </build>
   
   <dependencies>
   
@@ -137,7 +133,7 @@
     <dependency>
       <groupId>vitalai-com</groupId>
       <artifactId>vital-nlp</artifactId>
-      <version>0.2.301</version>
+      <version>0.2.303</version>
     </dependency>
   
   <!-- local project dependencies -->
@@ -153,7 +149,7 @@
     <dependency>
       <groupId>vital-ai</groupId>
       <artifactId>vitalservice</artifactId>
-      <version>0.2.301</version>
+      <version>0.2.303</version>
     </dependency>
     
     

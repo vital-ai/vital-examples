@@ -1,9 +1,0 @@
-{
-  "main": "groovy:ai.vital.service.vertx.VitalServiceMod",
-  "worker": true,
-  "description": "VitalService vertx module",
-  "licenses": ["The Apache Software License Version 2.0"],
-  "author": "Dariusz Kobylarz",
-  "keywords": ["VitalService", "Vital AI"],
-  "homepage": "http://vital.ai"
-}

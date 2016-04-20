@@ -106,7 +106,7 @@
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vitalservice-vertx-mod</artifactId>
-			<version>0.2.301</version>
+			<version>0.2.303</version>
 		</dependency>
 		
 		<dependency>
@@ -128,7 +128,7 @@
 		<dependency>
 	      <groupId>vitalai-com</groupId>
 	      <artifactId>vital-nlp</artifactId>
-	      <version>0.2.301</version>
+	      <version>0.2.303</version>
 		</dependency>
 
 		<!-- tests -->

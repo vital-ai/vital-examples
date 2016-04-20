@@ -37,6 +37,14 @@ VitalService.prototype.getCurrentLogin = function() {
 	return this.impl.login;
 }
 
+/**
+ * returns current session ID or null if not authenticated
+ */
+VitalService.prototype.getSessionID = function() {
+	return this.impl.appSessionID;
+}
+
+
 
 //bulkExport(VitalSegment, OutputStream)
 //bulkImport(VitalSegment, InputStream)
@@ -97,111 +105,176 @@ VitalService.prototype.createTransaction = function(successCB, errorCB) {
 
 
 /**
- * Deletes a single URIProperty or List of URIProperty objects
- * returns VitalStatus
- * 
- */
-VitalService.prototype.delete_ = function(URIPropertyOrList, successCB, errorCB) {
-	this.impl.callMethod('delete', [this.NO_TRANSACTION, URIPropertyOrList], successCB, errorCB);
-}
-
-/**
- * Deletes a single URIProperty or List of URIProperty objects
- * returns VitalStatus
- * 
- */
-VitalService.prototype.delete_ = function(VitalTransaction, URIPropertyOrList, successCB, errorCB) {
+* Deletes a single URIProperty or List of URIProperty objects, arguments:
+* URIPropertyOrList, successCB, errorCB
+* VitalTransaction, URIPropertyOrList, successCB, errorCB
+* 
+*/
+VitalService.prototype.delete_ = function() {
+	
+	var l = arguments.length;
+	if(l < 3 || l > 4) {
+		console.error("Expected 3 or 4 arguments - see documentation");
+		return;
+	}
+	
+	var VitalTransaction = null;
+	var URIPropertyOrList = arguments[l - 3];
+	var successCB = arguments[l - 2];
+	var errorCB = arguments[l - 1];
+	if(l == 4) {
+		VitalTransaction = arguments[0];	
+	}
 	this.impl.callMethod('delete', [VitalTransaction, URIPropertyOrList], successCB, errorCB);
 }
 
 
 /**
- * Deletes expanded single URIProperty or List of URIProperty objects
- */
-VitalService.prototype.deleteExpanded = function(URIPropertyorList, successCB, errorCB) {
-	this.impl.callMethod('deleteExpanded', [this.NO_TRANSACTION, URIPropertyorList], successCB, errorCB);
-
-}
-
-/**
- * Deletes expanded single URIProperty or List of URIProperty objects
- */
-VitalService.prototype.deleteExpanded = function(VitalTransaction, URIPropertyorList, successCB, errorCB) {
-	this.impl.callMethod('deleteExpanded', [VitalTransaction, URIPropertyorList], successCB, errorCB);
+* Deletes expanded single URIProperty or List of URIProperty objects, arguments:
+* URIPropertyorList, successCB, errorCB (3 args)
+* VitalTransaction, URIPropertyorList, successCB, errorCB (4 args)
+* URIPropertyorList, vitalPathQueryString, successCB, errorCB (4 args)
+* VitalTransaction, URIPropertyorList, vitalPathQueryString, successCB, errorCB (5 args)
+*/
+VitalService.prototype.deleteExpanded = function() {
 	
+	var l = arguments.length;
+	if(l < 3 || l > 5) {
+		console.error("Expected 3 to 5 arguments - see documentation");
+		return;
+	}
+	
+	var VitalTransaction = null;
+	var vitalPathQueryString = null;
+	var URIPropertyorList = null;
+	if(l == 5) {
+		VitalTransaction = arguments[0];
+		URIPropertyorList = arguments[1];
+		vitalPathQueryString = arguments[2];
+	} else if(l == 4) {
+		//check type of a[1]
+		if(typeof(arguments[1]) == 'string') {
+			URIPropertyorList = arguments[0];
+			vitalPathQueryString = arguments[1];
+		} else {
+			VitalTransaction = arguments[0];
+			URIPropertyorList = arguments[1];
+		}
+	} else {
+		URIPropertyorList = arguments[0];
+	}
+	
+	var successCB = arguments[l - 2];
+	var errorCB = arguments[l - 1];
+
+	var params = [VitalTransaction, URIPropertyorList];
+	if(vitalPathQueryString != null) {
+		params.push(vitalPathQueryString);
+	}
+
+	this.impl.callMethod('deleteExpanded', params, successCB, errorCB);
+
 }
 
-/**
- * Deletes expanded single URIProperty or List of URIProperty objects with VitalPathQuery
- */
-VitalService.prototype.deleteExpanded = function(URIPropertyorList, vitalPathQueryString, successCB, errorCB) {
-	this.impl.callMethod('deleteExpanded', [this.NO_TRANSACTION, URIPropertyorList, vitalPathQueryString], successCB, errorCB);
-}
 
 /**
- * Deletes expanded single URIProperty or List of URIProperty objects with VitalPathQuery
+ * Deletes expanded a single graph object, arguments:
+ * graphObject, successCB, errorCB
+ * VitalTransaction, graphObject, successCB, errorCB
  */
-VitalService.prototype.deleteExpanded = function(VitalTransaction, URIPropertyorList, vitalPathQueryString, successCB, errorCB) {
-	this.impl.callMethod('deleteExpanded', [VitalTransaction, URIPropertyorList, vitalPathQueryString], successCB, errorCB);
-}
-
-
-/**
- * Deletes expanded a single graph object
- */
-VitalService.prototype.deleteExpandedObject = function(graphObject, successCB, errorCB) {
-	this.impl.callMethod('deleteExpandedObject', [this.NO_TRANSACTION, graphObject], successCB, errorCB);
-}
-
-/**
- * Deletes expanded a single graph object
- */
-VitalService.prototype.deleteExpandedObject = function(VitalTransaction, graphObject, successCB, errorCB) {
+VitalService.prototype.deleteExpandedObject = function() {
+	var l = arguments.length;
+	if(l < 3 || l > 4) {
+		console.error("Expected 3 or 4 arguments - see documentation");
+		return;
+	}
+	
+	var VitalTransaction = null;
+	var graphObject = arguments[l - 3];
+	var successCB = arguments[l - 2];
+	var errorCB = arguments[l - 1];
+	if(l == 4) {
+		VitalTransaction = arguments[0];	
+	}
+	
 	this.impl.callMethod('deleteExpandedObject', [VitalTransaction, graphObject], successCB, errorCB);
 }
 
 /**
- * Deletes expanded a list of graph object with vital path query string
+ * Deletes expanded a list of graph objects with vital path query string, arguments:
+ * graphObject, vitalPathQueryString, successCB, errorCB
+ * VitalTransaction, graphObject, vitalPathQueryString, successCB, errorCB
+ * 
  */
-VitalService.prototype.deleteExpandedObject = function(graphObject, vitalPathQueryString, successCB, errorCB) {
-	this.impl.callMethod('deleteExpandedObjects', [this.NO_TRANSACTION, graphObject, vitalPathQueryString], successCB, errorCB);
-}
-
-/**
- * Deletes expanded a list of graph object with vital path query string
- */
-VitalService.prototype.deleteExpandedObject = function(VitalTransaction, graphObject, vitalPathQueryString, successCB, errorCB) {
+VitalService.prototype.deleteExpandedObjects = function() {
+	
+	var l = arguments.length;
+	if(l < 4 || l > 5) {
+		console.error("Expected 4 or 5 arguments - see documentation");
+		return;
+	}
+	
+	var VitalTransaction = null;
+	var graphObject = arguments[l - 4];
+	var vitalPathQueryString = arguments[l - 3];
+	var successCB = arguments[l - 2];
+	var errorCB = arguments[l - 1];
+	if(l == 5) {
+		VitalTransaction = arguments[0];	
+	}
+	
 	this.impl.callMethod('deleteExpandedObjects', [VitalTransaction, graphObject, vitalPathQueryString], successCB, errorCB);
 }
+
 
 
 //deleteFile(URIProperty, String)
 
 /**
- * Deletes a single graph object
- */
-VitalService.prototype.deleteObject = function(graphObject, successCB, errorCB) {
-	this.impl.callMethod('deleteObject', [this.NO_TRANSACTION, graphObject], successCB, errorCB);
-}
-
-/**
- * Deletes a single graph object
- */
-VitalService.prototype.deleteObject = function(VitalTransaction, graphObject, successCB, errorCB) {
+* Deletes a single graph object, arguments:
+* graphObject, successCB, errorCB
+* VitalTransaction, graphObject, successCB, errorCB
+*/
+VitalService.prototype.deleteObject = function() {
+	
+	var l = arguments.length;
+	if(l < 3 || l > 4) {
+		console.error("Expected 3 or 4 arguments - see documentation");
+		return;
+	}
+	
+	var VitalTransaction = null;
+	var graphObject = arguments[l - 3];
+	var successCB = arguments[l - 2];
+	var errorCB = arguments[l - 1];
+	if(l == 4) {
+		VitalTransaction = arguments[0];	
+	}
+	
 	this.impl.callMethod('deleteObject', [VitalTransaction, graphObject], successCB, errorCB);
 }
 
 /**
- * Deletes a list of graph objects
+ * Deletes a list of graph objects, arguments:
+ * graphObjectsList, successCB, errorCB
+ * VitalTransaction, graphObjectsList, successCB, errorCB
  */
-VitalService.prototype.deleteObjects = function(graphObjectsList, successCB, errorCB) {
-	this.impl.callMethod('deleteObjects', [this.NO_TRANSACTION, graphObjectsList], successCB, errorCB);
-}
-
-/**
- * Deletes a list of graph objects
- */
-VitalService.prototype.deleteObjects = function(VitalTransactiongraphObjectsList, successCB, errorCB) {
+VitalService.prototype.deleteObjects = function() {
+	
+	var l = arguments.length;
+	if(l < 3 || l > 4) {
+		console.error("Expected 3 or 4 arguments - see documentation");
+		return;
+	}
+	
+	var VitalTransaction = null;
+	var graphObjectsList = arguments[l - 3];
+	var successCB = arguments[l - 2];
+	var errorCB = arguments[l - 1];
+	if(l == 4) {
+		VitalTransaction = arguments[0];	
+	}
+	
 	this.impl.callMethod('deleteObjects', [VitalTransaction, graphObjectsList], successCB, errorCB);
 }
 
@@ -220,14 +293,6 @@ VitalService.prototype.deleteObjects = function(VitalTransactiongraphObjectsList
  */
 VitalService.prototype.generateURI = function(classObject, successCB, errorCB) {
 	this.impl.callMethod('generateURI', [classObject], successCB, errorCB);
-}
-
-/**
- * Gets a GraphObject or list, input is either URIProperty or list of URIProperty objects accordingly
- */
-VitalService.prototype.get = function(URIPropertyOrList, successCB, errorCB) {
-	//always service wide context!
-	this.impl.callMethod('get', [{type: 'GraphContext', value: 'ServiceWide'}, URIPropertyOrList], successCB, errorCB);
 }
 
 /**
@@ -287,12 +352,31 @@ VitalService.prototype.getTransactions = function(successCB, errorCB) {
 	this.impl.callMethod('getTransactions', [], successCB, errorCB);
 }
 
-VitalService.prototype.insert = function(vitalSegment, graphObjectOrList, successCB, errorCB) {
-	this.impl.callMethod('insert', [this.NO_TRANSACTION, vitalSegment, graphObject], successCB, errorCB);
-}
-
+/**
+ * Inserts a new object (or objects list) into a segment, arguments:
+ * vitalSegment, graphObjectOrList, successCB, error
+ * VitalTransaction, vitalSegment, graphObjectOrList, successCB, errorCB
+ */
 VitalService.prototype.insert = function(VitalTransaction, vitalSegment, graphObjectOrList, successCB, errorCB) {
-	this.impl.callMethod('insert', [VitalTransaction, vitalSegment, graphObject], successCB, errorCB);
+	
+	var l = arguments.length;
+	if(l < 4 || l > 5) {
+		console.error("Expected 4 or 5 arguments - see documentation");
+		return;
+	}
+	
+	var VitalTransaction = null;
+	var vitalSegment = arguments[l - 4];
+	var graphObjectOrList = arguments[l - 3];
+	var successCB = arguments[l - 2];
+	var errorCB = arguments[l - 1];
+	if(l == 5) {
+		VitalTransaction = arguments[0];	
+	}
+	
+//	this.impl.callMethod('deleteObjects', [VitalTransaction, app, graphObjectsList], successCB, errorCB);
+	
+	this.impl.callMethod('insert', [VitalTransaction, vitalSegment, graphObjectOrList], successCB, errorCB);
 }
 
 
@@ -340,31 +424,43 @@ VitalService.prototype.rollbackTransaction = function(transaction, successCB, er
 
 
 /**
- * Saves a graph object or objects list in default segment 
+ * Saves a graph object or objects list in default segment or specified segment, the params combinations are:
+ * graphObjectOrList, successCB, errorCB (3 args)
+ * transaction, graphObjectOrList, successCB, errorCB (4 args)
+ * segment, graphObjectOrList, createIfNotExistsFlag, successCB, errorCB (5 args)
+ * transaction, segment, graphObjectOrList, createIfNotExistsFlag, successCB, errorCB  (6 args) 
+ * 
  */
-VitalService.prototype.save = function(graphObjectOrList, createFlag, successCB, errorCB) {
-	this.impl.callMethod('save', [this.NO_TRANSACTION, graphObjectOrList, createFlag], successCB, errorCB);
-}
-
-/**
- * Saves a graph object or objects list in default segment 
- */
-VitalService.prototype.save = function(VitalTransaction, graphObjectOrList, createFlag, successCB, errorCB) {
-	this.impl.callMethod('save', [VitalTransaction, graphObjectOrList, createFlag], successCB, errorCB);
-}
-
-/**
- * Saves a graph object or objects list 
- */
-VitalService.prototype.save = function(segment, graphObjectOrList, createFlag, successCB, errorCB) {
-	this.impl.callMethod('save', [this.NO_TRANSACTION, segment, graphObjectOrList, createFlag], successCB, errorCB);
-}
-
-/**
- * Saves a graph object or objects list 
- */
-VitalService.prototype.save = function(VitalTransaction, segment, graphObjectOrList, createFlag, successCB, errorCB) {
-	this.impl.callMethod('save', [VitalTransaction, segment, graphObjectOrList, createFlag], successCB, errorCB);
+VitalService.prototype.save = function() {
+	
+	var l = arguments.length; 
+	
+	if( l < 3 || l > 6) {
+		console.error("save method error, expected 3 to 6 arguments - see documentation");
+		return;
+	}
+	
+	var successCB = arguments[arguments.length - 2];
+	var errorCB = arguments[arguments.length -1 ];
+	
+	if(l == 3 || l == 4) {
+		
+		var VitalTransaction  = l == 4 ? arguments[0] : null;
+		var graphObjectOrList = l == 4 ? arguments[1] : arguments[0];
+		
+		this.impl.callMethod('save', [VitalTransaction, graphObjectOrList], successCB, errorCB);
+		
+	} else {
+		
+		var VitalTransaction  = l == 6 ? arguments[0] : null;
+		var segment           = l == 6 ? arguments[1] : arguments[0];
+		var graphObjectOrList = l == 6 ? arguments[2] : arguments[1];
+		var createIfNotExists = l == 6 ? arguments[3] : arguments[2];
+		
+		this.impl.callMethod('save', [VitalTransaction, segment, graphObjectOrList, createIfNotExists], successCB, errorCB);
+		
+	}
+	
 }
 
 VitalService.prototype.sendEvent = function(VITAL_Event, waitForDelivery, successCB, errorCB) {

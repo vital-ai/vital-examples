@@ -34,7 +34,7 @@
                 
 		  <!-- vital-nlp -->
 		  <execution>
-            <id>vital-nlp-0.2.301.jar</id>
+            <id>vital-nlp-0.2.303.jar</id>
             <phase>validate</phase>
             <goals>
               <goal>install-file</goal>
@@ -42,9 +42,9 @@
             <configuration>
               <groupId>com-vitalai</groupId>
               <artifactId>vital-nlp</artifactId>
-              <version>0.2.301</version>
+              <version>0.2.303</version>
               <packaging>jar</packaging>
-              <file>${VITAL_HOME}/domain-groovy-jar/vital-nlp-groovy-0.2.301.jar</file>
+              <file>${VITAL_HOME}/domain-groovy-jar/vital-nlp-groovy-0.2.303.jar</file>
             </configuration>
           </execution>
                 

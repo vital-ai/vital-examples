@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   
   <properties>
-  	<vital.version>0.2.301</vital.version>
+  	<vital.version>0.2.303</vital.version>
   </properties>
   
   <repositories>
@@ -123,12 +123,8 @@
       </plugin> 
 -->
       </plugins>
-      
-      
-       
-      
-      
-      </build>
+
+  </build>
   
   <dependencies>
   
@@ -142,7 +138,7 @@
   
   <dependency>
     <groupId>vital-ai</groupId>
-    <artifactId>vital-triplestore</artifactId>
+    <artifactId>vital-sparql</artifactId>
     <version>${vital.version}</version>
   </dependency>
   

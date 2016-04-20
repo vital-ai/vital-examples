@@ -4,7 +4,6 @@ import java.util.Map
 
 import org.movielens.domain.Edge_hasMovieRating;
 import org.movielens.domain.Movie;
-import org.movielens.domain.properties.Property_hasRating;
 
 import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.service.vertx.VitalServiceMod;
@@ -57,8 +56,6 @@ class MovieLensGetRatedMoviesHandler implements CallFunctionHandler {
 				
 				value segments: ['movielens']
 				
-//				value sortProperties: [new VitalSortProperty( VitalSigns.get().getPropertyByTrait(Property_hasRating.class), null, true)]
-					
 				edge_constraint { Edge_hasMovieRating.class }
 				edge_constraint { Edge_hasMovieRating.props().edgeSource.equalTo(URIProperty.withString(userURI)) }
 				

@@ -1,4 +1,19 @@
 /**
+ * Set this property to redirect pages to maintenance page if vitalservice is unavailable
+ */
+var VITAL_SERVICE_UNAVAILABLE_URL = null;
+
+
+/**
+ * Set this callback to be notified when session expires
+ * depending if returned value is true/false the default callback will be called afterwards
+ */
+var VITAL_SESSION_EXPIRED_CALLBACK = null;
+
+//overridden cookie attributes
+var VITAL_COOKIE_ATTRS = {};
+
+/**
  * Websocket based implementation
  * @param address - vitalservice eventbus address, 'vitalservice' in most cases
  * @param eventBusURL - if null then current window url protocol://host:port/eventbus will be used 
@@ -18,7 +33,7 @@ VitalServiceWebsocketImpl = function(address, type, eventBusURL, successCB, erro
 	} else if(type == 'superadmin') {
 		this.superadmin = true;
 	} else {
-		alert("Unhnown type: " + type);
+		console.error("Unhnown type: " + type);
 		return
 	}
 	
@@ -107,8 +122,9 @@ VitalServiceWebsocketImpl = function(address, type, eventBusURL, successCB, erro
 		
 	} else {
 		
-		alert("VitalServiceJson module not available, it's mandatory.");
+		console.error("VitalServiceJson module not available, it's mandatory.");
 //		console.warn("VitalServiceJson module not available, validation disabled.");
+		return;
 	}
 	
 
@@ -131,6 +147,17 @@ VitalServiceWebsocketImpl = function(address, type, eventBusURL, successCB, erro
     this.newConn()
     
 }
+
+VitalServiceWebsocketImpl.JS_REGISTER_STREAM_HANDLER = 'js-register-stream-handler';
+
+VitalServiceWebsocketImpl.JS_UNREGISTER_STREAM_HANDLER = 'js-unregister-stream-handler';
+
+VitalServiceWebsocketImpl.JS_LIST_STREAM_HANDLERS = 'js-list-stream-handlers';
+
+
+VitalServiceWebsocketImpl.VERTX_STREAM_SUBSCRIBE = 'vertx-stream-subscribe';
+
+VitalServiceWebsocketImpl.VERTX_STREAM_UNSUBSCRIBE = 'vertx-stream-unsubscribe';
 
 VitalServiceWebsocketImpl.DomainsManagerScript = 'commons/scripts/DomainsManagerScript';
 
@@ -158,8 +185,6 @@ VitalServiceWebsocketImpl.prototype.newConn = function() {
     		}
     		
     		
-    		
-    		alert("Protocols: wl: " + s);
     		
     	options.protocols_whitelist = configService.protocols_whitelist;
     }
@@ -195,8 +220,13 @@ VitalServiceWebsocketImpl.prototype.newConn = function() {
     		
     		console.log('refreshing session handlers: ', currentKeys);
     		
+    		var args = [VitalServiceWebsocketImpl.VERTX_STREAM_SUBSCRIBE, {streamNames: currentKeys, sessionID: _this.sessionID}];
+    		if(_this.admin) {
+    			//insert null app
+    			args.splice(0, 0, null);
+    		}
     		//re-register it ?
-    		_this.callMethod('callFunction', [VitalService.VERTX_STREAM_SUBSCRIBE, {streamNames: currentKeys, sessionID: _this.sessionID}], function(successRL){
+    		_this.callMethod('callFunction', args, function(successRL){
     			
     			if(!_this.eventbusListenerActive) {
     				
@@ -302,6 +332,7 @@ VitalServiceWebsocketImpl.prototype.initialSessionCheck = function() {
 		
 		console.warn(errorMsg);
 		
+		$.removeCookie(_this.COOKIE_SESSION_ID, VITAL_COOKIE_ATTRS);
 		$.removeCookie(_this.COOKIE_SESSION_ID);
 		_this.appSessionID = null;
 		
@@ -339,13 +370,13 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 	console.log("service call " + method + " args:", args)
 	
 	if(typeof(successCB) != "function") {
-		alert("method: " + method + " - Success callback not a function, arguments list invalid");
-		return
+		console.error("method: " + method + " - Success callback not a function, arguments list invalid");
+		return;
 	}
 	
 	if(typeof(errorCB) != "function") {
-		alert("method: " + method + " - Error callback not a function, arguments list invalid");
-		return
+		console.error("method: " + method + " - Error callback not a function, arguments list invalid");
+		return;
 	}
 	
 	var data = {
@@ -372,7 +403,7 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 			}
 			
 		} else {
-			alert("method : " + method + " requires at least two arguments");
+			console.error("method : " + method + " requires at least two arguments");
 			return
 		}
 		
@@ -423,10 +454,12 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 					for(var i = 0 ; i < response.results.length; i++) {
 						var g = response.results[i].graphObject;
 						if(g.type == 'http://vital.ai/ontology/vital#UserSession') {
-							_this.appSessionID = g.session
-							console.log('new auth session: ', g.sessionID);
+							_this.appSessionID = g.get('sessionID');
+							console.log('new auth session: ', g.get('sessionID'));
 							//store it in cookie
-							$.cookie(_this.COOKIE_SESSION_ID, g.sessionID, { expires: 7 });
+							var attrs = {expires: 7};
+							$.extend(attrs, VITAL_COOKIE_ATTRS);
+							$.cookie(_this.COOKIE_SESSION_ID, g.get('sessionID'), attrs);
 						} else if(_this.loginTypes.indexOf(g.type) >= 0) {
 							_this.login = g;
 						}
@@ -438,6 +471,7 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 					
 					_this.appSessionID = null
 					
+					$.removeCookie(_this.COOKIE_SESSION_ID, VITAL_COOKIE_ATTRS);
 					$.removeCookie(_this.COOKIE_SESSION_ID);
 					console.log("session cookie removed")
 					
@@ -452,11 +486,42 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 			
 			if(functionName == VitalServiceWebsocketImpl.vitalauth_logout && _this.COOKIE_SESSION_ID != null) {
 				//no matter what, always remove the cookie and notify callback
+				$.removeCookie(_this.COOKIE_SESSION_ID, VITAL_COOKIE_ATTRS);
 				$.removeCookie(_this.COOKIE_SESSION_ID);
 				_this.appSessionID = null;
 			}
 			
-			errorCB(result.message)
+			if(result.message != null) {
+				
+				if( result.message.indexOf('java.net.ConnectException') >= 0 && VITAL_SERVICE_UNAVAILABLE_URL != null ) {
+					
+					window.location.href = VITAL_SERVICE_UNAVAILABLE_URL;
+					return;
+					
+				}
+				
+			}
+			
+			var callErrorCB = true;
+			
+			//this is thrown when session expired / not found
+			if(result.status == 'error_denied') {
+
+				$.removeCookie(_this.COOKIE_SESSION_ID, VITAL_COOKIE_ATTRS);
+				$.removeCookie(_this.COOKIE_SESSION_ID);
+				_this.appSessionID = null;
+				
+				if( VITAL_SESSION_EXPIRED_CALLBACK != null) {
+				
+					callErrorCB = VITAL_SESSION_EXPIRED_CALLBACK(result.message);
+				}
+				
+			}
+			
+			if(callErrorCB == true) {
+				errorCB(result.message)
+			}
+			
 			
 		}
 		
@@ -601,12 +666,19 @@ VitalServiceWebsocketImpl.prototype.streamSubscribe = function(paramsMap, succes
 		return;
 	}
 	
+	var args = [VitalServiceWebsocketImpl.VERTX_STREAM_SUBSCRIBE, {streamNames: [streamName], sessionID: this.sessionID}];
+	
+	if(this.admin) {
+		//insert null app
+		args.splice(0, 0, null);
+	}
+	
 	
 	//first call the server side, on success register
 	
 	var _this = this;
 	
-	this.callMethod('callFunction', [VitalService.VERTX_STREAM_SUBSCRIBE, {streamNames: [streamName], sessionID: _this.sessionID}], function(successRL){
+	this.callMethod('callFunction', args, function(successRL){
 		
 		if(!_this.eventbusListenerActive) {
 			
@@ -660,7 +732,12 @@ VitalServiceWebsocketImpl.prototype.streamUnsubscribe = function(paramsMap, succ
 	
 	var _this = this;
 	
-	this.callMethod('callFunction', [VitalService.VERTX_STREAM_UNSUBSCRIBE, {streamNames: [streamName], sessionID: _this.sessionID}], function(successRL){
+	if(this.admin) {
+		//insert null app
+		args.splice(0, 0, null);
+	}
+	
+	this.callMethod('callFunction', args, function(successRL){
 		
 		delete _this.currentHandlers[streamName];
 
@@ -691,15 +768,15 @@ VitalServiceWebsocketImpl.prototype.createNewHandler = function() {
 	
 	var wrapperHandler = function(json) {
 		
-		if(json.type != 'ResultList' ) {
-			alert("only ResultList messages accepted");
+		if(json._type != 'ai.vital.vitalservice.query.ResultList' ) {
+			console.error("only ai.vital.vitalservice.query.ResultList type messages accepted");
 			return
 		}
 		
 		var stream = json.streamName;
 		
 		if(stream == null) {
-			alert('No streamName property in json message');
+			console.error('No streamName property in json message');
 			return;
 		}
 		
@@ -724,7 +801,7 @@ VitalServiceWebsocketImpl.prototype.createNewHandler = function() {
 				
 		} else {
 				
-			alert("No VitalServiceJson module loaded - cannot parse async message.");
+			console.error("No VitalServiceJson module loaded - cannot parse async message.");
 			return;
 				
 		}

@@ -6,7 +6,7 @@
 	<version>0.0.1</version>
 
 	<properties>
-		<vital.version>0.2.301</vital.version>
+		<vital.version>0.2.303</vital.version>
 	</properties>
 
 	<repositories>
@@ -131,7 +131,7 @@
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>movielens</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 		<!-- tests -->

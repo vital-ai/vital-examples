@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   
   <properties>
-  	<vital.version>0.2.302</vital.version>
+  	<vital.version>0.2.303</vital.version>
   </properties>
   
   <repositories>

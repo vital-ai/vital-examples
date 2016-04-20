@@ -1,4 +1,4 @@
-"vital-ai~vitalservice-vertx-mod~0.2.301"  {
+"vital-ai~vitalservice-vertx-mod~0.2.303"  {
 
   enabled: true
   
@@ -16,7 +16,7 @@
 
 "vital-examples~metamind-app~0.0.1" {
 
-  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.301"]
+  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.303"]
 
   enabled: true
   
@@ -28,7 +28,7 @@
 
 "io.vertx~mod-web-server~2.0.0-final" {
 
-  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.301"]
+  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.303"]
 
 	enabled: true
 

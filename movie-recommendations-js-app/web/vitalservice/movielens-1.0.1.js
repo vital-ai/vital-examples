@@ -2,9 +2,10 @@ if(typeof(VITAL_JSON_SCHEMAS) == 'undefined') {
  throw ("No VITAL_JSON_SCHEMAS list defined - vital-core domain unavailable");
 }
 
-var movielens_1_0_0_schema = {
+var movielens_1_0_1_schema = {
   "domainURI" : "http://vital.ai/ontology/movielens",
-  "name" : "movielens-1.0.0",
+  "name" : "movielens-1.0.1",
+  "vitalsignsVersion" : "0.2.303",
   "parents" : [ "http://vital.ai/ontology/vital" ],
   "schemas" : [ {
     "id" : "http://vital.ai/ontology/movielens#Edge_hasMovieRating",
@@ -33,6 +34,9 @@ var movielens_1_0_0_schema = {
       "http://vital.ai/ontology/movielens#hasRating" : {
         "type" : "number"
       },
+      "http://vital.ai/ontology/vital#hasCertainty" : {
+        "type" : "number"
+      },
       "http://vital.ai/ontology/vital-core#hasEdgeDestination" : {
         "type" : "string"
       },
@@ -45,7 +49,13 @@ var movielens_1_0_0_schema = {
       "http://vital.ai/ontology/vital-core#hasOntologyIRI" : {
         "type" : "string"
       },
+      "http://vital.ai/ontology/vital-core#hasProvenance" : {
+        "type" : "string"
+      },
       "http://vital.ai/ontology/vital-core#hasTimestamp" : {
+        "type" : "number"
+      },
+      "http://vital.ai/ontology/vital-core#hasUpdateTime" : {
         "type" : "number"
       },
       "http://vital.ai/ontology/vital-core#hasVersionIRI" : {
@@ -81,6 +91,9 @@ var movielens_1_0_0_schema = {
         },
         "uniqueItems" : true
       },
+      "http://vital.ai/ontology/vital#hasCertainty" : {
+        "type" : "number"
+      },
       "http://vital.ai/ontology/vital-core#hasEdgeDestination" : {
         "type" : "string"
       },
@@ -93,7 +106,13 @@ var movielens_1_0_0_schema = {
       "http://vital.ai/ontology/vital-core#hasOntologyIRI" : {
         "type" : "string"
       },
+      "http://vital.ai/ontology/vital-core#hasProvenance" : {
+        "type" : "string"
+      },
       "http://vital.ai/ontology/vital-core#hasTimestamp" : {
+        "type" : "number"
+      },
+      "http://vital.ai/ontology/vital-core#hasUpdateTime" : {
         "type" : "number"
       },
       "http://vital.ai/ontology/vital-core#hasVersionIRI" : {
@@ -129,6 +148,9 @@ var movielens_1_0_0_schema = {
         },
         "uniqueItems" : true
       },
+      "http://vital.ai/ontology/vital#hasCertainty" : {
+        "type" : "number"
+      },
       "http://vital.ai/ontology/vital-core#hasEdgeDestination" : {
         "type" : "string"
       },
@@ -141,7 +163,13 @@ var movielens_1_0_0_schema = {
       "http://vital.ai/ontology/vital-core#hasOntologyIRI" : {
         "type" : "string"
       },
+      "http://vital.ai/ontology/vital-core#hasProvenance" : {
+        "type" : "string"
+      },
       "http://vital.ai/ontology/vital-core#hasTimestamp" : {
+        "type" : "number"
+      },
+      "http://vital.ai/ontology/vital-core#hasUpdateTime" : {
         "type" : "number"
       },
       "http://vital.ai/ontology/vital-core#hasVersionIRI" : {
@@ -181,6 +209,9 @@ var movielens_1_0_0_schema = {
           "type" : "string"
         }
       },
+      "http://vital.ai/ontology/vital#hasCertainty" : {
+        "type" : "number"
+      },
       "http://vital.ai/ontology/vital#hasDegree" : {
         "type" : "number"
       },
@@ -193,7 +224,13 @@ var movielens_1_0_0_schema = {
       "http://vital.ai/ontology/vital-core#hasOntologyIRI" : {
         "type" : "string"
       },
+      "http://vital.ai/ontology/vital-core#hasProvenance" : {
+        "type" : "string"
+      },
       "http://vital.ai/ontology/vital-core#hasTimestamp" : {
+        "type" : "number"
+      },
+      "http://vital.ai/ontology/vital-core#hasUpdateTime" : {
         "type" : "number"
       },
       "http://vital.ai/ontology/vital-core#hasVersionIRI" : {
@@ -230,6 +267,9 @@ var movielens_1_0_0_schema = {
       "http://vital.ai/ontology/movielens#hasTagText" : {
         "type" : "string"
       },
+      "http://vital.ai/ontology/vital#hasCertainty" : {
+        "type" : "number"
+      },
       "http://vital.ai/ontology/vital#hasDegree" : {
         "type" : "number"
       },
@@ -242,7 +282,13 @@ var movielens_1_0_0_schema = {
       "http://vital.ai/ontology/vital-core#hasOntologyIRI" : {
         "type" : "string"
       },
+      "http://vital.ai/ontology/vital-core#hasProvenance" : {
+        "type" : "string"
+      },
       "http://vital.ai/ontology/vital-core#hasTimestamp" : {
+        "type" : "number"
+      },
+      "http://vital.ai/ontology/vital-core#hasUpdateTime" : {
         "type" : "number"
       },
       "http://vital.ai/ontology/vital-core#hasVersionIRI" : {
@@ -276,6 +322,9 @@ var movielens_1_0_0_schema = {
         },
         "uniqueItems" : true
       },
+      "http://vital.ai/ontology/vital#hasCertainty" : {
+        "type" : "number"
+      },
       "http://vital.ai/ontology/vital#hasDegree" : {
         "type" : "number"
       },
@@ -288,7 +337,13 @@ var movielens_1_0_0_schema = {
       "http://vital.ai/ontology/vital-core#hasOntologyIRI" : {
         "type" : "string"
       },
+      "http://vital.ai/ontology/vital-core#hasProvenance" : {
+        "type" : "string"
+      },
       "http://vital.ai/ontology/vital-core#hasTimestamp" : {
+        "type" : "number"
+      },
+      "http://vital.ai/ontology/vital-core#hasUpdateTime" : {
         "type" : "number"
       },
       "http://vital.ai/ontology/vital-core#hasVersionIRI" : {
@@ -322,4 +377,4 @@ var movielens_1_0_0_schema = {
   } ]
 };
 
- VITAL_JSON_SCHEMAS.push(movielens_1_0_0_schema);
+ VITAL_JSON_SCHEMAS.push(movielens_1_0_1_schema);
