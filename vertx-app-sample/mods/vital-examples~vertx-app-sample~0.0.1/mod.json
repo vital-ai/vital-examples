@@ -1,0 +1,9 @@
+{
+  "main": "groovy:ai.vital.vertx.app.sample.VertxAppSampleVerticle",
+  "worker": false,
+  "description": "Vertx App Sample",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Dariusz Kobylarz",
+  "keywords": ["Vertx App", "Sample App", "VertX", "Vital AI"],
+  "homepage": "http://vital.ai"
+}

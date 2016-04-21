@@ -1,0 +1,113 @@
+"vital-ai~vitalservice-vertx-mod~0.2.303"  {
+
+  enabled: true
+  
+  instances: 1
+  
+  services: [
+    {
+      profile: locallucenedisk
+  
+      key: serv-serv-serv
+    }
+  ]
+  
+}
+
+"vital-ai~vital-auth-mod-guest-auth-only~0.2.303" {
+
+  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.303"]
+  
+  enabled: true
+  
+  instances: 1
+
+  apps: {
+  
+    app: {
+    
+      auth_enabled: true,
+    
+      access: service
+    
+      //no logins stored, just use some segment ?
+      loginsSegment: sessions
+      
+      sessionsSegment: sessions
+      
+      persistentSessions: true
+      
+      maxSessionsPerUser: 3
+      
+      expirationProlongMargin: 10000
+      
+      session_timeout: 1800000
+    
+      filter: [
+        {
+          #AUTH functions need to be available
+          type: allow
+          method: callFunction
+          function: "vitalauth\\..*"
+        },
+        {
+          #access to query is restricted for logged in users only
+          type: auth
+          method: get
+        },
+        {
+          #access to query is restricted for logged in users only
+          type: auth
+          method: query
+        },
+        {
+          #no other serviceapi methods allowed
+          type: deny
+          method: ".*" 
+        }
+      ]
+      
+    }
+  }
+}
+
+
+"vital-examples~vertx-app-sample~0.0.1" {
+
+  dependencies: ["vital-ai~vital-auth-mod-guest-auth-only~0.2.303"]
+
+  enabled: true
+  
+  instances: 1
+  
+  app: app
+
+}
+
+"io.vertx~mod-web-server~2.0.0-final" {
+
+  dependencies: ["vital-examples~vertx-app-sample~0.0.1"]
+
+  enabled: true
+
+  instances: 1
+
+    web_root: "./webroot"
+    host: 0.0.0.0
+    port: 90
+    
+    #use custom route matcher - edit it in mod-www mod.json
+    route_matcher: true
+    
+    static_files: false
+
+    bridge: true
+
+  #no firewall, direct vitalservice instance access
+  ###inbound_permitted: [{address_re: "vitalservice\\..+"}],
+ 
+  #app access behind firewall
+  inbound_permitted: [{address_re: "endpoint\\..+"}]
+  outbound_permitted: [{address_re: "stream\\..+"}]
+
+}

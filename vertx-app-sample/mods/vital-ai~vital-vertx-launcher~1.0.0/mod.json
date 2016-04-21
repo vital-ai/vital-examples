@@ -1,0 +1,9 @@
+{
+  "main": "groovy:ai.vital.vertx.launcher.verticle.VitalVertxLauncherVerticle",
+  "worker": false,
+  "description": "Vital SuperAdmin Auth module",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Dariusz Kobylarz",
+  "keywords": ["VitalVertxLauncher", "Vital AI"],
+  "homepage": "http://vital.ai"
+}

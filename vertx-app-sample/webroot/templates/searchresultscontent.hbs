@@ -1,0 +1,50 @@
+{{#if lastSearchURL}}
+<div>
+  <a href="{{lastSearchURL}}" class="btn btn-primary" data-navigo>Back To Search Results</a>
+</div>
+{{/if}}
+
+<h4>{{label}}</h4>
+{{#if q}}<div>Query: <strong>{{q}}</strong></div>{{/if}}
+{{#if total}}<div>Total results: {{total}}</div>{{/if}}
+
+{{{objectDetails}}}
+
+<div>Displaying: {{firstIndex}} - {{lastIndex}}</div>
+
+
+<table class="table table-hover table-striped">
+	<thead>
+		<tr>
+			<th>Index</th>
+			<th>Name</th>
+			<th>Score</th>
+			<th>URI</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#unless results}}
+			<tr><td colspan="4"><p>(no results to display)</p></td></tr>
+		{{/unless}}
+		{{#each results}}
+		<tr>
+			<td>{{index}}</td>
+			<td>{{name}}</td>
+			<td>{{score}}</td>
+			<td>
+				<a href="/details/{{encodedURI}}" data-navigo>{{URI}}</a>
+			</td>
+		</tr>
+		{{/each}}
+	</tbody>
+	<tfoot>
+	
+		<tr><td colspan="4" style="text-align: center;">
+		
+		 	{{{firstLink}}} &nbsp; {{{prevLink}}} &nbsp;&nbsp;&nbsp; {{{nextLink}}} &nbsp; {{{lastLink}}}
+		
+		</td></tr>
+	
+	</tfoot>
+</table>
+

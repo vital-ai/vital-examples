@@ -1,0 +1,17 @@
+SELECT { 
+
+  value segments: ['wordnet']
+	
+  value limit: {{limit}}
+
+  value offset: {{offset}} 
+	
+  OR {
+
+    node_constraint { ai.vital.vitalsigns.model.VITAL_Node.props().name.equalTo_i('{{{escapedQuery}}}') }
+
+    node_constraint { ai.vital.vitalsigns.model.VITAL_Node.props().name.contains_i('{{{escapedQuery}}}') }
+
+  }
+
+}

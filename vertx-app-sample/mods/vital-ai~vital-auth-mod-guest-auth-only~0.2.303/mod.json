@@ -1,0 +1,9 @@
+{
+  "main": "groovy:ai.vital.auth.mod.VitalAuthManager",
+  "worker": false,
+  "description": "Vital Auth module",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Dariusz Kobylarz",
+  "keywords": ["VitalAuth", "Vital AI"],
+  "homepage": "http://vital.ai"
+}

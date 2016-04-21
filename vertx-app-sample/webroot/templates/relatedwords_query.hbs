@@ -1,0 +1,36 @@
+GRAPH {
+
+  value segments: ['wordnet']
+
+  value offset: {{offset}}
+  
+  value limit: {{limit}}
+  
+  ARC {
+  
+  	node_constraint { 'URI eq {{{URI}}}' }
+  
+  	ARC_OR {
+  	
+  	    ARC {
+    
+    		node_bind { 'related1' }
+    
+      		value direction: 'forward'
+    
+    	}
+
+  	    ARC {
+    
+    		node_bind { 'related2' }
+    
+      		value direction: 'reverse'
+    
+    	}
+  	
+  	}
+    
+  }
+  
+
+}
