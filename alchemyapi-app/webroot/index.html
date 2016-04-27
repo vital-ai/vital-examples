@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AlchemyAPI App</title>
+	
+	<meta charset="UTF-8" />
+	<meta name="description" content="AlchemyAPI JavaScript/VertX Example App" />
+	<meta name="keywords" content="metamind, Vital AI, Vital, Vertx, Javascript, VitalService" />
+	<meta name="author" content="Vital AI" /> 
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	
+	<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	
+	
+	
+    <script type="text/javascript" src="vitalservice/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="vitalservice/sockjs-0.3.4.min.js"></script>
+    <script type="text/javascript" src="vitalservice/vertx-eventbus-3.2.1.js"></script>
+    <script type="text/javascript" src="vitalservice/jquery.cookie-1.4.0.js"></script>
+    <script type="text/javascript" src="vitalservice/tv4.min.js"></script>
+    <script type="text/javascript" src="vitalservice/vitalservice-0.2.303.js"></script>
+    <script type="text/javascript" src="vitalservice/vitalservice-impl-0.2.303.js"></script>
+    <script type="text/javascript" src="vitalservice/vitalservice-json-0.2.303.js"></script>
+    <script type="text/javascript" src="vitalservice/vital-core-0.2.303.js"></script>
+    <script type="text/javascript" src="vitalservice/vital-0.2.303.js"></script>
+    
+    <script type="text/javascript" src="vitalservice/vital-nlp-0.2.303.js"></script>
+	
+	
+	
+	<script type="text/javascript" src="js/app.js"></script>
+	
+</head>
+<body>
+
+	<h3>AlchemyAPI App</h3>
+	
+	<div>Quota: <span id="quota">-</span> requests left</div>
+	
+	
+	<div>
+	
+		<div>
+			<textarea id="input-text" rows="10" cols="60"></textarea>
+		</div>
+		
+		<div>
+			<button type="button" id="clear-button" style="margin-left: 20px; margin-right: 10px;">Clear</button>
+      		<button type="button" id="process-button" style="margin-left: 10px; margin-right: 10px;">Process Text</button>
+		</div>
+	
+      	
+      	<span id="status"></span>
+      	
+      	
+      	
+	</div>
+	
+	<div id="results">
+	</div>
+	
+</body>
+</html>

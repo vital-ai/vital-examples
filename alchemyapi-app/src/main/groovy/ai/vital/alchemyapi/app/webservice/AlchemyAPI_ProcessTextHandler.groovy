@@ -2,8 +2,8 @@ package ai.vital.alchemyapi.app.webservice
 
 import com.vitalai.domain.nlp.Document
 
-import ai.vital.service.vertx.VitalServiceMod;
-import ai.vital.service.vertx.handler.functions.VertxHandler
+import ai.vital.service.vertx3.VitalServiceVertx3;
+import ai.vital.service.vertx3.handler.functions.VertxHandler
 import ai.vital.vitalservice.VitalStatus
 import ai.vital.vitalservice.exception.VitalServiceException
 import ai.vital.vitalservice.exception.VitalServiceUnimplementedException
@@ -31,7 +31,9 @@ class AlchemyAPI_ProcessTextHandler extends VertxHandler {
 			
 			String text = getRequiredStringParam('text', params)
 			
-			def vitalService = VitalServiceMod.registeredServices.get(app.appID.toString())
+			def vitalService = VitalServiceVertx3.registeredServices.get(app.appID.toString())
+			
+			if(vitalService == null) throw new Exception("Service not found for app: ${app.appID}")
 			
 			ResultList qrl = vitalService.callFunction('commons/scripts/Aspen_Usage',
 				[action: 'incrementUsage', key:'alchemyapi', increment: 1, limit: 1000])

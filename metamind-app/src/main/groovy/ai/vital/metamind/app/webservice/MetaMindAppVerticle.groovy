@@ -1,43 +1,47 @@
 package ai.vital.metamind.app.webservice
 
-import org.vertx.groovy.platform.Verticle
-import org.vertx.java.core.Future
-
-import ai.vital.service.vertx.async.VitalServiceAsyncClient
-import ai.vital.service.vertx.binary.ResponseMessage
-import ai.vital.service.vertx.handler.AbstractVitalServiceHandler
-import ai.vital.service.vertx.handler.CallFunctionHandler
+import ai.vital.service.vertx3.async.VitalServiceAsyncClient
+import ai.vital.service.vertx3.binary.ResponseMessage
+import ai.vital.service.vertx3.handler.CallFunctionHandler;
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.query.ResultList
-import ai.vital.vitalsigns.model.VitalApp;;
+import ai.vital.vitalsigns.model.VitalApp
+import io.vertx.core.Future
+import io.vertx.lang.groovy.GroovyVerticle
 
-class MetaMindAppVerticle extends Verticle {
+class MetaMindAppVerticle extends GroovyVerticle {
 	
 	public static boolean initialized = false
 	
+	public static String appID
+	
 	//async start with notification
 	@Override
-	public Object start(Future<Void> startedResult) {
+	public void start(Future<Void> startedResult) {
 	
 		if(initialized) {
-			startedResult.setResult(true)
+			startedResult.complete(true)
 			return
 		}
 		
 		synchronized (MetaMindAppVerticle.class) {
 			
 			if(initialized) {
-				startedResult.setResult(true)
+				startedResult.complete(true)
 				return
 			}
 			
-			String app = container.config.get('app')
+			if(context == null) context = vertx.getOrCreateContext()
 			
-			if(!app) throw new RuntimeException("No app config param")
+			String app = context.config().get('app')
 			
-//			VitalService service = VitalServiceMod.registeredServices.get(app)
-//
-//			if(service == null) throw new RuntimeException("No service for app: ${app}")
+			
+			if(!app) {
+				startedResult.fail("No app config param")
+				return
+			}
+			
+			appID = app
 			
 			VitalServiceAsyncClient client = new VitalServiceAsyncClient(vertx, VitalApp.withId(app))
 			
@@ -46,18 +50,18 @@ class MetaMindAppVerticle extends Verticle {
 				handlerClass: MetaMind_ProcessImageHandler.class.canonicalName,
 			]) { ResponseMessage rm ->
 		
-				if(rm.exceptionMessage) {
-					startedResult.setFailure(new RuntimeException(rm.exceptionType + ' - ' + rm.exceptionMessage))
+				if(rm.exceptionType) {
+					startedResult.fail(rm.exceptionType + ' - ' + rm.exceptionMessage)
 					return
 				}
 				
 				ResultList rl = rm.response
 				if(rl.status.status != VitalStatus.Status.ok) {
-					startedResult.setFailure(new RuntimeException(rl.status.toString()))
+					startedResult.fail(rl.status.toString())
 					return
 				}
 		
-				startedResult.setResult(true)
+				startedResult.complete(true)
 				
 			}
 			
@@ -65,6 +69,12 @@ class MetaMindAppVerticle extends Verticle {
 			
 		}
 		
+	}
+	
+	@Override
+	public void stop() throws Exception {
+		initialized = false
+		appID = null
 	}
 
 }

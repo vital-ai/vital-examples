@@ -1,29 +1,18 @@
 package ai.vital.metamind.app.webservice
 
-import java.util.Map
+import org.apache.commons.collections.map.LRUMap
 
-import org.apache.commons.collections.map.LRUMap;
-import org.vertx.groovy.core.sockjs.SockJSServer;
-
-import com.vitalai.domain.nlp.Image
-import com.vitalai.domain.nlp.ImageReference
-
-import ai.vital.service.vertx.VitalServiceMod;
-import ai.vital.service.vertx.handler.AbstractVitalServiceHandler;
-import ai.vital.service.vertx.handler.CallFunctionHandler;
-import ai.vital.service.vertx.handler.functions.VertxHandler;
-import ai.vital.vitalservice.VitalStatus;
-import ai.vital.vitalservice.exception.VitalServiceException;
-import ai.vital.vitalservice.exception.VitalServiceUnimplementedException;
-import ai.vital.vitalservice.factory.VitalServiceFactory;
+import ai.vital.service.vertx3.VitalServiceVertx3;
+import ai.vital.service.vertx3.handler.functions.VertxHandler
+import ai.vital.vitalservice.VitalStatus
+import ai.vital.vitalservice.exception.VitalServiceException
+import ai.vital.vitalservice.exception.VitalServiceUnimplementedException
+import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalsigns.model.VitalOrganization
-import ai.vital.vitalservice.query.ResultElement
-import ai.vital.vitalservice.query.ResultList;
-import ai.vital.vitalsigns.model.VITAL_Category;
-import ai.vital.vitalsigns.model.VITAL_Edge;
-import ai.vital.vitalsigns.model.property.URIProperty;
-import ai.vital.vitalsigns.uri.URIGenerator;
+import ai.vital.vitalsigns.uri.URIGenerator
+
+import com.vitalai.domain.nlp.Image
 
 class MetaMind_ProcessImageHandler extends VertxHandler {
 
@@ -73,7 +62,7 @@ class MetaMind_ProcessImageHandler extends VertxHandler {
 				
 				map.remove(id)
 				
-				def vitalService = VitalServiceMod.registeredServices.get(app.appID.toString())
+				def vitalService = VitalServiceVertx3.registeredServices.get(app.appID.toString())
 				
 				ResultList qrl = vitalService.callFunction('commons/scripts/Aspen_Usage',
 					[action: 'incrementUsage', key:'metamind', increment: 1, limit: 1000])

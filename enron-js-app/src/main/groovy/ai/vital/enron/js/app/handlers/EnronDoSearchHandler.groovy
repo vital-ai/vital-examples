@@ -1,16 +1,12 @@
 package ai.vital.enron.js.app.handlers
 
-import java.util.Map;
-
 import org.example.enrondata.domain.EnronEmail
 
-import ai.vital.enron.js.app.EnronAppVerticle;
+import ai.vital.enron.js.app.EnronAppVerticle
 import ai.vital.query.querybuilder.VitalBuilder
-import ai.vital.service.vertx.VitalServiceMod;
-import ai.vital.service.vertx.handler.CallFunctionHandler
+import ai.vital.service.vertx3.handler.CallFunctionHandler
 import ai.vital.vitalservice.exception.VitalServiceException
 import ai.vital.vitalservice.exception.VitalServiceUnimplementedException
-import ai.vital.vitalservice.factory.VitalServiceFactory
 import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalservice.query.VitalQuery
 import ai.vital.vitalsigns.model.VitalApp

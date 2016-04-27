@@ -7,8 +7,8 @@ import org.movielens.domain.User
 
 import com.vitalai.domain.nlp.TargetNode
 import ai.vital.query.querybuilder.VitalBuilder
-import ai.vital.service.vertx.VitalServiceMod;
-import ai.vital.service.vertx.handler.CallFunctionHandler;
+import ai.vital.service.vertx3.VitalServiceVertx3;
+import ai.vital.service.vertx3.handler.CallFunctionHandler
 import ai.vital.vitalservice.VitalService
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.exception.VitalServiceException;
@@ -51,7 +51,7 @@ class MovieLensGetRecommendedMoviesHandler implements CallFunctionHandler {
 		} else throw new RuntimeException("'limit' param must be an integer/long")
 		
 		
-		def service = VitalServiceMod.registeredServices.get(app.appID.toString())
+		def service = VitalServiceVertx3.registeredServices.get(app.appID.toString())
 		
 		ResultList getRL = service.get(GraphContext.ServiceWide, URIProperty.withString(userURI))
 		if(getRL.status.status != VitalStatus.Status.ok) {

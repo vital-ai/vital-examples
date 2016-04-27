@@ -4,8 +4,8 @@ import java.util.Map;
 
 import org.movielens.domain.User
 
-import ai.vital.service.vertx.VitalServiceMod;
-import ai.vital.service.vertx.handler.CallFunctionHandler;
+import ai.vital.service.vertx3.VitalServiceVertx3;
+import ai.vital.service.vertx3.handler.CallFunctionHandler
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.exception.VitalServiceException;
 import ai.vital.vitalservice.exception.VitalServiceUnimplementedException;
@@ -37,7 +37,7 @@ class MovieLensGetUserHandler implements CallFunctionHandler {
 			userID = userID.intValue()
 		}
 				
-		def vitalService = VitalServiceMod.registeredServices.get(app.appID.toString())
+		def vitalService = VitalServiceVertx3.registeredServices.get(app.appID.toString())
 		
 		ResultList rl = vitalService.get(GraphContext.ServiceWide, URIProperty.withString(USER_NS + userID))
 		

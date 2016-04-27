@@ -2,6 +2,12 @@ package ai.vital.amazon.echo.humor.app.webservice
 
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
+import io.vertx.core.Handler
+import io.vertx.core.http.HttpMethod;
+import io.vertx.groovy.core.buffer.Buffer
+import io.vertx.groovy.core.http.HttpServerRequest
+import io.vertx.groovy.core.http.HttpServerResponse
+import io.vertx.groovy.ext.web.RoutingContext;
 
 import java.util.Map.Entry
 
@@ -11,20 +17,15 @@ import org.example.humor.app.domain.EchoRequest
 import org.example.humor.app.domain.EchoResponse
 import org.example.humor.app.domain.EchoSessionEndedRequest
 import org.example.humor.app.domain.EchoSlot
-import org.vertx.java.core.Handler
-import org.vertx.java.core.buffer.Buffer
-import org.vertx.java.core.http.HttpServerRequest
-import org.vertx.java.core.http.HttpServerResponse
-
-import ai.vital.service.vertx.async.VitalServiceAsyncClient
-import ai.vital.service.vertx.binary.ResponseMessage
+import ai.vital.service.vertx3.async.VitalServiceAsyncClient
+import ai.vital.service.vertx3.binary.ResponseMessage
 import ai.vital.vitalservice.VitalStatus
 import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalsigns.model.GraphObject
 import ai.vital.vitalsigns.uri.URIGenerator
 
-class RequestHandler implements Handler<HttpServerRequest> {
+class RequestHandler implements Handler<RoutingContext> {
 
 	static final String APPLICATION_JSON_CHARSET_UTF_8 = "application/json;charset=UTF-8"
 
@@ -43,21 +44,21 @@ class RequestHandler implements Handler<HttpServerRequest> {
 	}
 	
 	@Override
-	public void handle(HttpServerRequest req) {
+	public void handle(RoutingContext rc) {
 
-		String method = req.method()
+		HttpServerRequest req = rc.request()
+		
+		HttpMethod method = req.method()
 		
 		HttpServerResponse res = req.response()
 		
-		if("get".equalsIgnoreCase(method)) {
-			
+		if(HttpMethod.GET == method) {
 			req.response().end("funnybot-webservice, use POST method to use the service", "UTF-8")
 			return
-			
 		}
 		
-		if(!"post".equalsIgnoreCase(method)) {
-			req.response().setStatusCode(405).setStatusMessage("METHOD NOT ALLOWED").end("method ${method} not allowed, only get/post")
+		if(HttpMethod.POST != method) {
+			req.response().setStatusCode(405).setStatusMessage("METHOD NOT ALLOWED").end("method ${method} not allowed, only GET/POST")
 			return
 		}
 		
@@ -76,24 +77,19 @@ class RequestHandler implements Handler<HttpServerRequest> {
 		
 		final def _this = this
 		
-		req.bodyHandler(new Handler<Buffer>(){
-			
-			void handle(Buffer data) {
+		req.bodyHandler({ Buffer data ->
 		
-				try {
+			try {
 					
-					_this.handleRequest(req, res, data)
-				} catch(Exception e) {
-				
-					e.printStackTrace()
-				
-					//catch everything as a server side error?
-					internalError(res, e.localizedMessage)
+				_this.handleRequest(req, res, data)
+			} catch(Exception e) {
+			
+				e.printStackTrace()
+			
+				//catch everything as a server side error?
+				internalError(res, e.localizedMessage)
 //					res.setStatusCode(500).setStatusMessage("INTERNAL SERVER ERROR").end("Exception: ${e.localizedMessage}" ,'UTF-8')
-				
-				}
-				
-						
+			
 			}
 			
 		});

@@ -1,48 +1,48 @@
 package ai.vital.alchemyapi.app.webservice
 
-import org.vertx.groovy.platform.Verticle
-import org.vertx.java.core.Future
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory;
 
-import ai.vital.service.vertx.VitalServiceMod;
-import ai.vital.service.vertx.async.VitalServiceAsyncClient;
-import ai.vital.service.vertx.binary.ResponseMessage;
-import ai.vital.service.vertx.handler.AbstractVitalServiceHandler;
-import ai.vital.service.vertx.handler.CallFunctionHandler;
-import ai.vital.service.vertx.handler.VitalServiceHandler;
+import ai.vital.service.vertx3.async.VitalServiceAsyncClient
+import ai.vital.service.vertx3.binary.ResponseMessage
+import ai.vital.service.vertx3.handler.CallFunctionHandler;
 import ai.vital.vitalservice.VitalService;
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.factory.VitalServiceFactory;
 import ai.vital.vitalservice.query.ResultList;
 import ai.vital.vitalsigns.model.VitalApp;
+import io.vertx.core.Future
+import io.vertx.lang.groovy.GroovyVerticle
 
-class AlchemyAPIAppVerticle extends Verticle {
+class AlchemyAPIAppVerticle extends GroovyVerticle {
 	
 	public static boolean initialized = false
 	
+	private final static Logger log = LoggerFactory.getLogger(AlchemyAPIAppVerticle.class)
+	
+	VitalServiceAsyncClient client
+	
 	//async start with notification
 	@Override
-	public Object start(Future<Void> startedResult) {
+	public void start(Future<Void> startedResult) {
 	
+		
 		if(initialized) {
-			startedResult.setResult(true)
-			return startedResult
+			startedResult.complete(true)
+			return
 		}
 		
 		synchronized (AlchemyAPIAppVerticle.class) {
 			
-			
 			if(initialized) {
-				startedResult.setResult(true)
-				return startedResult
+				startedResult.complete(true)
+				return
 			}
+			if(context == null) context = vertx.getOrCreateContext()
 			
-			String app = container.config.get('app')
+			String app = context.config().get('app')
 			
 			if(!app) throw new RuntimeException("No app config param")
-			
-//			VitalService service = VitalServiceMod.registeredServices.get(app)
-//
-//			if(service == null) throw new RuntimeException("No service for app: ${app}")			
 			
 			VitalServiceAsyncClient client = new VitalServiceAsyncClient(vertx, VitalApp.withId(app))
 			
@@ -52,17 +52,17 @@ class AlchemyAPIAppVerticle extends Verticle {
 			]) { ResponseMessage rm ->
 		
 				if(rm.exceptionMessage) {
-					startedResult.setFailure(new RuntimeException(rm.exceptionType + ' - ' + rm.exceptionMessage))
+					startedResult.fail(rm.exceptionType + ' - ' + rm.exceptionMessage)
 					return
 				}
 				
 				ResultList rl = rm.response
 				if(rl.status.status != VitalStatus.Status.ok) {
-					startedResult.setFailure(new RuntimeException(rl.status.toString()))
+					startedResult.fail(rl.status.toString())
 					return
 				}
 		
-				startedResult.setResult(true)
+				startedResult.complete(true)
 				
 			}
 			
@@ -72,5 +72,44 @@ class AlchemyAPIAppVerticle extends Verticle {
 		}
 		
 	}
+
+	@Override
+	public void stop(Future<Void> future) throws Exception {
+
+		initialized = false
+		
+		if(client != null) {
+			
+			client.callFunction(CallFunctionHandler.VERTX_UNREGISTER_HANDLER, [functionName: 'AlchemyAPI_ProcessText']) { ResponseMessage rm ->
+				
+				if(rm.exceptionType) {
+					log.error(rm.exceptionType + ' - ' + rm.exceptionMessage)
+				}
+				
+				ResultList rl = rm.response
+				
+				if(rl.status.status == VitalStatus.Status.ok) {
+				
+					log.info("Hanlder unregistered successfully")
+						
+				} else {
+				
+					log.error("Error when unregistering handler: ${rl.status.message}")
+				}
+				
+				future.complete(true)
+				
+			}
+			
+		} else {
+
+			future.complete(true)
+					
+		}
+		
+		
+	}
+	
+	
 
 }

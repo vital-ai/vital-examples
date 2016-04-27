@@ -1,43 +1,59 @@
 package ai.vital.amazon.echo.humor.app.webservice
 
-import org.vertx.groovy.platform.Verticle
-import org.vertx.java.core.Future
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory;
 
-class FunnybotWebserviceAppVerticle extends Verticle {
+import io.vertx.core.Future
+import io.vertx.lang.groovy.GroovyVerticle
+
+class FunnybotWebserviceAppVerticle extends GroovyVerticle {
 	
 	public static boolean initialized = false
 	
 	public static String appID = null
-	
+
+	private final static Logger log = LoggerFactory.getLogger(FunnybotWebserviceAppVerticle.class)
+		
 	//async start with notification
 	@Override
-	public Object start(Future<Void> startedResult) {
+	public void start(Future<Void> startedResult) {
 	
 		if(initialized) {
-			startedResult.setResult(true)
-			return
+			
+			synchronized (FunnybotWebserviceAppVerticle.class) {
+				
+				if(initialized) {
+					startedResult.complete(true)
+					return
+				}
+				
+				initialized = true
+				
+			}
 		}
 		
-		String app = container.getConfig().get("app")
+		if(context == null) {
+			context = vertx.getOrCreateContext() 
+		}
+		
+		String app = context.config().get("app")
 		if(!app) {
-			startedResult.setFailure(new Exception("No 'app' param"))
+			startedResult.fail("No 'app' param")
 			return
 		}
 		
-		container.logger.info "AppID: ${app}"
+		log.info "AppID: ${app}"
+		
 		appID = app
 		
-		synchronized (FunnybotWebserviceAppVerticle.class) {
+		startedResult.complete(true)
 			
-			if(initialized) return
-			
-			startedResult.setResult(true)
-			
-			//register handlers
-			
-			initialized = true
-		}
-		
+	}
+	
+	@Override
+	public void stop() throws Exception {
+		appID = null
+		initialized = false
 	}
 
 }

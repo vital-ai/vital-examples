@@ -1,53 +1,57 @@
-"vital-ai~vitalservice-vertx-mod~0.2.303"  {
+vitalservice {
 
-  enabled: true
+  services: [{
   
-  instances: 1
+    profile: prime
+    
+    key: serv-serv-serv
+    
+  }]
+
+}
+
+vitalauth {
+
+  apps: {
   
-  services: [
-    {
-      profile: primelocal
-  
-      key: serv-serv-serv
+    app: {
+
+      access: service
+
+      #this is only for allow/deny rules
+      auth_enabled: false
+
+      filter: [
+        { 
+          type: allow
+          method: "callFunction"
+          function: "MetaMind_ProcessImage"
+        },
+        {
+          type: allow
+          method: "callFunction"
+          function: "commons/scripts/Aspen_Usage"
+        },
+        {
+          type: deny
+          method: ".*" 
+        }
+      ]
+      
     }
-  ]
+    
+  }
+
+}
+
+
+webserver {
+
+  host: 0.0.0.0
   
-}
-
-"vital-examples~metamind-app~0.0.1" {
-
-  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.303"]
-
-  enabled: true
-  
-  instances: 1
-
-  app: app
+  port: 90
 
 }
 
-"io.vertx~mod-web-server~2.0.0-final" {
 
-  dependencies: ["vital-ai~vitalservice-vertx-mod~0.2.303"]
-
-	enabled: true
-
-
-	enabled: true
-
-	instances: 1
-
-    web_root: SET ME !
-    host: 0.0.0.0
-    port: 90
-    
-    route_matcher: true
-    
-	static_files: true
-	
-	bridge: true
-	
-	inbound_permitted: [{address_re: "vitalservice\\..+"}],
-	outbound_permitted: [{address_re: "stream\\..+"}]
-    
-}
+app: app

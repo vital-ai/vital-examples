@@ -1,27 +1,20 @@
 package ai.vital.movielensexample.js.app.handlers
 
-import java.util.Map
-
-import org.movielens.domain.Edge_hasMovieRating;
-import org.movielens.domain.Movie;
+import org.movielens.domain.Edge_hasMovieRating
 
 import ai.vital.query.querybuilder.VitalBuilder
-import ai.vital.service.vertx.VitalServiceMod;
-import ai.vital.service.vertx.handler.CallFunctionHandler;
-import ai.vital.vitalservice.VitalService;
-import ai.vital.vitalservice.VitalStatus;
-import ai.vital.vitalservice.exception.VitalServiceException;
-import ai.vital.vitalservice.exception.VitalServiceUnimplementedException;
-import ai.vital.vitalservice.factory.VitalServiceFactory;
+import ai.vital.service.vertx3.VitalServiceVertx3;
+import ai.vital.service.vertx3.handler.CallFunctionHandler
+import ai.vital.vitalservice.VitalStatus
+import ai.vital.vitalservice.exception.VitalServiceException
+import ai.vital.vitalservice.exception.VitalServiceUnimplementedException
+import ai.vital.vitalservice.query.ResultElement
+import ai.vital.vitalservice.query.ResultList
+import ai.vital.vitalservice.query.VitalSelectQuery
+import ai.vital.vitalsigns.meta.GraphContext
 import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalsigns.model.VitalOrganization
-import ai.vital.vitalservice.query.ResultElement;
-import ai.vital.vitalservice.query.ResultList;
-import ai.vital.vitalservice.query.VitalSelectQuery
-import ai.vital.vitalservice.query.VitalSortProperty
-import ai.vital.vitalsigns.VitalSigns;
-import ai.vital.vitalsigns.meta.GraphContext;
-import ai.vital.vitalsigns.model.property.URIProperty;
+import ai.vital.vitalsigns.model.property.URIProperty
 
 
 
@@ -64,7 +57,7 @@ class MovieLensGetRatedMoviesHandler implements CallFunctionHandler {
 							
 		}.toQuery()
 				
-		def service = VitalServiceMod.registeredServices.get(app.appID.toString())
+		def service = VitalServiceVertx3.registeredServices.get(app.appID.toString())
 			
 		ResultList queryRL = service.query(selectQuery)
 		

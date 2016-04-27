@@ -1,9 +1,0 @@
-{
-  "main": "groovy:ai.vital.metamind.app.webservice.MetaMindAppVerticle",
-  "worker": false,
-  "description": "metamind-app VertX Example App",
-  "licenses": ["The Apache Software License Version 2.0"],
-  "author": "Dariusz Kobylarz",
-  "keywords": ["metamind", "image recognition", "VertX", "Vital AI"],
-  "homepage": "http://vital.ai"
-}

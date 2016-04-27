@@ -5,13 +5,12 @@ import org.example.enrondata.domain.Edge_hasSender
 import org.example.enrondata.domain.EnronEmail
 import org.example.enrondata.domain.EnronPerson
 
-import ai.vital.enron.js.app.EnronAppVerticle;
+import ai.vital.enron.js.app.EnronAppVerticle
 import ai.vital.query.querybuilder.VitalBuilder
-import ai.vital.service.vertx.handler.CallFunctionHandler
+import ai.vital.service.vertx3.handler.CallFunctionHandler
 import ai.vital.vitalservice.VitalStatus
 import ai.vital.vitalservice.exception.VitalServiceException
 import ai.vital.vitalservice.exception.VitalServiceUnimplementedException
-import ai.vital.vitalservice.factory.VitalServiceFactory
 import ai.vital.vitalservice.query.ResultElement
 import ai.vital.vitalservice.query.ResultList
 import ai.vital.vitalservice.query.VitalGraphQuery
