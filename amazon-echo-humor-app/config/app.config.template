@@ -19,4 +19,4 @@ webserver {
 }
 
 
-app: app
+app: amazon-echo-humor-app

@@ -14,7 +14,8 @@ import ai.vital.vitalservice.VitalService;
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.query.ResultList;
 import ai.vital.vitalsigns.model.VitalApp;
-import ai.vital.vitalsigns.model.VitalSegment;
+import ai.vital.vitalsigns.model.VitalSegment
+import ai.vital.vitalsigns.model.VitalServiceConfig;
 import io.vertx.core.Future
 import io.vertx.lang.groovy.GroovyVerticle
 
@@ -24,12 +25,17 @@ class EnronAppVerticle extends GroovyVerticle {
 	
 	public static VitalService serviceInstance = null
 
+	public static String externalServiceName = null
+	
 	public static String appID = null
+	
+	public static String segmentID = null
 		
 	public static VitalSegment enronSegment = null
-
+	
 	private final static Logger log = LoggerFactory.getLogger(EnronAppVerticle.class)
 	
+	public final static String SERVICES_ACCESS_SCRIPT = "commons/scripts/ServicesAccessScript.groovy"
 	
 	//async start with notification
 	@Override
@@ -56,6 +62,25 @@ class EnronAppVerticle extends GroovyVerticle {
 				return
 			}
 			
+			segmentID = context.config().get('segment')
+			if(!segmentID) {
+				startedResult.fail("No 'segment' config parameter")
+				return
+			}
+			
+			String serviceName = context.config().get('service-name')
+			
+			if(serviceName) {
+				
+				log.info("Using external service: ${serviceName}")
+				
+				externalServiceName = serviceName
+				
+			} else {
+			
+				log.info("Using main service")	
+			
+			}
 			
 			VitalServiceAsyncClient client = null
 			
@@ -66,6 +91,7 @@ class EnronAppVerticle extends GroovyVerticle {
 				return
 			}
 			
+			
 			serviceInstance = VitalServiceVertx3.registeredServices.get(appID)
 			
 			if(serviceInstance == null) {
@@ -73,13 +99,59 @@ class EnronAppVerticle extends GroovyVerticle {
 				return
 			}
 			
-			enronSegment = serviceInstance.getSegment('enron')
 			
-			if(enronSegment == null) {
-				startedResult.fail("Segment not found: 'enron'")
-				return
+			if(externalServiceName) {
+				
+				ResultList servicesRL = serviceInstance.callFunction(SERVICES_ACCESS_SCRIPT, [action: 'listServices'])
+				
+				if(servicesRL.status.status != VitalStatus.Status.ok) {
+					startedResult.fail("" + servicesRL.status)
+					return
+				}
+				
+				boolean found = false
+				
+				for(VitalServiceConfig c : servicesRL) {
+					if(externalServiceName == c.name.toString()) {
+						found = true
+						break
+					}
+				}
+				
+				if(!found) {
+					startedResult.fail("External service with name: ${externalServiceName} not found")
+					return
+				}
+				
+				
+				//check if segment exists
+				ResultList segmentsRL = serviceInstance.callFunction(SERVICES_ACCESS_SCRIPT, [action: 'listSegments', name: externalServiceName])
+				if(segmentsRL.status.status != VitalStatus.Status.ok) {
+					startedResult.fail("" + segmentsRL.status)
+					return
+				}
+				
+				for(VitalSegment s : segmentsRL) {
+					if( segmentID == s.segmentID.toString() ) {
+						enronSegment = s
+					}
+				}
+				
+				if(enronSegment == null) {
+					startedResult.fail("Segment not found in external service: ${segmentID}")
+					return
+				}
+				
+			} else {
+			
+				enronSegment = serviceInstance.getSegment(segmentID)
+				
+				if(enronSegment == null) {
+					startedResult.fail("Segment not found: 'enron'")
+					return
+				}
+				
 			}
-			
 			
 			client.callFunction(CallFunctionHandler.VERTX_REGISTER_HANDLER, [functionName: EnronDoSearchHandler.enron_do_search, handlerClass: EnronDoSearchHandler.class.canonicalName]) { ResponseMessage m1 ->
 
@@ -142,6 +214,8 @@ class EnronAppVerticle extends GroovyVerticle {
 
 	void stop() throws Exception {
 		appID = null
+		segmentID = null
+		externalServiceName = null
 		initialized = false
 		enronSegment = null
 	};

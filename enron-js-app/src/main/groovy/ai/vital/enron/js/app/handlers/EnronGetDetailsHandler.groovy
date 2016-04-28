@@ -40,7 +40,18 @@ class EnronGetDetailsHandler implements CallFunctionHandler {
 		
 		def vitalService = EnronAppVerticle.serviceInstance
 		
-		ResultList rl = vitalService.get(GraphContext.ServiceWide, URIProperty.withString(uri));
+		ResultList rl = null
+		
+		if(EnronAppVerticle.externalServiceName != null) {
+			
+			rl = vitalService.callFunction(EnronAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'get', name: EnronAppVerticle.externalServiceName, uri: URIProperty.withString(uri)])
+			
+		} else {
+		
+			rl = vitalService.get(GraphContext.ServiceWide, URIProperty.withString(uri));
+			
+		}
+		
 		
 		if(rl.status.status != VitalStatus.Status.ok) {
 			return rl
@@ -105,7 +116,16 @@ class EnronGetDetailsHandler implements CallFunctionHandler {
 		
 		if( vgq  != null) {
 			
-			ResultList graphResults = vitalService.query(vgq)
+			ResultList graphResults = null
+			if(EnronAppVerticle.externalServiceName != null) {
+				
+				graphResults = vitalService.callFunction(EnronAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'query', name: EnronAppVerticle.externalServiceName, query: vgq])
+			
+			} else {
+			
+				graphResults = vitalService.query(vgq)
+				
+			}
 					
 			if(graphResults.status.status != VitalStatus.Status.ok) {
 				return graphResults

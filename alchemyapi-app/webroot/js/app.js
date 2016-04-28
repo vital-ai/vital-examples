@@ -1,4 +1,4 @@
-var APP_ID = 'app';
+var APP_ID = 'alchemyapi-app';
 
 var inputEl = null;
 

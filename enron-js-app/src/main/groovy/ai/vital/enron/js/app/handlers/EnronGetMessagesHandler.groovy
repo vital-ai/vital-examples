@@ -134,7 +134,17 @@ class EnronGetMessagesHandler implements CallFunctionHandler {
 		
 		Map<String, GraphObject> results = new LinkedHashMap<String, GraphObject>()
 		
-		ResultList graphResults = EnronAppVerticle.serviceInstance.query(vgq)
+		ResultList graphResults = null
+		
+		if(EnronAppVerticle.externalServiceName != null) {
+			
+			graphResults = EnronAppVerticle.serviceInstance.callFunction(EnronAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'query', name: EnronAppVerticle.externalServiceName, query: vgq])
+			
+		} else {
+		
+			graphResults = EnronAppVerticle.serviceInstance.query(vgq)
+			
+		}
 		
 		ResultList rl = new ResultList()
 					

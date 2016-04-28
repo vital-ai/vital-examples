@@ -14,7 +14,7 @@ vitalauth {
 
   apps: {
   
-    app: {
+    enron-app: {
 
       access: service
 
@@ -49,5 +49,10 @@ webserver {
 }
 
 
-app: app
+app: enron-app
+
+segment: enron-segment
+
+#if enron segment is in external service
+#service-name: enron-service
 

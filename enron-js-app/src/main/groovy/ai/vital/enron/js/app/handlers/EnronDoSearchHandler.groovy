@@ -76,7 +76,16 @@ class EnronDoSearchHandler implements CallFunctionHandler {
 			
 		}.toQuery()
 		
-		return EnronAppVerticle.serviceInstance.query(queryObj)
+		
+		if(EnronAppVerticle.externalServiceName != null) {
+
+			return EnronAppVerticle.serviceInstance.callFunction(EnronAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'query', name: EnronAppVerticle.externalServiceName, query: queryObj])
+						
+		} else {
+		
+			return EnronAppVerticle.serviceInstance.query(queryObj)
+			
+		}
 		
 	}
 

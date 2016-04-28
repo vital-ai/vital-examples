@@ -14,7 +14,7 @@ vitalauth {
 
   apps: {
   
-    app: {
+    alchemyapi-app: {
 
       access: service
 
@@ -54,4 +54,4 @@ webserver {
 }
 
 
-app: app
+app: alchemyapi-app
