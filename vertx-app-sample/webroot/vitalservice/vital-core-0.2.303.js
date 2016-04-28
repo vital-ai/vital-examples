@@ -2689,6 +2689,9 @@ var vital_core_0_2_303_schema = {
       "http://vital.ai/ontology/vital-core#hasProvenance" : {
         "type" : "string"
       },
+      "http://vital.ai/ontology/vital-core#hasRegion" : {
+        "type" : "string"
+      },
       "http://vital.ai/ontology/vital-core#hasS3AccessKey" : {
         "type" : "string"
       },
@@ -2699,6 +2702,9 @@ var vital_core_0_2_303_schema = {
         "type" : "string"
       },
       "http://vital.ai/ontology/vital-core#hasS3EndpointURL" : {
+        "type" : "string"
+      },
+      "http://vital.ai/ontology/vital-core#hasS3Region" : {
         "type" : "string"
       },
       "http://vital.ai/ontology/vital-core#hasS3SecretKey" : {
@@ -3924,6 +3930,12 @@ var vital_core_0_2_303_schema = {
     "multipleValues" : false,
     "type" : "StringProperty"
   }, {
+    "URI" : "http://vital.ai/ontology/vital-core#hasRegion",
+    "domainClassesURIs" : [ "http://vital.ai/ontology/vital-core#VitalServiceDynamoDBConfig" ],
+    "shortName" : "region",
+    "multipleValues" : false,
+    "type" : "StringProperty"
+  }, {
     "URI" : "http://vital.ai/ontology/vital-core#hasRepositoryName",
     "domainClassesURIs" : [ "http://vital.ai/ontology/vital-core#SparqlDatabaseConnection", "http://vital.ai/ontology/vital-core#VitalServiceAllegrographConfig" ],
     "shortName" : "repositoryName",
@@ -3957,6 +3969,12 @@ var vital_core_0_2_303_schema = {
     "URI" : "http://vital.ai/ontology/vital-core#hasS3EndpointURL",
     "domainClassesURIs" : [ "http://vital.ai/ontology/vital-core#VitalServiceDynamoDBConfig" ],
     "shortName" : "s3EndpointURL",
+    "multipleValues" : false,
+    "type" : "StringProperty"
+  }, {
+    "URI" : "http://vital.ai/ontology/vital-core#hasS3Region",
+    "domainClassesURIs" : [ "http://vital.ai/ontology/vital-core#VitalServiceDynamoDBConfig" ],
+    "shortName" : "s3Region",
     "multipleValues" : false,
     "type" : "StringProperty"
   }, {

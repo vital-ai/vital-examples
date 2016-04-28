@@ -139,7 +139,7 @@ VitalServiceWebsocketImpl = function(address, type, eventBusURL, successCB, erro
 	this.eventbusHandler = null;
 	
 	var _this = this;
-	if(vertx == null || vertx.EventBus == null) {
+	if(EventBus == null) {
 		throw 'vertx.EventBus module not loaded!' 
 	}
 	
@@ -203,7 +203,7 @@ VitalServiceWebsocketImpl.prototype.newConn = function() {
     	}
     }
     
-    this.eb = new vertx.EventBus(this.url, options);
+    this.eb = new EventBus(this.url, options);
     this.eb.onopen = function() {
 
     	if(_this.recTimeout != null) {
@@ -416,8 +416,20 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 	}
 	
 	
-	this.eb.send(this.address, data, function(result) {
+	this.eb.send(this.address, data, function(err, result) {
 		
+		if(err != null) {
+			
+			console.error("ERROR:" + err);
+			
+			result = { status: 'error', message: err };
+			
+		} else {
+			
+			//unpack result object
+			result = result.body
+			
+		}
 		
 		if(result == null) {
 			result = { status: 'error', message: 'request timed out' };
@@ -542,22 +554,24 @@ VitalServiceWebsocketImpl.prototype.listStreamHandlers = function(paramsMap, suc
 	
 	for(var key in this.registeredHandlers) {
 		
+		var g = {
+			URI: 'handler:' + key,
+			type: 'http://vital.ai/ontology/vital-core#VITAL_Node',
+			"http://vital.ai/ontology/vital-core#isActive": this.currentHandlers[key] != null,
+			"http://vital.ai/ontology/vital-core#hasName": key
+		};
+		
 		results.push({
-			type: 'ResultElement',
+			_type: 'ai.vital.vitalservice.query.ResultElement',
 			score: 1.0,
-			graphObject: {
-				URI: 'handler:' + key,
-				active: this.currentHandlers[key] != null,
-				type: 'http://vital.ai/ontology/vital-core#VITAL_Node',
-				name: key
-			}
+			graphObject: g
 		});
 		
 	}
 	
 	
 	var res = {
-		type: 'ResultList',
+		_type: 'ai.vital.vitalservice.query.ResultList',
 		results: results
 	};
 	
@@ -603,9 +617,9 @@ VitalServiceWebsocketImpl.prototype.registerStreamHandler = function(paramsMap, 
 	this.registeredHandlers[streamName] = handlerFunction;
 	
 	successCB({
-		type: 'ResultList',
+		_type: 'ai.vital.vitalservice.query.ResultList',
 		status: {
-			type: 'VitalStatus',
+			_type: 'ai.vital.vitalservice.VitalStatus',
 			status: 'ok',
 			message: 'Handler for stream ' + streamName + ' registered successfully'
 		}
@@ -639,9 +653,9 @@ VitalServiceWebsocketImpl.prototype.unregisterStreamHandler = function(paramsMap
 	delete this.registeredHandlers[streamName];
 	
 	successCB({
-		type: 'ResultList',
+		_type: 'ai.vital.vitalservice.query.ResultList',
 		status: {
-			type: 'VitalStatus',
+			_type: 'ai.vital.vitalservice.VitalStatus',
 			status: 'ok',
 			message: 'Handler for stream ' + streamName + ' unregistered successfully'
 		}
@@ -698,9 +712,9 @@ VitalServiceWebsocketImpl.prototype.streamSubscribe = function(paramsMap, succes
 		_this.currentHandlers[streamName] = currentHandler;
 		
 		successCB({
-			type: 'ResultList',
+			_type: 'ai.vital.vitalservice.query.ResultList',
 			status: {
-				type: 'VitalStatus',
+				_type: 'ai.vital.vitalservice.VitalStatus',
 				status: 'ok',
 				message: 'Successfully Subscribe to stream ' + streamName
 			}
@@ -739,6 +753,8 @@ VitalServiceWebsocketImpl.prototype.streamUnsubscribe = function(paramsMap, succ
 	
 	var _this = this;
 	
+	var args = [VitalServiceWebsocketImpl.VERTX_STREAM_UNSUBSCRIBE, {streamNames: [streamName], sessionID: this.sessionID}];
+	
 	if(this.admin) {
 		//insert null app
 		args.splice(0, 0, null);
@@ -754,9 +770,9 @@ VitalServiceWebsocketImpl.prototype.streamUnsubscribe = function(paramsMap, succ
 		}
 		
 		successCB({
-			type: 'ResultList',
+			_type: 'ai.vital.vitalservice.query.ResultList',
 			status: {
-				type: 'VitalStatus',
+				_type: 'ai.vital.vitalservice.VitalStatus',
 				status: 'ok',
 				message: 'Successfully unsubscribe from stream ' + streamName
 			}
@@ -773,7 +789,14 @@ VitalServiceWebsocketImpl.prototype.createNewHandler = function() {
 	
 	var _this = this;
 	
-	var wrapperHandler = function(json) {
+	var wrapperHandler = function(err, json) {
+		
+		if(err) {
+			console.error("ERROR:", err);
+			return;
+		}
+		
+		json = json.body;
 		
 		if(json._type != 'ai.vital.vitalservice.query.ResultList' ) {
 			console.error("only ai.vital.vitalservice.query.ResultList type messages accepted");

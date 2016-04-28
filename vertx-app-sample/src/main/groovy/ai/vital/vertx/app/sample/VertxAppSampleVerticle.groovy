@@ -1,54 +1,60 @@
 package ai.vital.vertx.app.sample
 
-import org.vertx.groovy.platform.Verticle
-import org.vertx.java.core.Future
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
-import ai.vital.service.vertx.VitalServiceMod;
-import ai.vital.service.vertx.async.VitalServiceAsyncClient;
-import ai.vital.service.vertx.binary.ResponseMessage;
-import ai.vital.service.vertx.handler.AbstractVitalServiceHandler;
-import ai.vital.service.vertx.handler.CallFunctionHandler;
-import ai.vital.service.vertx.handler.VitalServiceHandler;
+import ai.vital.service.vertx3.VitalServiceVertx3;
 import ai.vital.vitalservice.VitalService;
 import ai.vital.vitalservice.VitalStatus;
 import ai.vital.vitalservice.factory.VitalServiceFactory;
 import ai.vital.vitalservice.query.ResultList;
 import ai.vital.vitalsigns.model.VitalApp
 import ai.vital.vitalsigns.model.VitalSegment;;
+import io.vertx.core.Future
+import io.vertx.lang.groovy.GroovyVerticle
 
-class VertxAppSampleVerticle extends Verticle {
+class VertxAppSampleVerticle extends GroovyVerticle {
 	
 	public static boolean initialized = false
 	
+	public static String appID
+	
+	private final static Logger log = LoggerFactory.getLogger(VertxAppSampleVerticle.class)
+	
 	@Override
-	public Object start(Future<Void> startedResult) {
+	public void start(Future<Void> startedResult) {
 	
 		if(initialized) {
-			startedResult.setResult(true)
-			return startedResult
+			startedResult.complete(true)
+			return
 		}
 		
 		synchronized (VertxAppSampleVerticle.class) {
 			
 			
 			if(initialized) {
-				startedResult.setResult(true)
-				return startedResult
+				startedResult.complete(true)
+				return
 			}
 			
-			String app = container.config.get('app')
+			if(context == null) context = vertx.getOrCreateContext()
 			
-			container.logger.info "AppID: ${app}"
+			String app = context.config().get('app')
 			
-			if(!app) throw new RuntimeException("No app config param")
+			log.info "AppID: ${app}"
 			
+			if(!app) {
+				startedResult.fail("No app config param")
+				return
+			}
 			
+			appID = app			
 			
 			//there should be a registered vitalservice for appID
 			
 			VitalService service = null
 			
-			String n = VitalServiceMod.SERVICE_NAME_PREFIX + app
+			String n = VitalServiceVertx3.SERVICE_NAME_PREFIX + app
 			
 			for(VitalService vs : VitalServiceFactory.listOpenServices()) {
 				
@@ -58,8 +64,10 @@ class VertxAppSampleVerticle extends Verticle {
 				
 			}
 			
-			if(service == null) throw new RuntimeException("Vitalservice instance not found: ${n}, appID: ${app}")
-			
+			if(service == null) {
+				startedResult.fail("Vitalservice instance not found: ${n}, appID: ${app}")
+				return
+			}
 			
 			//make sure the wordnet segment is there
 			VitalSegment wordnetSegment = service.getSegment('wordnet')
@@ -67,11 +75,17 @@ class VertxAppSampleVerticle extends Verticle {
 				throw new RuntimeException("'wordnet' segment not found in app: ${app}")
 			}
 			
-			startedResult.setResult(true)
+			startedResult.complete(true)
 			
 			initialized = true
 		}
 		
+	}
+	
+	@Override
+	public void stop() throws Exception {
+		initialized = false
+		appID = null
 	}
 
 }
