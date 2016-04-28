@@ -1,5 +1,5 @@
 
-var APP_ID = 'app';
+var APP_ID = 'metamind-app';
 
 var localPreview = null;
 
@@ -27,6 +27,11 @@ var quota = null;
 
 var results = null;
 
+var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/metamind-app/eventbus';
+
+//default - non prefixed
+//var EVENTBUS_URL = null;
+
 $(function(){
 	
 	if ( ! window.FileReader ) {
@@ -39,7 +44,7 @@ $(function(){
 	
 	inputEl.attr('disabled', 'disabled');
 	
-	vitalservice = new VitalService('endpoint.' + APP_ID, null, function(){
+	vitalservice = new VitalService('endpoint.' + APP_ID, EVENTBUS_URL, function(){
 		
 		console.log('connected to endpoint');
 		

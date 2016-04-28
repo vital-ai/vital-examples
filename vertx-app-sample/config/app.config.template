@@ -14,7 +14,7 @@ vitalauth {
 
   apps: {
   
-    app: {
+    vertx-app-sample: {
 
       access: service
 
@@ -68,4 +68,4 @@ webserver {
 }
 
 
-app: app
+app: vertx-app-sample

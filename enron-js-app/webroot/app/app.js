@@ -29,10 +29,10 @@ $(function(){
 	
 	console.log("instantiating service...");
 	
-	//var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/enron-js-app/eventbus';
-	
-	//default
-	var EVENTBUS_URL = null;
+	var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/enron-js-app/eventbus';
+
+    //default - non prefixed
+    //var EVENTBUS_URL = null;
 	
 	vitalservice = new VitalService('endpoint.' + APP_ID, EVENTBUS_URL, function(){
 		

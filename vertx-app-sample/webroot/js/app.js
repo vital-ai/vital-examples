@@ -1,6 +1,6 @@
 //global variable
 
-var APP_ID = 'app';
+var APP_ID = 'vertx-app-sample';
 
 var ENDPOINT = 'endpoint.' + APP_ID;
 
@@ -10,7 +10,9 @@ var vitalservice = null;
 var evenbusPrefix = '';
 
 //default <currentdomain>:<currentport>/eventbus URL assumed
-var EVENTBUS_URL = null;
+//var EVENTBUS_URL = null;
+
+var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/vertx-app-sample/eventbus';
 
 var LOGGED_IN = false;
 

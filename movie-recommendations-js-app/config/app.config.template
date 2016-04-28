@@ -14,7 +14,7 @@ vitalauth {
 
   apps: {
   
-    app: {
+    movie-recommendations-js-app: {
 
       access: service
 
@@ -49,4 +49,4 @@ webserver {
 }
 
 
-app: app
+app: movie-recommendations-js-app

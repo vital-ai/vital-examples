@@ -14,6 +14,11 @@ var quota = null;
 
 var results = null;
 
+var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/alchemyapi-app/eventbus';
+
+//default - non prefixed
+//var EVENTBUS_URL = null;
+
 $(function(){
 	
 	inputEl = $('#input-text');
@@ -22,7 +27,7 @@ $(function(){
 	
 	inputEl.attr('disabled', 'disabled');
 	
-	vitalservice = new VitalService('endpoint.' + APP_ID, null, function(){
+	vitalservice = new VitalService('endpoint.' + APP_ID, EVENTBUS_URL, function(){
 		
 		console.log('connected to endpoint');
 		

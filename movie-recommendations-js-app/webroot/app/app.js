@@ -1,4 +1,4 @@
-var APP_ID = 'app';
+var APP_ID = 'movie-recommendations-js-app';
 
 var vitalservice = null;
 
@@ -16,6 +16,11 @@ var ratedPanel = null;
 
 var recommendedPanel = null;
 
+var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/movie-recommendations-js-app/eventbus';
+
+//default - non prefixed
+//var EVENTBUS_URL = null;
+
 $(function(){
 	
 	inputEls = $('.search-active');
@@ -24,7 +29,7 @@ $(function(){
 	
 	console.log("instantiating service...");
 	
-	vitalservice = new VitalService('endpoint.' + APP_ID, null, function(){
+	vitalservice = new VitalService('endpoint.' + APP_ID, EVENTBUS_URL, function(){
 		
 		console.log('connected to endpoint');
 		
