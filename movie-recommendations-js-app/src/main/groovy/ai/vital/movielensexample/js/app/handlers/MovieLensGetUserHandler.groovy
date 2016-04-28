@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.movielens.domain.User
 
+import ai.vital.movielensexample.js.app.MovieLensAppVerticle
+import ai.vital.movielensexample.js.app.main.MovieLensAppMain;
 import ai.vital.service.vertx3.VitalServiceVertx3;
 import ai.vital.service.vertx3.handler.CallFunctionHandler
 import ai.vital.vitalservice.VitalStatus;
@@ -37,9 +39,14 @@ class MovieLensGetUserHandler implements CallFunctionHandler {
 			userID = userID.intValue()
 		}
 				
-		def vitalService = VitalServiceVertx3.registeredServices.get(app.appID.toString())
+		def vitalService = MovieLensAppVerticle.serviceInstance
 		
-		ResultList rl = vitalService.get(GraphContext.ServiceWide, URIProperty.withString(USER_NS + userID))
+		ResultList rl = null
+		if(MovieLensAppVerticle.externalServiceName != null) {
+			rl = vitalService.callFunction(MovieLensAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'get', name: MovieLensAppVerticle.externalServiceName, uri: URIProperty.withString(USER_NS + userID)])
+		} else {
+			rl = vitalService.get(GraphContext.ServiceWide, URIProperty.withString(USER_NS + userID))
+		}
 		
 		if(rl.status.status != VitalStatus.Status.ok) return rl;
 		

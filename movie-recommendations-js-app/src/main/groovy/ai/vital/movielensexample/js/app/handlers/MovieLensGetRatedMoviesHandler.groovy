@@ -2,6 +2,7 @@ package ai.vital.movielensexample.js.app.handlers
 
 import org.movielens.domain.Edge_hasMovieRating
 
+import ai.vital.movielensexample.js.app.MovieLensAppVerticle;
 import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.service.vertx3.VitalServiceVertx3;
 import ai.vital.service.vertx3.handler.CallFunctionHandler
@@ -47,7 +48,7 @@ class MovieLensGetRatedMoviesHandler implements CallFunctionHandler {
 				value offset: 0
 				value limit: 10000
 				
-				value segments: ['movielens']
+				value segments: [MovieLensAppVerticle.movielensSegment]
 				
 				edge_constraint { Edge_hasMovieRating.class }
 				edge_constraint { Edge_hasMovieRating.props().edgeSource.equalTo(URIProperty.withString(userURI)) }
@@ -57,9 +58,14 @@ class MovieLensGetRatedMoviesHandler implements CallFunctionHandler {
 							
 		}.toQuery()
 				
-		def service = VitalServiceVertx3.registeredServices.get(app.appID.toString())
+		def service = MovieLensAppVerticle.serviceInstance
 			
-		ResultList queryRL = service.query(selectQuery)
+		ResultList queryRL = null
+		if( MovieLensAppVerticle.externalServiceName != null) {
+			queryRL = service.callFunction(MovieLensAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'query', name: MovieLensAppVerticle.externalServiceName, query: selectQuery])
+		} else {
+			queryRL = service.query(selectQuery)
+		}
 		
 		if(queryRL.status.status != VitalStatus.Status.ok) {
 			return queryRL;
@@ -85,7 +91,12 @@ class MovieLensGetRatedMoviesHandler implements CallFunctionHandler {
 			movie2Rating.put(edge.destinationURI, edge.rating?.doubleValue())
 		}
 		
-		ResultList moviesRL = service.get(GraphContext.ServiceWide, moviesURIs)
+		ResultList moviesRL = null
+		if(MovieLensAppVerticle.externalServiceName != null) {
+			moviesRL = service.callFunction(MovieLensAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'get', name: MovieLensAppVerticle.externalServiceName, uris: moviesURIs])
+		} else {
+			moviesRL = service.get(GraphContext.ServiceWide, moviesURIs)
+		}
 
 		if(moviesRL.status.status != VitalStatus.Status.ok) {
 			return moviesRL

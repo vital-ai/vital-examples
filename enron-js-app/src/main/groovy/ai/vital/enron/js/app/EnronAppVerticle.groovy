@@ -147,7 +147,7 @@ class EnronAppVerticle extends GroovyVerticle {
 				enronSegment = serviceInstance.getSegment(segmentID)
 				
 				if(enronSegment == null) {
-					startedResult.fail("Segment not found: 'enron'")
+					startedResult.fail("Segment not found: '${segmentID}'")
 					return
 				}
 				

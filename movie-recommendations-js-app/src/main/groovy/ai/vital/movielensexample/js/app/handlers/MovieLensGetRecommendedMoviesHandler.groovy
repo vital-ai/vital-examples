@@ -6,6 +6,8 @@ import org.movielens.domain.Edge_hasMovieRating
 import org.movielens.domain.User
 
 import com.vitalai.domain.nlp.TargetNode
+
+import ai.vital.movielensexample.js.app.MovieLensAppVerticle;
 import ai.vital.query.querybuilder.VitalBuilder
 import ai.vital.service.vertx3.VitalServiceVertx3;
 import ai.vital.service.vertx3.handler.CallFunctionHandler
@@ -51,9 +53,16 @@ class MovieLensGetRecommendedMoviesHandler implements CallFunctionHandler {
 		} else throw new RuntimeException("'limit' param must be an integer/long")
 		
 		
-		def service = VitalServiceVertx3.registeredServices.get(app.appID.toString())
+		def service = MovieLensAppVerticle.serviceInstance
 		
-		ResultList getRL = service.get(GraphContext.ServiceWide, URIProperty.withString(userURI))
+		ResultList getRL = null
+		
+		if(MovieLensAppVerticle.externalServiceName != null) {
+			getRL = service.callFunction(MovieLensAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'get', name: MovieLensAppVerticle.externalServiceName, uri: URIProperty.withString(userURI)])
+		} else {
+			getRL = service.get(GraphContext.ServiceWide, URIProperty.withString(userURI))
+		}
+		
 		if(getRL.status.status != VitalStatus.Status.ok) {
 			return getRL
 		}
@@ -70,7 +79,7 @@ class MovieLensGetRecommendedMoviesHandler implements CallFunctionHandler {
 				value offset: 0
 				value limit: 10000
 				
-				value segments: ['movielens']
+				value segments: [MovieLensAppVerticle.movielensSegment]
 				
 //				value sortProperties: [new VitalSortProperty( VitalSigns.get().getPropertyByTrait(Property_hasRating.class), null, true)]
 					
@@ -83,7 +92,12 @@ class MovieLensGetRecommendedMoviesHandler implements CallFunctionHandler {
 		}.toQuery()
 				
 			
-		ResultList queryRL = service.query(selectQuery)
+		ResultList queryRL = null
+		if(MovieLensAppVerticle.externalServiceName != null) {
+			queryRL = service.callFunction(MovieLensAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'query', name: MovieLensAppVerticle.externalServiceName, query: selectQuery])
+		} else {
+			queryRL = service.query(selectQuery)
+		}
 		
 		if(queryRL.status.status != VitalStatus.Status.ok) {
 			return queryRL;

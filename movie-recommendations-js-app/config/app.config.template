@@ -50,3 +50,8 @@ webserver {
 
 
 app: movie-recommendations-js-app
+
+segment: movie-recommendations-js-segment
+
+#if movie-recommendations-js-segment segment is in external service
+service-name: movie-recommendations-js-service
