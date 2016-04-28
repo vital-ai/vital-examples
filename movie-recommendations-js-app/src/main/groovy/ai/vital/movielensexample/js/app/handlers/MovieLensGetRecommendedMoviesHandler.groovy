@@ -160,7 +160,11 @@ class MovieLensGetRecommendedMoviesHandler implements CallFunctionHandler {
 		
 		if(movies.size() > 0) {
 			
-			rl = service.get(GraphContext.ServiceWide, movies)
+			if( MovieLensAppVerticle.externalServiceName != null ) {
+				rl = service.callFunction(MovieLensAppVerticle.SERVICES_ACCESS_SCRIPT, [action: 'get', name: MovieLensAppVerticle.externalServiceName, uris: movies])
+			} else {
+				rl = service.get(GraphContext.ServiceWide, movies)
+			}
 			
 			if(rl.status.status != VitalStatus.Status.ok) {
 				return rl
