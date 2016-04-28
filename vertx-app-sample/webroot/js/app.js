@@ -1,7 +1,7 @@
 //global variable
 
 var APP_ID = 'vertx-app-sample';
-
+	
 var ENDPOINT = 'endpoint.' + APP_ID;
 
 
@@ -12,9 +12,12 @@ var evenbusPrefix = '';
 //default <currentdomain>:<currentport>/eventbus URL assumed
 //var EVENTBUS_URL = null;
 
+
 var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/vertx-app-sample/eventbus';
 
 var LOGGED_IN = false;
+
+var URL_PREFIX = '/vertx-app-sample';
 
 /*** ROUTER ***/
 var router = null;
@@ -36,7 +39,7 @@ var initRouter = function(){
 	
 	if(port.length > 0) port = ':' + port;
 	
-	var rootURL = window.location.protocol + '//' + window.location.hostname + port;
+	var rootURL = window.location.protocol + '//' + window.location.hostname + port + URL_PREFIX;
 	//console.log('root URL: ', rootURL);
 	router = new Navigo(rootURL, false);
 	
@@ -56,7 +59,7 @@ var initRouter = function(){
 		  
 	    	//bounce off
 	    	if(!LOGGED_IN) {
-	    		router.navigate('');
+	    		router.navigate('/');
 	    		return
 	    	}
 		  
@@ -126,7 +129,7 @@ var doLogout = function() {
 	
 	vitalservice.callFunction(VitalServiceWebsocketImpl.vitalauth_logout, {}, function(logoutSuccess){
 		
-		//console.info("Logout response: ", logoutSuccess);
+//		console.info("Logout response: ", logoutSuccess);
 
 		refreshLoginState();
 
@@ -165,7 +168,7 @@ var doLogin = function() {
 		
 		refreshLoginState();
 		
-		router.navigate('');
+		router.navigate('/');
 		
 	}, function(loginError) {
 		
@@ -251,7 +254,7 @@ function handleSearch(mainPanel, params, searchType) {
 	    
 	//bounce off
 	if(!LOGGED_IN) {
-		router.navigate('');
+		router.navigate('/');
 		return
 	}
 	
