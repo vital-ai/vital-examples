@@ -107,9 +107,10 @@ function newHistoryEvent() {
 	console.log("path: " + inpath + ' ( ' + path + ' ) ');
 	
 	
-	//only collect search / details history
-	
-	historyStack.push(path);
+	//only push if previous state was different
+	if( historyStack.length == 0 || historyStack[ historyStack.length - 1] != path ) {
+		historyStack.push(path);
+	}
 	
 	console.log('history stack: ', historyStack);
 	
@@ -230,8 +231,10 @@ var doLogout = function() {
 		
 //		console.info("Logout response: ", logoutSuccess);
 
+		historyStack = [];
+		
 		refreshLoginState();
-
+		
 		//go to home
 		router.navigate('');
 		
@@ -239,6 +242,8 @@ var doLogout = function() {
 		
 		console.error("Logout error: ", logoutError);
 
+		historyStack = [];
+		
 		//refresh the state despite of error
 		refreshLoginState();
 
