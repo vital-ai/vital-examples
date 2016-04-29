@@ -210,6 +210,17 @@ $(function(){
 	
 	console.log("instantiating service...");
 	
+	//this overrides the session expiration call w
+	VITAL_SESSION_EXPIRED_CALLBACK = function(errorMsg) {
+		
+		//console.error(errorMsg);
+
+		router.navigate('');
+		
+		return false;
+		
+	}
+	
 	vitalservice = new VitalService(ENDPOINT, EVENTBUS_URL, function(){
 		
 		console.log('connected to endpoint');
