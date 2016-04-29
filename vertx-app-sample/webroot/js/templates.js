@@ -4,8 +4,8 @@ this["JST"]["templates/detailscontent.hbs"] = Handlebars.template({"1":function(
     var helper;
 
   return "<div>\r\n  <a href=\""
-    + container.escapeExpression(((helper = (helper = helpers.lastSearchURL || (depth0 != null ? depth0.lastSearchURL : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"lastSearchURL","hash":{},"data":data}) : helper)))
-    + "\" class=\"btn btn-primary\" data-navigo>Back To Search Results</a>\r\n</div>\r\n";
+    + container.escapeExpression(((helper = (helper = helpers.lastHistoryURL || (depth0 != null ? depth0.lastHistoryURL : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"lastHistoryURL","hash":{},"data":data}) : helper)))
+    + "\" class=\"btn btn-primary history-back-button\">Back</a>\r\n</div>\r\n";
 },"3":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
@@ -25,7 +25,7 @@ this["JST"]["templates/detailscontent.hbs"] = Handlebars.template({"1":function(
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "\r\n\r\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.lastSearchURL : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.lastHistoryURL : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "<h3>Details of <strong>"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</strong></h3>\r\n\r\n<table class=\"table table-striped table-hover\">\r\n"
@@ -77,8 +77,8 @@ this["JST"]["templates/searchresultscontent.hbs"] = Handlebars.template({"1":fun
     var helper;
 
   return "<div>\r\n  <a href=\""
-    + container.escapeExpression(((helper = (helper = helpers.lastSearchURL || (depth0 != null ? depth0.lastSearchURL : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"lastSearchURL","hash":{},"data":data}) : helper)))
-    + "\" class=\"btn btn-primary\" data-navigo>Back To Search Results</a>\r\n</div>\r\n";
+    + container.escapeExpression(((helper = (helper = helpers.lastHistoryURL || (depth0 != null ? depth0.lastHistoryURL : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"lastHistoryURL","hash":{},"data":data}) : helper)))
+    + "\" class=\"btn btn-primary history-back-button\">Back</a>\r\n</div>\r\n";
 },"3":function(container,depth0,helpers,partials,data) {
     var helper;
 
@@ -107,10 +107,24 @@ this["JST"]["templates/searchresultscontent.hbs"] = Handlebars.template({"1":fun
     + "\" data-navigo>"
     + alias4(((helper = (helper = helpers.URI || (depth0 != null ? depth0.URI : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"URI","hash":{},"data":data}) : helper)))
     + "</a>\r\n			</td>\r\n		</tr>\r\n";
+},"11":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "   <table class=\"table table-striped hidden-sm hidden-md hidden-lg\">\r\n		<tr>\r\n     		<td style=\"width: 40%;\">Index</td>\r\n     		<td>"
+    + alias4(((helper = (helper = helpers.index || (depth0 != null ? depth0.index : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"index","hash":{},"data":data}) : helper)))
+    + "</td>\r\n     	</tr>\r\n     	<tr>\r\n			<td>Name</td>\r\n			<td>"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</td>\r\n		</tr>\r\n		<tr>\r\n			<td>Score</td>\r\n			<td>"
+    + alias4(((helper = (helper = helpers.score || (depth0 != null ? depth0.score : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"score","hash":{},"data":data}) : helper)))
+    + "</td>\r\n		</tr>\r\n		<tr>\r\n			<td colspan=\"2\" style=\"text-align: center;\"><a href=\"/details/"
+    + alias4(((helper = (helper = helpers.encodedURI || (depth0 != null ? depth0.encodedURI : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"encodedURI","hash":{},"data":data}) : helper)))
+    + "\" data-navigo>"
+    + alias4(((helper = (helper = helpers.URI || (depth0 != null ? depth0.URI : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"URI","hash":{},"data":data}) : helper)))
+    + "</a></td>\r\n     	</tr>\r\n   </table>\r\n   \r\n   <br />\r\n   \r\n   \r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.lastSearchURL : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+  return ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.lastHistoryURL : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\r\n<h4>"
     + alias4(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data}) : helper)))
     + "</h4>\r\n"
@@ -123,7 +137,7 @@ this["JST"]["templates/searchresultscontent.hbs"] = Handlebars.template({"1":fun
     + alias4(((helper = (helper = helpers.firstIndex || (depth0 != null ? depth0.firstIndex : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"firstIndex","hash":{},"data":data}) : helper)))
     + " - "
     + alias4(((helper = (helper = helpers.lastIndex || (depth0 != null ? depth0.lastIndex : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"lastIndex","hash":{},"data":data}) : helper)))
-    + "</div>\r\n\r\n\r\n<table class=\"table table-hover table-striped\">\r\n	<thead>\r\n		<tr>\r\n			<th>Index</th>\r\n			<th>Name</th>\r\n			<th>Score</th>\r\n			<th>URI</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody>\r\n"
+    + "</div>\r\n\r\n<br/>\r\n\r\n\r\n<table class=\"table table-hover table-striped hidden-xs\">\r\n	<thead>\r\n		<tr>\r\n			<th>Index</th>\r\n			<th>Name</th>\r\n			<th>Score</th>\r\n			<th>URI</th>\r\n		</tr>\r\n	</thead>\r\n	<tbody>\r\n"
     + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"unless","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"each","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "	</tbody>\r\n	<tfoot>\r\n	\r\n		<tr><td colspan=\"4\" style=\"text-align: center;\">\r\n		\r\n		 	"
@@ -134,5 +148,15 @@ this["JST"]["templates/searchresultscontent.hbs"] = Handlebars.template({"1":fun
     + ((stack1 = ((helper = (helper = helpers.nextLink || (depth0 != null ? depth0.nextLink : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"nextLink","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + " &nbsp; "
     + ((stack1 = ((helper = (helper = helpers.lastLink || (depth0 != null ? depth0.lastLink : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"lastLink","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "\r\n		\r\n		</td></tr>\r\n	\r\n	</tfoot>\r\n</table>\r\n\r\n";
+    + "\r\n		\r\n		</td></tr>\r\n	\r\n	</tfoot>\r\n</table>\r\n\r\n\r\n"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"each","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\r\n<div class=\"hidden-sm hidden-md hidden-lg\" style=\"text-align: center; margin-bottom: 20px;\">\r\n   <span>"
+    + ((stack1 = ((helper = (helper = helpers.firstLink || (depth0 != null ? depth0.firstLink : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"firstLink","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</span> \r\n   <span style=\"margin-left: 40px; margin-right: 40px;\">"
+    + ((stack1 = ((helper = (helper = helpers.prevLink || (depth0 != null ? depth0.prevLink : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"prevLink","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</span>\r\n   <span style=\"margin-left: 40px; margin-right: 40px;\">"
+    + ((stack1 = ((helper = (helper = helpers.nextLink || (depth0 != null ? depth0.nextLink : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"nextLink","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</span>\r\n   <span>"
+    + ((stack1 = ((helper = (helper = helpers.lastLink || (depth0 != null ? depth0.lastLink : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"lastLink","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</span>\r\n</div>   \r\n\r\n";
 },"useData":true});

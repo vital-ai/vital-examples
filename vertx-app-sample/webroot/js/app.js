@@ -2,6 +2,11 @@
 
 var APP_ID = 'vertx-app-sample';
 	
+if(window.location.hostname.indexOf('dev.') == 0) {
+	APP_ID = 'app';
+	console.warn("DEV endpoint");
+}
+
 var ENDPOINT = 'endpoint.' + APP_ID;
 
 
@@ -22,12 +27,91 @@ var URL_PREFIX = '/vertx-app-sample';
 /*** ROUTER ***/
 var router = null;
 
-var routeEventHandler = function(view, params) {
+var historyStack = [];
+
+//lru cache of recently rendered results?
+//{pathname: window.location.pathname, html: html}
+var resultsCache = [];
+
+var maxCacheLength = 10;
+
+function getCachedResults(key) {
+	
+	//console.log('resultsCache: ', resultsCache);
+	
+	var resIndex = -1;
+	for(var i = 0; i < resultsCache.length; i++) {
+		if(resultsCache[i].key == key) {
+			resIndex = i;
+			break;
+		}
+	}
+	
+	if(resIndex < 0) {
+		return null;
+	}
+	
+//	var record = resultsCache.splice(resIndex, 1);
+//	//move it to front
+//	resultsCache.splice(0, 0, record);
+
+	var record = resultsCache[resIndex];
+	
+	return record.results;
 	
 }
 
+function putCachedResults(key, results) {
+	
+	var resIndex = -1;
+	for(var i = 0; i < resultsCache.length; i++) {
+		if(resultsCache[i].key == key) {
+			resIndex = i;
+			break;
+		}
+	}
+	
+	//remove current record
+	if(resIndex >= 0) {
+		resultsCache.splice(resIndex, 1);
+	}
+	
+	
+	resultsCache.splice(0, 0, {key: key, results: results});
+	
+	//delete oldest
+	if(resultsCache.length > maxCacheLength) {
+		resultsCache.splice(maxCacheLength, resultsCache.length - maxCacheLength);
+	}
+	
+	//console.log('resultsCache: ', resultsCache);
+	
+	//check if already cached
+	
+}
 
-var lastSearchURL = null;
+function newHistoryEvent() {
+	
+	var path = window.location.pathname;
+
+	var inpath = path;
+	
+	if(path.indexOf(URL_PREFIX) == 0) {
+		
+		path = path.substring(URL_PREFIX.length);
+		
+	}
+	
+	if(path == '/') path = '';
+	
+	console.log("path: " + inpath + ' ( ' + path + ' ) ');
+	
+	
+	//only collect search / details history
+	
+	historyStack.push(path);
+	
+}
 
 var initRouter = function(){
 
@@ -46,20 +130,16 @@ var initRouter = function(){
 	var mainPanel = $('#main-panel');
 	
 	router.on({
-//	  '/signup/:id': function (params) {
-//
-//		  routingMethod(view_signup, params);
-//
-//	  },
-	
 	  
 	  '/details/:uri': function(params) {
-	
+
+		  newHistoryEvent();
+		  
 		  mainPanel.empty();
 		  
 	    	//bounce off
 	    	if(!LOGGED_IN) {
-	    		router.navigate('/');
+	    		router.navigate('');
 	    		return
 	    	}
 		  
@@ -68,31 +148,42 @@ var initRouter = function(){
 	  },
 	  '/logout': function (params) {
 
+		  //do not record this state 
+		  //newHistoryEvent();
 		  doLogout();
 		
 	  },
 	  '/relatedwords/:uri/:offset': function(params) {
+		  
+		  newHistoryEvent();
 		  
 		  handleSearch(mainPanel, params, 'relatedwords');
 		  
 	  },
 	  '/relatedwords/:uri': function(params) {
 		  
+		  newHistoryEvent();
+		  
 		  handleSearch(mainPanel, params, 'relatedwords');
 		  
 	  },
       '/searchresults/:q/:offset': function(params) {
     	  
-	    	handleSearch(mainPanel, params, 'search');
+    	  newHistoryEvent();
+    	  
+    	  handleSearch(mainPanel, params, 'search');
 	    	
 	  },
       '/searchresults/:q': function(params) {
-    	  
-	    	handleSearch(mainPanel, params, 'search');
+    	
+    	  newHistoryEvent();
+	      handleSearch(mainPanel, params, 'search');
 	    	
 	  },
 	  '*': function (params) {
 
+		  //newHistoryEvent();
+		  
 		  if(LOGGED_IN) {
 
 			  mainPanel.empty().html( JST['templates/home-logged-in.hbs']({username: vitalservice.getCurrentLogin().get('username')}) );
@@ -134,7 +225,7 @@ var doLogout = function() {
 		refreshLoginState();
 
 		//go to home
-		router.navigate('/');
+		router.navigate('');
 		
 	}, function(logoutError) {
 		
@@ -144,7 +235,7 @@ var doLogout = function() {
 		refreshLoginState();
 
 		//go to home
-		router.navigate('/');
+		router.navigate('');
 		
 	});
 
@@ -168,7 +259,7 @@ var doLogin = function() {
 		
 		refreshLoginState();
 		
-		router.navigate('/');
+		router.navigate('');
 		
 	}, function(loginError) {
 		
@@ -215,6 +306,27 @@ $('#search-button').click(function(){
 	  
 });
 
+
+$('#logo-link').click(function(){
+	$('#query').val('');
+	router.navigate('');
+});
+
+$(document).on('click', '.history-back-button', function(){
+	
+//	var lastURL = $(this).attr('href');
+	//should be the same as history stack
+	var url = historyStack[historyStack.length - 2];
+	historyStack.splice(historyStack.length - 2, 2);
+
+	router.navigate(url);
+	
+//	window.history.back();
+	
+	return false;
+});
+
+
 var refreshLoginState = function() {
 	
 	//ping server to check if authenticated
@@ -250,11 +362,11 @@ var refreshLoginState = function() {
 
 function handleSearch(mainPanel, params, searchType) {
 	
-  	mainPanel.empty();
-	    
+	mainPanel.empty();
+	
 	//bounce off
 	if(!LOGGED_IN) {
-		router.navigate('/');
+		router.navigate('');
 		return
 	}
 	
@@ -280,18 +392,20 @@ function handleSearch(mainPanel, params, searchType) {
 	
 	var queryBuilder = null;
 	
+	var resultsKey = searchType + '_';
+	
 	if(searchType == 'search') {
 		
 		//make sure the input field contains the input value
 		$('#query').val(query);
-		
-		lastSearchURL = window.location.pathname;
 		
 		queryBuilder = JST['templates/search_query.hbs']({
 			offset: offset,
 			limit: limit,
 			escapedQuery: escapedQuery
 		}); 
+		
+		resultsKey += (escapedQuery + '_' + offset + '_' + limit);
 
 	} else if(searchType == 'relatedwords') {
 		
@@ -300,13 +414,19 @@ function handleSearch(mainPanel, params, searchType) {
 			limit: limit,
 			URI: uri  
 		});
+		
+		resultsKey += (uri + '_' + offset + '_' + limit);
 			
 	}
 	
-	var mainObject = null;
 	
-	var successHandler = function(results){
+	var successHandler = function(resultsObj){
 	
+		putCachedResults(resultsKey, resultsObj);
+		
+		var mainObject = resultsObj.mainObject;
+		var results = resultsObj.results;
+		
 		console.log('query results', results);
 	
 		//render results now
@@ -424,15 +544,33 @@ function handleSearch(mainPanel, params, searchType) {
 				lastLink: lastLink[0].outerHTML,
 				firstIndex: firstIndex,
 				lastIndex: lastIndex,
-				lastSearchURL: ( searchType != 'search' ? lastSearchURL : null )
+				lastHistoryURL: ( historyStack.length > 1 ? historyStack[historyStack.length - 2] : null )
 		};
+
 		console.log('ctx', ctx);
-		mainPanel.html( JST['templates/searchresultscontent.hbs'](ctx) );
 		
+		var html = JST['templates/searchresultscontent.hbs'](ctx);
+		
+		//putCachedHtml(html);
+		
+		mainPanel.html( html );
 		router.updatePageLinks();
 		
 	};
+	
+	var cachedResults = getCachedResults(resultsKey);
+	
+	if(cachedResults != null) {
+		console.log("cached results found, key: " + resultsKey);
+		successHandler(cachedResults);
+		return;
+	} else {
+		console.log("no cached results, key: " + resultsKey);
+	}
 
+	
+	var mainObject = null;
+	
 	var errorHandler = function(errorMsg){
 		
 		console.error(errorMsg);
@@ -444,7 +582,9 @@ function handleSearch(mainPanel, params, searchType) {
 	
 	if(searchType == 'search') {
 		
-		vitalservice.query(queryBuilder, successHandler, errorHandler);
+		vitalservice.query(queryBuilder, function(seachResults){
+			successHandler({mainObject: null, results: seachResults});
+		}, errorHandler);
 		
 	} else {
 		
@@ -465,11 +605,12 @@ function handleSearch(mainPanel, params, searchType) {
 			vitalservice.query(queryBuilder, function(graphResults){
 				
 				console.log('graphresults', graphResults);
+				var urisSet = [];
 				var urisToGet = [];
 					
 				if(graphResults.results.length == 0) {
 					
-					successHandler(graphResults);
+					successHandler({mainObject: mainObject, results: graphResults});
 						
 					return;
 					
@@ -493,7 +634,10 @@ function handleSearch(mainPanel, params, searchType) {
 								if(v != uri) {
 									var relatedURI = null;
 									relatedURI = v;
-									urisToGet.push({_type: 'ai.vital.vitalsigns.model.property.URIProperty', value: relatedURI});
+									if(urisSet.indexOf(relatedURI) < 0) {
+										urisSet.push(relatedURI);
+										urisToGet.push({_type: 'ai.vital.vitalsigns.model.property.URIProperty', value: relatedURI});
+									}
 								}
 								
 							}
@@ -520,7 +664,7 @@ function handleSearch(mainPanel, params, searchType) {
 						
 					}
 					
-					successHandler(relatedResults);
+					successHandler({mainObject: mainObject, results: relatedResults});
 					
 				}, errorHandler);
 				
@@ -541,7 +685,11 @@ function handleDetails(mainPanel, params) {
 	
 	var uri = decodeURIComponent(encodedURI);
 	
-	vitalservice.get({_type: 'ai.vital.vitalsigns.model.property.URIProperty', value: uri}, false, function(results){
+	var resultsKey = 'details_' + uri;
+	
+	var successHandler = function(results) {
+		
+		putCachedResults(resultsKey, results);
 		
 		var graphObject = null;
 		
@@ -562,7 +710,7 @@ function handleDetails(mainPanel, params) {
 		ctx.URI = graphObject.URI;
 		ctx.props = props;
 		ctx.encodedURI = encodedURI;
-		ctx.lastSearchURL = lastSearchURL;
+		ctx.lastHistoryURL = historyStack.length > 1 ? historyStack[historyStack.length - 2] : null;
 		
 		var skip = ['get', 'set', 'types', 'type', 'URI'];
 		
@@ -598,7 +746,20 @@ function handleDetails(mainPanel, params) {
 		
 		router.updatePageLinks();
 		
-	}, function(errorMsg){
+	};
+	
+
+	var cachedResults = getCachedResults(resultsKey);
+	
+	if(cachedResults != null) {
+		console.log("cached results found, key: " + resultsKey);
+		successHandler(cachedResults);
+		return;
+	} else {
+		console.log("no cached results, key: " + resultsKey);
+	}
+
+	vitalservice.get({_type: 'ai.vital.vitalsigns.model.property.URIProperty', value: uri}, false, successHandler, function(errorMsg){
 		
 		mainPanel.append($('<span>', {'class': 'text-danger'}).text(errorMsg));		
 	});
