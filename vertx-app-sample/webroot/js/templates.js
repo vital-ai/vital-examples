@@ -35,16 +35,32 @@ this["JST"]["templates/detailscontent.hbs"] = Handlebars.template({"1":function(
     + "\" class=\"btn btn-success\" data-navigo>Related Words</a>\r\n";
 },"useData":true});
 
-this["JST"]["templates/home-logged-in.hbs"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+this["JST"]["templates/home-logged-in.hbs"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return " \n <div>\n	 Welcome <strong>"
-    + container.escapeExpression(((helper = (helper = helpers.username || (depth0 != null ? depth0.username : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"username","hash":{},"data":data}) : helper)))
+  return "<div>\n  <a href=\""
+    + container.escapeExpression(((helper = (helper = helpers.lastHistoryURL || (depth0 != null ? depth0.lastHistoryURL : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"lastHistoryURL","hash":{},"data":data}) : helper)))
+    + "\" class=\"btn btn-primary history-back-button\">Back</a>\n</div>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {};
+
+  return ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.lastHistoryURL : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + " \n <div>\n	 Welcome <strong>"
+    + container.escapeExpression(((helper = (helper = helpers.username || (depth0 != null ? depth0.username : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"username","hash":{},"data":data}) : helper)))
     + "</strong>!\n </div>\n \n <br />\n\n \n \n\n\n            ";
 },"useData":true});
 
-this["JST"]["templates/homecontent.hbs"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return " <h3>HOME</h3>\n\n\n            ";
+this["JST"]["templates/homecontent.hbs"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<div>\n  <a href=\""
+    + container.escapeExpression(((helper = (helper = helpers.lastHistoryURL || (depth0 != null ? depth0.lastHistoryURL : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"lastHistoryURL","hash":{},"data":data}) : helper)))
+    + "\" class=\"btn btn-primary history-back-button\">Back</a>\n</div>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.lastHistoryURL : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\n <h3>HOME</h3>\n\n\n            ";
 },"useData":true});
 
 this["JST"]["templates/relatedwords_query.hbs"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

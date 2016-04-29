@@ -102,7 +102,7 @@ function newHistoryEvent() {
 		
 	}
 	
-	if(path == '/') path = '';
+	if(path == '') path = '/';
 	
 	console.log("path: " + inpath + ' ( ' + path + ' ) ');
 	
@@ -110,6 +110,8 @@ function newHistoryEvent() {
 	//only collect search / details history
 	
 	historyStack.push(path);
+	
+	console.log('history stack: ', historyStack);
 	
 }
 
@@ -182,15 +184,21 @@ var initRouter = function(){
 	  },
 	  '*': function (params) {
 
-		  //newHistoryEvent();
+		  newHistoryEvent();
+		
+		  var ctx = {
+			  lastHistoryURL: (historyStack.length > 1 ? historyStack[historyStack.length - 2] : null)
+		  };
 		  
 		  if(LOGGED_IN) {
 
-			  mainPanel.empty().html( JST['templates/home-logged-in.hbs']({username: vitalservice.getCurrentLogin().get('username')}) );
+			  ctx.username = vitalservice.getCurrentLogin().get('username');
+			  
+			  mainPanel.empty().html( JST['templates/home-logged-in.hbs'](ctx) );
 
 		  } else {
 			  
-			  mainPanel.empty().html( JST['templates/homecontent.hbs']({}) );
+			  mainPanel.empty().html( JST['templates/homecontent.hbs'](ctx) );
 		  }
 		  
 	  }
@@ -319,6 +327,8 @@ $(document).on('click', '.history-back-button', function(){
 	var url = historyStack[historyStack.length - 2];
 	historyStack.splice(historyStack.length - 2, 2);
 
+	if(url == '/') url = '';
+	
 	router.navigate(url);
 	
 //	window.history.back();
