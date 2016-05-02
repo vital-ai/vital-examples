@@ -10,6 +10,13 @@ var VITAL_SERVICE_UNAVAILABLE_URL = null;
  */
 var VITAL_SESSION_EXPIRED_CALLBACK = null;
 
+
+/**
+ * Set this callback to be notified of access to protected resource when no sessionid is given
+ * depending if returned value is true/false the default callback will be called afterwards
+ */
+var VITAL_AUTHENTICATION_REQUIRED_CALLBACK = null;
+
 //overridden cookie attributes
 var VITAL_COOKIE_ATTRS = {};
 
@@ -531,8 +538,14 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 				_this.login = null;
 				
 				if( VITAL_SESSION_EXPIRED_CALLBACK != null) {
-				
 					callErrorCB = VITAL_SESSION_EXPIRED_CALLBACK(result.message);
+				}
+				
+			} else if(result.status == 'error_authentication_required') {
+				
+				//this happens when no session / user is set and protected endpoint is called
+				if( VITAL_AUTHENTICATION_REQUIRED_CALLBACK != null ) {
+					callErrorCB = VITAL_AUTHENTICATION_REQUIRED_CALLBACK(result.message);
 				}
 				
 			}

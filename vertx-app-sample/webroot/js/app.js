@@ -104,7 +104,7 @@ function newHistoryEvent() {
 	
 	if(path == '') path = '/';
 	
-	console.log("path: " + inpath + ' ( ' + path + ' ) ');
+	//console.log("path: " + inpath + ' ( ' + path + ' ) ');
 	
 	
 	//only push if previous state was different
@@ -112,7 +112,7 @@ function newHistoryEvent() {
 		historyStack.push(path);
 	}
 	
-	console.log('history stack: ', historyStack);
+	//console.log('history stack: ', historyStack);
 	
 }
 
@@ -193,7 +193,7 @@ var initRouter = function(){
 		  
 		  if(LOGGED_IN) {
 
-			  ctx.username = vitalservice.getCurrentLogin().get('username');
+			  ctx.username = vitalservice.getCurrentLogin() ? vitalservice.getCurrentLogin().get('username') : '';
 			  
 			  mainPanel.empty().html( JST['templates/home-logged-in.hbs'](ctx) );
 
@@ -208,18 +208,28 @@ var initRouter = function(){
 
 $(function(){
 	
+	VITAL_LOGGING = false;
+	
 	console.log("instantiating service...");
 	
 	//this overrides the session expiration call w
 	VITAL_SESSION_EXPIRED_CALLBACK = function(errorMsg) {
-		
 		//console.error(errorMsg);
-
+		LOGGED_IN = false;
+		historyStack = [];
+		refreshLoginState();
 		router.navigate('');
-		
 		return false;
 		
 	}
+	
+	VITAL_AUTHENTICATION_REQUIRED_CALLBACK = function(errorMsg) {
+		LOGGED_IN = false;
+		historyStack = [];
+		refreshLoginState();
+		router.navigate('');
+		return false;		
+	};
 	
 	vitalservice = new VitalService(ENDPOINT, EVENTBUS_URL, function(){
 		
@@ -453,7 +463,7 @@ function handleSearch(mainPanel, params, searchType) {
 		var mainObject = resultsObj.mainObject;
 		var results = resultsObj.results;
 		
-		console.log('query results', results);
+		//console.log('query results', results);
 	
 		//render results now
 		
@@ -573,7 +583,7 @@ function handleSearch(mainPanel, params, searchType) {
 				lastHistoryURL: ( historyStack.length > 1 ? historyStack[historyStack.length - 2] : null )
 		};
 
-		console.log('ctx', ctx);
+		//console.log('ctx', ctx);
 		
 		var html = JST['templates/searchresultscontent.hbs'](ctx);
 		
@@ -630,7 +640,7 @@ function handleSearch(mainPanel, params, searchType) {
 			
 			vitalservice.query(queryBuilder, function(graphResults){
 				
-				console.log('graphresults', graphResults);
+				//console.log('graphresults', graphResults);
 				var urisSet = [];
 				var urisToGet = [];
 					
