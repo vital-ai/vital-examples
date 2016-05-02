@@ -151,35 +151,15 @@
   -->
   
   
-  <!-- sample domain installed locally via 
-      maven -f install-jars-pom.xml validate 
-  --> 
-  
-  
+  <!-- from public maven repo -->
   <dependency>
 	<groupId>vital-ai</groupId>
 	<artifactId>vital-samples-domain</artifactId>
 	<version>0.1.0</version>
-	<scope>compile</scope>
   </dependency>
+
   
-  
-  <!-- sample prebuilt domain available in vital maven public repo -->
-  
-   <!--   
-  
-  <dependency>
-	<groupId>vital-ai</groupId>
-	<artifactId>vital-samples-prebuilt-domain</artifactId>
-	<version>0.1.0</version>
-	<scope>compile</scope>
-  </dependency>
-  -->
-  
-  
-  <!-- vital-wordnet ontology installed locally -->
-  
-    
+  <!-- from public maven repo -->   
   <dependency>
     <groupId>vitalai-com</groupId>
 	<artifactId>vital-wordnet</artifactId>

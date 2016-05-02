@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY vital "http://vital.ai/ontology/vital#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY vital-core "http://vital.ai/ontology/vital-core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://vital.ai/ontology/vital-samples#"
+     xml:base="http://vital.ai/ontology/vital-samples"
+     xmlns:vital-core="http://vital.ai/ontology/vital-core#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vital="http://vital.ai/ontology/vital#">
+    <owl:Ontology rdf:about="http://vital.ai/ontology/vital-samples">
+        <vital-core:hasDefaultPackage rdf:datatype="&xsd;string">vitalai.samples.domain</vital-core:hasDefaultPackage>
+        <owl:versionInfo>0.1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en">vital-samples domain</rdfs:comment>
+        <owl:imports rdf:resource="http://vital.ai/ontology/vital"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#hasBirthday -->
+
+    <owl:DatatypeProperty rdf:about="http://vital.ai/ontology/vital-samples#hasBirthday">
+        <rdfs:domain rdf:resource="http://vital.ai/ontology/vital-samples#Musician"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Edge_hasAlbum -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#Edge_hasAlbum">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_TaxonomyEdge"/>
+        <vital-core:hasEdgeDestDomain rdf:resource="http://vital.ai/ontology/vital-samples#MusicAlbum"/>
+        <vital-core:hasEdgeSrcDomain rdf:resource="http://vital.ai/ontology/vital-samples#MusicArtist"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Edge_hasGenre -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#Edge_hasGenre">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_PeerEdge"/>
+        <vital-core:hasEdgeSrcDomain rdf:resource="http://vital.ai/ontology/vital-samples#MusicArtist"/>
+        <vital-core:hasEdgeDestDomain rdf:resource="http://vital.ai/ontology/vital-samples#MusicGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Edge_hasMember -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#Edge_hasMember">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_TaxonomyEdge"/>
+        <vital-core:hasEdgeSrcDomain rdf:resource="http://vital.ai/ontology/vital-samples#MusicGroup"/>
+        <vital-core:hasEdgeDestDomain rdf:resource="http://vital.ai/ontology/vital-samples#Musician"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Edge_hasTrack -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#Edge_hasTrack">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_TaxonomyEdge"/>
+        <vital-core:hasEdgeSrcDomain rdf:resource="http://vital.ai/ontology/vital-samples#MusicAlbum"/>
+        <vital-core:hasEdgeDestDomain rdf:resource="http://vital.ai/ontology/vital-samples#MusicTrack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Edge_playsInstrument -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#Edge_playsInstrument">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_PeerEdge"/>
+        <vital-core:hasEdgeDestDomain rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasEdgeSrcDomain rdf:resource="http://vital.ai/ontology/vital-samples#Musician"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#MusicAlbum -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#MusicAlbum">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_Node"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#MusicArtist -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#MusicArtist">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_Node"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#MusicGenre -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#MusicGenre">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_Node"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#MusicGroup -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#MusicGroup">
+        <rdfs:subClassOf rdf:resource="http://vital.ai/ontology/vital-samples#MusicArtist"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#MusicInstrument -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#MusicInstrument">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_Node"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#MusicTrack -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#MusicTrack">
+        <rdfs:subClassOf rdf:resource="&vital-core;VITAL_Node"/>
+    </owl:Class>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Musician -->
+
+    <owl:Class rdf:about="http://vital.ai/ontology/vital-samples#Musician">
+        <rdfs:subClassOf rdf:resource="http://vital.ai/ontology/vital-samples#MusicArtist"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#BassGuitar -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#BassGuitar">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Bass Guitar</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Drums -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Drums">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Drums</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Flute -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Flute">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Flute</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Guitar -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Guitar">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Guitar</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Keyboard -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Keyboard">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Keyboard</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Piano -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Piano">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Piano</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Saxophone -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Saxophone">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Saxophone</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Theremin -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Theremin">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Theremin</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Trumpet -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Trumpet">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Trumpet</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Violin -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Violin">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Violin</vital-core:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://vital.ai/ontology/vital-samples#Vocals -->
+
+    <owl:NamedIndividual rdf:about="http://vital.ai/ontology/vital-samples#Vocals">
+        <rdf:type rdf:resource="http://vital.ai/ontology/vital-samples#MusicInstrument"/>
+        <vital-core:hasName rdf:datatype="&xsd;string">Vocals</vital-core:hasName>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

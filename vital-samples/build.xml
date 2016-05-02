@@ -59,7 +59,7 @@
 			
 			<!-- domain jar -->
 			<zipfileset dir="${basedir}/resources" prefix="vital-samples-prebuilt/vdk/domain-groovy-jar">
-				<include name="vital-samples-prebuilt-domain-0.1.0.jar" />
+				<include name="vital-samples-groovy-*.jar" />
 				<include name="vital-wordnet-groovy-*.jar" />
 			</zipfileset>
 			
