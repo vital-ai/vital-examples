@@ -52,21 +52,6 @@
 						</configuration>
 					</execution>
 					
-					<execution>
-						<id>vital-wordnet-${vital.version}.jar</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-						<configuration>
-							<groupId>vitalai-com</groupId>
-							<artifactId>vital-wordnet</artifactId>
-							<version>${vital.version}</version>
-							<packaging>jar</packaging>
-							<file>${VITAL_HOME}/domain-groovy-jar/vital-wordnet-groovy-${vital.version}.jar</file>
-						</configuration>
-					</execution>
-
 				</executions>
 			</plugin>
 
