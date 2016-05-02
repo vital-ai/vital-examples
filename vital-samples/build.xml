@@ -17,11 +17,11 @@
 		
 	
 	<target name="dirs.check">
-		<condition property="vital.triplestore.exists">
-			<available file="${VITAL_HOME}/vital-triplestore" type="dir"/>
+		<condition property="vital.sparql.exists">
+			<available file="${VITAL_HOME}/vital-sparql" type="dir"/>
 		</condition>
 		
-		<fail unless="vital.triplestore.exists" message="VITAL_HOME/vital-triplestore does not exist" />
+		<fail unless="vital.sparql.exists" message="VITAL_HOME/vital-sparql does not exist" />
 		
 	</target>
 
@@ -45,7 +45,7 @@
 				<include name="vitalsigns/**" />
 				<include name="vitalutil/**" />
 				
-				<include name="vital-triplestore/**" />
+				<include name="vital-sparql/**" />
 			</zipfileset>
 			
 			<!-- resources -->
@@ -60,6 +60,7 @@
 			<!-- domain jar -->
 			<zipfileset dir="${basedir}/resources" prefix="vital-samples-prebuilt/vdk/domain-groovy-jar">
 				<include name="vital-samples-prebuilt-domain-0.1.0.jar" />
+				<include name="vital-wordnet-groovy-*.jar" />
 			</zipfileset>
 			
 			
