@@ -16,6 +16,10 @@ var results = null;
 
 var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/alchemyapi-app/eventbus';
 
+if(window.location.hostname.indexOf('dev.') == 0) {
+	APP_ID = 'app';
+}
+
 //default - non prefixed
 //var EVENTBUS_URL = null;
 

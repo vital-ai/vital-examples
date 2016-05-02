@@ -8,6 +8,7 @@ import io.vertx.groovy.ext.web.handler.StaticHandler
 import io.vertx.groovy.ext.web.handler.sockjs.SockJSHandler
 import ai.vital.auth.vertx3.VitalAuthManager
 import ai.vital.metamind.app.webservice.MetaMindAppVerticle;
+import ai.vital.metamind.app.webservice.StatusHandler
 import ai.vital.service.vertx3.VitalServiceVertx3
 
 import com.typesafe.config.Config
@@ -173,6 +174,7 @@ class MetaMindAppMain {
 		  ]
 		
 		sockJSHandler.bridge(sockJSOptions)
+		router.get('/status').handler(new StatusHandler())
 		router.route('/eventbus/*').handler(sockJSHandler)
 				
 		router.route().handler(staticHandler)

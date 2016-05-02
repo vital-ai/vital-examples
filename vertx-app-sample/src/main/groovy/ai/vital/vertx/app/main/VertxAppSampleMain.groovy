@@ -9,6 +9,7 @@ import io.vertx.groovy.ext.web.handler.StaticHandler
 import io.vertx.groovy.ext.web.handler.sockjs.SockJSHandler
 import ai.vital.auth.vertx3.VitalAuthManager;
 import ai.vital.service.vertx3.VitalServiceVertx3
+import ai.vital.vertx.app.sample.StatusHandler
 import ai.vital.vertx.app.sample.VertxAppSampleVerticle;
 
 import com.typesafe.config.Config
@@ -174,6 +175,7 @@ class VertxAppSampleMain {
 		  ]
 		
 		sockJSHandler.bridge(sockJSOptions)
+		router.get('/status').handler(new StatusHandler())
 		router.route('/eventbus/*').handler(sockJSHandler)
 		
 		//static resources

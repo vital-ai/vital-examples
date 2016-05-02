@@ -8,6 +8,7 @@ import io.vertx.groovy.ext.web.handler.StaticHandler
 import io.vertx.groovy.ext.web.handler.sockjs.SockJSHandler
 import ai.vital.auth.vertx3.VitalAuthManager
 import ai.vital.movielensexample.js.app.MovieLensAppVerticle;
+import ai.vital.movielensexample.js.app.StatusHandler
 import ai.vital.service.vertx3.VitalServiceVertx3
 
 import com.typesafe.config.Config
@@ -173,6 +174,7 @@ class MovieLensAppMain {
 		  ]
 		
 		sockJSHandler.bridge(sockJSOptions)
+		router.get('/status').handler(new StatusHandler())
 		router.route('/eventbus/*').handler(sockJSHandler)
 				
 		router.route().handler(staticHandler)

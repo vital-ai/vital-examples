@@ -7,6 +7,7 @@ import io.vertx.groovy.ext.web.Router
 import io.vertx.groovy.ext.web.RoutingContext;
 import ai.vital.amazon.echo.humor.app.webservice.FunnybotWebserviceAppVerticle
 import ai.vital.amazon.echo.humor.app.webservice.RequestHandler
+import ai.vital.amazon.echo.humor.app.webservice.StatusHandler
 import ai.vital.service.vertx3.VitalServiceVertx3
 import ai.vital.service.vertx3.async.VitalServiceAsyncClient
 import ai.vital.vitalsigns.model.VitalApp
@@ -128,6 +129,8 @@ class FunnyBotAppMain {
 		
 		VitalServiceAsyncClient vitalservice = new VitalServiceAsyncClient(vertx, VitalApp.withId(FunnybotWebserviceAppVerticle.appID))
 
+		router.get('/status').handler(new StatusHandler())
+		
 		router.route("/funnybot-webservice").handler(new RequestHandler(vitalservice))
 //		matcher.noMatch(staticHandler());
 		router.route().handler({ RoutingContext rc ->

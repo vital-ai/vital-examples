@@ -7,6 +7,7 @@ import io.vertx.groovy.ext.web.Router;
 import io.vertx.groovy.ext.web.handler.StaticHandler
 import io.vertx.groovy.ext.web.handler.sockjs.SockJSHandler
 import ai.vital.alchemyapi.app.webservice.AlchemyAPIAppVerticle
+import ai.vital.alchemyapi.app.webservice.StatusHandler
 import ai.vital.auth.vertx3.VitalAuthManager;
 import ai.vital.service.vertx3.VitalServiceVertx3
 
@@ -173,6 +174,9 @@ class AlchemyAPIAppMain {
 		  ]
 		
 		sockJSHandler.bridge(sockJSOptions)
+		
+		router.get('/status').handler(new StatusHandler())
+		
 		router.route('/eventbus/*').handler(sockJSHandler)
 				
 		router.route().handler(staticHandler)
