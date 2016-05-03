@@ -218,7 +218,9 @@ $(function(){
 		LOGGED_IN = false;
 		historyStack = [];
 		refreshLoginState();
-		router.navigate('');
+		if(router != null) {
+			router.navigate('');
+		}
 		return false;
 		
 	}
@@ -638,71 +640,43 @@ function handleSearch(mainPanel, params, searchType) {
 			
 			mainObject = rootObj;
 			
-			vitalservice.query(queryBuilder, function(graphResults){
+			//graph query with results resolving
+			vitalservice.graphQuery(queryBuilder, function(graphResults){
 				
-				//console.log('graphresults', graphResults);
+				var relatedResults = vitaljs.resultList();
+				
 				var urisSet = [];
-				var urisToGet = [];
-					
-				if(graphResults.results.length == 0) {
-					
-					successHandler({mainObject: mainObject, results: graphResults});
-						
-					return;
-					
-				}
-					
-				for(var i = 0 ; i < graphResults.results.length; i++) {
 				
+				for(var i = 0 ; i < graphResults.results.length; i++) {
+					
+					//graph match
 					var gm = graphResults.results[i].graphObject;
 					
-					
-					for(var k in gm) {
-						
-						if(gm.hasOwnProperty(k)) {
-							
-							var v = gm[k];
-							
-							if(v._type == 'ai.vital.vitalsigns.model.property.URIProperty') {
-								
-								v = v.value;
-								
-								if(v != uri) {
-									var relatedURI = null;
-									relatedURI = v;
-									if(urisSet.indexOf(relatedURI) < 0) {
-										urisSet.push(relatedURI);
-										urisToGet.push({_type: 'ai.vital.vitalsigns.model.property.URIProperty', value: relatedURI});
-									}
-								}
-								
+					if( gm.related1 != null ) {
+						var uri = gm.related1.value;
+						if(urisSet.indexOf(uri) < 0) {
+							urisSet.push(uri);
+							var n = gm[uri];
+							if(n != null) {
+								relatedResults.addResult(n);
 							}
-							
 						}
-						
+					}
+					
+					if(gm.related2 != null) {
+						var uri = gm.related2.value;
+						if(urisSet.indexOf(uri) < 0) {
+							urisSet.push(uri);
+							var n = gm[uri];
+							if(n != null) {
+								relatedResults.addResult(n);
+							}
+						}
 					}
 					
 				}
 				
-				vitalservice.get(urisToGet, false, function(relatedResults){
-					
-					//remove edges
-					var t = relatedResults.results.length;
-					for(var i = t - 1 ; i>= 0; i--) {
-						
-						var g = relatedResults.results[i].graphObject;
-						
-						var isEdge = vitaljs.isSubclassOf ({URI: g.type}, {URI: 'http://vital.ai/ontology/vital-core#VITAL_Edge'});
-						
-						if( isEdge ) {
-							relatedResults.results.splice(i, 1);
-						}
-						
-					}
-					
-					successHandler({mainObject: mainObject, results: relatedResults});
-					
-				}, errorHandler);
+				successHandler({mainObject: mainObject, results: relatedResults});
 				
 			}, errorHandler);
 			

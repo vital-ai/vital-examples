@@ -390,6 +390,12 @@ VitalServiceJson.prototype.validateResponse = function(response) {
 	//only result list
 	if( response._type == 'ai.vital.vitalservice.query.ResultList' ) {
 	
+		if(response.results == null) {
+			response.results = [];
+		}
+		
+		vitaljs.resultList(response);
+		
 		if( response.results == null ) return null;
 		
 		for(var i = 0 ; i < response.results.length; i++) {
@@ -690,6 +696,117 @@ vitaljs.graphObject = function(rawObject) {
 	vitaljs._setImpl(rawObject);
 	
 	return rawObject;
+	
+}
+
+/**
+ * Adds utility methods to ResultList object
+ */
+vitaljs.resultList = function(rl) {
+	
+	if(arguments.length == 0 || rl == null) {
+		rl = {_type: 'ai.vital.vitalservice.query.ResultList', results: []};
+	}
+	
+	if(rl._type != 'ai.vital.vitalservice.query.ResultList') {
+		console.error("Only objects of _type: ai.vital.vitalservice.query.ResultList may be augmented: " + rl._type);
+		return;
+	}
+	
+	if( typeof( rl.first ) === 'undefined' ) {
+		rl.first = function() {
+			if( this.results.length > 0 ) return this.results[0].graphObject;
+			return null;
+		};
+	}
+	
+	if( typeof( rl.get ) === 'undefined' ) {
+		rl.get = function(uri) {
+			for(var i = 0 ; i < this.results.length; i++) {
+				var g = this.results[i].graphObject;
+				if(g.URI == uri) return g;
+			}
+			return null;
+		};
+	}
+	
+	if( typeof( rl.addResult ) === 'undefined' ) {
+		
+		rl.addResult = function(graphObject, score) {
+			
+			if(graphObject == null) throw("graphObject cannot be null");
+			if(score == null) {
+				score = 1;
+			}
+			
+			rl.results.push({_type: 'ai.vital.vitalservice.query.ResultElement', graphObject: graphObject, score: score});
+			
+		}
+		
+	}
+	
+	//pseudo iterator
+	if( typeof( rl.iterator ) === 'undefined' ) {
+		
+		/**
+		 * varargs
+		 * by default returns all graphobjects 
+		 */
+		rl.iterator = function(classURI, strict) {
+			
+			var r = [];
+			
+			if(strict == null) strict = false;
+			
+			var typesFilter = null;
+			
+			
+			if(classURI != null) {
+				
+				//check if type exists
+				
+				typesFilter = {};
+				
+				if( ! vitaljs.isClassLoaded(classURI) ) throw "class not found: " + classURI;
+				
+				typesFilter[classURI] = true;
+				
+				if(strict) {
+					
+				} else {
+					
+					var subclassesList = vitaljs.getSubclasses({URI: classURI}, false);
+					
+					for(var i = 0; i < subclassesList.length; i++) {
+						
+						typesFilter[subclassesList[i].URI] = true
+						
+					}
+					
+					
+					
+				}
+				
+			}
+			
+			for(var i = 0 ; i < this.results.length; i++) {
+				var g = this.results[i].graphObject;
+				
+				if(typesFilter == null || typesFilter[g.type] == true) {
+					
+					r.push(g);
+					
+				}
+				
+			}
+			
+			return r;
+			
+		};
+		
+	}
+	
+	return rl;
 	
 }
 
@@ -1366,4 +1483,12 @@ vitaljs.getClassProperties = function(classObj, direct) {
 vitaljs.getPropetyMetadata = function(propertyURI) {
 	var s = VitalServiceJson.SINGLETON;
 	return s.propertiesMap[propertyURI];
+}
+
+/**
+ * returns true if class exists, false otherwise
+ */
+vitaljs.isClassLoaded = function(classURI) {
+	var s = VitalServiceJson.SINGLETON;
+	return s.loaded[classURI] != null;
 }

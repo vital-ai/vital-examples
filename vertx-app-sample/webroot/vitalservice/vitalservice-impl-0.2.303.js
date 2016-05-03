@@ -538,6 +538,7 @@ VitalServiceWebsocketImpl.prototype.callMethod = function(method, args, successC
 				_this.login = null;
 				
 				if( VITAL_SESSION_EXPIRED_CALLBACK != null) {
+				
 					callErrorCB = VITAL_SESSION_EXPIRED_CALLBACK(result.message);
 				}
 				
@@ -1008,6 +1009,108 @@ VitalServiceWebsocketImpl.prototype.unloadSchema = function(schemaURI, successCB
 		console.error(e);
 		errorCB(e);
 	}
+}
+
+
+VitalServiceWebsocketImpl.prototype.processGraphQueryResults = function(results, _resultsGetter, successCB, errorCB) {
+	
+	var urisSet = [];
+	var urisToGet = [];
+	
+	//process results
+	for(var i = 0 ; i < results.results.length; i++) {
+		
+		var g = results.results[i].graphObject;
+		
+		if(g.type != 'http://vital.ai/ontology/vital-core#GraphMatch') {
+			errorCB('query_error expected GraphMatch objects only, found: ' + g.type);
+			return;
+		}
+		
+		for(var p in g) {
+			
+			if(!g.hasOwnProperty(p)) continue;
+			
+			var v = g[p];
+			
+			if(typeof(v) == 'object') {
+				
+				if(v._type == 'ai.vital.vitalsigns.model.property.URIProperty') {
+					var uri = v.value;
+					if(uri != null && urisSet.indexOf(uri) < 0) {
+						urisSet.push(uri);
+						urisToGet.push(v);
+					}
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	if(urisToGet.length == 0) {
+		successCB(results);
+		return;
+	}
+	
+	_resultsGetter(urisToGet, function(getResults){
+
+		var resMap = {};
+		
+		for(var i = 0; i < getResults.results.length; i++) {
+			
+			var g = getResults.results[i].graphObject;
+		
+			resMap[g.URI] = g;
+			
+		}
+		
+		//augment the graphmatch instances now
+		for(var i = 0 ; i < results.results.length; i++) {
+			
+			var g = results.results[i].graphObject;
+			
+			var thisURIs = [];
+			
+			for(var p in g) {
+				
+				if(!g.hasOwnProperty(p)) continue;
+				
+				var v = g[p];
+				
+				if(typeof(v) == 'object') {
+					
+					if(v._type == 'ai.vital.vitalsigns.model.property.URIProperty') {
+						var uri = v.value;
+						if(thisURIs.indexOf(uri) < 0) {
+							thisURIs.push(uri);
+						}
+					}
+					
+				}
+				
+			}
+			
+			for( var u = 0 ; u < thisURIs.length; u++ ) {
+				
+				var uri = thisURIs[u];
+				
+				var x = resMap[uri];
+				
+				g[uri] = x;
+			}
+			
+		}
+
+		successCB(results);
+		
+	}, function(getError){
+		
+		errorCB("query_error Query succeeded but there was an error when getting graph match results: " + getError);
+		
+	});
+	
 }
 
 

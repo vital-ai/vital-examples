@@ -411,6 +411,27 @@ VitalService.prototype.query = function(vitalQueryString, successCB, errorCB) {
 	this.impl.callMethod('query', [vitalQueryString], successCB, errorCB);
 }
 
+
+/**
+ * Special method for handling graph queries that embeds objects in GraphMatch results.
+ * GRAPH { inlineObjects } value should be set to false to save resources
+ */
+VitalService.prototype.graphQuery = function(vitalGraphQueryString, successCB, errorCB) {
+	
+	var _this = this;
+	
+	this.impl.callMethod('query', [vitalGraphQueryString], function(results){
+		
+		var _resultsGetter = function(urisList, getSuccessCB, getErrorCB) {
+			_this.get(urisList, false, getSuccessCB, getErrorCB);
+		};
+	
+		_this.impl.processGraphQueryResults(results, _resultsGetter, successCB, errorCB);
+		
+	}, errorCB);
+	
+}
+
 /**
  * Queries the vitalservice
  */
