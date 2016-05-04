@@ -218,7 +218,10 @@ $(function(){
 		LOGGED_IN = false;
 		historyStack = [];
 		refreshLoginState();
-		if(router != null) {
+		//if callback is faster than router init
+		if(router == null) {
+			initRouter();
+		} else {
 			router.navigate('');
 		}
 		return false;
@@ -229,7 +232,12 @@ $(function(){
 		LOGGED_IN = false;
 		historyStack = [];
 		refreshLoginState();
-		router.navigate('');
+		//if callback is faster than router init
+		if(router == null) {
+			initRouter();
+		} else {
+			router.navigate('');
+		}
 		return false;		
 	};
 	
