@@ -97,9 +97,8 @@ class VitalServiceGroovyClientExample {
 	
 	def doQuery() {
 		
-		//json serialization fails with query objects
-		String queryString= """
-
+		VitalSelectQuery query = new VitalBuilder().query {
+			
 			SELECT {
 				
 				value segments: ['wordnet']
@@ -108,13 +107,14 @@ class VitalServiceGroovyClientExample {
 				
 				value limit: 10
 				
-				node_constraint { ${NounSynsetNode.class.canonicalName}.class }
-				node_constraint { ${NounSynsetNode.class.canonicalName}.props().name.contains_i("apple") }
+				node_constraint { NounSynsetNode.class }
+				node_constraint { NounSynsetNode.props().name.contains_i("apple") }
 				
 			}
-
-		"""
-		client.query(queryString) { ResponseMessage queryRes ->
+			
+		}.toQuery()
+		
+		client.query(query) { ResponseMessage queryRes ->
 			
 			if(queryRes.exceptionType) {
 				error("Query exception: ${queryRes.exceptionType} - ${queryRes.exceptionMessage}")

@@ -8,6 +8,7 @@
   	<properties>
 		<vertx.version>3.2.1</vertx.version>
     	<vital.version>0.2.303</vital.version>
+    	<exec.mainClass>ai.vital.vertx.app.sample.vitalservice.groovyclient.VitalServiceGroovyClientExample</exec.mainClass>
   	</properties>
 
 	<repositories>
@@ -87,22 +88,93 @@
 					</execution>
 				</executions>
 			</plugin>
-
-
-			<!-- uncomment this if there's at least 1 non-provided dependency -->
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> 
-				<version>2.3</version> <executions> <execution> <phase>package</phase> <goals> 
-				<goal>shade</goal> </goals> <configuration> <shadedArtifactAttached>true</shadedArtifactAttached> 
-				<shadedClassifierName>with-dependencies</shadedClassifierName> <artifactSet> 
-				<excludes> <exclude>junit:*</exclude> </excludes> </artifactSet> <transformers> 
-				<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" 
-				/> </transformers> </configuration> </execution> </executions> </plugin> -->
+			
+			
+		      <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-shade-plugin</artifactId>
+		        <version>2.3</version>
+		        <executions>
+		          <execution>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>shade</goal>
+		            </goals>
+		            <configuration>
+		              <transformers>
+		                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+		                  <manifestEntries>
+		                    <Main-Class>${exec.mainClass}</Main-Class>
+		                  </manifestEntries>
+		                </transformer>
+		                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+		                  <resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>
+		                </transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+		              </transformers>
+		              <artifactSet>
+		              </artifactSet>
+		              <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+		            </configuration>
+		          </execution>
+		        </executions>
+		      </plugin>
+		
+		      <plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>exec-maven-plugin</artifactId>
+		        <version>1.4.0</version>
+		        <executions>
+		          <execution>
+		            <!-- run the application using the fat jar -->
+		            <id>run-app</id>
+		            <goals>
+		              <goal>exec</goal>
+		            </goals>
+		            <configuration>
+		              <executable>java</executable>
+		              <arguments>
+		                <argument>-jar</argument>
+		                <argument>target/${project.artifactId}-${project.version}-fat.jar</argument>
+		              </arguments>
+		            </configuration>
+		          </execution>
+		        </executions>
+		      </plugin>
+		
+		<plugin>
+		    <groupId>org.codehaus.mojo</groupId>
+		    <artifactId>build-helper-maven-plugin</artifactId>
+		    <version>1.5</version>
+		    <executions>
+		      <execution>
+		        <id>add-source</id>
+		        <phase>generate-sources</phase>
+		        <goals>
+		          <goal>add-source</goal>
+		        </goals>
+		        <configuration>
+		          <sources>
+		            <source>src/main/groovy</source>
+		          </sources>
+		        </configuration>
+		      </execution>
+		      <execution>
+		        <id>add-test-source</id>
+		        <phase>generate-test-sources</phase>
+		        <goals>
+		          <goal>add-test-source</goal>
+		        </goals>
+		        <configuration>
+		          <sources>
+		            <source>src/test/groovy</source>
+		          </sources>
+		        </configuration>
+		      </execution>
+		    </executions>
+		  </plugin>
 
 		</plugins>
-
-
-
-
 
 	</build>
 
