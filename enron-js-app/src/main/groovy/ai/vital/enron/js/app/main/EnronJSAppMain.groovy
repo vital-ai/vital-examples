@@ -10,6 +10,8 @@ import ai.vital.auth.vertx3.VitalAuthManager
 import ai.vital.enron.js.app.EnronAppVerticle;
 import ai.vital.enron.js.app.StatusHandler
 import ai.vital.service.vertx3.VitalServiceVertx3
+import ai.vital.vitalsigns.VitalSigns;
+import ai.vital.vitalsigns.model.DomainModel
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
@@ -68,6 +70,20 @@ class EnronJSAppMain {
 	
 	def startVitalService() {
 		
+		println "VitalSigns init"
+		
+		boolean nlpModelFound = false
+		boolean enronModelFound = false
+		for(DomainModel dm : VitalSigns.get().getDomainModels() ) {
+			if(dm.URI == 'http://vital.ai/ontology/vital-nlp') {
+				nlpModelFound = true
+			} else if(dm.URI == 'http://vital.ai/ontology/enron-dataset') {
+				enronModelFound = true
+			}
+		}
+		
+		if(!nlpModelFound) { throw new RuntimeException("NLP domain model not found") }
+		if(!enronModelFound) { throw new RuntimeException("enron domain model not found")}
 		
 		vertx.deployVerticle("groovy:" + VitalServiceVertx3.class.canonicalName, 
 			[

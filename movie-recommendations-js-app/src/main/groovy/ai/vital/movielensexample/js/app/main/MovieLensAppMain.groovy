@@ -10,6 +10,8 @@ import ai.vital.auth.vertx3.VitalAuthManager
 import ai.vital.movielensexample.js.app.MovieLensAppVerticle;
 import ai.vital.movielensexample.js.app.StatusHandler
 import ai.vital.service.vertx3.VitalServiceVertx3
+import ai.vital.vitalsigns.VitalSigns;
+import ai.vital.vitalsigns.model.DomainModel
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
@@ -68,6 +70,20 @@ class MovieLensAppMain {
 	
 	def startVitalService() {
 		
+		println "VitalSigns init"
+		
+		boolean nlpModelFound = false
+		boolean movielensModelFound = false
+		for(DomainModel dm : VitalSigns.get().getDomainModels() ) {
+			if(dm.URI == 'http://vital.ai/ontology/vital-nlp') {
+				nlpModelFound = true
+			} else if(dm.URI == 'http://vital.ai/ontology/movielens') {
+				movielensModelFound = true
+			}
+		}
+		
+		if(!nlpModelFound) { throw new RuntimeException("NLP domain model not found") }
+		if(!movielensModelFound) { throw new RuntimeException("movielens domain model not found")}
 		
 		vertx.deployVerticle("groovy:" + VitalServiceVertx3.class.canonicalName, 
 			[

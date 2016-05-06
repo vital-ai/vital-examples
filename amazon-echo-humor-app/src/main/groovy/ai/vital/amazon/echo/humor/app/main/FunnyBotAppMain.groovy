@@ -10,6 +10,8 @@ import ai.vital.amazon.echo.humor.app.webservice.RequestHandler
 import ai.vital.amazon.echo.humor.app.webservice.StatusHandler
 import ai.vital.service.vertx3.VitalServiceVertx3
 import ai.vital.service.vertx3.async.VitalServiceAsyncClient
+import ai.vital.vitalsigns.VitalSigns;
+import ai.vital.vitalsigns.model.DomainModel
 import ai.vital.vitalsigns.model.VitalApp
 
 import com.typesafe.config.Config
@@ -66,6 +68,20 @@ class FunnyBotAppMain {
 	
 	def startVitalService() {
 		
+		println "VitalSigns init"
+		
+		boolean nlpModelFound = false
+		boolean humorAppModelFound = false
+		for(DomainModel dm : VitalSigns.get().getDomainModels() ) {
+			if(dm.URI == 'http://vital.ai/ontology/vital-nlp') {
+				nlpModelFound = true
+			} else if(dm.URI == 'http://vital.ai/ontology/humor-app') {
+				humorAppModelFound = true
+			}
+		}
+		
+		if(!nlpModelFound) { throw new RuntimeException("NLP domain model not found") }
+		if(!humorAppModelFound) { throw new RuntimeException("humor-app domain model not found")}
 		
 		vertx.deployVerticle("groovy:" + VitalServiceVertx3.class.canonicalName, 
 			[

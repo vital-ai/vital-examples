@@ -10,6 +10,8 @@ import ai.vital.alchemyapi.app.webservice.AlchemyAPIAppVerticle
 import ai.vital.alchemyapi.app.webservice.StatusHandler
 import ai.vital.auth.vertx3.VitalAuthManager;
 import ai.vital.service.vertx3.VitalServiceVertx3
+import ai.vital.vitalsigns.VitalSigns
+import ai.vital.vitalsigns.model.DomainModel;
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
@@ -67,6 +69,17 @@ class AlchemyAPIAppMain {
 	}
 	
 	def startVitalService() {
+		
+		println "VitalSigns init"
+		
+		boolean nlpModelFound = false;
+		for(DomainModel model : VitalSigns.get().getDomainModels() ) {
+			if(model.URI == 'http://vital.ai/ontology/vital-nlp') {
+				nlpModelFound = true
+			}
+		}
+		
+		if(!nlpModelFound) { throw new RuntimeException("NLP domain model not found") }
 		
 		
 		vertx.deployVerticle("groovy:" + VitalServiceVertx3.class.canonicalName, 
