@@ -30,7 +30,7 @@
 
 
 	<build>
-
+		<directory>${project.basedir}/target-dynamic</directory>
 
     <!--
     You only need the part below if you want to build your application into a fat executable jar.
@@ -153,16 +153,24 @@
 	<!-- single app jar dependencies -->
 	<dependencies>
 
+		<!-- this is provided -->
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vital-vertx3</artifactId>
 			<version>${vital.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vital-auth-vertx3</artifactId>
 			<version>${vital.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>vital-ai</groupId>
+					<artifactId>vitalservice-vertx3</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
 		<dependency>
@@ -171,12 +179,14 @@
       		<version>${vertx.version}</version>
     	</dependency>
 		
-		<!-- domain referenced statically -->
+		<!-- domain referenced here won't be included in output jar -->
 		<dependency>
 			<groupId>vitalai-com</groupId>
 			<artifactId>vital-wordnet</artifactId>
 			<version>${vital.version}</version>
+			<scope>provided</scope>
 		</dependency>
+
 
 		<!-- tests -->
 		<dependency>

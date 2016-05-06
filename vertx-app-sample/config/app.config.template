@@ -1,3 +1,48 @@
+#config for static app setup
+name: "vertx-app-sample"
+
+syncDomains: false
+
+#required when syncDomains: true
+syncDomainsIntervalSeconds:  3600
+
+#required when syncDomains: true
+mergedJsonSchemaFileLocation: "merged.js"
+
+
+
+verticles: [
+
+  {
+    name: "groovy:ai.vital.service.vertx3.VitalServiceVertx3"
+    worker: true
+    reloadable: false
+	#if not set the number of cpus
+    #instances: 1
+  },
+  
+  {
+    name: "groovy:ai.vital.auth.vertx3.VitalAuthManager"
+    worker: false
+    reloadable: false
+  },
+
+  {
+    name: "groovy:ai.vital.vertx.app.sample.VertxAppSampleVerticle"
+    worker: false
+    reloadable: true
+  },
+  
+  {
+    name: "groovy:ai.vital.vertx.app.sample.VertxAppHttpServerVerticle"
+    worker: false
+    reloadable: true
+  }
+
+]
+
+
+
 vitalservice {
 
   services: [{
