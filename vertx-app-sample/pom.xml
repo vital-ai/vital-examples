@@ -153,6 +153,7 @@
 	<!-- single app jar dependencies -->
 	<dependencies>
 
+		<!-- 
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vital-vertx3</artifactId>
@@ -162,6 +163,19 @@
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vital-auth-vertx3</artifactId>
+			<version>${vital.version}</version>
+		</dependency>
+		-->
+		
+		<dependency>
+			<groupId>vital-ai</groupId>
+			<artifactId>vital-vertx3</artifactId>
+			<version>${vital.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>vital-ai</groupId>
+			<artifactId>vitaladmin-auth-vertx3</artifactId>
 			<version>${vital.version}</version>
 		</dependency>
 		

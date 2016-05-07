@@ -22,6 +22,12 @@ verticles: [
   },
   
   {
+    name: "groovy:ai.vital.service.admin.vertx3.VitalServiceAdminVertx3"
+    worker: true
+    reloadable: false
+  },
+  
+  {
     name: "groovy:ai.vital.auth.vertx3.VitalAuthManager"
     worker: false
     reloadable: false
@@ -53,6 +59,14 @@ vitalservice {
     
   }]
 
+}
+
+vitalserviceadmin {
+
+  profile: prime
+  
+  key: admi-admi-admi
+  
 }
 
 vitalauth {
@@ -99,6 +113,48 @@ vitalauth {
       
     }
     
+    
+    
+    apps-admin : {
+
+      auth_enabled: true,
+
+      access: admin
+
+      adminLoginsSegment: apps-admin
+
+      sessionsSegment: apps-admin
+
+      persistentSessions: true
+
+      maxSessionsPerUser: 3
+
+      #1 day
+      expirationProlongMargin: 86400000
+
+      #30 days
+      session_timeout:  2592000000
+
+      mockedLogin: false
+
+      filter: [
+        {
+          type: allow
+          method: "getApp"
+        },
+        {
+          type: allow
+          method: callFunction
+          function: "vitalauth\\..*"
+        },
+        {
+          #everything else if protected
+          type: auth
+          method: ".*"
+
+        }
+      ]
+    }
   }
 
 }
@@ -114,3 +170,5 @@ webserver {
 
 
 app: vertx-app-sample
+
+adminEndpointEnabled: true

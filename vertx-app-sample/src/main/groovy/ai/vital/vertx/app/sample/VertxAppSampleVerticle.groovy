@@ -72,7 +72,8 @@ class VertxAppSampleVerticle extends GroovyVerticle {
 			//make sure the wordnet segment is there
 			VitalSegment wordnetSegment = service.getSegment('wordnet')
 			if(wordnetSegment == null) {
-				throw new RuntimeException("'wordnet' segment not found in app: ${app}")
+				startedResult.fail("'wordnet' segment not found in app: ${app}")
+				return
 			}
 			
 			startedResult.complete(true)
