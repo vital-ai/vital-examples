@@ -26,7 +26,7 @@ var evenbusPrefix = '';
 //var EVENTBUS_URL = null;
 
 
-var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/vertx-app-sample/eventbus';
+var EVENTBUS_URL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/vertx-admin-app-sample/eventbus';
 
 var LOGGED_IN = false;
 
