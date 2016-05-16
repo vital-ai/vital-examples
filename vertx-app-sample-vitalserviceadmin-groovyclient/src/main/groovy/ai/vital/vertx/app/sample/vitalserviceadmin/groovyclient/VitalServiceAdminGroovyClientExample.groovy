@@ -45,7 +45,7 @@ class VitalServiceAdminGroovyClientExample {
 		this.username = username
 		this.password = password
 		
-		String endpointURL = "https://demos.vital.ai/vertx-app-sample/eventbus/websocket/"
+		String endpointURL = "https://demos.vital.ai/vertx-admin-app-sample/eventbus/websocket/"
 		adminAppID = 'apps-admin'
 		vertxAppSampleAppID = 'vertx-app-sample'
 		
