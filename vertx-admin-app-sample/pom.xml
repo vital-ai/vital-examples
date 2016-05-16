@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>vital-examples</groupId>
-	<artifactId>vertx-app-sample</artifactId>
+	<artifactId>vertx-admin-app-sample</artifactId>
 	<version>0.0.1</version>
 
   	<properties>
@@ -153,6 +153,7 @@
 	<!-- single app jar dependencies -->
 	<dependencies>
 
+		<!-- 
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vital-vertx3</artifactId>
@@ -162,6 +163,19 @@
 		<dependency>
 			<groupId>vital-ai</groupId>
 			<artifactId>vital-auth-vertx3</artifactId>
+			<version>${vital.version}</version>
+		</dependency>
+		-->
+		
+		<dependency>
+			<groupId>vital-ai</groupId>
+			<artifactId>vital-vertx3</artifactId>
+			<version>${vital.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>vital-ai</groupId>
+			<artifactId>vitaladmin-auth-vertx3</artifactId>
 			<version>${vital.version}</version>
 		</dependency>
 		

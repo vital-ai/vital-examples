@@ -1,5 +1,5 @@
 #config for static app setup
-name: "vertx-app-sample"
+name: "vertx-admin-app-sample"
 
 syncDomains: false
 
@@ -14,68 +14,70 @@ mergedJsonSchemaFileLocation: "merged.js"
 verticles: [
 
   {
-    name: "groovy:ai.vital.service.vertx3.VitalServiceVertx3"
+    name: "groovy:ai.vital.service.admin.vertx3.VitalServiceAdminVertx3"
     worker: true
     reloadable: false
-	#if not set the number of cpus
-    #instances: 1
   },
   
   {
-    name: "groovy:ai.vital.auth.vertx3.VitalAuthManager"
+    name: "groovy:ai.vital.adminauth.vertx3.VitalAdminAuthManager"
     worker: false
     reloadable: false
   },
 
   {
-    name: "groovy:ai.vital.vertx.app.sample.VertxAppSampleVerticle"
+    name: "groovy:ai.vital.vertx.adminapp.sample.VertxAdminAppSampleVerticle"
     worker: false
     reloadable: true
   },
   
   {
-    name: "groovy:ai.vital.vertx.app.sample.VertxAppHttpServerVerticle"
+    name: "groovy:ai.vital.vertx.adminapp.sample.VertxAdminAppHttpServerVerticle"
     worker: false
     reloadable: true
   }
 
 ]
 
+vitalserviceadmin {
 
-
-vitalservice {
-
-  services: [{
+  profile: prime
   
-    profile: prime
-    
-    key: serv-serv-serv
-    
-  }]
-
+  key: admi-admi-admi
+  
 }
 
 vitalauth {
 
   apps: {
   
-    vertx-app-sample: {
+    apps-admin : {
+    
+      auth_enabled: true,
+    
+      access: admin
+    
+      adminLoginsSegment: apps-admin
+      
+      sessionsSegment: apps-admin
+      
+      persistentSessions: true
+      
+      maxSessionsPerUser: 3
+      
+      #1 day
+      expirationProlongMargin: 86400000
+      
+      #1 year
+      session_timeout: 31536000000
 
-      access: service
-
-      #this is only for allow/deny rules
-      auth_enabled: true
-      
-      mockedLogin: true
-      
-      persistentSessions: false
-      
-      expirationProlongMargin: 60000
-      
 
       filter: [
         {
-          #AUTH functions need to be available
+          type: allow
+          method: "getApp"
+        },
+        {
           type: allow
           method: callFunction
           function: "vitalauth\\..*"
@@ -91,12 +93,12 @@ vitalauth {
           method: query
         },
         {
-          #no other serviceapi methods allowed
+          #everything else if forbidden in this app
           type: deny
-          method: ".*" 
+          method: ".*"
+
         }
       ]
-      
     }
     
   }

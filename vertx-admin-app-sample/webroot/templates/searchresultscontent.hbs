@@ -1,0 +1,84 @@
+{{#if lastHistoryURL}}
+<div>
+  <a href="{{lastHistoryURL}}" class="btn btn-primary history-back-button">Back</a>
+</div>
+{{/if}}
+
+<h4>{{label}}</h4>
+{{#if q}}<div>Query: <strong>{{q}}</strong></div>{{/if}}
+{{#if total}}<div>Total results: {{total}}</div>{{/if}}
+
+{{{objectDetails}}}
+
+<div>Displaying: {{firstIndex}} - {{lastIndex}}</div>
+
+<br/>
+
+
+<table class="table table-hover table-striped hidden-xs">
+	<thead>
+		<tr>
+			<th>Index</th>
+			<th>Name</th>
+			<th>Score</th>
+			<th>URI</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#unless results}}
+			<tr><td colspan="4"><p>(no results to display)</p></td></tr>
+		{{/unless}}
+		{{#each results}}
+		<tr>
+			<td>{{index}}</td>
+			<td>{{name}}</td>
+			<td>{{score}}</td>
+			<td>
+				<a href="/details/{{encodedURI}}" data-navigo>{{URI}}</a>
+			</td>
+		</tr>
+		{{/each}}
+	</tbody>
+	<tfoot>
+	
+		<tr><td colspan="4" style="text-align: center;">
+		
+		 	{{{firstLink}}} &nbsp; {{{prevLink}}} &nbsp;&nbsp;&nbsp; {{{nextLink}}} &nbsp; {{{lastLink}}}
+		
+		</td></tr>
+	
+	</tfoot>
+</table>
+
+
+{{#each results}}
+   <table class="table table-striped hidden-sm hidden-md hidden-lg">
+		<tr>
+     		<td style="width: 40%;">Index</td>
+     		<td>{{index}}</td>
+     	</tr>
+     	<tr>
+			<td>Name</td>
+			<td>{{name}}</td>
+		</tr>
+		<tr>
+			<td>Score</td>
+			<td>{{score}}</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align: center;"><a href="/details/{{encodedURI}}" data-navigo>{{URI}}</a></td>
+     	</tr>
+   </table>
+   
+   <br />
+   
+   
+{{/each}}
+
+<div class="hidden-sm hidden-md hidden-lg" style="text-align: center; margin-bottom: 20px;">
+   <span>{{{firstLink}}}</span> 
+   <span style="margin-left: 40px; margin-right: 40px;">{{{prevLink}}}</span>
+   <span style="margin-left: 40px; margin-right: 40px;">{{{nextLink}}}</span>
+   <span>{{{lastLink}}}</span>
+</div>   
+

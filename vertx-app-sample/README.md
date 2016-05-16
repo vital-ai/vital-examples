@@ -5,4 +5,4 @@ An example vertx app built with vitalservice-vertx3 and vital-auth-vertx3 with g
 
 Requirements:
 
-* a vitalservice endpoint with app (appID: app) and 1 segment: wordnet
+* a vitalservice endpoint with app (appID: vertx-app-sample) and 1 segment: wordnet

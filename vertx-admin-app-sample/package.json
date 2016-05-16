@@ -1,0 +1,19 @@
+{
+  "name": "vertx-admin-app-sample",
+  "version": "0.0.1",
+  "devDependencies": {
+    "connect-modrewrite": "^0.9.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-connect": "^1.0.1",
+    "grunt-contrib-handlebars": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "^1.0.1",
+    "uglify": "^0.1.5"
+  },
+  "dependencies": {
+    "connect-modrewrite": "^0.9.0",
+    "handlebars": "^4.0.5"
+  }
+}

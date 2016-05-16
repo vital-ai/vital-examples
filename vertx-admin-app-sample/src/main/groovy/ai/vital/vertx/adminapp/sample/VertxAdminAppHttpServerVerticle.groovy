@@ -1,4 +1,4 @@
-package ai.vital.vertx.app.sample
+package ai.vital.vertx.adminapp.sample
 
 import groovy.lang.MetaClass
 import io.vertx.core.AsyncResult
@@ -11,7 +11,7 @@ import io.vertx.groovy.ext.web.handler.sockjs.SockJSHandler
 import io.vertx.lang.groovy.GroovyVerticle;
 import java.util.Map.Entry
 
-class VertxAppHttpServerVerticle extends GroovyVerticle {
+class VertxAdminAppHttpServerVerticle extends GroovyVerticle {
 
 	@Override
 	public void start(Future<Void> startFuture) throws Exception {
@@ -42,12 +42,37 @@ class VertxAppHttpServerVerticle extends GroovyVerticle {
 		//		outboundPermitted : List<PermittedOptions>
 				
 		def inboundPermitted1 = [
-			address: ai.vital.auth.vertx3.VitalJSEndpointsManager.ENDPOINT_PREFIX + VertxAppSampleVerticle.appID
+			//address: ai.vital.auth.vertx3.VitalJSEndpointsManager.ENDPOINT_PREFIX + VertxAdminAppSampleVerticle.appID
 		]
 		
 		def inboundPermitteds = [
-			inboundPermitted1
+//			inboundPermitted1
 		]
+		
+		//find the admin app id in vitalauth config
+		Map vitalauthApps = ((Map)context.config().get('vitalauth')).get('apps')
+			
+		String adminAppID = null
+			
+		for(Entry<String, Map> e : vitalauthApps.entrySet()) {
+				
+			Map v = e.getValue()
+			if(v.get('access') == 'admin') {
+				adminAppID = e.getKey()
+				break
+			}
+				
+		}
+			
+		if(!adminAppID) {
+			startFuture.fail("Admin app ID not found in vitalauth config")
+			return
+		}
+			
+		//vitalserviceadmin endpoint
+		inboundPermitteds.add([
+			address: ai.vital.auth.vertx3.VitalJSEndpointsManager.ENDPOINT_PREFIX + adminAppID
+		])
 		
 		def outboundPermitted1 = [
 			//addressRegex:"stream\\..+"

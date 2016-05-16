@@ -1,0 +1,21 @@
+
+
+{{#if lastHistoryURL}}
+<div>
+  <a href="{{lastHistoryURL}}" class="btn btn-primary history-back-button">Back</a>
+</div>
+{{/if}}
+<h3>Details of <strong>{{name}}</strong></h3>
+
+<table class="table table-striped table-hover">
+{{#each props}}
+	<tbody>
+	<tr>
+	<td>{{label}}{{#if URI}}<span title="{{URI}}"> [?]</span>{{/if}}</td>
+	<td>{{value}}</td>
+ 	</tr>
+	</tbody>
+{{/each}}
+</table>
+
+<a href="/relatedwords/{{encodedURI}}" class="btn btn-success" data-navigo>Related Words</a>
