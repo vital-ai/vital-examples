@@ -1,0 +1,57 @@
+vitalservice {
+
+  services: [{
+  
+    profile: prime
+    
+    key: serv-serv-serv
+    
+  }]
+
+}
+
+vitalauth {
+
+  apps: {
+  
+    clarifai-app: {
+
+      access: service
+
+      #this is only for allow/deny rules
+      auth_enabled: false
+
+      filter: [
+        { 
+          type: allow
+          method: "callFunction"
+          function: "Clarifai_ProcessImage"
+        },
+        {
+          type: allow
+          method: "callFunction"
+          function: "commons/scripts/Aspen_Usage"
+        },
+        {
+          type: deny
+          method: ".*" 
+        }
+      ]
+      
+    }
+    
+  }
+
+}
+
+
+webserver {
+
+  host: 0.0.0.0
+  
+  port: 90
+
+}
+
+
+app: clarifai-app

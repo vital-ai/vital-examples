@@ -1,0 +1,184 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>vital-examples</groupId>
+	<artifactId>clarifai-app</artifactId>
+	<version>0.0.1</version>
+
+
+  	<properties>
+    	<!-- the main class -->
+    	<exec.mainClass>ai.vital.clarifai.app.main.ClarifaiAppMain</exec.mainClass>
+    	<vital.version>0.2.303</vital.version>
+    	<vertx.version>3.2.1</vertx.version>
+  	</properties>
+
+	<repositories>
+
+		<repository>
+			<id>vital-public-mvn-repo-releases</id>
+			<name>Vital AI Public Maven Repo Releases</name>
+			<url>https://github.com/vital-ai/vital-public-mvn-repo/raw/releases/</url>
+		</repository>
+
+		<repository>
+			<id>vital-public-mvn-repo-snapshots</id>
+			<name>Vital AI Public Maven Repo Snapshots</name>
+			<url>https://github.com/vital-ai/vital-public-mvn-repo/raw/snapshots/</url>
+		</repository>
+
+	</repositories>
+
+
+	<build>
+
+  <!--
+    You only need the part below if you want to build your application into a fat executable jar.
+    This is a jar that contains all the dependencies required to run it, so you can just run it with
+    java -jar
+    -->
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <manifestEntries>
+                    <Main-Class>${exec.mainClass}</Main-Class>
+                  </manifestEntries>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>
+                </transformer>
+				<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+              </transformers>
+              <artifactSet>
+              </artifactSet>
+              <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <executions>
+          <execution>
+            <!-- run the application using the fat jar -->
+            <id>run-app</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>java</executable>
+              <arguments>
+                <argument>-jar</argument>
+                <argument>target/${project.artifactId}-${project.version}-fat.jar</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>build-helper-maven-plugin</artifactId>
+    <version>1.5</version>
+    <executions>
+      <execution>
+        <id>add-source</id>
+        <phase>generate-sources</phase>
+        <goals>
+          <goal>add-source</goal>
+        </goals>
+        <configuration>
+          <sources>
+            <source>src/main/groovy</source>
+          </sources>
+        </configuration>
+      </execution>
+      <execution>
+        <id>add-test-source</id>
+        <phase>generate-test-sources</phase>
+        <goals>
+          <goal>add-test-source</goal>
+        </goals>
+        <configuration>
+          <sources>
+            <source>src/test/groovy</source>
+          </sources>
+        </configuration>
+      </execution>
+    </executions>
+  </plugin>
+
+
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <!-- 2.8.0-01 and later require maven-compiler-plugin 3.1 or higher -->
+        <version>3.1</version>
+        <configuration>
+          <compilerId>groovy-eclipse-compiler</compilerId>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-eclipse-compiler</artifactId>
+            <version>2.9.1-01</version>
+          </dependency>
+          <!-- for 2.8.0-01 and later you must have an explicit dependency on groovy-eclipse-batch -->
+          <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-eclipse-batch</artifactId>
+            <version>2.3.7-01</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      
+    </plugins>
+    
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>vital-ai</groupId>
+			<artifactId>vital-auth-vertx3</artifactId>
+			<version>0.2.303</version>
+		</dependency>
+		
+		<dependency>
+      		<groupId>io.vertx</groupId>
+      		<artifactId>vertx-web</artifactId>
+      		<version>${vertx.version}</version>
+    	</dependency>
+		
+		<dependency>
+			<groupId>vitalai-com</groupId>
+			<artifactId>vital-nlp</artifactId>
+			<version>${vital.version}</version>
+		</dependency>
+		
+
+		<!-- tests -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+</project>
