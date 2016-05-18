@@ -12,7 +12,7 @@ if (!System.getenv('VITAL_HOME') ) {
 }
 
 if (!System.getenv('GROOVY_DIST') ) {
-	System.err.println("No GROOVYHOME environment variable set!");
+	System.err.println("No GROOVY_DIST environment variable set!");
 	return
 }
 
