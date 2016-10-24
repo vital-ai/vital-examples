@@ -123,7 +123,7 @@
     <dependency>
 	  <groupId>vital-ai</groupId>
 	  <artifactId>whiskies</artifactId>
-	  <version>1.0.0</version>
+	  <version>1.0.1</version>
     </dependency>
   
   <!-- local project dependencies -->
