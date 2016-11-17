@@ -27,7 +27,7 @@ class StatusHandler implements Handler<RoutingContext> {
 		//test the movie recommendations model!
 		
 		try {
-			ResultList rl = new MovieLensGetRatedMoviesHandler().callFunction(null, null, MovieLensGetRecommendedMoviesHandler.movielens_get_recommended_movies, 
+			ResultList rl = new MovieLensGetRecommendedMoviesHandler().callFunction(null, null, MovieLensGetRecommendedMoviesHandler.movielens_get_recommended_movies, 
 				[userURI: MovieLensGetUserHandler.USER_NS + '1', limit: 10], [:])
 			if(rl.status.status != VitalStatus.Status.ok) {
 				throw new Exception("Recommendations Datascript error: " + rl.status.message)
