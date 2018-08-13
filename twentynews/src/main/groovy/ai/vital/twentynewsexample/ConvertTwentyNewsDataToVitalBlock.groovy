@@ -11,27 +11,38 @@ package ai.vital.twentynewsexample
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
-import org.apache.commons.compress.archivers.ArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.example.twentynews.domain.Message;
-import org.example.twentynews.domain.ontology.Ontology;
+import org.apache.commons.compress.archivers.ArchiveEntry
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream
+import org.apache.lucene.analysis.TokenFilter
+import org.apache.lucene.analysis.TokenStream
+import org.apache.lucene.analysis.Tokenizer
+import org.apache.lucene.analysis.core.StopAnalyzer
+import org.apache.lucene.analysis.core.WhitespaceTokenizer
+import org.apache.lucene.analysis.en.PorterStemFilter
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
+import org.apache.lucene.util.Version
+import org.example.twentynews.domain.Message
+import org.example.twentynews.domain.ontology.Ontology
+
+import ai.vital.query.querybuilder.VitalBuilder
+import ai.vital.vitalservice.VitalStatus
+import ai.vital.vitalservice.query.VitalPathQuery
+import ai.vital.vitalsigns.VitalSigns
+import ai.vital.vitalsigns.block.BlockCompactStringSerializer
+import ai.vital.vitalsigns.model.Edge_hasChildCategory
+import ai.vital.vitalsigns.model.GraphObject
+import ai.vital.vitalsigns.model.VITAL_Category
+import ai.vital.vitalsigns.model.VitalApp
+import ai.vital.vitalsigns.model.property.URIProperty
 
 import com.vitalai.domain.nlp.Edge_hasCategory
-import ai.vital.query.querybuilder.VitalBuilder
-import ai.vital.vitalservice.VitalStatus;
-import ai.vital.vitalsigns.model.VitalApp
-import ai.vital.vitalservice.query.VitalPathQuery
-import ai.vital.vitalsigns.VitalSigns;
-import ai.vital.vitalsigns.block.BlockCompactStringSerializer;
-import ai.vital.vitalsigns.model.Edge_hasChildCategory;
-import ai.vital.vitalsigns.model.GraphObject;
-import ai.vital.vitalsigns.model.VITAL_Category
-import ai.vital.vitalsigns.model.property.URIProperty;
 
 
 
 class ConvertTwentyNewsDataToVitalBlock {
 
+	static PorterStemFilter porterStemmer
+	
 	static main(args) {
 
 		if(args.length < 2 || args.length > 3) {
@@ -177,6 +188,7 @@ class ConvertTwentyNewsDataToVitalBlock {
 			doc.name = "twentynews-${id}"
 			doc.subject = subject
 			doc.body = body
+			doc.analyzedBody = analyzeText(body)
 			
 			String categoryURI = Ontology.NS + newsgroup
 			
@@ -238,5 +250,64 @@ class ConvertTwentyNewsDataToVitalBlock {
 		
 		return vpq
 		
+	}
+	
+	/**
+	 * Returns an analyzed version of the input string - stemmed and stopwords replaced.
+	 * @param text
+	 * @return
+	 */
+	static String analyzeText(String text) {
+		
+		StringReader reader = new StringReader(text)
+		
+		Tokenizer source = new WhitespaceTokenizer(Version.LUCENE_47, reader)
+		
+		TokenStream result = new StopwordFilter(source, StopAnalyzer.ENGLISH_STOP_WORDS_SET)
+		
+		result = new PorterStemFilter(result)
+		
+		result.reset()
+		
+		List<String> output = [] 
+		
+		while(result.incrementToken()) {
+			
+			def x = result.getAttribute(CharTermAttribute.class)
+			output.add(x.toString())
+			
+		}
+		
+		return output.join(" ")
+		
+	}
+	
+	static class StopwordFilter extends TokenFilter {
+		
+		private final CharTermAttribute termAtt = addAttribute(CharTermAttribute.class);
+
+		public final static String STOPWORD_PLACEHOLDER = "_STOP_"
+		
+		Set<String> keywords
+		
+		public StopwordFilter(TokenStream inp, Set<String> keywords) {
+		  super(inp);
+		  this.keywords = keywords
+		}
+	  
+		@Override
+		public final boolean incrementToken() throws IOException {
+		  if (!input.incrementToken()) {
+			return false;
+		  }
+		  
+		  String s = termAtt.toString()
+		  
+		  if(keywords.contains(s.toLowerCase())) {
+			  termAtt.copyBuffer(STOPWORD_PLACEHOLDER.toCharArray(), 0, STOPWORD_PLACEHOLDER.length())
+		  }
+		  
+		  return true
+		}
 	}
 }
