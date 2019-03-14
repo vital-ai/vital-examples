@@ -3,7 +3,7 @@ package ai.vital.amazon.echo.humor.app.webservice
 import groovy.json.JsonOutput
 import io.vertx.core.Handler
 import io.vertx.groovy.core.http.HttpServerRequest
-import io.vertx.groovy.ext.web.RoutingContext
+import io.vertx.ext.web.RoutingContext
 
 class StatusHandler implements Handler<RoutingContext> {
 

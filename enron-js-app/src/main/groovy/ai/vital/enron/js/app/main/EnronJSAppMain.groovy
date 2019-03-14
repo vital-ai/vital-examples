@@ -3,9 +3,9 @@ package ai.vital.enron.js.app.main
 import io.vertx.core.AsyncResult
 import io.vertx.groovy.core.Vertx
 import io.vertx.groovy.core.http.HttpServer
-import io.vertx.groovy.ext.web.Router;
-import io.vertx.groovy.ext.web.handler.StaticHandler
-import io.vertx.groovy.ext.web.handler.sockjs.SockJSHandler
+import io.vertx.ext.web.Router;
+import io.vertx.ext.web.handler.StaticHandler
+import io.vertx.ext.web.handler.sockjs.SockJSHandler
 import ai.vital.auth.vertx3.VitalAuthManager
 import ai.vital.enron.js.app.EnronAppVerticle;
 import ai.vital.enron.js.app.StatusHandler

@@ -4,10 +4,10 @@ import groovy.lang.MetaClass
 import io.vertx.core.AsyncResult
 import io.vertx.core.Future
 import io.vertx.groovy.core.http.HttpServer
-import io.vertx.groovy.ext.web.Router;
-import io.vertx.groovy.ext.web.RoutingContext
-import io.vertx.groovy.ext.web.handler.StaticHandler
-import io.vertx.groovy.ext.web.handler.sockjs.SockJSHandler
+import io.vertx.ext.web.Router;
+import io.vertx.ext.web.RoutingContext
+import io.vertx.ext.web.handler.StaticHandler
+import io.vertx.ext.web.handler.sockjs.SockJSHandler
 import io.vertx.lang.groovy.GroovyVerticle;
 import java.util.Map.Entry
 

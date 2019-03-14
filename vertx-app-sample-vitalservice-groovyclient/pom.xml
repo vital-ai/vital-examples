@@ -6,7 +6,6 @@
 	<version>0.0.1</version>
 
   	<properties>
-		<vertx.version>3.2.1</vertx.version>
     	<vital.version>0.2.303</vital.version>
     	<exec.mainClass>ai.vital.vertx.app.sample.vitalservice.groovyclient.VitalServiceGroovyClientExample</exec.mainClass>
   	</properties>

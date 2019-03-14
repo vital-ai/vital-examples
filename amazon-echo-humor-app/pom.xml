@@ -9,7 +9,7 @@
     	<!-- the main class -->
     	<exec.mainClass>ai.vital.amazon.echo.humor.app.main.FunnyBotAppMain</exec.mainClass>
     	<vital.version>0.2.303</vital.version>
-    	<vertx.version>3.2.1</vertx.version>
+    	<vertx.version>3.6.3</vertx.version>
 	</properties>
 
 	<repositories>

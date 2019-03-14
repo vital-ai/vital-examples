@@ -9,7 +9,7 @@
     	<!-- the main class from vital-vertx3 -->
     	<exec.mainClass>ai.vital.vertx3.VitalVertx3Main</exec.mainClass>
     	<vital.version>0.2.303</vital.version>
-    	<vertx.version>3.2.1</vertx.version>
+    	<vertx.version>3.6.3</vertx.version>
   	</properties>
 
 	<repositories>

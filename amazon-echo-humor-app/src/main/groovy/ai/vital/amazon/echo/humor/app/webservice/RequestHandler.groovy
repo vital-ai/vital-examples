@@ -7,7 +7,7 @@ import io.vertx.core.http.HttpMethod;
 import io.vertx.groovy.core.buffer.Buffer
 import io.vertx.groovy.core.http.HttpServerRequest
 import io.vertx.groovy.core.http.HttpServerResponse
-import io.vertx.groovy.ext.web.RoutingContext;
+import io.vertx.ext.web.RoutingContext;
 
 import java.util.Map.Entry
 

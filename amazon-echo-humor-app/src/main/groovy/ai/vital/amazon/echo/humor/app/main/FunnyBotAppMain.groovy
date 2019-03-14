@@ -3,8 +3,8 @@ package ai.vital.amazon.echo.humor.app.main
 import io.vertx.core.AsyncResult
 import io.vertx.groovy.core.Vertx
 import io.vertx.groovy.core.http.HttpServer
-import io.vertx.groovy.ext.web.Router
-import io.vertx.groovy.ext.web.RoutingContext;
+import io.vertx.ext.web.Router
+import io.vertx.ext.web.RoutingContext;
 import ai.vital.amazon.echo.humor.app.webservice.FunnybotWebserviceAppVerticle
 import ai.vital.amazon.echo.humor.app.webservice.RequestHandler
 import ai.vital.amazon.echo.humor.app.webservice.StatusHandler
