@@ -2,13 +2,12 @@ package ai.vital.samples
 
 import ai.vital.vitalsigns.model.property.URIProperty
 import ai.vital.vitalsigns.model.VitalApp;
-
 import vitalai.samples.domain.*
-
 import ai.vital.vitalsigns.VitalSigns
 import ai.vital.vitalsigns.model.*
-
 import vitalai.samples.domain.ontology.Ontology
+import ai.vital.vitalsigns.model.xsd
+
 
 class SampleManagedOntology {
 
