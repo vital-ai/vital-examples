@@ -51,8 +51,10 @@ class SampleWordnetImport {
 		
 		BlockIterator iterator = null
 		
-		VitalApp defaultApp = new VitalApp(name:'app')
+		VitalApp defaultApp = new VitalApp(name:'haley-saas')
+		
 		boolean appexists = false
+		
 		for(VitalApp app : service.listApps()) {
 			if(app.name == defaultApp.name) {
 				appexists = true
@@ -61,26 +63,45 @@ class SampleWordnetImport {
 		}
 		
 		if(!appexists) {
-			println "Default app does not exist - adding..."
-			service.addApp(defaultApp)
-		} else {
-			println "Default app already exists"
+			
+			println "Haley App does not exist, exiting..."
+			
+			System.exit(0)
+			
 		}
 		
-		VitalSegment existing = null
+		// if(!appexists) {
+		// 	println "Default app does not exist - adding..."
+		// 	service.addApp(defaultApp)
+		// } else {
+		// 	println "Default app already exists"
+		// }
+		
+		VitalSegment wordnetSegment = null
+		
 		for(VitalSegment segment : service.listSegments(defaultApp)) {
 			if(segment.name == 'wordnet') {
-				existing = segment
+				wordnetSegment = segment
 				break
 			}
 		}
 		
-		if(existing != null) {
-			println "Existing wordnet segment found - removing..."
-			service.removeSegment(defaultApp, existing, true)
+		if(wordnetSegment == null) {
+			
+			println "Wordnet segment does not exist, exiting..."
+			
+			System.exit(0)
+			
 		}
 		
-		println "Creating new wordnet segment..."
+		// if(existing != null) {
+		// 	println "Existing wordnet segment found - removing..."
+		// 	service.removeSegment(defaultApp, existing, true)
+		// }
+		
+		
+		
+		// println "Creating new wordnet segment..."
 		
 		/*
 		if(service.endpointType == EndpointType.ALLEGROGRAPH) {
@@ -127,7 +148,7 @@ class SampleWordnetImport {
 		
 		*/
 		
-		service.addSegment(defaultApp, existing, true)
+		// service.addSegment(defaultApp, existing, true)
 		
 		
 		println "Inserting wordnet data - ${BATCH_SIZE} objects per batch"
@@ -165,7 +186,7 @@ class SampleWordnetImport {
 				
 				if(batch.size() >= BATCH_SIZE) {
 					
-					service.insert(defaultApp, existing, batch)
+					service.insert(defaultApp, wordnetSegment, batch)
 					
 					inserted += batch.size()
 					
@@ -179,7 +200,7 @@ class SampleWordnetImport {
 			
 			if(batch.size() > 0) {
 				
-				service.insert(defaultApp, existing, batch)
+				service.insert(defaultApp, wordnetSegment, batch)
 				
 			}
 			
